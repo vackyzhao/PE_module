@@ -1,21 +1,23 @@
 // 设置时钟和时间刻度
+// Set clock and time scale
 `timescale 1ns / 1ps
 
 module PE_Unit (
-    input clk,       // PE的时钟信号
-    input rst_n,     // 复位信号，低电平有效
-    input en,        // 使能信号
-    input [23:0] Ifmap_in,  // 输入特征图 8位*3通道（数据）
-    input [11:0] Filtr_in,  // 输入权重 4位*3通道（卷积核）
-    input [19:0] Psum_in,   // 输入上一个PE的结果
-    output reg [23:0] Ifmap_out, // 输出特征图 8位*3通道（结果）
-    output reg [19:0] Psum_out   // 输出计算结果
+    input clk,               // PE的时钟信号 (Clock signal for the PE)
+    input rst_n,             // 复位信号，低电平有效 (Reset signal, active low)
+    input en,                // 使能信号 (Enable signal)
+    input [23:0] Ifmap_in,   // 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
+    input [11:0] Filtr_in,   // 输入权重 4位*3通道（卷积核） (Input weights 4-bit * 3 channels, convolution kernel)
+    input [19:0] Psum_in,    // 输入上一个PE的结果 (Input result from the previous PE)
+    output reg [23:0] Ifmap_out, // 输出特征图 8位*3通道（结果） (Output feature map 8-bit * 3 channels, result)
+    output reg [19:0] Psum_out   // 输出计算结果 (Output computation result)
 );
 
-  reg [1:0] current_state, next_state;  // 状态机的当前状态和下一状态
-  reg [19:0] temp_result;  // 存储MAC计算的结果
-  reg [23:0] next_Ifmap;  // 每3个时钟周期更新Ifmap_out
+  reg [1:0] current_state, next_state;  // 状态机的当前状态和下一状态 (Current state and next state of the state machine)
+  reg [19:0] temp_result;  // 存储MAC计算的结果 (Store the result of MAC calculation)
+  reg [23:0] next_Ifmap;  // 每3个时钟周期更新Ifmap_out (Update Ifmap_out every 3 clock cycles)
 
+  // 同步复位逻辑 (Synchronous reset logic)
   always @(posedge clk or negedge rst_n) begin
     if (!rst_n) begin
       current_state <= 2'b00;
@@ -26,11 +28,12 @@ module PE_Unit (
         current_state <= next_state;
         Ifmap_out <= next_Ifmap;
         Psum_out <= temp_result;
-        // Psum_out 和 MAC_result 是同一个寄存器
+        // Psum_out 和 MAC_result 是同一个寄存器 (Psum_out and MAC_result share the same register)
       end
     end
   end
 
+  // 状态机逻辑 (State machine logic)
   always @(*) begin
     case (current_state)
       0: begin
@@ -50,8 +53,8 @@ module PE_Unit (
       end
       default: begin
         next_state  = 0;
-        next_Ifmap  = {24{1'bx}}; // 默认情况下，保持未定义
-        temp_result = {20{1'bx}}; // 默认情况下，保持未定义
+        next_Ifmap  = {24{1'bx}}; // 默认情况下，保持未定义 (Default to keep undefined)
+        temp_result = {20{1'bx}}; // 默认情况下，保持未定义 (Default to keep undefined)
       end
     endcase
   end

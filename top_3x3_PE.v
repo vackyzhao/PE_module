@@ -2,7 +2,7 @@
 
 
 module top_3x3_PE_Unit(
-input clk,
+ input clk,
  input rst,
  input en,
  input [23:0] Ifmap_in_1,
@@ -13,7 +13,7 @@ input clk,
 
  input [11:0] Filtr_in_1,
  input [11:0] Filtr_in_2,
- input [2113:0] Filtr_in_3,
+ input [11:0] Filtr_in_3,
  
  output [19:0] Conv_result_1,
  output [19:0] Conv_result_2,
