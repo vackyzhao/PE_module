@@ -1,3 +1,4 @@
+`timescale 1ns / 1ps
 module tb_3x3_PE_Unit();
  
  reg PE_clk;
