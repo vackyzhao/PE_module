@@ -1,5 +1,5 @@
 `timescale 1ns / 1ps
-module PE_28x3_module (
+module PE_34x3_module (
     input clk,  //PE 时钟(3倍频clk时钟)
     input rst_n,  //复位信号，低有效
     input en,  //使能信号，高有效 
@@ -43,7 +43,7 @@ module PE_28x3_module (
     input [23:0] Ifmap_in_31,// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
     input [23:0] Ifmap_in_32,// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
     input [23:0] Ifmap_in_33,// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
-    input [23:0] Ifmap_in_24,// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
+    input [23:0] Ifmap_in_34,// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
 
     output [19:0] Conv_result_1,   //输出计算结果
     output [19:0] Conv_result_2,   //输出计算结果
