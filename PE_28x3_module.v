@@ -68,7 +68,7 @@ module PE_28x3_module (
     output [19:0] Conv_result_27,  //输出计算结果
     output [19:0] Conv_result_28,  //输出计算结果
 
-    output reg PE_out_clk  // 输出的3分频时钟信号 (Output 3x frequency clock signal)
+    output  PE_out_clk  // 输出的3分频时钟信号 (Output 3x frequency clock signal)
 );
 
   wire [23:0] Ifmap_out_1_1;
@@ -142,7 +142,7 @@ module PE_28x3_module (
       .Ifmap_out_1(Ifmap_out_1_1),// 输出特征图 8位*3通道（数据） (Output feature map 8-bit * 3 channels, data)
       .Ifmap_out_2(Ifmap_out_1_2),// 输出特征图 8位*3通道（数据） (Output feature map 8-bit * 3 channels, data)
       .Conv_result(Conv_result_1),  //输出计算结果
-      .PE_out_clk()
+      .PE_out_clk(PE_out_clk)
   );
 
   PEx3_module PEx3_module_2 (
