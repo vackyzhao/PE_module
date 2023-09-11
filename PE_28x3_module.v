@@ -38,6 +38,12 @@ module PE_28x3_module (
     input [23:0] Ifmap_in_26,// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)    
     input [23:0] Ifmap_in_27,// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
     input [23:0] Ifmap_in_28,// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
+    input [23:0] Ifmap_in_29,// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
+    input [23:0] Ifmap_in_30,// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
+    input [23:0] Ifmap_in_31,// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
+    input [23:0] Ifmap_in_32,// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
+    input [23:0] Ifmap_in_33,// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
+    input [23:0] Ifmap_in_24,// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
 
     output [19:0] Conv_result_1,   //输出计算结果
     output [19:0] Conv_result_2,   //输出计算结果
@@ -67,6 +73,12 @@ module PE_28x3_module (
     output [19:0] Conv_result_26,  //输出计算结果
     output [19:0] Conv_result_27,  //输出计算结果
     output [19:0] Conv_result_28,  //输出计算结果
+    output [19:0] Conv_result_29,  //输出计算结果
+    output [19:0] Conv_result_30,  //输出计算结果
+    output [19:0] Conv_result_31,  //输出计算结果
+    output [19:0] Conv_result_32,  //输出计算结果
+    output [19:0] Conv_result_33,  //输出计算结果
+    output [19:0] Conv_result_34,  //输出计算结果
 
     output  PE_out_clk  // 输出的3分频时钟信号 (Output 3x frequency clock signal)
 );
@@ -125,6 +137,19 @@ module PE_28x3_module (
   wire [23:0] Ifmap_out_26_2;
   wire [23:0] Ifmap_out_27_1;
   wire [23:0] Ifmap_out_27_2;
+  wire [23:0] Ifmap_out_28_1;
+  wire [23:0] Ifmap_out_28_2;
+  wire [23:0] Ifmap_out_29_1;
+  wire [23:0] Ifmap_out_29_2;
+  wire [23:0] Ifmap_out_30_1;
+  wire [23:0] Ifmap_out_30_2;
+  wire [23:0] Ifmap_out_31_1;
+  wire [23:0] Ifmap_out_31_2;
+  wire [23:0] Ifmap_out_32_1;
+  wire [23:0] Ifmap_out_32_2;
+  wire [23:0] Ifmap_out_33_1;
+  wire [23:0] Ifmap_out_33_2;
+
 
   PEx3_module PEx3_module_1 (
       .PE_clk(clk),  //PE 时钟(3倍频clk时钟)
@@ -648,11 +673,124 @@ PEx3_module PEx3_module_28 (
     .Filtr_in_2(Filtr_in_2),// 输入权重 4位*3通道（卷积核） (Input weights 4-bit * 3 channels, convolution kernel)
     .Filtr_in_3(Filtr_in_3),// 输入权重 4位*3通道（卷积核） (Input weights 4-bit * 3 channels, convolution kernel)
 
-    .Ifmap_out_1(),// 输出特征图 8位*3通道（数据） (Output feature map 8-bit * 3 channels, data)
-    .Ifmap_out_2(),// 输出特征图 8位*3通道（数据） (Output feature map 8-bit * 3 channels, data)
+    .Ifmap_out_1(Ifmap_out_28_1),// 输出特征图 8位*3通道（数据） (Output feature map 8-bit * 3 channels, data)
+    .Ifmap_out_2(Ifmap_out_28_2),// 输出特征图 8位*3通道（数据） (Output feature map 8-bit * 3 channels, data)
     .Conv_result(Conv_result_28),  // 输出计算结果
     .PE_out_clk()
 );
+
+PEx3_module PEx3_module_29 (
+    .PE_clk(clk),  // PE 时钟(3倍频clk时钟)
+    .rst_n(rst_n),  // 复位信号，低有效
+    .en(en),  // 使能信号，高有效 
+
+    .Ifmap_in_1(Ifmap_out_28_1),// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
+    .Ifmap_in_2(Ifmap_out_28_2),// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
+    .Ifmap_in_3(Ifmap_in_29),// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
+
+    .Filtr_in_1(Filtr_in_1),// 输入权重 4位*3通道（卷积核） (Input weights 4-bit * 3 channels, convolution kernel)
+    .Filtr_in_2(Filtr_in_2),// 输入权重 4位*3通道（卷积核） (Input weights 4-bit * 3 channels, convolution kernel)
+    .Filtr_in_3(Filtr_in_3),// 输入权重 4位*3通道（卷积核） (Input weights 4-bit * 3 channels, convolution kernel)
+
+    .Ifmap_out_1(Ifmap_out_29_1),// 输出特征图 8位*3通道（数据） (Output feature map 8-bit * 3 channels, data)
+    .Ifmap_out_2(Ifmap_out_29_1),// 输出特征图 8位*3通道（数据） (Output feature map 8-bit * 3 channels, data)
+    .Conv_result(Conv_result_29),  // 输出计算结果
+    .PE_out_clk()
+);
+PEx3_module PEx3_module_30 (
+    .PE_clk(clk),  // PE 时钟(3倍频clk时钟)
+    .rst_n(rst_n),  // 复位信号，低有效
+    .en(en),  // 使能信号，高有效 
+
+    .Ifmap_in_1(Ifmap_out_29_1),// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
+    .Ifmap_in_2(Ifmap_out_29_2),// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
+    .Ifmap_in_3(Ifmap_in_30),// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
+
+    .Filtr_in_1(Filtr_in_1),// 输入权重 4位*3通道（卷积核） (Input weights 4-bit * 3 channels, convolution kernel)
+    .Filtr_in_2(Filtr_in_2),// 输入权重 4位*3通道（卷积核） (Input weights 4-bit * 3 channels, convolution kernel)
+    .Filtr_in_3(Filtr_in_3),// 输入权重 4位*3通道（卷积核） (Input weights 4-bit * 3 channels, convolution kernel)
+
+    .Ifmap_out_1(Ifmap_out_30_1),// 输出特征图 8位*3通道（数据） (Output feature map 8-bit * 3 channels, data)
+    .Ifmap_out_2(Ifmap_out_30_1),// 输出特征图 8位*3通道（数据） (Output feature map 8-bit * 3 channels, data)
+    .Conv_result(Conv_result_30),  // 输出计算结果
+    .PE_out_clk()
+);
+PEx3_module PEx3_module_31 (
+    .PE_clk(clk),  // PE 时钟(3倍频clk时钟)
+    .rst_n(rst_n),  // 复位信号，低有效
+    .en(en),  // 使能信号，高有效 
+
+    .Ifmap_in_1(Ifmap_out_30_1),// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
+    .Ifmap_in_2(Ifmap_out_30_2),// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
+    .Ifmap_in_3(Ifmap_in_31),// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
+
+    .Filtr_in_1(Filtr_in_1),// 输入权重 4位*3通道（卷积核） (Input weights 4-bit * 3 channels, convolution kernel)
+    .Filtr_in_2(Filtr_in_2),// 输入权重 4位*3通道（卷积核） (Input weights 4-bit * 3 channels, convolution kernel)
+    .Filtr_in_3(Filtr_in_3),// 输入权重 4位*3通道（卷积核） (Input weights 4-bit * 3 channels, convolution kernel)
+
+    .Ifmap_out_1(Ifmap_out_31_1),// 输出特征图 8位*3通道（数据） (Output feature map 8-bit * 3 channels, data)
+    .Ifmap_out_2(Ifmap_out_31_2),// 输出特征图 8位*3通道（数据） (Output feature map 8-bit * 3 channels, data)
+    .Conv_result(Conv_result_31),  // 输出计算结果
+    .PE_out_clk()
+);
+
+PEx3_module PEx3_module_32 (
+    .PE_clk(clk),  // PE 时钟(3倍频clk时钟)
+    .rst_n(rst_n),  // 复位信号，低有效
+    .en(en),  // 使能信号，高有效 
+
+    .Ifmap_in_1(Ifmap_out_31_1),// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
+    .Ifmap_in_2(Ifmap_out_31_2),// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
+    .Ifmap_in_3(Ifmap_in_32),// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
+
+    .Filtr_in_1(Filtr_in_1),// 输入权重 4位*3通道（卷积核） (Input weights 4-bit * 3 channels, convolution kernel)
+    .Filtr_in_2(Filtr_in_2),// 输入权重 4位*3通道（卷积核） (Input weights 4-bit * 3 channels, convolution kernel)
+    .Filtr_in_3(Filtr_in_3),// 输入权重 4位*3通道（卷积核） (Input weights 4-bit * 3 channels, convolution kernel)
+
+    .Ifmap_out_1(Ifmap_out_32_1),// 输出特征图 8位*3通道（数据） (Output feature map 8-bit * 3 channels, data)
+    .Ifmap_out_2(Ifmap_out_32_2),// 输出特征图 8位*3通道（数据） (Output feature map 8-bit * 3 channels, data)
+    .Conv_result(Conv_result_32),  // 输出计算结果
+    .PE_out_clk()
+);
+
+PEx3_module PEx3_module_33 (
+    .PE_clk(clk),  // PE 时钟(3倍频clk时钟)
+    .rst_n(rst_n),  // 复位信号，低有效
+    .en(en),  // 使能信号，高有效 
+
+    .Ifmap_in_1(Ifmap_out_32_1),// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
+    .Ifmap_in_2(Ifmap_out_32_2),// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
+    .Ifmap_in_3(Ifmap_in_33),// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
+
+    .Filtr_in_1(Filtr_in_1),// 输入权重 4位*3通道（卷积核） (Input weights 4-bit * 3 channels, convolution kernel)
+    .Filtr_in_2(Filtr_in_2),// 输入权重 4位*3通道（卷积核） (Input weights 4-bit * 3 channels, convolution kernel)
+    .Filtr_in_3(Filtr_in_3),// 输入权重 4位*3通道（卷积核） (Input weights 4-bit * 3 channels, convolution kernel)
+
+    .Ifmap_out_1(Ifmap_out_33_1),// 输出特征图 8位*3通道（数据） (Output feature map 8-bit * 3 channels, data)
+    .Ifmap_out_2(Ifmap_out_33_2),// 输出特征图 8位*3通道（数据） (Output feature map 8-bit * 3 channels, data)
+    .Conv_result(Conv_result_33),  // 输出计算结果
+    .PE_out_clk()
+);
+
+PEx3_module PEx3_module_34 (
+    .PE_clk(clk),  // PE 时钟(3倍频clk时钟)
+    .rst_n(rst_n),  // 复位信号，低有效
+    .en(en),  // 使能信号，高有效 
+
+    .Ifmap_in_1(Ifmap_out_33_1),// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
+    .Ifmap_in_2(Ifmap_out_33_2),// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
+    .Ifmap_in_3(Ifmap_in_34),// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
+
+    .Filtr_in_1(Filtr_in_1),// 输入权重 4位*3通道（卷积核） (Input weights 4-bit * 3 channels, convolution kernel)
+    .Filtr_in_2(Filtr_in_2),// 输入权重 4位*3通道（卷积核） (Input weights 4-bit * 3 channels, convolution kernel)
+    .Filtr_in_3(Filtr_in_3),// 输入权重 4位*3通道（卷积核） (Input weights 4-bit * 3 channels, convolution kernel)
+
+    .Ifmap_out_1(),// 输出特征图 8位*3通道（数据） (Output feature map 8-bit * 3 channels, data)
+    .Ifmap_out_2(),// 输出特征图 8位*3通道（数据） (Output feature map 8-bit * 3 channels, data)
+    .Conv_result(Conv_result_34),  // 输出计算结果
+    .PE_out_clk()
+);
+
 
 
 endmodule
