@@ -21,7 +21,9 @@ module new_PE_Unit (
 
     output reg [11:0] Psum_out   // 输出计算结果 (Output computation result)
 );
+
   reg  current_state, next_state;  // 状态机的当前状态和下一状态 (Current state and next state of the state machine)
+  
   wire [11:0] temp_result_1;  // 存储MAC计算的结果 (Store the result of MAC calculation)
   wire [11:0] temp_result_2;  // 存储MAC计算的结果 (Store the result of MAC calculation)
   wire [11:0] temp_result_3;// 存储MAC计算的结果 (Store the result of MAC calculation)
@@ -46,7 +48,13 @@ module new_PE_Unit (
     end
   end
 
-
+mult_8x4 mult_8x4_0 (
+  .CLK(clk),  // input wire CLK
+  .A(Ifmap_in_3),      // input wire [7 : 0] A
+  .B(Filtr_in_3),      // input wire [3 : 0] B
+  .CE(en),    // input wire CE
+  .P(temp_result_3)      // output wire [11 : 0] P
+);
 mult_8x4 mult_8x4_1 (
   .CLK(clk),  // input wire CLK
   .A(Ifmap_in_1),      // input wire [7 : 0] A
@@ -70,6 +78,24 @@ mult_8x4 mult_8x4_3 (
   .CE(en),    // input wire CE
   .P(temp_result_3)      // output wire [11 : 0] P
 );
+
+mult_8x4 mult_8x4_4 (
+  .CLK(clk),  // input wire CLK
+  .A(Ifmap_in_1),      // input wire [7 : 0] A
+  .B(Filtr_in_1),      // input wire [3 : 0] B
+  .CE(en),    // input wire CE
+  .P(temp_result_1)      // output wire [11 : 0] P
+);
+
+mult_8x4 mult_8x4_5 (
+  .CLK(clk),  // input wire CLK
+  .A(Ifmap_in_2),      // input wire [7 : 0] A
+  .B(Filtr_in_2),      // input wire [3 : 0] B
+  .CE(en),    // input wire CE
+  .P(temp_result_2)      // output wire [11 : 0] P
+);
+
+
 
   always @(*) begin
     case (current_state)
