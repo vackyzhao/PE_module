@@ -38,9 +38,9 @@ module new_PE_Unit (
     if (!rst_n) begin
       current_state <= 1'b0;
       Psum_out <= 12'b0;
-      Ifmap_out_1 <= 12'b0;
-      Ifmap_out_2 <= 12'b0;
-      Ifmap_out_3 <= 12'b0;
+      Ifmap_out_1 <= 8'b0;
+      Ifmap_out_2 <= 8'b0;
+      Ifmap_out_3 <= 8'b0;
     end else begin
       if (en) begin
         current_state <= next_state;        
@@ -64,30 +64,6 @@ mult_8x4 mult_8x4_1 (
 );
 
 mult_8x4 mult_8x4_2 (
-  .CLK(clk),  // input wire CLK
-  .A(Ifmap_in_2),      // input wire [7 : 0] A
-  .B(Filtr_in_2),      // input wire [3 : 0] B
-  .CE(en),    // input wire CE
-  .P(temp_result_2)      // output wire [11 : 0] P
-);
-
-mult_8x4 mult_8x4_3 (
-  .CLK(clk),  // input wire CLK
-  .A(Ifmap_in_3),      // input wire [7 : 0] A
-  .B(Filtr_in_3),      // input wire [3 : 0] B
-  .CE(en),    // input wire CE
-  .P(temp_result_3)      // output wire [11 : 0] P
-);
-
-mult_8x4 mult_8x4_4 (
-  .CLK(clk),  // input wire CLK
-  .A(Ifmap_in_1),      // input wire [7 : 0] A
-  .B(Filtr_in_1),      // input wire [3 : 0] B
-  .CE(en),    // input wire CE
-  .P(temp_result_1)      // output wire [11 : 0] P
-);
-
-mult_8x4 mult_8x4_5 (
   .CLK(clk),  // input wire CLK
   .A(Ifmap_in_2),      // input wire [7 : 0] A
   .B(Filtr_in_2),      // input wire [3 : 0] B
