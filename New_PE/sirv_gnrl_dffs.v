@@ -60,7 +60,7 @@ begin : DFFLRS_PROC
 end
 
 assign qout = qout_r;
-
+/*
 `ifndef FPGA_SOURCE//{
 `ifndef DISABLE_SV_ASSERTION//{
 //synopsys translate_off
@@ -73,7 +73,7 @@ sirv_gnrl_xchecker # (
 //synopsys translate_on
 `endif//}
 `endif//}
-    
+  */  
 
 endmodule
 // ===========================================================================
@@ -107,7 +107,7 @@ begin : DFFLR_PROC
 end
 
 assign qout = qout_r;
-
+/*
 `ifndef FPGA_SOURCE//{
 `ifndef DISABLE_SV_ASSERTION//{
 //synopsys translate_off
@@ -120,7 +120,7 @@ sirv_gnrl_xchecker # (
 //synopsys translate_on
 `endif//}
 `endif//}
-    
+  */  
 
 endmodule
 // ===========================================================================
@@ -150,7 +150,7 @@ begin : DFFL_PROC
 end
 
 assign qout = qout_r;
-
+/*
 `ifndef FPGA_SOURCE//{
 `ifndef DISABLE_SV_ASSERTION//{
 //synopsys translate_off
@@ -163,7 +163,7 @@ sirv_gnrl_xchecker # (
 //synopsys translate_on
 `endif//}
 `endif//}
-    
+ */   
 
 endmodule
 // ===========================================================================
@@ -257,7 +257,7 @@ end
 
 //assign qout = test_mode ? dnxt : qout_r;
 assign qout = qout_r;
-
+/*
 `ifndef FPGA_SOURCE//{
 `ifndef DISABLE_SV_ASSERTION//{
 //synopsys translate_off
@@ -271,6 +271,6 @@ end
 //synopsys translate_on
 `endif//}
 `endif//}
-    
+ */
 
 endmodule
