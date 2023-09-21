@@ -16,7 +16,7 @@ module new_PE_Unit (
 wire [11:0] result_0,result_1,result_2;
 wire [7:0] Ifmap_in_0,Ifmap_in_1,Ifmap_in_2;
 
-assign Ifmap_shift_out=Ifmap_in_0;
+assign Ifmap_shift_out = Ifmap_in_0;
 
 shift_register shift_register_0(
   .clk(clk),
@@ -27,25 +27,26 @@ shift_register shift_register_0(
   .output_data_1(Ifmap_in_1),
   .output_data_2(Ifmap_in_2)
 );
-testMult mult_8x4_0 (
+
+mult_ip mult_8x4_0 (
   .CLK(clk),  // input wire CLK
+  .CE(en),    // input wire CE
   .A(Ifmap_in_0),      // input wire [7 : 0] A
   .B(Filtr_in[3:0]),      // input wire [3 : 0] B
-  .CE(en),    // input wire CE
   .P(result_0)      // output wire [11 : 0] P
 );
-testMult mult_8x4_1 (
+mult_ip mult_8x4_1 (
   .CLK(clk),  // input wire CLK
+  .CE(en),    // input wire CE
   .A(Ifmap_in_1),      // input wire [7 : 0] A
   .B(Filtr_in[7:4]),      // input wire [3 : 0] B
-  .CE(en),    // input wire CE
   .P(result_1)      // output wire [11 : 0] P
 );
-testMult mult_8x4_2 (
+mult_ip mult_8x4_2 (
   .CLK(clk),  // input wire CLK
+  .CE(en),    // input wire CE
   .A(Ifmap_in_2),      // input wire [7 : 0] A
   .B(Filtr_in[11:8]),      // input wire [3 : 0] B
-  .CE(en),    // input wire CE
   .P(result_2)      // output wire [11 : 0] P
 );
 always @(*)
@@ -56,8 +57,8 @@ begin
     else begin
         // 非复位状态下的操作
         if (en) begin
-            Psum_out = result_0 + result_1 + result_2;
-            Filtr_out=Filtr_in;
+            Psum_out <= Psum_in+ result_0 + result_1 + result_2;
+            Filtr_out <=Filtr_in;
         end
     end
 end

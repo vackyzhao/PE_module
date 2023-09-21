@@ -1,3 +1,4 @@
+`timescale 1ns / 1ps
 module shift_register(
   input clk,
   input rst_n,
@@ -8,11 +9,21 @@ module shift_register(
   output [7:0] output_data_2
 );
 
-wire [7:0] reg1_out, reg2_out, reg3_out;
+wire [7:0] reg0_out, reg1_out, reg2_out;
+
+
+
+sirv_gnrl_dfflr #(8) reg0 (
+  .lden(en),
+  .dnxt(input_data),
+  .qout(reg0_out),
+  .clk(clk),
+  .rst_n(rst_n)
+);
 
 sirv_gnrl_dfflr #(8) reg1 (
   .lden(en),
-  .dnxt(input_data),
+  .dnxt(reg0_out),
   .qout(reg1_out),
   .clk(clk),
   .rst_n(rst_n)
@@ -26,16 +37,8 @@ sirv_gnrl_dfflr #(8) reg2 (
   .rst_n(rst_n)
 );
 
-sirv_gnrl_dfflr #(8) reg3 (
-  .lden(en),
-  .dnxt(reg2_out),
-  .qout(reg3_out),
-  .clk(clk),
-  .rst_n(rst_n)
-);
-
-assign output_data_0 = reg1_out;
-assign output_data_1 = reg2_out;
-assign output_data_2 = reg3_out;
+assign output_data_0 = reg0_out;
+assign output_data_1 = reg1_out;
+assign output_data_2 = reg2_out;
 
 endmodule

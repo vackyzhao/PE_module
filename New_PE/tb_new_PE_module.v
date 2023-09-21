@@ -43,7 +43,16 @@ new_PE_Unit new_PE_Unit(
  #(Tclk * 2) rst_n = 1;
  #(Tclk) en = 1;
  #(Tclk) Filtr_in = {{4'd4},{4'd3},{4'd1}};
+ #(Tclk*10)
  #(Tclk) Ifmap_shift_in=8'd2;
+ #(Tclk) Ifmap_shift_in=8'd4;
+ #(Tclk) Ifmap_shift_in=8'd1;
+ #(Tclk) Ifmap_shift_in=8'd0;
+ #(Tclk) Ifmap_shift_in=8'd2;
+ #(Tclk) Ifmap_shift_in=8'd4;
+ #(Tclk) Ifmap_shift_in=8'd1;
+ #(Tclk) Ifmap_shift_in=8'd0;
+#(Tclk) Ifmap_shift_in=8'd2;
  #(Tclk) Ifmap_shift_in=8'd4;
  #(Tclk) Ifmap_shift_in=8'd1;
  #(Tclk) Ifmap_shift_in=8'd0;
