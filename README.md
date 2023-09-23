@@ -53,3 +53,68 @@ $$ PsumOut_{(n)}[13:0] = PsumIn_{(n)}[13:0] + FiltrIn_{(n)}[11:8]*IfmapShiftIn_{
 **tb样例**
 
 见PE_module\New_PE\testbenchnew_PE_tb.png
+
+
+PE_module
+
+new_PE_Unit Input and Output:
+
+verilog
+
+module new_PE_Unit (
+    input clk,               // Clock signal for the PE module
+    input rst_n,             // Reset signal, active low
+    input en,                // Enable signal
+
+    input [11:0] Filtr_in,   // Input weights, 4 bits * 3 (convolution kernel)
+    input [7:0] Ifmap_shift_in,   // Shifted input feature map, 8 bits (data)
+    input [13:0] Psum_in,    // Input result from the previous PE
+
+    output reg [11:0] Filtr_out,   // Output weights, 4 bits * 3 (convolution kernel)
+    output [7:0] Ifmap_shift_out, // Pulsed output feature map, 8 bits (data)
+    output reg [13:0] Psum_out   // Output computed result, 14 bits (result)
+);
+
+Detailed Description:
+
+This Verilog module describes a Processing Element (PE) module used for convolution calculations. Here are the main inputs and outputs of the module:
+
+```verilog
+
+    clk: Clock signal for synchronization.
+    rst_n: Reset signal, active low.
+    en: Enable signal to enable or disable the module's operation.
+```
+Input Ports:
+
+```verilog
+
+    Filtr_in: Input weights, a total of 4 bits * 3 (convolution kernel).
+    Ifmap_shift_in: Shifted input feature map, 8 bits (data).
+    Psum_in: Input result from the previous PE, 14 bits (result).
+```
+Output Ports:
+
+```verilog
+
+    Filtr_out: Output weights, a total of 4 bits * 3 (convolution kernel).
+    Ifmap_shift_out: Pulsed output feature map, 8 bits (data).
+    Psum_out: Output computed result, 14 bits (result).
+```
+Internal Implementation Details:
+
+The module internally uses a pipeline multiplier IP core, which outputs a multiplication result every 3 clock cycles. Additionally, due to the use of shift registers, valid data is only available after 3 clock cycles have passed. After that, valid results are produced every clock cycle. The final calculated result, Psum_out, is stored using registers.
+
+The width of the internal shift register is 24 bits (8 bits * 3) and is used to store input data. Input data is left-shifted through the shift register, and both weights and data are stored in LSB (Least Significant Bit) order.
+
+For each clock cycle (n denotes the clock cycle), the formula for calculating Psum_out is as follows:
+
+```math
+
+$$ PsumOut_{(n)}[13:0] = PsumIn_{(n)}[13:0] + FiltrIn_{(n)}[11:8]*IfmapShiftIn_{(n-6)}[7:0] + FiltrIn_{(n)}[7:4]*IfmapShiftIn_{(n-5)}[7:0] + FiltrIn_{(n)}[3:0]*IfmapShiftIn_{(n-4)}[7:0] $$
+```
+This formula indicates that in each clock cycle, the previous PE's computed result, Psum_in, is multiplied with input weights, Filtr_in, and the shifted feature map, Ifmap_shift_in, and the results are accumulated into the current Psum_out.
+
+Testbench Example:
+
+Refer to the image "testbenchnew_PE_tb.png" in the PE_module\New_PE directory for a testbench example.
