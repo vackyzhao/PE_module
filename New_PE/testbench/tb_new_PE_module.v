@@ -7,7 +7,7 @@ module tb_new_PE_Unit();
 
  reg [7:0] Ifmap_shift_in = 0;
  reg [11:0] Filtr_in = 0;
- reg [13:0] Psum_in=1;
+ reg [13:0] Psum_in=0;
  wire [13:0] Psum_out;
 
  wire [7:0] Ifmap_shift_out;
@@ -48,18 +48,7 @@ new_PE_Unit new_PE_Unit(
  #(Tclk) Ifmap_shift_in=8'd4;
  #(Tclk) Ifmap_shift_in=8'd1;
  #(Tclk) Ifmap_shift_in=8'd0;
- #(Tclk) Ifmap_shift_in=8'd2;
- #(Tclk) Ifmap_shift_in=8'd4;
- #(Tclk) Ifmap_shift_in=8'd1;
- #(Tclk) Ifmap_shift_in=8'd0;
-#(Tclk) Ifmap_shift_in=8'd2;
- #(Tclk) Ifmap_shift_in=8'd4;
- #(Tclk) Ifmap_shift_in=8'd1;
- #(Tclk) Ifmap_shift_in=8'd0;
- #(Tclk) Ifmap_shift_in=8'd2;
- #(Tclk) Ifmap_shift_in=8'd4;
- #(Tclk) Ifmap_shift_in=8'd1;
- #(Tclk) Ifmap_shift_in=8'd0;
+ 
  end
  
 
