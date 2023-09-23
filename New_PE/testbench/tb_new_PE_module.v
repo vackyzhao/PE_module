@@ -48,6 +48,7 @@ new_PE_Unit new_PE_Unit(
  #(Tclk) Ifmap_shift_in=8'd4;
  #(Tclk) Ifmap_shift_in=8'd1;
  #(Tclk) Ifmap_shift_in=8'd0;
+ #(Tclk*10) $stop;
  
  end
  
