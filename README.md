@@ -55,11 +55,11 @@ $$ PsumOut_{(n)}[13:0] = PsumIn_{(n)}[13:0] + FiltrIn_{(n)}[11:8]*IfmapShiftIn_{
 见PE_module\New_PE\testbenchnew_PE_tb.png
 
 
-PE_module
+**PE_module**
 
 new_PE_Unit Input and Output:
 
-verilog
+```verilog
 
 module new_PE_Unit (
     input clk,               // Clock signal for the PE module
@@ -74,7 +74,7 @@ module new_PE_Unit (
     output [7:0] Ifmap_shift_out, // Pulsed output feature map, 8 bits (data)
     output reg [13:0] Psum_out   // Output computed result, 14 bits (result)
 );
-
+```
 Detailed Description:
 
 This Verilog module describes a Processing Element (PE) module used for convolution calculations. Here are the main inputs and outputs of the module:
