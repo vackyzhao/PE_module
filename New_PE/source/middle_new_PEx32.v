@@ -3,10 +3,7 @@ module middle_new_PEx32(
     input rst_n,  //复位信号，低有效
     input en,  //使能信号，高有效 
 
-    
-    input [7:0] Ifmap_shift_in_0_2,// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
-    input [7:0] Ifmap_shift_in_0_1,// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
-    input [255:0] Ifmap_shift_in_n_0,// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data) 32*8
+    input [271:0] Ifmap_shift_in,// 输入特征图 8位*34通道（数据） (Input feature map 8-bit * 3 channels, data) 32*8
 
     input [11:0] Filtr_in_2,// 输入权重 4位*3通道（卷积核） (Input weights 4-bit * 3 channels, convolution kernel)    
     input [11:0] Filtr_in_1,//  输入权重 4位*3通道（卷积核） (Input weights 4-bit * 3 channels, convolution kernel)
@@ -22,6 +19,31 @@ wire [11:0] Filtr_out_2[0:31]; // 创建一个包含32个8位元素的wire数组
 wire [11:0] Filtr_out_1[0:31]; // 创建一个包含32个8位元素的wire数组
 wire [11:0] Filtr_out_0[0:31]; // 创建一个包含32个8位元素的wire数组
 
+wire [7:0] reg0_out;
+wire [7:0] Ifmap_shift_in_0_2,Ifmap_shift_in_0_1;
+
+sirv_gnrl_dfflr #(8) Ifmap_shift_in_0_2_reg0 (
+  .lden(en),
+  .dnxt(Ifmap_shift_in[271:264]),
+  .qout(reg0_out),
+  .clk(clk),
+  .rst_n(rst_n)
+);
+sirv_gnrl_dfflr #(8) Ifmap_shift_in_0_2_reg1 (
+  .lden(en),
+  .dnxt(reg0_out),
+  .qout(Ifmap_shift_in_0_2),
+  .clk(clk),
+  .rst_n(rst_n)
+);
+sirv_gnrl_dfflr #(8) Ifmap_shift_in_0_1_reg0 (
+  .lden(en),
+  .dnxt(Ifmap_shift_in[263:256]),
+  .qout(Ifmap_shift_in_0_1),
+  .clk(clk),
+  .rst_n(rst_n)
+);
+
     middle_new_PE middle_new_PE_0(
     .clk(clk),  //PE 时钟(3倍频clk时钟)
     .rst_n(rst_n),  //复位信号，低有效
@@ -31,7 +53,7 @@ wire [11:0] Filtr_out_0[0:31]; // 创建一个包含32个8位元素的wire数组
 
     .Ifmap_shift_in_2(Ifmap_shift_in_0_2),// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
     .Ifmap_shift_in_1(Ifmap_shift_in_0_1),// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
-    .Ifmap_shift_in_0(Ifmap_shift_in_n_0[255:248]),// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
+    .Ifmap_shift_in_0(Ifmap_shift_in[255:248]),// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
 
     .Filtr_in_2(Filtr_in_2),// 输入权重 4位*3通道（卷积核） (Input weights 4-bit * 3 channels, convolution kernel)
     .Filtr_in_1(Filtr_in_1),//  输入权重 4位*3通道（卷积核） (Input weights 4-bit * 3 channels, convolution kernel)
@@ -58,7 +80,7 @@ middle_new_PE middle_new_PE_31(
 
     .Ifmap_shift_in_2(Ifmap_shift_out_2[30]),// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
     .Ifmap_shift_in_1(Ifmap_shift_out_1[30]),// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
-    .Ifmap_shift_in_0(Ifmap_shift_in_n_0[7:0]),// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
+    .Ifmap_shift_in_0(Ifmap_shift_in[7:0]),// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
 
     .Filtr_in_2(Filtr_out_2[30]),// 输入权重 4位*3通道（卷积核） (Input weights 4-bit * 3 channels, convolution kernel)
     .Filtr_in_1(Filtr_out_1[30]),//  输入权重 4位*3通道（卷积核） (Input weights 4-bit * 3 channels, convolution kernel)
@@ -90,7 +112,7 @@ middle_new_PE middle_new_PE_31(
 
         .Ifmap_shift_in_2(Ifmap_shift_out_2[i-1]),// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
         .Ifmap_shift_in_1(Ifmap_shift_out_1[i-1]),// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
-        .Ifmap_shift_in_0(Ifmap_shift_in_n_0[(7+8*(31-i)):8*(31-i)]),// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
+        .Ifmap_shift_in_0(Ifmap_shift_in[(7+8*(31-i)):8*(31-i)]),// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
 
         .Filtr_in_2(Filtr_out_2[i-1]),// 输入权重 4位*3通道（卷积核） (Input weights 4-bit * 3 channels, convolution kernel)
         .Filtr_in_1(Filtr_out_1[i-1]),//  输入权重 4位*3通道（卷积核） (Input weights 4-bit * 3 channels, convolution kernel)
