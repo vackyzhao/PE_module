@@ -18,11 +18,12 @@ module tb_middle_new_PEx32 ();
   // 输出端口
   wire [13:0] Psum_out_0;
   wire [13:0] Psum_out_1;
-  wire [451:0] Psum_out_x;
+  wire [419:0] Psum_out_x;
   wire [447:0] Psum_out;
 
   assign Psum_out_0=Psum_out[447:434];
   assign Psum_out_1=Psum_out[433:420];
+  assign Psum_out_x=Psum_out[419:0];
 
 
   // 实例化中间模块
@@ -31,9 +32,8 @@ middle_new_PEx32 middle_new_PEx32_0(
     .rst_n(rst_n),  //复位信号，低有效
     .en(en),  //使能信号，高有效 
 
-    .Ifmap_shift_in_0_2(Ifmap_shift_in_0_2),// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
-    .Ifmap_shift_in_0_1(Ifmap_shift_in_0_1),// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data)
-    .Ifmap_shift_in_n_0({Ifmap_shift_in_0_0[7:0], Ifmap_shift_in_1_0[7:0], 240'b0}),// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data) 32*8
+    
+    .Ifmap_shift_in({Ifmap_shift_in_0_2[7:0],Ifmap_shift_in_0_1[7:0],Ifmap_shift_in_0_0[7:0], Ifmap_shift_in_1_0[7:0], 240'b0}),// 输入特征图 8位*3通道（数据） (Input feature map 8-bit * 3 channels, data) 32*8
 
     .Filtr_in_2(Filtr_in_2),// 输入权重 4位*3通道（卷积核） (Input weights 4-bit * 3 channels, convolution kernel)    
     .Filtr_in_1(Filtr_in_1),//  输入权重 4位*3通道（卷积核） (Input weights 4-bit * 3 channels, convolution kernel)
@@ -75,36 +75,26 @@ middle_new_PEx32 middle_new_PEx32_0(
     Filtr_in_0 = {{4'd0},{4'd4},{4'd1}};
     // 在此添加测试用例或输入信号
     #(Tclk * 1)
-    Ifmap_shift_in_0_2={8'd0};
-    Ifmap_shift_in_0_1={8'd0};
-    Ifmap_shift_in_0_0={8'd0};
+    Ifmap_shift_in_0_2={8'd2};
+    Ifmap_shift_in_0_1={8'd3};
+    Ifmap_shift_in_0_0={8'd1};
     Ifmap_shift_in_1_0={8'd4};
     #(Tclk * 1)
-    Ifmap_shift_in_0_2={8'd0};
-    Ifmap_shift_in_0_1={8'd3};
+    Ifmap_shift_in_0_2={8'd4};
+    Ifmap_shift_in_0_1={8'd2};
     Ifmap_shift_in_0_0={8'd3};
     Ifmap_shift_in_1_0={8'd0};
     #(Tclk * 1)
-    Ifmap_shift_in_0_2={8'd2};
-    Ifmap_shift_in_0_1={8'd2};
+    Ifmap_shift_in_0_2={8'd1};
+    Ifmap_shift_in_0_1={8'd4};
     Ifmap_shift_in_0_0={8'd2};
     Ifmap_shift_in_1_0={8'd1};
     #(Tclk * 1)
-    Ifmap_shift_in_0_2={8'd4};
-    Ifmap_shift_in_0_1={8'd4};
-    Ifmap_shift_in_0_0={8'd1};
-    Ifmap_shift_in_1_0={8'd2};
-    #(Tclk * 1)
-    Ifmap_shift_in_0_2={8'd1};
+    Ifmap_shift_in_0_2={8'd0};
     Ifmap_shift_in_0_1={8'd1};
     Ifmap_shift_in_0_0={8'd1};
-    Ifmap_shift_in_1_0={8'd0};
-    #(Tclk * 1)
-    Ifmap_shift_in_0_2={8'd0};
-    Ifmap_shift_in_0_1={8'd0};
-    Ifmap_shift_in_0_0={8'd0};
-    Ifmap_shift_in_1_0={8'd0};
-
+    Ifmap_shift_in_1_0={8'd2};
+    
     // 仿真持续一段时间
     #300 $finish;
   end
