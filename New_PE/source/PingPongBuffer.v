@@ -10,11 +10,12 @@ module PingPongBuffer(
 
     input output_clk,
     input output_column_clk,
-    output [271:0]data_out
+    output reg [271:0]data_out
 
 );
 
 wire buffer_clk;
+wire A_in,B_in;
 reg [7:0]din_A[33:0][33:0];
 reg [7:0]din_B[33:0][33:0];
 
@@ -26,10 +27,12 @@ wire [7:0]qout_B[33:0][33:0];
 wire data_in_en_A[33:0][33:0];
 wire data_in_en_B[33:0][33:0];
 
-assign data_out=data_out_tmp_A[0];
+wire [33:0]data_choose;
+
+
 
     // Generate block
-     genvar i,j,m,n;
+     genvar i,j,m,n,k;
      generate
         for(i=0; i<34; i=i+1) begin:BLOCKA1
             for(j=0; j<34; j=j+1) begin:BLOCKA2
@@ -69,6 +72,20 @@ assign data_out=data_out_tmp_A[0];
                     .rst_n(rst_n)
                 );
                 assign data_out_tmp_B[m][271-8*n:264-8*n]=qout_B[m][n];
+            end
+        end
+        for(k=0; k<34; k=k+1) begin:BLOCKC
+        always@(*)begin
+            if(A_in==0&&B_in==1)begin
+                if(data_choose[k]==1)begin
+                data_out=data_out_tmp_A[k];
+            end
+            end else begin
+                if(data_choose[k]==1)begin
+                data_out=data_out_tmp_B[k];
+            end
+            end
+            
             end
         end
      endgenerate
