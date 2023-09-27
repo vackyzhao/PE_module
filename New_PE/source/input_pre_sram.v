@@ -45,7 +45,6 @@ output [DW-1:0]   dout
 
   reg [DW-1:0] mem_r [0:DP-1];
   
-  integer ii;
   initial begin
   end
   
