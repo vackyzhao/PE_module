@@ -118,3 +118,44 @@ This formula indicates that in each clock cycle, the previous PE's computed resu
 Testbench Example:
 
 Refer to the image "testbenchnew_PE_tb.png" in the PE_module\New_PE directory for a testbench example.
+
+```
+D:.
+│  PE_1x3_module.v             - 一个名为PE_1x3_module的Verilog模块文件
+│  PE_34x3_module.v            - 一个名为PE_34x3_module的Verilog模块文件
+│  PE_unit.v                   - 一个名为PE_unit的Verilog模块文件
+│  README.md                   - 项目的说明文档，通常包含项目的概述和使用说明
+│  tb_PEx3_module.v            - 用于测试PE_1x3_module和PE_34x3_module的Verilog测试模块
+│
+└─New_PE                        - 一个名为New_PE的文件夹
+    ├─ip                        - 存放IP（知识产权）相关文件的文件夹
+    │  └─mult_gen_0             - 一个名为mult_gen_0的文件夹，可能包含IP配置文件
+    │          mult_gen_0.xci   - IP配置文件（Xilinx IP核）
+    │
+    ├─source                    - 存放项目源代码的文件夹
+    │      clockDivider34.v     - 时钟分频模块的Verilog文件
+    │      input_pre_data_module.v - 输入数据预处理模块的Verilog文件
+    │      input_pre_sram.v      - 输入数据预处理SRAM模块的Verilog文件
+    │      middle_new_PE.v       - 中间新型PE模块的Verilog文件
+    │      middle_new_PEx2.v     - 中间新型PEx2模块的Verilog文件
+    │      middle_new_PEx32.v    - 中间新型PEx32模块的Verilog文件
+    │      mult_ip.v             - 乘法IP核的Verilog文件
+    │      new_PE.v              - 新PE模块的Verilog文件
+    │      PingPongBuffer.v      - PingPong缓冲区模块的Verilog文件
+    │      shift_register.v      - 移位寄存器模块的Verilog文件
+    │      sirv_gnrl_dffs.v      - D型触发器模块的Verilog文件
+    │      testMult.v            - 乘法IP核的测试模块的Verilog文件
+    │
+    └─testbench                  - 存放测试模块的文件夹
+            new_PE_tb.png        - New_PE模块的测试图像（波形图）
+            tb_clockDivider.v    - 用于测试时钟分频模块的Verilog测试模块
+            tb_input_pre_sram.v  - 用于测试输入数据预处理SRAM模块的Verilog测试模块
+            tb_middle_new_PE.v    - 用于测试中间新型PE模块的Verilog测试模块
+            tb_middle_new_PEx2.v  - 用于测试中间新型PEx2模块的Verilog测试模块
+            tb_middle_new_PEx32.v - 用于测试中间新型PEx32模块的Verilog测试模块
+            tb_mult_ip.v          - 用于测试乘法IP核的Verilog测试模块
+            tb_mult_test.v        - 用于测试乘法IP核的测试模块
+            tb_new_PE_module.v    - 用于测试新型PE模块的Verilog测试模块
+            tb_PingPongBuffer.v   - 用于测试PingPong缓冲区模块的Verilog测试模块
+            tb_shift_register.v   - 用于测试移位寄存器模块的Verilog测试模块
+```
