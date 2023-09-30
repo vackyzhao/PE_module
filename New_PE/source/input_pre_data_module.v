@@ -24,13 +24,13 @@ module Input_pre_data_module
 (
 	input           din_clk,
 	input  [7:0] i_data_din,        // data 输入数据 
-    input    i_data_din_vld,    // data 输入数据有效信号
+    input    i_data_din_vld,      // data 输入数据有效信号
 	//////////////////////////////////
-	input          dout_clk,
-	input                en,
-	input 			  rst_n,
-	input i_switch_pingpong,
-	output PEclk
+	input          dout_clk,       //输出时钟
+	input                en,       //使能
+	input 			      rst_n,       //重置
+  input i_switch_pingpong,       //缓存切换
+	output PEclk                   //PE时钟
 );
 reg [15:0]i_conv_addr;
 //34分频
@@ -51,11 +51,16 @@ clockDivider34 divider34_inst (
     .o_conv_dout(o_conv_dout),
     .o_pl_buffer_ready(o_pl_buffer_ready)
   );
-always@(posedge PEclk or negedge rst_n)begin
-	if(!rst_n)begin
+always@(posedge PEclk)begin
 		i_conv_addr=16'b0;
-	end else begin
-		
-		i_conv_addr=i_conv_addr+1'b1;
-	end
+  end
+
+always@(posedge dout_clk or negedge rst_n)
+if(!rst_n)begin
+   i_conv_addr=16'b0;
+end else begin
+  if(PEclk==1)begin
+    i_conv_addr=i_conv_addr+1'b1;
+  end
+end
 endmodule
