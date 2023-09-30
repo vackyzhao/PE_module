@@ -24,15 +24,17 @@ module Input_pre_data_module
 (
 	input           din_clk,
 	input  [7:0] i_data_din,        // data 输入数据 
-    input    i_data_din_vld,      // data 输入数据有效信号
-	//////////////////////////////////
-	input          dout_clk,       //输出时钟
-	input                en,       //使能
-	input 			      rst_n,       //重置
-  input i_switch_pingpong,       //缓存切换
-	output PEclk                   //PE时钟
+  input    i_data_din_vld,        // data 输入数据有效信号
+	///////////////////////////////////////////////////////////////////
+	input          dout_clk,        //输出时钟
+	input                en,        //使能
+	input 			      rst_n,        //重置
+  input i_switch_pingpong,        //缓存切换
+	output            PEclk,        //PE时钟
+  output reg [0:271]prallel_data  //34*8 272位并行数据
 );
 reg [15:0]i_conv_addr;
+
 //34分频
 clockDivider34 divider34_inst (
     .clk(dout_clk),
@@ -51,16 +53,23 @@ clockDivider34 divider34_inst (
     .o_conv_dout(o_conv_dout),
     .o_pl_buffer_ready(o_pl_buffer_ready)
   );
-always@(posedge PEclk)begin
+  always@(posedge PEclk)begin//PEclk上升沿重置i_conv_addr
 		i_conv_addr=16'b0;
   end
 
-always@(posedge dout_clk or negedge rst_n)
-if(!rst_n)begin
-   i_conv_addr=16'b0;
-end else begin
-  if(PEclk==1)begin
+  always@(posedge dout_clk or negedge rst_n)//dout_clk上升沿i_conv_addr递增
+  if(!rst_n)begin
+     i_conv_addr=16'b0;
+  end else begin
+   if(PEclk==1)begin
+    i_conv_addr=i_conv_addr;
+    prallel_data[8*i_conv_addr:8*i_conv_addr+7]=o_conv_dout;
     i_conv_addr=i_conv_addr+1'b1;
+    end
   end
-end
+
+
+
+
+
 endmodule
