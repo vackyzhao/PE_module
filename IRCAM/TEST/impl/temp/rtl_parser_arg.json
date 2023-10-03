@@ -1,0 +1,29 @@
+{
+ "Device" : "GW5AST-138B",
+ "Files" : [
+  {
+   "Path" : "D:/OneDrive/UoG_challenge_course/TEST/src/UART_RX.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/OneDrive/UoG_challenge_course/TEST/src/clkdiv460k.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/OneDrive/UoG_challenge_course/TEST/src/gowin_pll/gowin_pll.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/OneDrive/UoG_challenge_course/TEST/src/top.v",
+   "Type" : "verilog"
+  }
+ ],
+ "IncludePath" : [
+
+ ],
+ "LoopLimit" : 2000,
+ "ResultFile" : "D:/OneDrive/UoG_challenge_course/TEST/impl/temp/rtl_parser.result",
+ "Top" : "top",
+ "VerilogStd" : "verilog_2001",
+ "VhdlStd" : "vhdl_93"
+}

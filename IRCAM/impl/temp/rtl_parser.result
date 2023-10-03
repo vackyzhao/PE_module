@@ -1,0 +1,36 @@
+[
+ {
+  "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/top.v",
+  "InstLine" : 1,
+  "InstName" : "top",
+  "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/top.v",
+  "ModuleLine" : 1,
+  "ModuleName" : "top",
+  "SubInsts" : [
+   {
+    "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/top.v",
+    "InstLine" : 12,
+    "InstName" : "ClockDivider460k_inst",
+    "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/clkdiv460k.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "ClockDivider460k"
+   },
+   {
+    "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/top.v",
+    "InstLine" : 18,
+    "InstName" : "Gowin_PLL100M_inst",
+    "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/gowin_pll/gowin_pll.v",
+    "ModuleLine" : 10,
+    "ModuleName" : "Gowin_PLL"
+   },
+   {
+    "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/top.v",
+    "InstLine" : 23,
+    "InstName" : "UART_RX_inst",
+    "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/UART_RX.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "UART_RX"
+   }
+  ]
+ }
+]

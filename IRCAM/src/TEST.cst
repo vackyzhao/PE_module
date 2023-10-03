@@ -1,0 +1,13 @@
+//Copyright (C)2014-2023 Gowin Semiconductor Corporation.
+//All rights reserved. 
+//File Title: Physical Constraints file
+//GOWIN Version: V1.9.9 Beta-5
+//Part Number: GW5AST-LV138FPG676AES
+//Device: GW5AST-138
+//Device Version: B
+//Created Time: Mon 10 02 20:17:48 2023
+
+IO_LOC "UART_RX" T23;
+IO_PORT "UART_RX" PULL_MODE=NONE DRIVE=OFF BANK_VCCIO=3.3;
+IO_LOC "clk50M" P16;
+IO_PORT "clk50M" PULL_MODE=NONE DRIVE=OFF BANK_VCCIO=3.3;
