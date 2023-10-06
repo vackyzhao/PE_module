@@ -27,7 +27,7 @@ limitations under the License.
 // ====================================================================
 
 module input_pre_sram 
-#(parameter DP = 1156,
+#(parameter DP = 1024,
 parameter FORCE_X2ZERO = 0,
 parameter DW = 8,
 parameter MW = 1,

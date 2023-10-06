@@ -2,7 +2,9 @@
 `timescale 1ns / 1ps
 
 // 定义模块 PingPongBuffer
-module PingPongBuffer (
+module PingPongBuffer
+#(parameter DP = 1024
+)(
     input i_clk_input,   // 输入时钟信号
     input i_clk_output,  // 输出时钟信号
     input i_rst_n,       // 复位信号输入
@@ -97,15 +99,16 @@ module PingPongBuffer (
         // 在状态 A 下的操作：sram0 输入，sram1 输出
         sram0_addr = input_counter;  // 设置 sram0 的地址
         sram0_din  = i_data_din;  // 输入数据到 sram0
-        if (i_data_din_vld && (sram0_addr < 1156)) begin
-          // 如果输入数据有效并且计数器小于 1155
+
+        if (i_data_din_vld && (sram0_addr < DP)) begin
+          // 如果输入数据有效并且计数器小于 1156
           sram0_we      = 1'b1;  // 使能 sram0 写操作
           input_counter = input_counter + 1;  // 增加计数器
         end 
 
-        if (sram0_addr < 1156) begin
+        if (sram0_addr < DP) begin
           o_pl_buffer_ready = 1'b0;  // 输入未完成，保持低电平
-        end else if (sram0_addr >= 1156) begin
+        end else if (sram0_addr >= DP) begin
           o_pl_buffer_ready = 1'b1;  // 输入完成信号置高
           sram0_we = 1'b0;
         end
@@ -114,15 +117,15 @@ module PingPongBuffer (
         // 在状态 B 下的操作：sram0 输出，sram1 输入
         sram1_addr = input_counter;  // 设置 sram0 的地址
         sram1_din  = i_data_din;  // 输入数据到 sram0
-        if (i_data_din_vld && (sram1_addr < 1156)) begin
-          // 如果输入数据有效并且计数器小于 1155
+        if (i_data_din_vld && (sram1_addr < DP)) begin
+          // 如果输入数据有效并且计数器小于 1156
           sram1_we      = 1'b1;  // 使能 sram0 写操作
           input_counter = input_counter + 1;  // 增加计数器
         end 
 
-        if (sram1_addr < 1156) begin
+        if (sram1_addr < DP) begin
           o_pl_buffer_ready = 1'b0;  // 输入未完成，保持低电平
-        end else if (sram1_addr >= 1156) begin
+        end else if (sram1_addr >= DP) begin
           o_pl_buffer_ready = 1'b1;  // 输入完成信号置高
           sram1_we = 1'b0;
         end

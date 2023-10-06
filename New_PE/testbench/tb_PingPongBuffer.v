@@ -15,7 +15,7 @@ module tb_PingPongBuffer;
 
   // 实例化被测试的模块
   PingPongBuffer dut (
-    .i_clk_input(i_clk_input),
+    .i_clk_input(~i_clk_output),
     .i_clk_output(i_clk_output),
     .i_rst_n(i_rst_n),
     .en(1'b1),
@@ -32,17 +32,23 @@ module tb_PingPongBuffer;
  initial begin
  // define clk
   i_clk_output = 1;
-  i_clk_input = 0;
  forever #(Tclk / 2) begin 
-   i_clk_input = ~i_clk_input;
    i_clk_output = ~i_clk_output;
  end
  end
 
 
+ initial begin
+ // define clk
+  i_clk_input = 1;
+ forever #(Tclk / 2) begin 
+   i_clk_input = ~i_clk_input;
+ end
+ end
+
 initial begin
 i_rst_n=1'd1;
-i_conv_addr=16'd1155;
+i_conv_addr=16'd0;
 i_switch_pingpong=1'd0;
 i_data_din=8'd8;
 i_data_din_vld=1'd1;
