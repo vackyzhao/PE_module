@@ -22,14 +22,17 @@
 
 module Input_pre_data_module
 (
-	input           din_clk,
+	input           din_clk,        //输入 摄像头 时钟
   input  [7:0] i_data_din,        // data 输入数据 
   input    i_data_din_vld,        // data 输入数据有效信号
 	///////////////////////////////////////////////////////////////////
-  input  [7:0]    padding,
-	input          dout_clk,        //输出时钟
+  input  [7:0]    padding,        //输入padding参数
+
+	input          dout_clk,        //输入输出时钟
+  
 	input                en,        //使能
 	input 			      rst_n,        //重置
+
   input i_switch_pingpong,        //缓存切换
 	output            PEclk,        //PE时钟
   output reg [0:271]prallel_data  //34*8 272位并行数据
