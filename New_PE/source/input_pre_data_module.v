@@ -18,9 +18,10 @@
 // Additional Comments:
 // 
 //////////////////////////////////////////////////////////////////////////////////
-
-
 module Input_pre_data_module
+#(parameter buffer_DP = 1024,//输入缓存大小
+parameter data_DP = 1156    //经过padding后大小
+)
 (
 	input           din_clk,        //输入 摄像头 时钟
   input  [7:0] i_data_din,        // data 输入数据 
@@ -35,12 +36,13 @@ module Input_pre_data_module
   input i_switch_pingpong,        //缓存切换
   
 	output            PEclk,        //PE时钟
-  output reg [0:271]prallel_data  //34*8 272位并行数据
+  output reg [271:0] prallel_data  //34*8 272位并行数据
 );
-reg [15:0]i_conv_addr=16'd0;
+reg [15:0] i_conv_addr=16'd0; //输出结果地址
+reg [5:0]  row_counter=6'b0; //行计数器
 
-//34分频
-clockDivider34 divider34_inst (
+//32分频
+clockDivider32 divider32_inst (
     .clk(dout_clk),
     .divided(PEclk)
   );
@@ -58,22 +60,25 @@ clockDivider34 divider34_inst (
     .o_pl_buffer_ready(o_pl_buffer_ready) // 输出缓冲区就绪信号
 );
 
-  always@(posedge PEclk)begin    //PEclk上升沿重置i_conv_addr
-    if(i_conv_addr==16'd1156)begin
+
+
+  always@(*)begin
+  prallel_data[7:0] = padding[7:0];
+  prallel_data[271:264] = padding[7:0];
+  end
+
+  always@(posedge PEclk)begin    //PEclk上升沿重置i_conv_addr输出结果地址
+    if(i_conv_addr == data_DP )begin
       i_conv_addr=16'b0;
     end
 		
   end
 
-  always@(posedge dout_clk or negedge rst_n)  begin  //dout_clk上升沿i_conv_addr递增
+  always@(posedge dout_clk or negedge rst_n)  begin  //dout_clk上升沿i_conv_addr递增,
   if(!rst_n)begin
      i_conv_addr=16'b0;
   end else begin
-   if(i_conv_addr<16'd1156)begin
-    i_conv_addr=i_conv_addr;
-    prallel_data[8*i_conv_addr +: 7] = o_conv_dout;
-    i_conv_addr=i_conv_addr+1'b1;
-    end
+ 
   end
   end
 

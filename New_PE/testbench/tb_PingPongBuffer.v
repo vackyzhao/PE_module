@@ -15,7 +15,7 @@ module tb_PingPongBuffer;
 
   // 实例化被测试的模块
   PingPongBuffer dut (
-    .i_clk_input(~i_clk_output),
+    .i_clk_input(i_clk_output),
     .i_clk_output(i_clk_output),
     .i_rst_n(i_rst_n),
     .en(1'b1),
