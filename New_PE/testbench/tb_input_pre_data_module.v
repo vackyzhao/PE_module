@@ -5,24 +5,26 @@ module tb_Input_pre_data_module;
   reg din_clk;
   reg [7:0] i_data_din;
   reg i_data_din_vld;
+  reg [7:0]padding;
   reg dout_clk;
   reg en;
   reg rst_n;
   reg i_switch_pingpong;
   wire PEclk;
-  wire [0:271] prallel_data;
+  wire [0:271] parallel_data;
 
   // 实例化被测试的模块
   Input_pre_data_module dut (
     .din_clk(din_clk),
     .i_data_din(i_data_din),
     .i_data_din_vld(i_data_din_vld),
+    .padding(padding),
     .dout_clk(dout_clk),
     .en(en),
     .rst_n(rst_n),
     .i_switch_pingpong(i_switch_pingpong),
     .PEclk(PEclk),
-    .prallel_data(prallel_data)
+    .parallel_data(parallel_data)
   );
 
   // 初始化信号
@@ -34,6 +36,7 @@ module tb_Input_pre_data_module;
     en = 1 ;
     rst_n = 1;
     i_switch_pingpong = 0;
+    padding=1;
 
     // 模拟时钟
     //forever #5 din_clk = ~din_clk;
@@ -48,6 +51,7 @@ module tb_Input_pre_data_module;
     // 设置使能信号和其他输入
     en = 1;
     i_data_din_vld = 1;
+    
     // 设置测试用例的输入数据
 
     // 继续模拟直到完成测试

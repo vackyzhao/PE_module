@@ -36,10 +36,13 @@ parameter data_DP = 1156    //经过padding后大小
   input i_switch_pingpong,        //缓存切换
   
 	output            PEclk,        //PE时钟
-  output reg [271:0] prallel_data  //34*8 272位并行数据
+  output reg [271:0] parallel_data  //34*8 272位并行数据
 );
 reg [15:0] i_conv_addr=16'd0; //输出结果地址
 reg [5:0]  row_counter=6'b0; //行计数器
+reg [5:0]  col_counter=6'b0; //行计数器
+reg [271:0] padding_data;  //34*8 272位并行数据
+
 
 //32分频
 clockDivider32 divider32_inst (
@@ -59,31 +62,42 @@ clockDivider32 divider32_inst (
     .o_conv_dout(o_conv_dout),       // 输出转换后的数据
     .o_pl_buffer_ready(o_pl_buffer_ready) // 输出缓冲区就绪信号
 );
-
-
+integer i;
+always @(*) begin
+  for (i = 0; i < 34; i = i + 1) begin
+    padding_data[271 - i * 8 -: 8] = padding[7:0];
+  end
+end
 
   always@(*)begin
-  prallel_data[7:0] = padding[7:0];
-  prallel_data[271:264] = padding[7:0];
+  parallel_data[271:264] = padding[7:0];
+  parallel_data[7:0] = padding[7:0];
   end
 
   always@(posedge PEclk)begin    //PEclk上升沿重置i_conv_addr输出结果地址
     if(i_conv_addr == data_DP )begin
       i_conv_addr=16'b0;
-    end
-		
+      row_counter=6'b0;
+      col_counter=6'b0;
+    end		
   end
 
-  always@(posedge dout_clk or negedge rst_n)  begin  //dout_clk上升沿i_conv_addr递增,
-  if(!rst_n)begin
-     i_conv_addr=16'b0;
-  end else begin
+
+
  
+always @(posedge dout_clk or negedge rst_n) begin
+  if (!rst_n) begin
+    i_conv_addr <= 16'b0;
+    row_counter <= 6'b0;
+    col_counter <= 6'b0;
+  end else begin
+    if (row_counter == 6'd0||row_counter == 6'd33) begin  
+      parallel_data <= padding_data; 
+    end
   end
-  end
+end
 
 
-
-
+ 
 
 endmodule
