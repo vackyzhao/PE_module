@@ -120,7 +120,7 @@ always @(posedge dout_clk or negedge rst_n) begin
   end else begin
     // 根据缓存状态、行号和列计数器更新 parallel_data
     if (out_data_vld && row_counter != 0 && row_counter < 33) begin
-      i_conv_addr <= col_counter;
+      i_conv_addr = col_counter*32+(row_counter-1);//计算输出地址
       parallel_data[263 - col_counter * 8 -: 8] <= o_conv_dout[7:0];
       col_counter <= col_counter + 1;
     end
