@@ -209,3 +209,56 @@ D:.
     数据输出： 模块根据PE时钟和输入数据流的状态，以及缓存状态，从输入数据流中提取数据，并将处理后的数据以并行方式输出到 parallel_data。out_data_vld 信号用于指示输出数据是否准备就绪。
 
     复位和状态管理： 模块包括复位逻辑，以确保在启动时，所有计数器和状态都被正确初始化。
+
+
+# Input_pre_data_module
+
+Internal module instantiations: sirv_gnrl_dfflr // Instantiate the general-purpose DFF register module for row address register
+                                clockDivider32 // Instantiate the clock divider module to divide dout_clk by 32
+                                PingPongBuffer // Instantiate the PingPongBuffer module
+
+Module parameters:
+
+    buffer_DP (Input buffer size): An integer parameter representing the size of the input data buffer, with a default value of 1024.
+
+    data_DP (Size after padding): An integer parameter representing the size of the data after padding, with a default value of 1156.
+
+Module ports:
+
+    din_clk (Input camera clock): Input signal for the camera clock.
+
+    i_data_din (Input camera data): 8-bit input data signal coming from the camera.
+
+    i_data_din_vld (Input data valid signal): Valid signal for the input data, indicating whether the data is valid.
+
+    input_padding (Input padding parameter): 8-bit input parameter used to pad data at the beginning and end.
+
+    dout_clk (Input clock): Clock signal for input and output data.
+
+    en (Enable): Enable signal to control the module's operation.
+
+    rst_n (Reset): Reset signal to reset the module's state and counters.
+
+    PEclk (Output PE clock): PE clock signal used for output.
+
+    out_data_vld (Buffer ready flag): Output flag indicating whether the output data is ready.
+
+    parallel_data (272-bit parallel data output): Output data in parallel with 272 bits.
+
+The main task of this module is to receive input data and perform data padding while managing clocks, counters, and output data generation. Ultimately, it outputs the padded data in parallel to parallel_data and indicates whether the data is ready through the out_data_vld signal.
+
+Here are the main functionalities of the module:
+
+    Input Data Reception: The module receives input data from the camera, including image data and data valid signals.
+
+    Data Padding: The module uses the input padding parameter input_padding to pad data at the beginning and end of the output data. This ensures that the data has the correct boundaries for subsequent processing.
+
+    Clock Management: The module uses the din_clk and dout_clk clock signals to synchronize input and output data. It also instantiates a clock divider to divide the input clock dout_clk by 32, creating the PE clock PEclk.
+
+    Row Counter Management: The module uses a general-purpose DFF register to manage the row counter, determining the current image row being processed. This helps control the sequence of data flow.
+
+    Data Buffering and Switching: The module instantiates the PingPongBuffer module for data buffering and switching functions. Specific buffering and switching operations are performed within the PingPongBuffer module, but detailed definitions are not included in the provided code.
+
+    Data Output: The module extracts data from the input data stream based on the PE clock and the status of the input data stream, as well as the buffer status. It outputs the processed data in parallel to parallel_data. The out_data_vld signal indicates whether the output data is ready.
+
+    Reset and State Management: The module includes reset logic to ensure that all counters and states are correctly initialized at startup.
