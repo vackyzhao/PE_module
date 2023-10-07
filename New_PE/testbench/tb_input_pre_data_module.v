@@ -9,7 +9,6 @@ module tb_Input_pre_data_module;
   reg dout_clk;
   reg en;
   reg rst_n;
-  reg i_switch_pingpong;
   wire PEclk;
   wire [0:271] parallel_data;
 
@@ -22,7 +21,6 @@ module tb_Input_pre_data_module;
     .dout_clk(dout_clk),
     .en(en),
     .rst_n(rst_n),
-    .i_switch_pingpong(i_switch_pingpong),
     .PEclk(PEclk),
     .parallel_data(parallel_data)
   );
@@ -33,6 +31,12 @@ module tb_Input_pre_data_module;
   dout_clk = 0;
   forever #(Tclk / 2) dout_clk = ~dout_clk;
  end
+
+  initial begin
+ // define clk
+  din_clk = 0;
+  forever #(Tclk / 2) din_clk = ~din_clk;
+ end
   // 初始化信号
   initial begin
     din_clk = 1;
@@ -41,7 +45,6 @@ module tb_Input_pre_data_module;
     dout_clk = 0;
     en = 1 ;
     rst_n = 0;
-    i_switch_pingpong = 0;
     padding=8'b10000001;
     #(Tclk * 100)
     rst_n = 1;
