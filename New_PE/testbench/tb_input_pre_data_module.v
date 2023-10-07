@@ -18,7 +18,7 @@ module tb_Input_pre_data_module;
     .din_clk(din_clk),
     .i_data_din(i_data_din),
     .i_data_din_vld(i_data_din_vld),
-    .padding(padding),
+    .input_padding(padding),
     .dout_clk(dout_clk),
     .en(en),
     .rst_n(rst_n),
@@ -26,7 +26,13 @@ module tb_Input_pre_data_module;
     .PEclk(PEclk),
     .parallel_data(parallel_data)
   );
-
+ parameter Tclk = 4;
+ 
+ initial begin
+ // define clk
+  dout_clk = 0;
+  forever #(Tclk / 2) dout_clk = ~dout_clk;
+ end
   // 初始化信号
   initial begin
     din_clk = 1;
@@ -34,34 +40,17 @@ module tb_Input_pre_data_module;
     i_data_din_vld = 0;
     dout_clk = 0;
     en = 1 ;
-    rst_n = 1;
+    rst_n = 0;
     i_switch_pingpong = 0;
     padding=8'b10000001;
-
-    // 模拟时钟
-    //forever #5 din_clk = ~din_clk;
-    forever #5 dout_clk = ~dout_clk;
-
-    // 初始化其他测试信号
-    // 这里可以添加测试用例的代码
-
-    // 停顿一段时间，然后开始测试
-    #100;
-
+    #(Tclk * 100)
+    rst_n = 1;
     // 设置使能信号和其他输入
     en = 1;
     i_data_din_vld = 1;
-    
-    // 设置测试用例的输入数据
-
-    // 继续模拟直到完成测试
-    #1000;
-    
-    // 在测试完成后添加任何必要的检查或打印结果的代码
-
-    // 终止仿真
-    $finish;
   end
+
+  
 
   // 添加任何必要的时序检查或输出结果的代码
 

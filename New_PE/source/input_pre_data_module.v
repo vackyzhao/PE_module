@@ -25,10 +25,12 @@ reg [5:0]  row_counter=6'b0; //行计数器
 reg [5:0]  col_counter=6'b0; //行计数器
 reg [271:0] padding_data;  //34*8 272位并行数据
 wire [7:0] o_conv_dout;
+reg flag_1=1'b0;
 
 //32分频
 clockDivider32 divider32_inst (
     .clk(dout_clk),
+    .rst_n(rst_n),
     .divided(PEclk)
   );
   // 实例化被测试的模块
@@ -44,24 +46,20 @@ clockDivider32 divider32_inst (
     .o_conv_dout(o_conv_dout),       // 输出转换后的数据
     .o_pl_buffer_ready(o_pl_buffer_ready) // 输出缓冲区就绪信号
 );
-integer i;
+  integer i;
   always@(*)begin // 每列前后填充padding 
-  parallel_data[271:264] = input_padding[7:0];
-  parallel_data[7:0] = input_padding[7:0];
+  parallel_data [271:264] <= input_padding  [7:0]; //对输出数列的首个元素填充padding
+  parallel_data     [7:0] <= input_padding  [7:0];     //对输出数列的末尾元素填充padding
     for (i = 0; i < 34; i = i + 1) begin
-    padding_data[271 - i * 8 -: 8] = input_padding[7:0];//首尾两行填充padding
+    padding_data[271 - i * 8 -: 8] <= input_padding[7:0];//首尾两行填充padding
   end
-  row_counter=row_counter_0-1;
   end
 
   always@(posedge PEclk)begin    //PEclk为行时钟，每个PECLK输出一行数据
-    if(i_conv_addr == data_DP )begin
-      i_conv_addr=16'b0;
-      row_counter=6'b0;
-      col_counter=6'b0;
-    end	
-    	row_counter=row_counter+1;//行号+1
-      col_counter=0;//列号清零
+    if (!rst_n) begin
+    end else begin
+    row_counter <= row_counter+1'b1;
+  end  
   end
  
 always @(posedge dout_clk or negedge rst_n) begin //每个时钟更新数据
@@ -69,16 +67,9 @@ always @(posedge dout_clk or negedge rst_n) begin //每个时钟更新数据
     i_conv_addr <= 16'b0;
     row_counter <= 6'b0;
     col_counter <= 6'b0;
+    flag_1=1'b0;
   end else begin
-    if (row_counter == 6'd0||row_counter == 6'd33) begin  
-      parallel_data <= padding_data; 
-    end else begin
-      //parallel_data[263 - col_counter * 8 -: 8] = o_conv_dout[7:0];//首尾两行填充padding      
-      col_counter=col_counter+1;
-      i_conv_addr=col_counter+32*(row_counter-1);
-      
-      
-    end
+    
   end
 end
 
