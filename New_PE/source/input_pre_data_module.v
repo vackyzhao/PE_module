@@ -78,7 +78,7 @@ always @(*) begin
     end
 
     // 根据条件更新行寄存器
-    if (row_counter_out < 35 && out_data_vld) begin
+    if (row_counter_out < 34 && out_data_vld) begin
       row_counter_in <= row_counter_out + 1'b1;
     end else begin
       row_counter_in <= 1'b0;

@@ -9,6 +9,7 @@ module tb_Input_pre_data_module;
   reg dout_clk;
   reg en;
   reg rst_n;
+  wire out_data_vld;
   wire PEclk;
   wire [0:271] parallel_data;
 
@@ -22,6 +23,7 @@ module tb_Input_pre_data_module;
     .en(en),
     .rst_n(rst_n),
     .PEclk(PEclk),
+    .out_data_vld(out_data_vld),
     .parallel_data(parallel_data)
   );
  parameter Tclk = 8;
