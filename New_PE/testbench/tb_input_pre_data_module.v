@@ -24,12 +24,12 @@ module tb_Input_pre_data_module;
     .PEclk(PEclk),
     .parallel_data(parallel_data)
   );
- parameter Tclk = 4;
+ parameter Tclk = 8;
  
  initial begin
  // define clk
   dout_clk = 0;
-  forever #(Tclk / 2) dout_clk = ~dout_clk;
+  forever #(Tclk / 4) dout_clk = ~dout_clk;
  end
 
   initial begin
