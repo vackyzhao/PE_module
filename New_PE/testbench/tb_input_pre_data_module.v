@@ -29,14 +29,14 @@ module tb_Input_pre_data_module;
 
   // 初始化信号
   initial begin
-    din_clk = 0;
+    din_clk = 1;
     i_data_din = 8'h00;
     i_data_din_vld = 0;
     dout_clk = 0;
     en = 1 ;
     rst_n = 1;
     i_switch_pingpong = 0;
-    padding=1;
+    padding=8'b10000001;
 
     // 模拟时钟
     //forever #5 din_clk = ~din_clk;
