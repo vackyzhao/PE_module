@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module name="top" Register="6" Alu="5" Lut="2">
+    <SubModule name="i2c_config_m0" Register="13" Lut="27">
+        <SubModule name="i2c_master_top_m0" Register="17" Lut="610">
+            <SubModule name="byte_controller" Register="23" Lut="49">
+                <SubModule name="bit_controller" Register="71" Alu="15" Lut="93"/>
+            </SubModule>
+        </SubModule>
+    </SubModule>
+</Module>
