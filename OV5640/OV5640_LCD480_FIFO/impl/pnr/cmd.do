@@ -1,0 +1,15 @@
+-d D:\document\GitHub\PE_module\OV5640\OV5640_LCD480_FIFO\impl\gwsynthesis\top.vg
+-p GW5AST-138B-PBGA676A-1
+-pn GW5AST-LV138PG676AES
+-cst D:\document\GitHub\PE_module\OV5640\OV5640_LCD480_FIFO\src\top.cst
+-cfg D:\document\GitHub\PE_module\OV5640\OV5640_LCD480_FIFO\impl\pnr\device.cfg
+-sdc D:\document\GitHub\PE_module\OV5640\OV5640_LCD480_FIFO\src\lcd.sdc
+-gao_crc 0001101000010000
+-bit
+-tr
+-ph
+-timing
+-cst_error
+-correct_hold 1
+-route_maxfan 23
+-rtl_gao

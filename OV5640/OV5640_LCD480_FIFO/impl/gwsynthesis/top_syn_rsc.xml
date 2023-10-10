@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module name="top" Register="6" Alu="5" Lut="2">
+    <SubModule name="gw_gao_inst_0" Register="307" Alu="10" Lut="382" Bsram="11"/>
+    <SubModule name="Gowin_PLL_instance100M"/>
+    <SubModule name="Gowin_PLL_200M_instance"/>
+    <SubModule name="Gowin_PLL400M_instance"/>
+    <SubModule name="i2c_config_m0" Register="13" Lut="25">
+        <SubModule name="i2c_master_top_m0" Register="17" Lut="646">
+            <SubModule name="byte_controller" Register="23" Lut="48">
+                <SubModule name="bit_controller" Register="71" Alu="15" Lut="97"/>
+            </SubModule>
+        </SubModule>
+    </SubModule>
+</Module>
