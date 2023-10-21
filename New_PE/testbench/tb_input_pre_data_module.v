@@ -9,9 +9,9 @@ module tb_Input_pre_data_module;
   reg dout_clk;
   reg en;
   reg rst_n;
-  wire out_data_vld;
+  wire dout_vld;
   wire PEclk;
-  wire [0:271] parallel_data;
+  wire [207:0]parallel_data;
 
   // 实例化被测试的模块
   Input_pre_data_module dut (
@@ -23,7 +23,7 @@ module tb_Input_pre_data_module;
     .en(en),
     .rst_n(rst_n),
     .PEclk(PEclk),
-    .out_data_vld(out_data_vld),
+    .dout_vld(dout_vld),
     .parallel_data(parallel_data)
   );
  parameter Tclk = 8;
@@ -42,7 +42,7 @@ module tb_Input_pre_data_module;
   // 初始化信号
   initial begin
     din_clk = 1;
-    i_data_din = 8'h00;
+    i_data_din = 8'd0;
     i_data_din_vld = 0;
     dout_clk = 0;
     en = 1 ;
