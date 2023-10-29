@@ -72,7 +72,11 @@ module Input_pre_data_module #(
   always @(*) begin
     // 每列前后填充 padding 数据
     if (!rst_n) begin
+
       row_counter_in <= 6'b0;
+
+      i_conv_addr <= 10'b0;
+      col_counter <= 6'b0;
     end else begin
       // 根据条件设置缓冲就绪标志和缓存切换信号
       if (o_pl_buffer_ready && out_data_vld == 0) begin
@@ -85,7 +89,7 @@ module Input_pre_data_module #(
         row_counter_in <= row_counter_out + 1'b1;
       end else begin
         row_counter_in <= 1'b0;
-        out_data_vld <= 1'b0;
+        out_data_vld   <= 1'b0;
       end
       if (!dout_vld) begin
         parallel_data <= 208'b0;
@@ -137,8 +141,7 @@ module Input_pre_data_module #(
   always @(posedge dout_clk or negedge rst_n) begin
     // 输出时钟边沿触发，用于更新数据
     if (!rst_n) begin
-      i_conv_addr <= 10'b0;
-      col_counter <= 6'b0;
+
     end else begin
       // 根据缓存状态和行号和列计数器更新 parallel_data
       if (out_data_vld && row_counter != 0 && row_counter < 33) begin

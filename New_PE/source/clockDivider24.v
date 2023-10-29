@@ -5,15 +5,15 @@ module clockDivider24 (
     output wire divided  // 输出分频后的信号
 );
 
-  reg [5:0] counter = 6'd0;  // 6位计数器，可以分频到64
+  reg [3:0] counter = 4'd0;  //4位计数器，可以分频到16
   reg       clk_out = 1'd0;  // 分频后的时钟输出，初始为高电平
 
   always @(posedge clk or negedge rst_n) begin
     if (!rst_n) begin
         clk_out <= 1'd0;
     end else begin
-        if (counter == 6'd11) begin
-            counter <= 6'd0;
+        if (counter == 4'd11) begin
+            counter <= 4'd0;
         end else begin
             counter <= counter + 1'd1;
         end
