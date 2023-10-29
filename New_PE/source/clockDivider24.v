@@ -10,15 +10,16 @@ module clockDivider24 (
 
   always @(posedge clk or negedge rst_n) begin
     if (!rst_n) begin
-      clk_out = 1'd0;
+        clk_out <= 1'd0;
     end else begin
-
-      if (counter == 6'd11) begin  //计数器到13切换状态
-        counter <= 6'd0;
-        clk_out = ~clk_out;
-      end else counter <= counter + 1'd1;  // 计数器加1
+        if (counter == 6'd11) begin
+            counter <= 6'd0;
+        end else begin
+            counter <= counter + 1'd1;
+        end
     end
-  end
+end
+
 
   assign divided = clk_out;  // 输出分频后的信号
 

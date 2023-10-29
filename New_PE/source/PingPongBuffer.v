@@ -3,7 +3,10 @@
 
 // 定义模块 PingPongBuffer
 module PingPongBuffer #(
-    parameter DP = 768  // DP 参数，可在模块实例化时配置
+   // 定义状态参数
+  parameter STATE_A = 1'b0,
+  parameter STATE_B = 1'b1,
+  parameter DP = 768  // DP 参数，可在模块实例化时配置
 ) (
     input            i_clk_input,        // 输入时钟信号
     input            i_clk_output,       // 输出时钟信号
@@ -20,9 +23,7 @@ module PingPongBuffer #(
     output     [7:0] o_conv_dout         // 卷积数据输出  
 );
 
-  // 定义状态参数
-  parameter STATE_A = 1'b0;
-  parameter STATE_B = 1'b1;
+ 
 
   // 状态寄存器和初始状态
   reg       current_state;  // 状态机寄存器，用于跟踪当前状态
