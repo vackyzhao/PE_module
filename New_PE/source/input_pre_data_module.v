@@ -20,10 +20,7 @@ module Input_pre_data_module #(
     output reg         dout_vld,      // 缓冲就绪标志
     output reg [207:0] parallel_data  // 26*8 208位并行数据输出
 );
-  initial begin
-    dout_vld = 0;
-    parallel_data = 208'b0;
-  end
+
   // 寄存器和信号定义
   reg          out_data_vld;
   reg  [  9:0] i_conv_addr = 10'd0;  // 输出结果地址
@@ -38,6 +35,10 @@ module Input_pre_data_module #(
   wire         o_pl_buffer_ready;  // 缓冲区就绪信号
   reg          i_switch_pingpong = 1'b0;  // 缓存切换信号
 
+  initial begin
+    dout_vld = 0;
+    parallel_data = 208'b0;
+  end
   // 实例化 寄存器模块，用于行寄存器
   sirv_gnrl_dfflr #(6) row_counter_inst (
       .lden (en),
