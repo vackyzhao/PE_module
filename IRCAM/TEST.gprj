@@ -5,12 +5,22 @@
     <Version>5</Version>
     <Device name="GW5AST-138B" pn="GW5AST-LV138FPG676AES">gw5ast138b-002</Device>
     <FileList>
+        <File path="src/IRCAM.v" type="file.verilog" enable="1"/>
+        <File path="src/IRCAMtop.v" type="file.verilog" enable="1"/>
+        <File path="src/PingPongBuffer.v" type="file.verilog" enable="1"/>
         <File path="src/UART_RX.v" type="file.verilog" enable="1"/>
         <File path="src/clkdiv460k.v" type="file.verilog" enable="1"/>
+        <File path="src/clockDivider24.v" type="file.verilog" enable="1"/>
         <File path="src/gowin_pll/gowin_pll.v" type="file.verilog" enable="1"/>
-        <File path="src/top.v" type="file.verilog" enable="1"/>
+        <File path="src/input_pre_data_module.v" type="file.verilog" enable="1"/>
+        <File path="src/input_pre_sram.v" type="file.verilog" enable="1"/>
+        <File path="src/middle_new_PE.v" type="file.verilog" enable="1"/>
+        <File path="src/middle_new_PEx24.v" type="file.verilog" enable="1"/>
+        <File path="src/mult_ip.v" type="file.verilog" enable="1"/>
+        <File path="src/new_PE.v" type="file.verilog" enable="1"/>
+        <File path="src/shift_register.v" type="file.verilog" enable="1"/>
+        <File path="src/sirv_gnrl_dffs.v" type="file.verilog" enable="1"/>
         <File path="src/TEST.cst" type="file.cst" enable="1"/>
         <File path="src/TEST.sdc" type="file.sdc" enable="1"/>
-        <File path="src/TEST.rao" type="file.gao" enable="1"/>
     </FileList>
 </Project>

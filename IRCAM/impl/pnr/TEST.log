@@ -1,7 +1,7 @@
-Reading netlist file: "D:\OneDrive\UoG_challenge_course\TEST\impl\gwsynthesis\TEST.vg"
-Parsing netlist file "D:\OneDrive\UoG_challenge_course\TEST\impl\gwsynthesis\TEST.vg" completed
+Reading netlist file: "D:\document\GitHub\PE_module\IRCAM\impl\gwsynthesis\TEST.vg"
+Parsing netlist file "D:\document\GitHub\PE_module\IRCAM\impl\gwsynthesis\TEST.vg" completed
 Processing netlist completed
-Reading constraint file: "D:\OneDrive\UoG_challenge_course\TEST\src\TEST.cst"
+Reading constraint file: "D:\document\GitHub\PE_module\IRCAM\src\TEST.cst"
 Physical Constraint parsed completed
 Running placement......
 [10%] Placement Phase 0 completed
@@ -19,9 +19,9 @@ Running timing analysis......
 Placement and routing completed
 Bitstream generation in progress......
 Bitstream generation completed
-Generate file "D:\OneDrive\UoG_challenge_course\TEST\impl\pnr\TEST.pin.html" completed
-Generate file "D:\OneDrive\UoG_challenge_course\TEST\impl\pnr\TEST.rpt.html" completed
-Generate file "D:\OneDrive\UoG_challenge_course\TEST\impl\pnr\TEST.rpt.txt" completed
-Generate file "D:\OneDrive\UoG_challenge_course\TEST\impl\pnr\TEST.tr.html" completed
-Tue Oct 03 00:09:53 2023
+Generate file "D:\document\GitHub\PE_module\IRCAM\impl\pnr\TEST.pin.html" completed
+Generate file "D:\document\GitHub\PE_module\IRCAM\impl\pnr\TEST.rpt.html" completed
+Generate file "D:\document\GitHub\PE_module\IRCAM\impl\pnr\TEST.rpt.txt" completed
+Generate file "D:\document\GitHub\PE_module\IRCAM\impl\pnr\TEST.tr.html" completed
+Wed Nov 01 00:29:42 2023
 

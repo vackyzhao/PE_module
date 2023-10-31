@@ -16,8 +16,8 @@ module Input_pre_data_module #(
     input en,        // 使能
     input rst_n,     // 复位#
 
-    output            PEclk,         // 输出PE 时钟
-    output reg        dout_vld,      // 缓冲就绪标志
+    output             PEclk,         // 输出PE 时钟
+    output reg         dout_vld,      // 缓冲就绪标志
     output reg [207:0] parallel_data  // 26*8 208位并行数据输出
 );
 
@@ -69,9 +69,7 @@ module Input_pre_data_module #(
   always @(*) begin
     // 每列前后填充 padding 数据
     if (!rst_n) begin
-
       row_counter_in <= 6'b0;
-
       i_conv_addr <= 10'b0;
       col_counter <= 6'b0;
     end else begin
@@ -121,7 +119,7 @@ module Input_pre_data_module #(
       end
     end
   end
-
+  //输出有效信号生成
   always @(negedge PEclk or negedge rst_n) begin
     if (!rst_n) begin
       row_counter <= 0;
@@ -141,8 +139,11 @@ module Input_pre_data_module #(
     end else begin
       // 根据缓存状态、行号和列计数器更新 parallel_data
       if (out_data_vld && row_counter != 0 && row_counter < 33) begin
-        i_conv_addr = col_counter * 32 + (row_counter - 1);  //计算输出地址
-        parallel_data[199-col_counter*8-:8] <= o_conv_dout[7:0];
+        i_conv_addr <= col_counter * 32 + (row_counter - 1);  //计算输出地址
+        if (col_counter >= 3) begin
+          parallel_data[199-(col_counter-3)*8-:8] <= o_conv_dout[7:0];
+        end
+
         col_counter <= col_counter + 1;
       end
     end

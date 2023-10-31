@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Module name="top" Register="48" Alu="23" Lut="32">
-    <SubModule name="ClockDivider460k_inst" Register="36" Alu="32" Lut="15"/>
-    <SubModule name="UART_RX_inst" Register="29" Lut="17"/>
-    <SubModule name="gw_gao_inst_0" Register="498" Alu="10" Lut="482" Bsram="29"/>
+<Module name="top">
+    <SubModule name="IRCAM_inst" Register="66" Alu="67" Lut="2533" Dsp="1">
+        <SubModule name="ClockDivider460k_inst" Register="18" Alu="16" Lut="8"/>
+        <SubModule name="UART_RX_inst" Register="29" Lut="17"/>
+    </SubModule>
+    <SubModule name="Input_pre_data_module_inst" Register="225" Alu="10" Lut="282">
+        <SubModule name="row_counter_inst" Register="6"/>
+        <SubModule name="divider24_inst" Register="5" Lut="5"/>
+        <SubModule name="PingPongBuffer_inst" Register="50" Lut="51">
+            <SubModule name="sram0" Register="11" Lut="1" Bsram="1"/>
+            <SubModule name="sram1" Register="10" Lut="1" Bsram="1"/>
+        </SubModule>
+    </SubModule>
 </Module>

@@ -1,10 +1,10 @@
--d D:\OneDrive\UoG_challenge_course\TEST\impl\gwsynthesis\TEST.vg
+-d D:\document\GitHub\PE_module\IRCAM\impl\gwsynthesis\TEST.vg
 -p GW5AST-138B-FCPBGA676A-1
 -pn GW5AST-LV138FPG676AES
--cst D:\OneDrive\UoG_challenge_course\TEST\src\TEST.cst
--cfg D:\OneDrive\UoG_challenge_course\TEST\impl\pnr\device.cfg
--sdc D:\OneDrive\UoG_challenge_course\TEST\src\TEST.sdc
--gao_crc 0011110000000001
+-cst D:\document\GitHub\PE_module\IRCAM\src\TEST.cst
+-cfg D:\document\GitHub\PE_module\IRCAM\impl\pnr\device.cfg
+-sdc D:\document\GitHub\PE_module\IRCAM\src\TEST.sdc
+-gao_crc 1010111000010001
 -bit
 -tr
 -ph
