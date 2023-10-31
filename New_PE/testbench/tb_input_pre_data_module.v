@@ -52,7 +52,14 @@ module tb_Input_pre_data_module;
     rst_n = 1;
     // 设置使能信号和其他输入
     en = 1;
+    
+    i_data_din = 8'd1;
+    #(Tclk * 10)
     i_data_din_vld = 1;
+    i_data_din = 8'd1;
+    #(Tclk * 3)
+    i_data_din = 8'd0;
+    
   end
 
   

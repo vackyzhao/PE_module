@@ -6,11 +6,5 @@ module mult_ip(
     input  [3:0] B,
     output   [11:0] P
 );
-mult_gen_0 mult_test_0(
-   .CLK(CLK),
-   .CE(CE),
-    .A(A),
-    .B(B),
-    .P(P)
-);
+assign  P=$unsigned(A) * $unsigned(B);
 endmodule

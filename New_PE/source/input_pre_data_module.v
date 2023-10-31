@@ -14,10 +14,10 @@ module Input_pre_data_module #(
 
     input dout_clk,  // 输入时钟
     input en,        // 使能
-    input rst_n,     // 复位
+    input rst_n,     // 复位#
 
     output            PEclk,         // 输出PE 时钟
-    output reg         dout_vld,      // 缓冲就绪标志
+    output reg        dout_vld,      // 缓冲就绪标志
     output reg [207:0] parallel_data  // 26*8 208位并行数据输出
 );
 
