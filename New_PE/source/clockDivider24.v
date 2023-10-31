@@ -12,23 +12,14 @@ module clockDivider24 (
     if (!rst_n) begin
       clk_out = 1'd0;
     end else begin
-<<<<<<< HEAD
-        if (counter == 4'd11) begin
-            counter <= 4'd0;
-        end else begin
-            counter <= counter + 1'd1;
-        end
-    end
-end
-=======
->>>>>>> parent of 5192a19 (UPDATE)
 
-      if (counter == 6'd11) begin  //计数器到13切换状态
-        counter <= 6'd0;
+      if (counter == 4'd11) begin  //计数器到13切换状态
+        counter <= 4'd0;
         clk_out = ~clk_out;
       end else counter <= counter + 1'd1;  // 计数器加1
     end
-  end
+end
+
 
   assign divided = clk_out;  // 输出分频后的信号
 

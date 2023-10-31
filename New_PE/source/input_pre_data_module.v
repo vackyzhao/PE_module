@@ -35,15 +35,7 @@ module Input_pre_data_module #(
   wire         o_pl_buffer_ready;  // 缓冲区就绪信号
   reg          i_switch_pingpong = 1'b0;  // 缓存切换信号
 
-<<<<<<< HEAD
-  initial begin
-    dout_vld = 0;
-    parallel_data = 208'b0;
-  end
-  // 实例化 寄存器模块，用于行寄存器
-=======
   // 实例化通用 DFF 寄存器模块，用于行寄存器
->>>>>>> parent of 5192a19 (UPDATE)
   sirv_gnrl_dfflr #(6) row_counter_inst (
       .lden (en),
       .dnxt (row_counter_in),
@@ -94,11 +86,7 @@ module Input_pre_data_module #(
         row_counter_in <= row_counter_out + 1'b1;
       end else begin
         row_counter_in <= 1'b0;
-<<<<<<< HEAD
-        out_data_vld   <= 1'b0;
-=======
         out_data_vld = 1'b0;
->>>>>>> parent of 5192a19 (UPDATE)
       end
       if (!dout_vld) begin
         parallel_data <= 208'b0;
