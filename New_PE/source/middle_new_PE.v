@@ -16,7 +16,7 @@ module middle_new_PE (
     output [7:0] Ifmap_shift_out_2,  // 输出特征图 8位*3通道（数据） (Output feature map 8-bit * 3 channels, data)
     output [7:0] Ifmap_shift_out_1,  // 输出特征图 8位*3通道（数据） (Output feature map 8-bit * 3 channels, data)
 
-    output reg [7:0]  Psum_out,           // 输出计算结果
+    output [7:0] Psum_out,           // 输出计算结果
 
     output [11:0] Filtr_out_2,       // 输出权重 4位*3通道（卷积核）
     output [11:0] Filtr_out_1,       // 输出权重 4位*3通道（卷积核）
@@ -25,6 +25,9 @@ module middle_new_PE (
 
 wire [13:0] Psum_1;  // 内部传递运算结果
 wire [13:0] Psum_0;  // 内部传递运算结果
+
+// 定义输出寄存器
+reg [7:0] Psum_out;
 
 // 输入信号，范围为0到2^13-1
 wire [13:0] Psum_out_tmp;

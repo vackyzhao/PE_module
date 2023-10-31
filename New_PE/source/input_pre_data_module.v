@@ -6,7 +6,7 @@ module Input_pre_data_module #(
     parameter data_DP   = 884   // 经过 padding 后的大小 26x34
 ) (
     input       din_clk,        // 输入摄像头时钟
-    input [7:0] i_data_din,     // 输入摄像头时钟
+    input [7:0] i_data_din,     // 输入摄像头数据
     input       i_data_din_vld, // 输入数据有效信号
 
     //////////////////////////////////////////////////////
@@ -16,7 +16,7 @@ module Input_pre_data_module #(
     input en,        // 使能
     input rst_n,     // 复位
 
-    output             PEclk,         // 输出PE 时钟
+    output            PEclk,         // 输出PE 时钟
     output reg         dout_vld,      // 缓冲就绪标志
     output reg [207:0] parallel_data  // 26*8 208位并行数据输出
 );
@@ -25,21 +25,25 @@ module Input_pre_data_module #(
   reg          out_data_vld;
   reg  [  9:0] i_conv_addr = 10'd0;  // 输出结果地址
   reg  [  5:0] col_counter = 6'b0;  // 列计数器
-  reg  [207:0] padding_data;  // 26*8 208位并行数出
+  reg  [207:0] padding_data;  // 26*8 208位并行数据
   wire [  7:0] o_conv_dout;  // 输出结果
 
   reg  [  5:0] row_counter_in;  // 行寄存器输入
   wire [  5:0] row_counter_out;  // 行寄存器输出
-  reg  [  5:0] row_counter;  // 当前列
+  reg  [  5:0] row_counter;  // 当前行
 
   wire         o_pl_buffer_ready;  // 缓冲区就绪信号
   reg          i_switch_pingpong = 1'b0;  // 缓存切换信号
 
+<<<<<<< HEAD
   initial begin
     dout_vld = 0;
     parallel_data = 208'b0;
   end
   // 实例化 寄存器模块，用于行寄存器
+=======
+  // 实例化通用 DFF 寄存器模块，用于行寄存器
+>>>>>>> parent of 5192a19 (UPDATE)
   sirv_gnrl_dfflr #(6) row_counter_inst (
       .lden (en),
       .dnxt (row_counter_in),
@@ -48,14 +52,14 @@ module Input_pre_data_module #(
       .rst_n(rst_n)
   );
 
-  // 实例化时钟分频器模块，将 dout_clk 分频 PEclk
+  // 实例化时钟分频器模块，将 dout_clk 分频为 PEclk
   clockDivider24 divider24_inst (
       .clk(dout_clk),
       .rst_n(rst_n),
       .divided(PEclk)
   );
 
-  // 实例 PingPongBuffer 模块
+  // 实例化 PingPongBuffer 模块
   PingPongBuffer PingPongBuffer_inst (
       .i_clk_input      (din_clk),            // 输入数据时钟
       .i_clk_output     (dout_clk),           // 输出数据时钟
@@ -66,7 +70,7 @@ module Input_pre_data_module #(
       .i_data_din_vld   (i_data_din_vld),     // 输入数据有效信号
       .i_conv_addr      (i_conv_addr),        // 输入索引地址
       .o_conv_dout      (o_conv_dout),        // 输出转换后的数据
-      .o_pl_buffer_ready(o_pl_buffer_ready)   // 输出缓冲区就绪信�?
+      .o_pl_buffer_ready(o_pl_buffer_ready)   // 输出缓冲区就绪信号
   );
 
   integer i;
@@ -90,7 +94,11 @@ module Input_pre_data_module #(
         row_counter_in <= row_counter_out + 1'b1;
       end else begin
         row_counter_in <= 1'b0;
+<<<<<<< HEAD
         out_data_vld   <= 1'b0;
+=======
+        out_data_vld = 1'b0;
+>>>>>>> parent of 5192a19 (UPDATE)
       end
       if (!dout_vld) begin
         parallel_data <= 208'b0;
@@ -111,7 +119,7 @@ module Input_pre_data_module #(
   end
 
   always @(posedge PEclk or negedge rst_n) begin
-    // PE 时钟边沿触发
+    // PE 时钟边沿触发的逻辑
     if (!rst_n) begin
       row_counter <= 0;
     end else begin
@@ -119,32 +127,31 @@ module Input_pre_data_module #(
       row_counter <= row_counter_out;
       col_counter <= 6'b0;
 
-      // 如果当前行是第一行或最后后一行，则将 parallel_data 设置为 padding_data
+      // 如果当前行是第一行或最后一行，则将 parallel_data 设置为 padding_data
       if ((row_counter == 0 || row_counter == 33) && dout_vld) begin
         parallel_data <= padding_data;
       end
     end
   end
 
-  always @(posedge PEclk or negedge rst_n) begin
+  always @(negedge PEclk or negedge rst_n) begin
     if (!rst_n) begin
-      dout_vld <= 1'b0;
+      row_counter <= 0;
     end else begin
       if (out_data_vld == 1 && row_counter_out == 1) begin
-        dout_vld <= 1'b1;
+        dout_vld = 1;
       end else if (row_counter == 34) begin
-        dout_vld <= 1'b0;
+        dout_vld = 0;
       end
     end
   end
 
-
   always @(posedge dout_clk or negedge rst_n) begin
-    // 输出时钟边沿触发，用于更新数据
+    // 输出时钟边沿触发的逻辑，用于更新数据
     if (!rst_n) begin
 
     end else begin
-      // 根据缓存状态和行号和列计数器更新 parallel_data
+      // 根据缓存状态、行号和列计数器更新 parallel_data
       if (out_data_vld && row_counter != 0 && row_counter < 33) begin
         i_conv_addr = col_counter * 32 + (row_counter - 1);  //计算输出地址
         parallel_data[199-col_counter*8-:8] <= o_conv_dout[7:0];
