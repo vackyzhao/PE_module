@@ -4,7 +4,6 @@
 -cst D:\document\GitHub\PE_module\IRCAM\src\TEST.cst
 -cfg D:\document\GitHub\PE_module\IRCAM\impl\pnr\device.cfg
 -sdc D:\document\GitHub\PE_module\IRCAM\src\TEST.sdc
--gao_crc 1010111000010001
 -bit
 -tr
 -ph
@@ -15,4 +14,3 @@
 -cst_error
 -correct_hold 1
 -route_maxfan 23
--rtl_gao
