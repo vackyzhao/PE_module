@@ -1,28 +1,27 @@
 GowinSynthesis start
 Running parser ...
-Analyzing Verilog file 'D:\document\GitHub\PE_module\IRCAM\src\UART_RX.v'
-Analyzing Verilog file 'D:\document\GitHub\PE_module\IRCAM\src\clkdiv460k.v'
-Analyzing Verilog file 'D:\document\GitHub\PE_module\IRCAM\src\gowin_pll\gowin_pll.v'
 Analyzing Verilog file 'D:\document\GitHub\PE_module\IRCAM\src\IRCAM.v'
 Undeclared symbol 'clk460k', assumed default net type 'wire'("D:\document\GitHub\PE_module\IRCAM\src\IRCAM.v":18)
 Undeclared symbol 'clk920k', assumed default net type 'wire'("D:\document\GitHub\PE_module\IRCAM\src\IRCAM.v":19)
 Undeclared symbol 'clk100M', assumed default net type 'wire'("D:\document\GitHub\PE_module\IRCAM\src\IRCAM.v":24)
-Analyzing Verilog file 'D:\document\GitHub\PE_module\IRCAM\src\clockDivider24.v'
-Analyzing Verilog file 'D:\document\GitHub\PE_module\IRCAM\src\input_pre_data_module.v'
-Analyzing Verilog file 'D:\document\GitHub\PE_module\IRCAM\src\input_pre_sram.v'
 Analyzing Verilog file 'D:\document\GitHub\PE_module\IRCAM\src\IRCAMtop.v'
 WARN  (EX3628) : Redeclaration of ANSI port 'PEclk' is not allowed("D:\document\GitHub\PE_module\IRCAM\src\IRCAMtop.v":7)
-WARN  (EX3628) : Redeclaration of ANSI port 'dout_vld' is not allowed("D:\document\GitHub\PE_module\IRCAM\src\IRCAMtop.v":7)
 WARN  (EX3628) : Redeclaration of ANSI port 'parallel_data' is not allowed("D:\document\GitHub\PE_module\IRCAM\src\IRCAMtop.v":9)
 Undeclared symbol 'input_padding', assumed default net type 'wire'("D:\document\GitHub\PE_module\IRCAM\src\IRCAMtop.v":24)
+Analyzing Verilog file 'D:\document\GitHub\PE_module\IRCAM\src\PingPongBuffer.v'
+WARN  (EX3801) : Parameter 'STATE_A' becomes localparam in 'PingPongBuffer' with formal parameter declaration list("D:\document\GitHub\PE_module\IRCAM\src\PingPongBuffer.v":24)
+WARN  (EX3801) : Parameter 'STATE_B' becomes localparam in 'PingPongBuffer' with formal parameter declaration list("D:\document\GitHub\PE_module\IRCAM\src\PingPongBuffer.v":25)
+Analyzing Verilog file 'D:\document\GitHub\PE_module\IRCAM\src\UART_RX.v'
+Analyzing Verilog file 'D:\document\GitHub\PE_module\IRCAM\src\clkdiv460k.v'
+Analyzing Verilog file 'D:\document\GitHub\PE_module\IRCAM\src\clockDivider24.v'
+Analyzing Verilog file 'D:\document\GitHub\PE_module\IRCAM\src\gowin_pll\gowin_pll.v'
+Analyzing Verilog file 'D:\document\GitHub\PE_module\IRCAM\src\input_pre_data_module.v'
+Analyzing Verilog file 'D:\document\GitHub\PE_module\IRCAM\src\input_pre_sram.v'
 Analyzing Verilog file 'D:\document\GitHub\PE_module\IRCAM\src\middle_new_PE.v'
 WARN  (EX3628) : Redeclaration of ANSI port 'Psum_out' is not allowed("D:\document\GitHub\PE_module\IRCAM\src\middle_new_PE.v":30)
 Analyzing Verilog file 'D:\document\GitHub\PE_module\IRCAM\src\middle_new_PEx24.v'
 Analyzing Verilog file 'D:\document\GitHub\PE_module\IRCAM\src\mult_ip.v'
 Analyzing Verilog file 'D:\document\GitHub\PE_module\IRCAM\src\new_PE.v'
-Analyzing Verilog file 'D:\document\GitHub\PE_module\IRCAM\src\PingPongBuffer.v'
-WARN  (EX3801) : Parameter 'STATE_A' becomes localparam in 'PingPongBuffer' with formal parameter declaration list("D:\document\GitHub\PE_module\IRCAM\src\PingPongBuffer.v":24)
-WARN  (EX3801) : Parameter 'STATE_B' becomes localparam in 'PingPongBuffer' with formal parameter declaration list("D:\document\GitHub\PE_module\IRCAM\src\PingPongBuffer.v":25)
 Analyzing Verilog file 'D:\document\GitHub\PE_module\IRCAM\src\shift_register.v'
 Analyzing Verilog file 'D:\document\GitHub\PE_module\IRCAM\src\sirv_gnrl_dffs.v'
 Compiling module 'top'("D:\document\GitHub\PE_module\IRCAM\src\IRCAMtop.v":1)
@@ -35,25 +34,20 @@ Compiling module 'Gowin_PLL'("D:\document\GitHub\PE_module\IRCAM\src\gowin_pll\g
 Compiling module 'UART_RX'("D:\document\GitHub\PE_module\IRCAM\src\UART_RX.v":1)
 WARN  (EX3791) : Expression size 32 truncated to fit in target size 8("D:\document\GitHub\PE_module\IRCAM\src\IRCAM.v":64)
 WARN  (EX3791) : Expression size 17 truncated to fit in target size 16("D:\document\GitHub\PE_module\IRCAM\src\IRCAM.v":67)
-WARN  (EX2664) : Variable 'out_data_vld' is used before it is assigned in an always_comb or always @* block, synthesis - simulation differences may occur("D:\document\GitHub\PE_module\IRCAM\src\input_pre_data_module.v":78)
-WARN  (EX2664) : Variable 'i_switch_pingpong' is used before it is assigned in an always_comb or always @* block, synthesis - simulation differences may occur("D:\document\GitHub\PE_module\IRCAM\src\input_pre_data_module.v":79)
 Compiling module 'Input_pre_data_module'("D:\document\GitHub\PE_module\IRCAM\src\input_pre_data_module.v":4)
-Compiling module 'sirv_gnrl_dfflr(DW=6)'("D:\document\GitHub\PE_module\IRCAM\src\sirv_gnrl_dffs.v":85)
-WARN  (EX2629) : Delay control is not supported for synthesis("D:\document\GitHub\PE_module\IRCAM\src\sirv_gnrl_dffs.v":101)
 Compiling module 'clockDivider24'("D:\document\GitHub\PE_module\IRCAM\src\clockDivider24.v":2)
 Compiling module 'PingPongBuffer'("D:\document\GitHub\PE_module\IRCAM\src\PingPongBuffer.v":5)
 Compiling module 'input_pre_sram'("D:\document\GitHub\PE_module\IRCAM\src\input_pre_sram.v":32)
 Extracting RAM for identifier 'mem_r'("D:\document\GitHub\PE_module\IRCAM\src\input_pre_sram.v":48)
-WARN  (EX3791) : Expression size 11 truncated to fit in target size 10("D:\document\GitHub\PE_module\IRCAM\src\PingPongBuffer.v":100)
-WARN  (EX3791) : Expression size 11 truncated to fit in target size 10("D:\document\GitHub\PE_module\IRCAM\src\PingPongBuffer.v":118)
-WARN  (EX2420) : Latch inferred for net 'out_data_vld'; We do not recommend the use of latches in FPGA designs, as they may lead to timing problems("D:\document\GitHub\PE_module\IRCAM\src\input_pre_data_module.v":94)
-WARN  (EX3791) : Expression size 32 truncated to fit in target size 10("D:\document\GitHub\PE_module\IRCAM\src\input_pre_data_module.v":133)
-WARN  (EX3791) : Expression size 7 truncated to fit in target size 6("D:\document\GitHub\PE_module\IRCAM\src\input_pre_data_module.v":137)
+WARN  (EX3791) : Expression size 11 truncated to fit in target size 10("D:\document\GitHub\PE_module\IRCAM\src\PingPongBuffer.v":102)
+WARN  (EX3791) : Expression size 11 truncated to fit in target size 10("D:\document\GitHub\PE_module\IRCAM\src\PingPongBuffer.v":113)
+WARN  (EX3791) : Expression size 32 truncated to fit in target size 10("D:\document\GitHub\PE_module\IRCAM\src\input_pre_data_module.v":100)
 WARN  (EX3670) : Actual bit length 1 differs from formal bit length 8 for port 'input_padding'("D:\document\GitHub\PE_module\IRCAM\src\IRCAMtop.v":24)
 WARN  (EX3670) : Actual bit length 32 differs from formal bit length 1 for port 'en'("D:\document\GitHub\PE_module\IRCAM\src\IRCAMtop.v":26)
 WARN  (EX3670) : Actual bit length 32 differs from formal bit length 1 for port 'rst_n'("D:\document\GitHub\PE_module\IRCAM\src\IRCAMtop.v":27)
 WARN  (EX1998) : Net 'input_padding' does not have a driver("D:\document\GitHub\PE_module\IRCAM\src\IRCAMtop.v":24)
 NOTE  (EX0101) : Current top module is "top"
+WARN  (EX0211) : The output port "dout_vld" of module "top" has no driver, assigning undriven bits to Z, simulation mismatch possible("D:\document\GitHub\PE_module\IRCAM\src\IRCAMtop.v":5)
 [5%] Running netlist conversion ...
 Running device independent optimization ...
 [10%] Optimizing Phase 0 completed

@@ -2,6 +2,18 @@
  "Device" : "GW5AST-138B",
  "Files" : [
   {
+   "Path" : "D:/document/GitHub/PE_module/IRCAM/src/IRCAM.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/document/GitHub/PE_module/IRCAM/src/IRCAMtop.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/document/GitHub/PE_module/IRCAM/src/PingPongBuffer.v",
+   "Type" : "verilog"
+  },
+  {
    "Path" : "D:/document/GitHub/PE_module/IRCAM/src/UART_RX.v",
    "Type" : "verilog"
   },
@@ -10,15 +22,11 @@
    "Type" : "verilog"
   },
   {
-   "Path" : "D:/document/GitHub/PE_module/IRCAM/src/gowin_pll/gowin_pll.v",
-   "Type" : "verilog"
-  },
-  {
-   "Path" : "D:/document/GitHub/PE_module/IRCAM/src/IRCAM.v",
-   "Type" : "verilog"
-  },
-  {
    "Path" : "D:/document/GitHub/PE_module/IRCAM/src/clockDivider24.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/document/GitHub/PE_module/IRCAM/src/gowin_pll/gowin_pll.v",
    "Type" : "verilog"
   },
   {
@@ -27,10 +35,6 @@
   },
   {
    "Path" : "D:/document/GitHub/PE_module/IRCAM/src/input_pre_sram.v",
-   "Type" : "verilog"
-  },
-  {
-   "Path" : "D:/document/GitHub/PE_module/IRCAM/src/IRCAMtop.v",
    "Type" : "verilog"
   },
   {
@@ -47,10 +51,6 @@
   },
   {
    "Path" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
-   "Type" : "verilog"
-  },
-  {
-   "Path" : "D:/document/GitHub/PE_module/IRCAM/src/PingPongBuffer.v",
    "Type" : "verilog"
   },
   {

@@ -16,25 +16,21 @@ module Input_pre_data_module #(
     input  [7:0] input_padding,   // 输入填充参数       
     output       PEclk,           // PE 时钟
 
-    output reg         dout_vld,      // 缓冲就绪标志
+    output reg         out_data_vld,  // 缓冲就绪标志
     output reg [207:0] parallel_data  // 26*8 208位并行数据输出
 );
 
   // 寄存器和信号定义
   reg val_PEclk, pre_val_PEclk;
-  reg          out_data_vld;  // 正在输出信号
   reg  [  9:0] i_conv_addr = 10'd0;  // 输出结果地址
-  reg  [207:0] padding_data;  // 26*8 208位并行数据
-  reg  [199:0] sram_o_data;
+  reg  [207:0] padding_data = 208'd0;  // 26*8 208位并行数据
+  reg  [191:0] sram_o_data = 192'd0;
   wire [  7:0] o_conv_dout;  // 输出结果
   reg  [  5:0] col_counter = 6'b0;  // 列计数器 0-25 共26列
   reg  [  5:0] row_counter = 6'b0;  // 行计数器 0-33 共34列
   wire         o_pl_buffer_ready;  // 缓冲区就绪信号
   reg          i_switch_pingpong = 1'b0;  // 缓存切换信号
 
-  initial begin
-    dout_vld = 0;
-  end
 
 
   // 实例化时钟分频器模块，将 dout_clk 分频为 PEclk
@@ -92,25 +88,31 @@ module Input_pre_data_module #(
     end else begin
       pre_val_PEclk = val_PEclk;
       val_PEclk = PEclk;
+
       if (out_data_vld && (!pre_val_PEclk) && val_PEclk) begin
         row_counter <= 6'd1;
-      end else if (row_counter < 6'd25 && row_counter > 6'd0) begin
+      end else if (row_counter < 6'd28 && row_counter > 6'd0) begin
         row_counter <= row_counter + 6'd1;
       end else begin
         row_counter <= 6'd0;
       end
-      if(col_counter>1&&col_counter<34)
-      i_conv_addr = (row_counter-2) * 32 + col_counter-1;  //计算输出地址 
-      sram_o_data[199-(col_counter-1)*8-:8] = o_conv_dout[7:0];
-
-
-
+      if (col_counter >= 1 && col_counter < 33 && row_counter < 24) begin
+        i_conv_addr <= row_counter * 32 + col_counter - 1;  //计算输出地址 
+      end else begin
+        i_conv_addr <= 0;
+      end
+      if (row_counter >= 3) begin
+        sram_o_data[191-(row_counter-4)*8-:8] <= o_conv_dout[7:0];
+      end
     end
   end
   always @(posedge PEclk or negedge rst_n) begin  //PE时钟
     if (!rst_n) begin
       col_counter = 6'd0;
     end else begin
+      if (!out_data_vld && col_counter == 34) begin
+        col_counter = 0;
+      end
       if (out_data_vld) begin
         if (col_counter < 6'd34) begin
           col_counter = col_counter + 6'd1;
@@ -122,7 +124,7 @@ module Input_pre_data_module #(
         end else begin
           parallel_data[207:200] <= input_padding[7:0];
           parallel_data[7:0] <= input_padding[7:0];
-          parallel_data = 0;
+          parallel_data[199:8] <= sram_o_data[191:0];
         end
       end
 

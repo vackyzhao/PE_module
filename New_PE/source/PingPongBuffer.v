@@ -116,9 +116,8 @@ module PingPongBuffer #(
       endcase
       if (i_sram_addr == DP - 1) begin
         o_pl_buffer_ready <= 1'b1;
-      end
-      else begin
-      o_pl_buffer_ready <= 1'b0;
+      end else begin
+        o_pl_buffer_ready <= 1'b0;
       end
     end
   end

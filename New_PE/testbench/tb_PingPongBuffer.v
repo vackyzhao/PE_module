@@ -50,7 +50,7 @@ initial begin
   i_rst_n=1'd0;
 #(Tclk*1200)
 i_rst_n=1'd1;
-i_conv_addr=10'd767;
+i_conv_addr=10'd0;
 i_switch_pingpong=1'd0;
 i_data_din=8'd8;
 i_data_din_vld=1'd1;
@@ -68,7 +68,7 @@ i_data_din=8'd5;
 i_rst_n=1'd0;
 #(Tclk*1200)
 i_rst_n=1'd1;
-i_conv_addr=10'd767;
+i_conv_addr=10'd0;
 i_switch_pingpong=1'd0;
 i_data_din=8'd8;
 i_data_din_vld=1'd1;

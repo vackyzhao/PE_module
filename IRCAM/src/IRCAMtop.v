@@ -4,7 +4,7 @@ module top(
     output [207:0] parallel_data,
     output dout_vld,PEclk
     );
-wire din_clk,i_data_din_vld,PEclk,dout_vld;
+wire din_clk,i_data_din_vld,PEclk,out_data_vld;
 wire [7:0] i_data_din;
 wire  [207:0] parallel_data;
 
@@ -26,7 +26,7 @@ Input_pre_data_module Input_pre_data_module_inst (
     .en(1),
     .rst_n(1),
     .PEclk(PEclk),
-    .dout_vld(dout_vld),
+    .out_data_vld(out_data_vld),
     .parallel_data(parallel_data)
 );
 

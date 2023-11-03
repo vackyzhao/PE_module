@@ -51,15 +51,7 @@
     "SubInsts" : [
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/input_pre_data_module.v",
-      "InstLine" : 39,
-      "InstName" : "row_counter_inst",
-      "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/sirv_gnrl_dffs.v",
-      "ModuleLine" : 85,
-      "ModuleName" : "sirv_gnrl_dfflr"
-     },
-     {
-      "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/input_pre_data_module.v",
-      "InstLine" : 48,
+      "InstLine" : 37,
       "InstName" : "divider24_inst",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/clockDivider24.v",
       "ModuleLine" : 2,
@@ -67,7 +59,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/input_pre_data_module.v",
-      "InstLine" : 55,
+      "InstLine" : 44,
       "InstName" : "PingPongBuffer_inst",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/PingPongBuffer.v",
       "ModuleLine" : 5,
@@ -75,7 +67,7 @@
       "SubInsts" : [
        {
         "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/PingPongBuffer.v",
-        "InstLine" : 51,
+        "InstLine" : 53,
         "InstName" : "sram0",
         "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/input_pre_sram.v",
         "ModuleLine" : 32,
@@ -83,7 +75,7 @@
        },
        {
         "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/PingPongBuffer.v",
-        "InstLine" : 62,
+        "InstLine" : 64,
         "InstName" : "sram1",
         "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/input_pre_sram.v",
         "ModuleLine" : 32,

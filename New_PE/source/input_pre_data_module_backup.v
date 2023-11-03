@@ -136,7 +136,7 @@ module Input_pre_data_module #(
           i_conv_addr <= col_counter * 32 + (row_counter - 1);  //计算输出地址     
           end     
            if (col_counter >= 1) begin 
-          parallel_data[199-(col_counter-1)*8-:8] <= o_conv_dout[7:0];
+          parallel_data[199-(col_counter-1)*8-:8] <= o_conv_dout[7:0];          
            end
           
           col_counter <= col_counter + 1;

@@ -13,7 +13,7 @@ module clockDivider24 (
       clk_out = 1'd0;
     end else begin
 
-      if (counter == 4'd13) begin  //计数器到13切换状态
+      if (counter == 4'd14) begin  //计数器到13切换状态
         counter <= 4'd0;
         clk_out = ~clk_out;
       end else counter <= counter + 1'd1;  // 计数器加1

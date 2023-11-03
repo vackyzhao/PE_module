@@ -4,19 +4,19 @@
     <Version>beta</Version>
     <Device id="GW5AST-138B" package="FCPBGA676A" speed="1" partNumber="GW5AST-LV138FPG676AES"/>
     <FileList>
+        <File path="D:\document\GitHub\PE_module\IRCAM\src\IRCAM.v" type="verilog"/>
+        <File path="D:\document\GitHub\PE_module\IRCAM\src\IRCAMtop.v" type="verilog"/>
+        <File path="D:\document\GitHub\PE_module\IRCAM\src\PingPongBuffer.v" type="verilog"/>
         <File path="D:\document\GitHub\PE_module\IRCAM\src\UART_RX.v" type="verilog"/>
         <File path="D:\document\GitHub\PE_module\IRCAM\src\clkdiv460k.v" type="verilog"/>
-        <File path="D:\document\GitHub\PE_module\IRCAM\src\gowin_pll\gowin_pll.v" type="verilog"/>
-        <File path="D:\document\GitHub\PE_module\IRCAM\src\IRCAM.v" type="verilog"/>
         <File path="D:\document\GitHub\PE_module\IRCAM\src\clockDivider24.v" type="verilog"/>
+        <File path="D:\document\GitHub\PE_module\IRCAM\src\gowin_pll\gowin_pll.v" type="verilog"/>
         <File path="D:\document\GitHub\PE_module\IRCAM\src\input_pre_data_module.v" type="verilog"/>
         <File path="D:\document\GitHub\PE_module\IRCAM\src\input_pre_sram.v" type="verilog"/>
-        <File path="D:\document\GitHub\PE_module\IRCAM\src\IRCAMtop.v" type="verilog"/>
         <File path="D:\document\GitHub\PE_module\IRCAM\src\middle_new_PE.v" type="verilog"/>
         <File path="D:\document\GitHub\PE_module\IRCAM\src\middle_new_PEx24.v" type="verilog"/>
         <File path="D:\document\GitHub\PE_module\IRCAM\src\mult_ip.v" type="verilog"/>
         <File path="D:\document\GitHub\PE_module\IRCAM\src\new_PE.v" type="verilog"/>
-        <File path="D:\document\GitHub\PE_module\IRCAM\src\PingPongBuffer.v" type="verilog"/>
         <File path="D:\document\GitHub\PE_module\IRCAM\src\shift_register.v" type="verilog"/>
         <File path="D:\document\GitHub\PE_module\IRCAM\src\sirv_gnrl_dffs.v" type="verilog"/>
     </FileList>
