@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Module name="top">
-    <SubModule name="IRCAM_inst" Register="66" Alu="67" Lut="2653" Dsp="1">
+    <SubModule name="IRCAM_inst" Register="66" Alu="67" Lut="2490" Dsp="1">
         <SubModule name="ClockDivider460k_inst" Register="18" Alu="16" Lut="8"/>
         <SubModule name="UART_RX_inst" Register="29" Lut="17"/>
     </SubModule>
-    <SubModule name="Input_pre_data_module_inst" Register="409" Lut="75">
+    <SubModule name="Input_pre_data_module_inst" Register="409" Lut="77">
         <SubModule name="divider24_inst" Register="5" Lut="6"/>
-        <SubModule name="PingPongBuffer_inst" Register="50" Lut="52">
+        <SubModule name="PingPongBuffer_inst" Register="50" Lut="58">
             <SubModule name="sram0" Register="11" Lut="1" Bsram="1"/>
             <SubModule name="sram1" Register="10" Lut="1" Bsram="1"/>
         </SubModule>

@@ -41,6 +41,8 @@ Compiling module 'input_pre_sram'("D:\document\GitHub\PE_module\IRCAM\src\input_
 Extracting RAM for identifier 'mem_r'("D:\document\GitHub\PE_module\IRCAM\src\input_pre_sram.v":48)
 WARN  (EX3791) : Expression size 11 truncated to fit in target size 10("D:\document\GitHub\PE_module\IRCAM\src\PingPongBuffer.v":102)
 WARN  (EX3791) : Expression size 11 truncated to fit in target size 10("D:\document\GitHub\PE_module\IRCAM\src\PingPongBuffer.v":113)
+WARN  (EX3791) : Expression size 32 truncated to fit in target size 10("D:\document\GitHub\PE_module\IRCAM\src\PingPongBuffer.v":149)
+WARN  (EX3791) : Expression size 32 truncated to fit in target size 10("D:\document\GitHub\PE_module\IRCAM\src\PingPongBuffer.v":156)
 WARN  (EX3791) : Expression size 32 truncated to fit in target size 10("D:\document\GitHub\PE_module\IRCAM\src\input_pre_data_module.v":100)
 WARN  (EX3670) : Actual bit length 1 differs from formal bit length 8 for port 'input_padding'("D:\document\GitHub\PE_module\IRCAM\src\IRCAMtop.v":24)
 WARN  (EX3670) : Actual bit length 32 differs from formal bit length 1 for port 'en'("D:\document\GitHub\PE_module\IRCAM\src\IRCAMtop.v":26)

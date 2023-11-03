@@ -96,7 +96,7 @@ module PingPongBuffer #(
           i_sram_addr = input_counter;  // 设置 sram0 的地址
           sram0_din   = i_data_din;  // 输入数据到 sram0
           sram1_we    = 1'b0;
-          if (i_data_din_vld && (i_sram_addr < DP - 1)) begin
+          if (i_data_din_vld && (i_sram_addr < DP )) begin
             // 如果输入数据有效并且计数器小于 DP
             sram0_we      = 1'b1;  // 使能 sram0 写操作
             input_counter = input_counter + 1;  // 增加计数器
@@ -107,7 +107,7 @@ module PingPongBuffer #(
           i_sram_addr = input_counter;  // 设置 sram0 的地址
           sram1_din   = i_data_din;  // 输入数据到 sram0
           sram0_we    = 1'b0;
-          if (i_data_din_vld && (i_sram_addr < DP - 1)) begin
+          if (i_data_din_vld && (i_sram_addr < DP )) begin
             // 如果输入数据有效并且计数器小于 DP
             sram1_we      = 1'b1;  // 使能 sram0 写操作
             input_counter = input_counter + 1;  // 增加计数器
@@ -126,7 +126,8 @@ module PingPongBuffer #(
   always @(posedge i_clk_output) begin
     case (current_state)
       STATE_A: begin
-        // 在状态 A 下的操作：sram0 输入，sram1输出        
+        // 在状态 A 下的操作：sram0 输入，sram1输出   
+
         o_sram_addr = i_conv_addr;  // 设置 sram1 的地址为卷积输出地址
         data_out = sram1_dout;  // 输出数据等于 sram1 的输出数据
       end
@@ -143,17 +144,17 @@ module PingPongBuffer #(
     case (current_state)
       STATE_A: begin
         // 在状态 A 下的操作：sram0 输入，sram1输出
-        sram1_clk  = i_clk_output;  // 连接输出时钟到 sram1
-        sram0_clk  = i_clk_input;  // 连接输入时钟到 sram0
-        sram0_addr = i_sram_addr;
-        sram1_addr = o_sram_addr;
+        sram1_clk  <= i_clk_output;  // 连接输出时钟到 sram1
+        sram0_clk  <= i_clk_input;  // 连接输入时钟到 sram0
+        sram0_addr <= i_sram_addr-1;
+        sram1_addr <= o_sram_addr;
       end
       STATE_B: begin
         // 在状态 B 下的操作：sram0输出，sram1输入
-        sram0_clk  = i_clk_output;  // 连接输出时钟到 sram0
-        sram1_clk  = i_clk_input;  // 连接输入时钟到 sram1
-        sram1_addr = i_sram_addr;
-        sram0_addr = o_sram_addr;
+        sram0_clk  <= i_clk_output;  // 连接输出时钟到 sram0
+        sram1_clk  <= i_clk_input;  // 连接输入时钟到 sram1
+        sram1_addr <= i_sram_addr-1;
+        sram0_addr <= o_sram_addr;
       end
     endcase
   end

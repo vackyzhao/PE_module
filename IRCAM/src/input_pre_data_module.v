@@ -102,7 +102,7 @@ module Input_pre_data_module #(
         i_conv_addr <= 0;
       end
       if (row_counter >= 3) begin
-        sram_o_data[191-(row_counter-4)*8-:8] <= o_conv_dout[7:0];
+        sram_o_data[191-(row_counter-3)*8-:8] <= o_conv_dout[7:0];
       end
     end
   end

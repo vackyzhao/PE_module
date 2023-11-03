@@ -12,27 +12,27 @@
   <Part Number>: GW5AST-LV138FPG676AES
   <Device>: GW5AST-138B
   <Device Version>: B
-  <Created Time>:Fri Nov 03 01:49:49 2023
+  <Created Time>:Fri Nov 03 15:02:41 2023
 
 
 2. PnR Details
 
   Running placement:
-    Placement Phase 0: CPU time = 0h 0m 0.851s, Elapsed time = 0h 0m 0.851s
-    Placement Phase 1: CPU time = 0h 0m 0.091s, Elapsed time = 0h 0m 0.091s
-    Placement Phase 2: CPU time = 0h 0m 0.673s, Elapsed time = 0h 0m 0.673s
-    Placement Phase 3: CPU time = 0h 0m 5s, Elapsed time = 0h 0m 5s
+    Placement Phase 0: CPU time = 0h 0m 1s, Elapsed time = 0h 0m 1s
+    Placement Phase 1: CPU time = 0h 0m 0.128s, Elapsed time = 0h 0m 0.128s
+    Placement Phase 2: CPU time = 0h 0m 0.675s, Elapsed time = 0h 0m 0.676s
+    Placement Phase 3: CPU time = 0h 0m 4s, Elapsed time = 0h 0m 4s
     Total Placement: CPU time = 0h 0m 6s, Elapsed time = 0h 0m 6s
  Running routing:
     Routing Phase 0: CPU time = 0h 0m 1s, Elapsed time = 0h 0m 1s
-    Routing Phase 1: CPU time = 0h 0m 14s, Elapsed time = 0h 0m 14s
-    Routing Phase 2: CPU time = 0h 0m 0.143s, Elapsed time = 0h 0m 0.144s
+    Routing Phase 1: CPU time = 0h 0m 16s, Elapsed time = 0h 0m 16s
+    Routing Phase 2: CPU time = 0h 0m 0.247s, Elapsed time = 0h 0m 0.248s
     Routing Phase 3: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0s
-    Total Routing: CPU time = 0h 0m 15s, Elapsed time = 0h 0m 15s
+    Total Routing: CPU time = 0h 0m 17s, Elapsed time = 0h 0m 17s
  Generate output files:
-    CPU time = 0h 0m 24s, Elapsed time = 0h 0m 24s
+    CPU time = 0h 0m 27s, Elapsed time = 0h 0m 27s
 
- Total Time and Memory Usage: CPU time = 0h 0m 45s, Elapsed time = 0h 0m 45s, Peak memory usage = 805MB
+ Total Time and Memory Usage: CPU time = 0h 0m 50s, Elapsed time = 0h 0m 50s, Peak memory usage = 797MB
 
 
 3. Resource Usage Summary
@@ -40,15 +40,15 @@
   ----------------------------------------------------------
   Resources                   | Usage
   ----------------------------------------------------------
-  Logic                       | 2898/138240  3%
-    --LUT,ALU,ROM16           | 2898(2810 LUT, 88 ALU, 0 ROM16)
+  Logic                       | 2743/138240  2%
+    --LUT,ALU,ROM16           | 2743(2655 LUT, 88 ALU, 0 ROM16)
     --SSRAM(RAM16)            | 0
   Register                    | 598/139140  <1%
     --Logic Register as Latch | 0/138240  0%
     --Logic Register as FF    | 598/138240  <1%
     --I/O Register as Latch   | 0/900  0%
     --I/O Register as FF      | 0/900  0%
-  CLS                         | 1848/69120  3%
+  CLS                         | 1785/69120  3%
   I/O Port                    | 212
   I/O Buf                     | 212
     --Input Buf               | 2
@@ -108,9 +108,9 @@
   -------------------------------------------
   clk50M_d       | PRIMARY        |  PBR2
   din_clk        | PRIMARY        |  PBR1 PBR2
-  clk_out_5      | PRIMARY        |  PBR1 PBR3
+  clk_out_5      | PRIMARY        |  PTR0 PBR1
   IRCAM_inst/clk_out_0_4| PRIMARY        |  PBR1 PBR2
-  IRCAM_inst/data_valid_Z| PRIMARY        |  PBR2
+  IRCAM_inst/data_valid_Z| PRIMARY        |  PBR1 PBR2
   ===========================================
 
 
@@ -129,198 +129,198 @@ parallel_data[4]    |           | P25/3         | N          | out   | IOR60[B] 
 parallel_data[5]    |           | M26/3         | N          | out   | IOR67[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
 parallel_data[6]    |           | R20/3         | N          | out   | IOR69[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
 parallel_data[7]    |           | R21/3         | N          | out   | IOR69[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[8]    |           | M5/7          | N          | out   | IOL44[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[9]    |           | N7/7          | N          | out   | IOL42[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[10]   |           | N6/7          | N          | out   | IOL42[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[11]   |           | H2/7          | N          | out   | IOL40[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[12]   |           | H1/7          | N          | out   | IOL40[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[13]   |           | A24/5         | N          | out   | IOB42[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[14]   |           | C24/5         | N          | out   | IOB40[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[15]   |           | B24/5         | N          | out   | IOB40[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[16]   |           | N24/3         | N          | out   | IOR76[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[17]   |           | P20/3         | N          | out   | IOR78[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[18]   |           | P21/3         | N          | out   | IOR78[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[19]   |           | N21/3         | N          | out   | IOR80[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[20]   |           | N22/3         | N          | out   | IOR80[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[21]   |           | J19/4         | N          | out   | IOB126[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[22]   |           | H19/4         | N          | out   | IOB126[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[23]   |           | L17/4         | N          | out   | IOB124[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[24]   |           | M22/3         | N          | out   | IOR83[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[25]   |           | L22/3         | N          | out   | IOR85[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[26]   |           | L23/3         | N          | out   | IOR85[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[27]   |           | M24/3         | N          | out   | IOR87[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[28]   |           | M25/3         | N          | out   | IOR87[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[29]   |           | J8/6          | N          | out   | IOL109[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[30]   |           | H9/6          | N          | out   | IOL107[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[31]   |           | G9/6          | N          | out   | IOL107[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[32]   |           | M17/4         | N          | out   | IOB102[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[33]   |           | K15/4         | N          | out   | IOB99[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[34]   |           | J16/4         | N          | out   | IOB99[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[35]   |           | J14/4         | N          | out   | IOB97[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[36]   |           | J15/4         | N          | out   | IOB97[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[37]   |           | G8/6          | N          | out   | IOL103[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[38]   |           | E6/6          | N          | out   | IOL101[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[39]   |           | D6/6          | N          | out   | IOL101[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[40]   |           | M15/4         | N          | out   | IOB95[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[41]   |           | L15/4         | N          | out   | IOB95[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[42]   |           | M14/4         | N          | out   | IOB93[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[43]   |           | L14/4         | N          | out   | IOB93[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[44]   |           | L19/4         | N          | out   | IOB92[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[45]   |           | A19/5         | N          | out   | IOB58[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[46]   |           | A17/5         | N          | out   | IOB56[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[47]   |           | E16/5         | N          | out   | IOB53[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[48]   |           | H17/5         | N          | out   | IOB91[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[49]   |           | F18/5         | N          | out   | IOB89[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[50]   |           | F19/5         | N          | out   | IOB89[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[51]   |           | G19/5         | N          | out   | IOB87[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[52]   |           | F20/5         | N          | out   | IOB87[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[53]   |           | C23/5         | N          | out   | IOB49[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[54]   |           | C26/5         | N          | out   | IOB47[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[55]   |           | B26/5         | N          | out   | IOB47[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[56]   |           | D5/6          | N          | out   | IOL83[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[57]   |           | G5/6          | N          | out   | IOL80[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[58]   |           | F5/6          | N          | out   | IOL80[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[59]   |           | G4/6          | N          | out   | IOL78[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[60]   |           | F4/6          | N          | out   | IOL78[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[61]   |           | B25/5         | N          | out   | IOB44[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[62]   |           | A25/5         | N          | out   | IOB44[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[63]   |           | A23/5         | N          | out   | IOB42[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[64]   |           | H16/5         | N          | out   | IOB85[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[65]   |           | G16/5         | N          | out   | IOB85[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[66]   |           | H14/5         | N          | out   | IOB83[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[67]   |           | H15/5         | N          | out   | IOB83[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[68]   |           | G17/5         | N          | out   | IOB80[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[69]   |           | G7/6          | N          | out   | IOL96[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[70]   |           | B5/6          | N          | out   | IOL94[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[71]   |           | A5/6          | N          | out   | IOL94[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[72]   |           | F17/5         | N          | out   | IOB80[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[73]   |           | G15/5         | N          | out   | IOB78[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[74]   |           | F15/5         | N          | out   | IOB78[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[75]   |           | E21/5         | N          | out   | IOB76[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[76]   |           | D21/5         | N          | out   | IOB76[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[77]   |           | D23/5         | N          | out   | IOB38[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[78]   |           | D24/5         | N          | out   | IOB38[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[79]   |           | E22/5         | N          | out   | IOB37[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[80]   |           | B22/5         | N          | out   | IOB74[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[81]   |           | A22/5         | N          | out   | IOB74[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[82]   |           | C21/5         | N          | out   | IOB72[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[83]   |           | B21/5         | N          | out   | IOB72[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[84]   |           | B20/5         | N          | out   | IOB70[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[85]   |           | L18/4         | N          | out   | IOB124[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[86]   |           | K21/4         | N          | out   | IOB122[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[87]   |           | J21/4         | N          | out   | IOB122[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[88]   |           | L25/3         | N          | out   | IOR89[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[89]   |           | M20/3         | N          | out   | IOR92[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[90]   |           | L20/3         | N          | out   | IOR92[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[91]   |           | K25/3         | N          | out   | IOR94[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[92]   |           | K26/3         | N          | out   | IOR94[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[93]   |           | F8/6          | N          | out   | IOL105[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[94]   |           | F7/6          | N          | out   | IOL105[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[95]   |           | H8/6          | N          | out   | IOL103[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[96]   |           | A20/5         | N          | out   | IOB70[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[97]   |           | E20/5         | N          | out   | IOB68[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[98]   |           | D20/5         | N          | out   | IOB68[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[99]   |           | D19/5         | N          | out   | IOB66[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[100]  |           | C19/5         | N          | out   | IOB66[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[101]  |           | H6/6          | N          | out   | IOL98[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[102]  |           | G6/6          | N          | out   | IOL98[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[103]  |           | H7/6          | N          | out   | IOL96[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[104]  |           | L8/6          | N          | out   | IOL76[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[105]  |           | K8/6          | N          | out   | IOL76[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[106]  |           | J6/6          | N          | out   | IOL74[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[107]  |           | J5/6          | N          | out   | IOL74[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[108]  |           | H3/6          | N          | out   | IOL73[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[109]  |           | D16/5         | N          | out   | IOB53[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[110]  |           | C17/5         | N          | out   | IOB51[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[111]  |           | B17/5         | N          | out   | IOB51[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[112]  |           | P15/3         | N          | out   | IOR103[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[113]  |           | M19/3         | N          | out   | IOR109[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[114]  |           | AB15/10       | N          | out   | IOB179[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[115]  |           | K18/4         | N          | out   | IOB146[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[116]  |           | G25/4         | N          | out   | IOB144[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[117]  |           | D3/6          | N          | out   | IOL92[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[118]  |           | C3/6          | N          | out   | IOL92[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[119]  |           | F3/6          | N          | out   | IOL89[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[120]  |           | F25/4         | N          | out   | IOB144[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[121]  |           | J25/4         | N          | out   | IOB142[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[122]  |           | J26/4         | N          | out   | IOB142[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[123]  |           | G24/4         | N          | out   | IOB140[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[124]  |           | F24/4         | N          | out   | IOB140[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[125]  |           | G20/4         | N          | out   | IOB120[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[126]  |           | G21/4         | N          | out   | IOB120[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[127]  |           | H21/4         | N          | out   | IOB116[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[128]  |           | H26/4         | N          | out   | IOB138[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[129]  |           | G26/4         | N          | out   | IOB138[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[130]  |           | E26/4         | N          | out   | IOB135[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[131]  |           | D26/4         | N          | out   | IOB135[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[132]  |           | E25/4         | N          | out   | IOB133[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[133]  |           | H22/4         | N          | out   | IOB116[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[134]  |           | J23/4         | N          | out   | IOB114[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[135]  |           | H23/4         | N          | out   | IOB114[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[136]  |           | J24/4         | N          | out   | IOB112[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[137]  |           | H24/4         | N          | out   | IOB112[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[138]  |           | G22/4         | N          | out   | IOB110[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[139]  |           | F22/4         | N          | out   | IOB110[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[140]  |           | F23/4         | N          | out   | IOB108[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[141]  |           | E23/4         | N          | out   | IOB108[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[142]  |           | K22/4         | N          | out   | IOB106[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[143]  |           | K23/4         | N          | out   | IOB106[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[144]  |           | D25/4         | N          | out   | IOB133[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[145]  |           | K20/4         | N          | out   | IOB131[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[146]  |           | J20/4         | N          | out   | IOB131[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[147]  |           | J18/4         | N          | out   | IOB129[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[148]  |           | H18/4         | N          | out   | IOB129[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[149]  |           | K16/4         | N          | out   | IOB104[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[150]  |           | K17/4         | N          | out   | IOB104[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[151]  |           | M16/4         | N          | out   | IOB102[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[152]  |           | D18/5         | N          | out   | IOB62[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[153]  |           | C18/5         | N          | out   | IOB62[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[154]  |           | E17/5         | N          | out   | IOB60[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[155]  |           | E18/5         | N          | out   | IOB60[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[156]  |           | B19/5         | N          | out   | IOB58[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[157]  |           | E3/6          | N          | out   | IOL89[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[158]  |           | B4/6          | N          | out   | IOL87[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[159]  |           | A4/6          | N          | out   | IOL87[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[160]  |           | K7/6          | N          | out   | IOL71[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[161]  |           | K6/6          | N          | out   | IOL71[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[162]  |           | J4/6          | N          | out   | IOL69[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[163]  |           | H4/6          | N          | out   | IOL69[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[164]  |           | A3/6          | N          | out   | IOL67[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[165]  |           | J1/7          | N          | out   | IOL33[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[166]  |           | M2/7          | N          | out   | IOL31[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[167]  |           | L2/7          | N          | out   | IOL31[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[168]  |           | L3/7          | N          | out   | IOL38[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[169]  |           | K2/7          | N          | out   | IOL38[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[170]  |           | N1/7          | N          | out   | IOL35[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[171]  |           | M1/7          | N          | out   | IOL35[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[172]  |           | K1/7          | N          | out   | IOL33[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[173]  |           | N3/7          | N          | out   | IOL29[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[174]  |           | N2/7          | N          | out   | IOL29[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[175]  |           | P4/7          | N          | out   | IOL26[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[176]  |           | A2/6          | N          | out   | IOL67[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[177]  |           | C1/6          | N          | out   | IOL65[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[178]  |           | B1/6          | N          | out   | IOL65[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[179]  |           | E1/6          | N          | out   | IOL62[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[180]  |           | D1/6          | N          | out   | IOL62[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[181]  |           | J3/7          | N          | out   | IOL51[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[182]  |           | M4/7          | N          | out   | IOL49[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[183]  |           | L4/7          | N          | out   | IOL49[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[184]  |           | C2/6          | N          | out   | IOL60[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[185]  |           | B2/6          | N          | out   | IOL60[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[186]  |           | F2/6          | N          | out   | IOL58[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[187]  |           | E2/6          | N          | out   | IOL58[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[188]  |           | G2/6          | N          | out   | IOL56[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[189]  |           | L5/7          | N          | out   | IOL47[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[190]  |           | K5/7          | N          | out   | IOL47[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[191]  |           | M6/7          | N          | out   | IOL44[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[192]  |           | G1/6          | N          | out   | IOL56[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[193]  |           | N8/7          | N          | out   | IOL55[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[194]  |           | M7/7          | N          | out   | IOL53[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[195]  |           | L7/7          | N          | out   | IOL53[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[196]  |           | K3/7          | N          | out   | IOL51[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[197]  |           | D4/6          | N          | out   | IOL85[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[198]  |           | C4/6          | N          | out   | IOL85[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-parallel_data[199]  |           | E5/6          | N          | out   | IOL83[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[8]    |           | E26/4         | N          | out   | IOB135[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[9]    |           | D26/4         | N          | out   | IOB135[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[10]   |           | E25/4         | N          | out   | IOB133[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[11]   |           | D25/4         | N          | out   | IOB133[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[12]   |           | K20/4         | N          | out   | IOB131[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[13]   |           | A19/5         | N          | out   | IOB58[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[14]   |           | A17/5         | N          | out   | IOB56[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[15]   |           | E16/5         | N          | out   | IOB53[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[16]   |           | H16/5         | N          | out   | IOB85[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[17]   |           | G16/5         | N          | out   | IOB85[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[18]   |           | H14/5         | N          | out   | IOB83[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[19]   |           | H15/5         | N          | out   | IOB83[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[20]   |           | G17/5         | N          | out   | IOB80[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[21]   |           | D16/5         | N          | out   | IOB53[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[22]   |           | C17/5         | N          | out   | IOB51[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[23]   |           | B17/5         | N          | out   | IOB51[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[24]   |           | J20/4         | N          | out   | IOB131[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[25]   |           | J18/4         | N          | out   | IOB129[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[26]   |           | H18/4         | N          | out   | IOB129[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[27]   |           | J19/4         | N          | out   | IOB126[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[28]   |           | H19/4         | N          | out   | IOB126[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[29]   |           | L19/4         | N          | out   | IOB92[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[30]   |           | H17/5         | N          | out   | IOB91[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[31]   |           | F18/5         | N          | out   | IOB89[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[32]   |           | H8/6          | N          | out   | IOL103[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[33]   |           | G8/6          | N          | out   | IOL103[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[34]   |           | E6/6          | N          | out   | IOL101[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[35]   |           | D6/6          | N          | out   | IOL101[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[36]   |           | H6/6          | N          | out   | IOL98[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[37]   |           | K1/7          | N          | out   | IOL33[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[38]   |           | J1/7          | N          | out   | IOL33[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[39]   |           | M2/7          | N          | out   | IOL31[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[40]   |           | G6/6          | N          | out   | IOL98[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[41]   |           | H7/6          | N          | out   | IOL96[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[42]   |           | G7/6          | N          | out   | IOL96[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[43]   |           | B5/6          | N          | out   | IOL94[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[44]   |           | A5/6          | N          | out   | IOL94[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[45]   |           | L2/7          | N          | out   | IOL31[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[46]   |           | N3/7          | N          | out   | IOL29[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[47]   |           | N2/7          | N          | out   | IOL29[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[48]   |           | F17/5         | N          | out   | IOB80[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[49]   |           | G15/5         | N          | out   | IOB78[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[50]   |           | F15/5         | N          | out   | IOB78[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[51]   |           | E21/5         | N          | out   | IOB76[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[52]   |           | D21/5         | N          | out   | IOB76[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[53]   |           | F19/5         | N          | out   | IOB89[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[54]   |           | G19/5         | N          | out   | IOB87[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[55]   |           | F20/5         | N          | out   | IOB87[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[56]   |           | B22/5         | N          | out   | IOB74[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[57]   |           | A22/5         | N          | out   | IOB74[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[58]   |           | C21/5         | N          | out   | IOB72[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[59]   |           | B21/5         | N          | out   | IOB72[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[60]   |           | B20/5         | N          | out   | IOB70[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[61]   |           | C22/5         | N          | out   | IOB49[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[62]   |           | C23/5         | N          | out   | IOB49[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[63]   |           | C26/5         | N          | out   | IOB47[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[64]   |           | D3/6          | N          | out   | IOL92[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[65]   |           | C3/6          | N          | out   | IOL92[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[66]   |           | F3/6          | N          | out   | IOL89[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[67]   |           | E3/6          | N          | out   | IOL89[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[68]   |           | B4/6          | N          | out   | IOL87[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[69]   |           | B26/5         | N          | out   | IOB47[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[70]   |           | B25/5         | N          | out   | IOB44[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[71]   |           | A25/5         | N          | out   | IOB44[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[72]   |           | A4/6          | N          | out   | IOL87[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[73]   |           | D4/6          | N          | out   | IOL85[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[74]   |           | C4/6          | N          | out   | IOL85[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[75]   |           | E5/6          | N          | out   | IOL83[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[76]   |           | D5/6          | N          | out   | IOL83[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[77]   |           | A23/5         | N          | out   | IOB42[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[78]   |           | A24/5         | N          | out   | IOB42[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[79]   |           | C24/5         | N          | out   | IOB40[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[80]   |           | L17/4         | N          | out   | IOB124[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[81]   |           | L18/4         | N          | out   | IOB124[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[82]   |           | K21/4         | N          | out   | IOB122[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[83]   |           | J21/4         | N          | out   | IOB122[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[84]   |           | G20/4         | N          | out   | IOB120[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[85]   |           | B24/5         | N          | out   | IOB40[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[86]   |           | D23/5         | N          | out   | IOB38[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[87]   |           | D24/5         | N          | out   | IOB38[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[88]   |           | G21/4         | N          | out   | IOB120[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[89]   |           | H21/4         | N          | out   | IOB116[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[90]   |           | H22/4         | N          | out   | IOB116[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[91]   |           | J23/4         | N          | out   | IOB114[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[92]   |           | H23/4         | N          | out   | IOB114[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[93]   |           | M25/3         | N          | out   | IOR87[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[94]   |           | L25/3         | N          | out   | IOR89[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[95]   |           | M20/3         | N          | out   | IOR92[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[96]   |           | J24/4         | N          | out   | IOB112[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[97]   |           | H24/4         | N          | out   | IOB112[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[98]   |           | G22/4         | N          | out   | IOB110[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[99]   |           | F22/4         | N          | out   | IOB110[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[100]  |           | F23/4         | N          | out   | IOB108[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[101]  |           | L20/3         | N          | out   | IOR92[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[102]  |           | K25/3         | N          | out   | IOR94[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[103]  |           | K26/3         | N          | out   | IOR94[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[104]  |           | E23/4         | N          | out   | IOB108[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[105]  |           | K22/4         | N          | out   | IOB106[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[106]  |           | K23/4         | N          | out   | IOB106[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[107]  |           | K16/4         | N          | out   | IOB104[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[108]  |           | K17/4         | N          | out   | IOB104[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[109]  |           | P15/3         | N          | out   | IOR103[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[110]  |           | M19/3         | N          | out   | IOR109[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[111]  |           | AB15/10       | N          | out   | IOB179[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[112]  |           | M16/4         | N          | out   | IOB102[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[113]  |           | M17/4         | N          | out   | IOB102[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[114]  |           | K15/4         | N          | out   | IOB99[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[115]  |           | J16/4         | N          | out   | IOB99[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[116]  |           | J14/4         | N          | out   | IOB97[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[117]  |           | K18/4         | N          | out   | IOB146[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[118]  |           | G25/4         | N          | out   | IOB144[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[119]  |           | F25/4         | N          | out   | IOB144[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[120]  |           | J15/4         | N          | out   | IOB97[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[121]  |           | M15/4         | N          | out   | IOB95[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[122]  |           | L15/4         | N          | out   | IOB95[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[123]  |           | M14/4         | N          | out   | IOB93[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[124]  |           | L14/4         | N          | out   | IOB93[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[125]  |           | J25/4         | N          | out   | IOB142[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[126]  |           | J26/4         | N          | out   | IOB142[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[127]  |           | G24/4         | N          | out   | IOB140[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[128]  |           | N24/3         | N          | out   | IOR76[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[129]  |           | P20/3         | N          | out   | IOR78[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[130]  |           | P21/3         | N          | out   | IOR78[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[131]  |           | N21/3         | N          | out   | IOR80[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[132]  |           | N22/3         | N          | out   | IOR80[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[133]  |           | F24/4         | N          | out   | IOB140[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[134]  |           | H26/4         | N          | out   | IOB138[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[135]  |           | G26/4         | N          | out   | IOB138[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[136]  |           | A20/5         | N          | out   | IOB70[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[137]  |           | E20/5         | N          | out   | IOB68[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[138]  |           | D20/5         | N          | out   | IOB68[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[139]  |           | D19/5         | N          | out   | IOB66[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[140]  |           | C19/5         | N          | out   | IOB66[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[141]  |           | E22/5         | N          | out   | IOB37[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[142]  |           | J8/6          | N          | out   | IOL109[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[143]  |           | H9/6          | N          | out   | IOL107[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[144]  |           | M21/3         | N          | out   | IOR83[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[145]  |           | M22/3         | N          | out   | IOR83[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[146]  |           | L22/3         | N          | out   | IOR85[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[147]  |           | L23/3         | N          | out   | IOR85[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[148]  |           | M24/3         | N          | out   | IOR87[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[149]  |           | G9/6          | N          | out   | IOL107[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[150]  |           | F8/6          | N          | out   | IOL105[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[151]  |           | F7/6          | N          | out   | IOL105[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[152]  |           | G5/6          | N          | out   | IOL80[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[153]  |           | F5/6          | N          | out   | IOL80[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[154]  |           | G4/6          | N          | out   | IOL78[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[155]  |           | F4/6          | N          | out   | IOL78[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[156]  |           | L8/6          | N          | out   | IOL76[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[157]  |           | N8/7          | N          | out   | IOL55[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[158]  |           | M7/7          | N          | out   | IOL53[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[159]  |           | L7/7          | N          | out   | IOL53[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[160]  |           | K8/6          | N          | out   | IOL76[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[161]  |           | J6/6          | N          | out   | IOL74[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[162]  |           | J5/6          | N          | out   | IOL74[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[163]  |           | H3/6          | N          | out   | IOL73[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[164]  |           | K7/6          | N          | out   | IOL71[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[165]  |           | K3/7          | N          | out   | IOL51[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[166]  |           | J3/7          | N          | out   | IOL51[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[167]  |           | M4/7          | N          | out   | IOL49[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[168]  |           | K6/6          | N          | out   | IOL71[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[169]  |           | J4/6          | N          | out   | IOL69[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[170]  |           | H4/6          | N          | out   | IOL69[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[171]  |           | A3/6          | N          | out   | IOL67[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[172]  |           | A2/6          | N          | out   | IOL67[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[173]  |           | L4/7          | N          | out   | IOL49[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[174]  |           | L5/7          | N          | out   | IOL47[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[175]  |           | K5/7          | N          | out   | IOL47[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[176]  |           | D18/5         | N          | out   | IOB62[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[177]  |           | C18/5         | N          | out   | IOB62[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[178]  |           | E17/5         | N          | out   | IOB60[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[179]  |           | E18/5         | N          | out   | IOB60[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[180]  |           | B19/5         | N          | out   | IOB58[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[181]  |           | M6/7          | N          | out   | IOL44[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[182]  |           | M5/7          | N          | out   | IOL44[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[183]  |           | N7/7          | N          | out   | IOL42[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[184]  |           | C1/6          | N          | out   | IOL65[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[185]  |           | B1/6          | N          | out   | IOL65[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[186]  |           | E1/6          | N          | out   | IOL62[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[187]  |           | D1/6          | N          | out   | IOL62[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[188]  |           | C2/6          | N          | out   | IOL60[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[189]  |           | N6/7          | N          | out   | IOL42[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[190]  |           | H2/7          | N          | out   | IOL40[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[191]  |           | H1/7          | N          | out   | IOL40[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[192]  |           | B2/6          | N          | out   | IOL60[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[193]  |           | F2/6          | N          | out   | IOL58[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[194]  |           | E2/6          | N          | out   | IOL58[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[195]  |           | G2/6          | N          | out   | IOL56[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[196]  |           | G1/6          | N          | out   | IOL56[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[197]  |           | L3/7          | N          | out   | IOL38[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[198]  |           | K2/7          | N          | out   | IOL38[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+parallel_data[199]  |           | N1/7          | N          | out   | IOL35[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
 parallel_data[200]  |           | P19/3         | N          | out   | IOR71[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
 parallel_data[201]  |           | N26/3         | N          | out   | IOR67[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
 parallel_data[202]  |           | R18/3         | N          | out   | IOR73[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
@@ -329,8 +329,8 @@ parallel_data[204]  |           | P24/3         | N          | out   | IOR74[B] 
 parallel_data[205]  |           | N23/3         | N          | out   | IOR76[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
 parallel_data[206]  |           | N19/3         | N          | out   | IOR71[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
 parallel_data[207]  |           | R25/3         | N          | out   | IOR60[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-dout_vld            |           | C22/5         | N          | out   | IOB49[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
-PEclk               |           | M21/3         | N          | out   | IOR83[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+dout_vld            |           | P4/7          | N          | out   | IOL26[A] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
+PEclk               |           | M1/7          | N          | out   | IOL35[B] | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3        | MEDIUM       
 ===========================================================================================================================================================================================================================
 
 
@@ -342,106 +342,106 @@ PEclk               |           | M21/3         | N          | out   | IOR83[A] 
 Loc./Bank| Signal              | Dir.  | Site     | IO Type  | Drive | Pull Mode | PCI Clamp | Hysteresis | Open Drain | Vref       | Single Resistor | Diff Resistor | Bank Vccio | Pull Strength
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-E22/5    | parallel_data[79]   | out   | IOB37[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-D23/5    | parallel_data[77]   | out   | IOB38[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-D24/5    | parallel_data[78]   | out   | IOB38[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-C24/5    | parallel_data[14]   | out   | IOB40[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-B24/5    | parallel_data[15]   | out   | IOB40[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-A23/5    | parallel_data[63]   | out   | IOB42[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-A24/5    | parallel_data[13]   | out   | IOB42[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-B25/5    | parallel_data[61]   | out   | IOB44[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-A25/5    | parallel_data[62]   | out   | IOB44[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-C26/5    | parallel_data[54]   | out   | IOB47[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-B26/5    | parallel_data[55]   | out   | IOB47[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-C22/5    | dout_vld            | out   | IOB49[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-C23/5    | parallel_data[53]   | out   | IOB49[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-C17/5    | parallel_data[110]  | out   | IOB51[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-B17/5    | parallel_data[111]  | out   | IOB51[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-E16/5    | parallel_data[47]   | out   | IOB53[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-D16/5    | parallel_data[109]  | out   | IOB53[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-A17/5    | parallel_data[46]   | out   | IOB56[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+E22/5    | parallel_data[141]  | out   | IOB37[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+D23/5    | parallel_data[86]   | out   | IOB38[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+D24/5    | parallel_data[87]   | out   | IOB38[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+C24/5    | parallel_data[79]   | out   | IOB40[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+B24/5    | parallel_data[85]   | out   | IOB40[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+A23/5    | parallel_data[77]   | out   | IOB42[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+A24/5    | parallel_data[78]   | out   | IOB42[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+B25/5    | parallel_data[70]   | out   | IOB44[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+A25/5    | parallel_data[71]   | out   | IOB44[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+C26/5    | parallel_data[63]   | out   | IOB47[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+B26/5    | parallel_data[69]   | out   | IOB47[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+C22/5    | parallel_data[61]   | out   | IOB49[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+C23/5    | parallel_data[62]   | out   | IOB49[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+C17/5    | parallel_data[22]   | out   | IOB51[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+B17/5    | parallel_data[23]   | out   | IOB51[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+E16/5    | parallel_data[15]   | out   | IOB53[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+D16/5    | parallel_data[21]   | out   | IOB53[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+A17/5    | parallel_data[14]   | out   | IOB56[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
 A18/5    | UART_RX             | in    | IOB56[B] | LVCMOS33 | OFF   | NONE      | OFF       | ON         | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-B19/5    | parallel_data[156]  | out   | IOB58[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-A19/5    | parallel_data[45]   | out   | IOB58[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-E17/5    | parallel_data[154]  | out   | IOB60[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-E18/5    | parallel_data[155]  | out   | IOB60[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-D18/5    | parallel_data[152]  | out   | IOB62[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-C18/5    | parallel_data[153]  | out   | IOB62[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-D19/5    | parallel_data[99]   | out   | IOB66[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-C19/5    | parallel_data[100]  | out   | IOB66[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-E20/5    | parallel_data[97]   | out   | IOB68[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-D20/5    | parallel_data[98]   | out   | IOB68[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-B20/5    | parallel_data[84]   | out   | IOB70[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-A20/5    | parallel_data[96]   | out   | IOB70[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-C21/5    | parallel_data[82]   | out   | IOB72[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-B21/5    | parallel_data[83]   | out   | IOB72[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-B22/5    | parallel_data[80]   | out   | IOB74[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-A22/5    | parallel_data[81]   | out   | IOB74[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-E21/5    | parallel_data[75]   | out   | IOB76[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-D21/5    | parallel_data[76]   | out   | IOB76[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-G15/5    | parallel_data[73]   | out   | IOB78[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-F15/5    | parallel_data[74]   | out   | IOB78[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-G17/5    | parallel_data[68]   | out   | IOB80[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-F17/5    | parallel_data[72]   | out   | IOB80[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-H14/5    | parallel_data[66]   | out   | IOB83[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-H15/5    | parallel_data[67]   | out   | IOB83[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-H16/5    | parallel_data[64]   | out   | IOB85[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-G16/5    | parallel_data[65]   | out   | IOB85[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-G19/5    | parallel_data[51]   | out   | IOB87[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-F20/5    | parallel_data[52]   | out   | IOB87[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-F18/5    | parallel_data[49]   | out   | IOB89[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-F19/5    | parallel_data[50]   | out   | IOB89[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-H17/5    | parallel_data[48]   | out   | IOB91[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-L19/4    | parallel_data[44]   | out   | IOB92[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-M14/4    | parallel_data[42]   | out   | IOB93[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-L14/4    | parallel_data[43]   | out   | IOB93[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-M15/4    | parallel_data[40]   | out   | IOB95[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-L15/4    | parallel_data[41]   | out   | IOB95[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-J14/4    | parallel_data[35]   | out   | IOB97[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-J15/4    | parallel_data[36]   | out   | IOB97[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-K15/4    | parallel_data[33]   | out   | IOB99[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-J16/4    | parallel_data[34]   | out   | IOB99[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-M16/4    | parallel_data[151]  | out   | IOB102[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-M17/4    | parallel_data[32]   | out   | IOB102[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-K16/4    | parallel_data[149]  | out   | IOB104[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-K17/4    | parallel_data[150]  | out   | IOB104[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-K22/4    | parallel_data[142]  | out   | IOB106[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-K23/4    | parallel_data[143]  | out   | IOB106[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-F23/4    | parallel_data[140]  | out   | IOB108[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-E23/4    | parallel_data[141]  | out   | IOB108[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-G22/4    | parallel_data[138]  | out   | IOB110[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-F22/4    | parallel_data[139]  | out   | IOB110[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-J24/4    | parallel_data[136]  | out   | IOB112[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-H24/4    | parallel_data[137]  | out   | IOB112[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-J23/4    | parallel_data[134]  | out   | IOB114[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-H23/4    | parallel_data[135]  | out   | IOB114[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-H21/4    | parallel_data[127]  | out   | IOB116[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-H22/4    | parallel_data[133]  | out   | IOB116[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-G20/4    | parallel_data[125]  | out   | IOB120[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-G21/4    | parallel_data[126]  | out   | IOB120[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-K21/4    | parallel_data[86]   | out   | IOB122[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-J21/4    | parallel_data[87]   | out   | IOB122[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-L17/4    | parallel_data[23]   | out   | IOB124[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-L18/4    | parallel_data[85]   | out   | IOB124[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-J19/4    | parallel_data[21]   | out   | IOB126[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-H19/4    | parallel_data[22]   | out   | IOB126[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-J18/4    | parallel_data[147]  | out   | IOB129[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-H18/4    | parallel_data[148]  | out   | IOB129[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-K20/4    | parallel_data[145]  | out   | IOB131[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-J20/4    | parallel_data[146]  | out   | IOB131[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-E25/4    | parallel_data[132]  | out   | IOB133[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-D25/4    | parallel_data[144]  | out   | IOB133[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-E26/4    | parallel_data[130]  | out   | IOB135[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-D26/4    | parallel_data[131]  | out   | IOB135[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-H26/4    | parallel_data[128]  | out   | IOB138[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-G26/4    | parallel_data[129]  | out   | IOB138[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-G24/4    | parallel_data[123]  | out   | IOB140[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-F24/4    | parallel_data[124]  | out   | IOB140[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-J25/4    | parallel_data[121]  | out   | IOB142[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-J26/4    | parallel_data[122]  | out   | IOB142[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-G25/4    | parallel_data[116]  | out   | IOB144[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-F25/4    | parallel_data[120]  | out   | IOB144[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-K18/4    | parallel_data[115]  | out   | IOB146[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+B19/5    | parallel_data[180]  | out   | IOB58[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+A19/5    | parallel_data[13]   | out   | IOB58[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+E17/5    | parallel_data[178]  | out   | IOB60[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+E18/5    | parallel_data[179]  | out   | IOB60[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+D18/5    | parallel_data[176]  | out   | IOB62[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+C18/5    | parallel_data[177]  | out   | IOB62[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+D19/5    | parallel_data[139]  | out   | IOB66[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+C19/5    | parallel_data[140]  | out   | IOB66[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+E20/5    | parallel_data[137]  | out   | IOB68[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+D20/5    | parallel_data[138]  | out   | IOB68[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+B20/5    | parallel_data[60]   | out   | IOB70[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+A20/5    | parallel_data[136]  | out   | IOB70[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+C21/5    | parallel_data[58]   | out   | IOB72[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+B21/5    | parallel_data[59]   | out   | IOB72[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+B22/5    | parallel_data[56]   | out   | IOB74[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+A22/5    | parallel_data[57]   | out   | IOB74[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+E21/5    | parallel_data[51]   | out   | IOB76[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+D21/5    | parallel_data[52]   | out   | IOB76[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+G15/5    | parallel_data[49]   | out   | IOB78[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+F15/5    | parallel_data[50]   | out   | IOB78[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+G17/5    | parallel_data[20]   | out   | IOB80[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+F17/5    | parallel_data[48]   | out   | IOB80[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+H14/5    | parallel_data[18]   | out   | IOB83[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+H15/5    | parallel_data[19]   | out   | IOB83[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+H16/5    | parallel_data[16]   | out   | IOB85[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+G16/5    | parallel_data[17]   | out   | IOB85[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+G19/5    | parallel_data[54]   | out   | IOB87[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+F20/5    | parallel_data[55]   | out   | IOB87[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+F18/5    | parallel_data[31]   | out   | IOB89[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+F19/5    | parallel_data[53]   | out   | IOB89[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+H17/5    | parallel_data[30]   | out   | IOB91[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+L19/4    | parallel_data[29]   | out   | IOB92[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+M14/4    | parallel_data[123]  | out   | IOB93[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+L14/4    | parallel_data[124]  | out   | IOB93[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+M15/4    | parallel_data[121]  | out   | IOB95[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+L15/4    | parallel_data[122]  | out   | IOB95[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+J14/4    | parallel_data[116]  | out   | IOB97[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+J15/4    | parallel_data[120]  | out   | IOB97[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+K15/4    | parallel_data[114]  | out   | IOB99[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+J16/4    | parallel_data[115]  | out   | IOB99[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+M16/4    | parallel_data[112]  | out   | IOB102[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+M17/4    | parallel_data[113]  | out   | IOB102[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+K16/4    | parallel_data[107]  | out   | IOB104[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+K17/4    | parallel_data[108]  | out   | IOB104[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+K22/4    | parallel_data[105]  | out   | IOB106[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+K23/4    | parallel_data[106]  | out   | IOB106[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+F23/4    | parallel_data[100]  | out   | IOB108[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+E23/4    | parallel_data[104]  | out   | IOB108[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+G22/4    | parallel_data[98]   | out   | IOB110[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+F22/4    | parallel_data[99]   | out   | IOB110[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+J24/4    | parallel_data[96]   | out   | IOB112[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+H24/4    | parallel_data[97]   | out   | IOB112[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+J23/4    | parallel_data[91]   | out   | IOB114[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+H23/4    | parallel_data[92]   | out   | IOB114[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+H21/4    | parallel_data[89]   | out   | IOB116[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+H22/4    | parallel_data[90]   | out   | IOB116[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+G20/4    | parallel_data[84]   | out   | IOB120[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+G21/4    | parallel_data[88]   | out   | IOB120[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+K21/4    | parallel_data[82]   | out   | IOB122[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+J21/4    | parallel_data[83]   | out   | IOB122[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+L17/4    | parallel_data[80]   | out   | IOB124[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+L18/4    | parallel_data[81]   | out   | IOB124[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+J19/4    | parallel_data[27]   | out   | IOB126[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+H19/4    | parallel_data[28]   | out   | IOB126[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+J18/4    | parallel_data[25]   | out   | IOB129[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+H18/4    | parallel_data[26]   | out   | IOB129[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+K20/4    | parallel_data[12]   | out   | IOB131[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+J20/4    | parallel_data[24]   | out   | IOB131[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+E25/4    | parallel_data[10]   | out   | IOB133[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+D25/4    | parallel_data[11]   | out   | IOB133[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+E26/4    | parallel_data[8]    | out   | IOB135[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+D26/4    | parallel_data[9]    | out   | IOB135[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+H26/4    | parallel_data[134]  | out   | IOB138[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+G26/4    | parallel_data[135]  | out   | IOB138[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+G24/4    | parallel_data[127]  | out   | IOB140[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+F24/4    | parallel_data[133]  | out   | IOB140[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+J25/4    | parallel_data[125]  | out   | IOB142[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+J26/4    | parallel_data[126]  | out   | IOB142[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+G25/4    | parallel_data[118]  | out   | IOB144[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+F25/4    | parallel_data[119]  | out   | IOB144[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+K18/4    | parallel_data[117]  | out   | IOB146[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
 J10/10   | -                   | out   | IOB169[A] | LVCMOS33 | 8     | UP        | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
 H11/10   | -                   | in    | IOB169[B] | LVCMOS33 | 8     | UP        | OFF       | ON         | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
 V11/10   | -                   | in    | IOB171[A] | LVCMOS33 | 8     | UP        | OFF       | ON         | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
@@ -452,7 +452,7 @@ AB7/10   | -                   | in    | IOB175[A] | LVCMOS33 | 8     | UP      
 H13/10   | -                   | in    | IOB175[B] | LVCMOS33 | 8     | UP        | OFF       | ON         | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
 Y9/10    | -                   | in    | IOB177[A] | LVCMOS33 | 8     | UP        | OFF       | ON         | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
 W9/10    | -                   | in    | IOB177[B] | LVCMOS33 | 8     | UP        | OFF       | ON         | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-AB15/10  | parallel_data[114]  | out   | IOB179[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+AB15/10  | parallel_data[111]  | out   | IOB179[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
 AE16/10  | -                   | in    | IOB179[B] | LVCMOS33 | 8     | UP        | OFF       | ON         | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 U4/7     | -                   | in    | IOL1[A]  | LVCMOS33 | 8     | UP        | OFF       | ON         | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
@@ -478,83 +478,83 @@ R1/7     | -                   | in    | IOL22[A] | LVCMOS33 | 8     | UP       
 P1/7     | -                   | in    | IOL22[B] | LVCMOS33 | 8     | UP        | OFF       | ON         | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
 R3/7     | -                   | in    | IOL24[A] | LVCMOS33 | 8     | UP        | OFF       | ON         | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
 P3/7     | -                   | in    | IOL24[B] | LVCMOS33 | 8     | UP        | OFF       | ON         | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-P4/7     | parallel_data[175]  | out   | IOL26[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+P4/7     | dout_vld            | out   | IOL26[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
 N4/7     | -                   | in    | IOL26[B] | LVCMOS33 | 8     | UP        | OFF       | ON         | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-N3/7     | parallel_data[173]  | out   | IOL29[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-N2/7     | parallel_data[174]  | out   | IOL29[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-M2/7     | parallel_data[166]  | out   | IOL31[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-L2/7     | parallel_data[167]  | out   | IOL31[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-K1/7     | parallel_data[172]  | out   | IOL33[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-J1/7     | parallel_data[165]  | out   | IOL33[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-N1/7     | parallel_data[170]  | out   | IOL35[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-M1/7     | parallel_data[171]  | out   | IOL35[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-L3/7     | parallel_data[168]  | out   | IOL38[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-K2/7     | parallel_data[169]  | out   | IOL38[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-H2/7     | parallel_data[11]   | out   | IOL40[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-H1/7     | parallel_data[12]   | out   | IOL40[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-N7/7     | parallel_data[9]    | out   | IOL42[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-N6/7     | parallel_data[10]   | out   | IOL42[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-M6/7     | parallel_data[191]  | out   | IOL44[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-M5/7     | parallel_data[8]    | out   | IOL44[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-L5/7     | parallel_data[189]  | out   | IOL47[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-K5/7     | parallel_data[190]  | out   | IOL47[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-M4/7     | parallel_data[182]  | out   | IOL49[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-L4/7     | parallel_data[183]  | out   | IOL49[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-K3/7     | parallel_data[196]  | out   | IOL51[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-J3/7     | parallel_data[181]  | out   | IOL51[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-M7/7     | parallel_data[194]  | out   | IOL53[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-L7/7     | parallel_data[195]  | out   | IOL53[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-N8/7     | parallel_data[193]  | out   | IOL55[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-G2/6     | parallel_data[188]  | out   | IOL56[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-G1/6     | parallel_data[192]  | out   | IOL56[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-F2/6     | parallel_data[186]  | out   | IOL58[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-E2/6     | parallel_data[187]  | out   | IOL58[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-C2/6     | parallel_data[184]  | out   | IOL60[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-B2/6     | parallel_data[185]  | out   | IOL60[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-E1/6     | parallel_data[179]  | out   | IOL62[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-D1/6     | parallel_data[180]  | out   | IOL62[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-C1/6     | parallel_data[177]  | out   | IOL65[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-B1/6     | parallel_data[178]  | out   | IOL65[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-A3/6     | parallel_data[164]  | out   | IOL67[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-A2/6     | parallel_data[176]  | out   | IOL67[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-J4/6     | parallel_data[162]  | out   | IOL69[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-H4/6     | parallel_data[163]  | out   | IOL69[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-K7/6     | parallel_data[160]  | out   | IOL71[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-K6/6     | parallel_data[161]  | out   | IOL71[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-H3/6     | parallel_data[108]  | out   | IOL73[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-J6/6     | parallel_data[106]  | out   | IOL74[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-J5/6     | parallel_data[107]  | out   | IOL74[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-L8/6     | parallel_data[104]  | out   | IOL76[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-K8/6     | parallel_data[105]  | out   | IOL76[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-G4/6     | parallel_data[59]   | out   | IOL78[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-F4/6     | parallel_data[60]   | out   | IOL78[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-G5/6     | parallel_data[57]   | out   | IOL80[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-F5/6     | parallel_data[58]   | out   | IOL80[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-E5/6     | parallel_data[199]  | out   | IOL83[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-D5/6     | parallel_data[56]   | out   | IOL83[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-D4/6     | parallel_data[197]  | out   | IOL85[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-C4/6     | parallel_data[198]  | out   | IOL85[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-B4/6     | parallel_data[158]  | out   | IOL87[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-A4/6     | parallel_data[159]  | out   | IOL87[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-F3/6     | parallel_data[119]  | out   | IOL89[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-E3/6     | parallel_data[157]  | out   | IOL89[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-D3/6     | parallel_data[117]  | out   | IOL92[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-C3/6     | parallel_data[118]  | out   | IOL92[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-B5/6     | parallel_data[70]   | out   | IOL94[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-A5/6     | parallel_data[71]   | out   | IOL94[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-H7/6     | parallel_data[103]  | out   | IOL96[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-G7/6     | parallel_data[69]   | out   | IOL96[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-H6/6     | parallel_data[101]  | out   | IOL98[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-G6/6     | parallel_data[102]  | out   | IOL98[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-E6/6     | parallel_data[38]   | out   | IOL101[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-D6/6     | parallel_data[39]   | out   | IOL101[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-H8/6     | parallel_data[95]   | out   | IOL103[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-G8/6     | parallel_data[37]   | out   | IOL103[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-F8/6     | parallel_data[93]   | out   | IOL105[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-F7/6     | parallel_data[94]   | out   | IOL105[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-H9/6     | parallel_data[30]   | out   | IOL107[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-G9/6     | parallel_data[31]   | out   | IOL107[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-J8/6     | parallel_data[29]   | out   | IOL109[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+N3/7     | parallel_data[46]   | out   | IOL29[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+N2/7     | parallel_data[47]   | out   | IOL29[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+M2/7     | parallel_data[39]   | out   | IOL31[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+L2/7     | parallel_data[45]   | out   | IOL31[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+K1/7     | parallel_data[37]   | out   | IOL33[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+J1/7     | parallel_data[38]   | out   | IOL33[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+N1/7     | parallel_data[199]  | out   | IOL35[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+M1/7     | PEclk               | out   | IOL35[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+L3/7     | parallel_data[197]  | out   | IOL38[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+K2/7     | parallel_data[198]  | out   | IOL38[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+H2/7     | parallel_data[190]  | out   | IOL40[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+H1/7     | parallel_data[191]  | out   | IOL40[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+N7/7     | parallel_data[183]  | out   | IOL42[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+N6/7     | parallel_data[189]  | out   | IOL42[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+M6/7     | parallel_data[181]  | out   | IOL44[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+M5/7     | parallel_data[182]  | out   | IOL44[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+L5/7     | parallel_data[174]  | out   | IOL47[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+K5/7     | parallel_data[175]  | out   | IOL47[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+M4/7     | parallel_data[167]  | out   | IOL49[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+L4/7     | parallel_data[173]  | out   | IOL49[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+K3/7     | parallel_data[165]  | out   | IOL51[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+J3/7     | parallel_data[166]  | out   | IOL51[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+M7/7     | parallel_data[158]  | out   | IOL53[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+L7/7     | parallel_data[159]  | out   | IOL53[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+N8/7     | parallel_data[157]  | out   | IOL55[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+G2/6     | parallel_data[195]  | out   | IOL56[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+G1/6     | parallel_data[196]  | out   | IOL56[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+F2/6     | parallel_data[193]  | out   | IOL58[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+E2/6     | parallel_data[194]  | out   | IOL58[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+C2/6     | parallel_data[188]  | out   | IOL60[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+B2/6     | parallel_data[192]  | out   | IOL60[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+E1/6     | parallel_data[186]  | out   | IOL62[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+D1/6     | parallel_data[187]  | out   | IOL62[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+C1/6     | parallel_data[184]  | out   | IOL65[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+B1/6     | parallel_data[185]  | out   | IOL65[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+A3/6     | parallel_data[171]  | out   | IOL67[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+A2/6     | parallel_data[172]  | out   | IOL67[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+J4/6     | parallel_data[169]  | out   | IOL69[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+H4/6     | parallel_data[170]  | out   | IOL69[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+K7/6     | parallel_data[164]  | out   | IOL71[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+K6/6     | parallel_data[168]  | out   | IOL71[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+H3/6     | parallel_data[163]  | out   | IOL73[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+J6/6     | parallel_data[161]  | out   | IOL74[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+J5/6     | parallel_data[162]  | out   | IOL74[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+L8/6     | parallel_data[156]  | out   | IOL76[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+K8/6     | parallel_data[160]  | out   | IOL76[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+G4/6     | parallel_data[154]  | out   | IOL78[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+F4/6     | parallel_data[155]  | out   | IOL78[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+G5/6     | parallel_data[152]  | out   | IOL80[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+F5/6     | parallel_data[153]  | out   | IOL80[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+E5/6     | parallel_data[75]   | out   | IOL83[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+D5/6     | parallel_data[76]   | out   | IOL83[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+D4/6     | parallel_data[73]   | out   | IOL85[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+C4/6     | parallel_data[74]   | out   | IOL85[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+B4/6     | parallel_data[68]   | out   | IOL87[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+A4/6     | parallel_data[72]   | out   | IOL87[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+F3/6     | parallel_data[66]   | out   | IOL89[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+E3/6     | parallel_data[67]   | out   | IOL89[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+D3/6     | parallel_data[64]   | out   | IOL92[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+C3/6     | parallel_data[65]   | out   | IOL92[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+B5/6     | parallel_data[43]   | out   | IOL94[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+A5/6     | parallel_data[44]   | out   | IOL94[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+H7/6     | parallel_data[41]   | out   | IOL96[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+G7/6     | parallel_data[42]   | out   | IOL96[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+H6/6     | parallel_data[36]   | out   | IOL98[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+G6/6     | parallel_data[40]   | out   | IOL98[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+E6/6     | parallel_data[34]   | out   | IOL101[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+D6/6     | parallel_data[35]   | out   | IOL101[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+H8/6     | parallel_data[32]   | out   | IOL103[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+G8/6     | parallel_data[33]   | out   | IOL103[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+F8/6     | parallel_data[150]  | out   | IOL105[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+F7/6     | parallel_data[151]  | out   | IOL105[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+H9/6     | parallel_data[143]  | out   | IOL107[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+G9/6     | parallel_data[149]  | out   | IOL107[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+J8/6     | parallel_data[142]  | out   | IOL109[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 U17/2    | -                   | in    | IOR1[A]  | LVCMOS33 | 8     | UP        | OFF       | ON         | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
 V16/2    | -                   | in    | IOR2[A]  | LVCMOS33 | 8     | UP        | OFF       | ON         | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
@@ -626,36 +626,36 @@ R18/3    | parallel_data[202]  | out   | IOR73[A] | LVCMOS33 | 8     | NONE     
 P23/3    | parallel_data[203]  | out   | IOR74[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
 P24/3    | parallel_data[204]  | out   | IOR74[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
 N23/3    | parallel_data[205]  | out   | IOR76[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-N24/3    | parallel_data[16]   | out   | IOR76[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-P20/3    | parallel_data[17]   | out   | IOR78[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-P21/3    | parallel_data[18]   | out   | IOR78[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-N21/3    | parallel_data[19]   | out   | IOR80[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-N22/3    | parallel_data[20]   | out   | IOR80[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-M21/3    | PEclk               | out   | IOR83[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-M22/3    | parallel_data[24]   | out   | IOR83[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-L22/3    | parallel_data[25]   | out   | IOR85[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-L23/3    | parallel_data[26]   | out   | IOR85[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-M24/3    | parallel_data[27]   | out   | IOR87[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-M25/3    | parallel_data[28]   | out   | IOR87[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+N24/3    | parallel_data[128]  | out   | IOR76[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+P20/3    | parallel_data[129]  | out   | IOR78[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+P21/3    | parallel_data[130]  | out   | IOR78[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+N21/3    | parallel_data[131]  | out   | IOR80[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+N22/3    | parallel_data[132]  | out   | IOR80[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+M21/3    | parallel_data[144]  | out   | IOR83[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+M22/3    | parallel_data[145]  | out   | IOR83[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+L22/3    | parallel_data[146]  | out   | IOR85[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+L23/3    | parallel_data[147]  | out   | IOR85[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+M24/3    | parallel_data[148]  | out   | IOR87[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+M25/3    | parallel_data[93]   | out   | IOR87[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
 L24/3    | -                   | in    | IOR89[A] | LVCMOS33 | 8     | UP        | OFF       | ON         | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-L25/3    | parallel_data[88]   | out   | IOR89[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-M20/3    | parallel_data[89]   | out   | IOR92[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-L20/3    | parallel_data[90]   | out   | IOR92[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-K25/3    | parallel_data[91]   | out   | IOR94[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-K26/3    | parallel_data[92]   | out   | IOR94[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+L25/3    | parallel_data[94]   | out   | IOR89[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+M20/3    | parallel_data[95]   | out   | IOR92[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+L20/3    | parallel_data[101]  | out   | IOR92[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+K25/3    | parallel_data[102]  | out   | IOR94[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+K26/3    | parallel_data[103]  | out   | IOR94[B] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
 P18/3    | -                   | in    | IOR96[A] | LVCMOS33 | 8     | UP        | OFF       | ON         | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
 N18/3    | -                   | in    | IOR96[B] | LVCMOS33 | 8     | UP        | OFF       | ON         | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
 R16/3    | -                   | in    | IOR98[A] | LVCMOS33 | 8     | UP        | OFF       | ON         | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
 R17/3    | -                   | in    | IOR98[B] | LVCMOS33 | 8     | UP        | OFF       | ON         | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
 N16/3    | -                   | in    | IOR101[A] | LVCMOS33 | 8     | UP        | OFF       | ON         | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
 N17/3    | -                   | in    | IOR101[B] | LVCMOS33 | 8     | UP        | OFF       | ON         | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-P15/3    | parallel_data[112]  | out   | IOR103[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+P15/3    | parallel_data[109]  | out   | IOR103[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
 P16/3    | clk50M              | in    | IOR103[B] | LVCMOS33 | OFF   | NONE      | OFF       | ON         | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
 R14/3    | -                   | in    | IOR105[A] | LVCMOS33 | 8     | UP        | OFF       | ON         | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
 R15/3    | -                   | in    | IOR105[B] | LVCMOS33 | 8     | UP        | OFF       | ON         | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
 P14/3    | -                   | in    | IOR107[A] | LVCMOS33 | 8     | UP        | OFF       | ON         | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
 N14/3    | -                   | in    | IOR107[B] | LVCMOS33 | 8     | UP        | OFF       | ON         | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
-M19/3    | parallel_data[113]  | out   | IOR109[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
+M19/3    | parallel_data[110]  | out   | IOR109[A] | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | OFF        | OFF             | OFF           | 3.3   | MEDIUM       
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ================================================================================================================================================================================================
 
