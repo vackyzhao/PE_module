@@ -13,12 +13,13 @@
         <File path="D:\document\GitHub\PE_module\IRCAM\src\gowin_pll\gowin_pll.v" type="verilog"/>
         <File path="D:\document\GitHub\PE_module\IRCAM\src\input_pre_data_module.v" type="verilog"/>
         <File path="D:\document\GitHub\PE_module\IRCAM\src\input_pre_sram.v" type="verilog"/>
+        <File path="D:\document\GitHub\PE_module\IRCAM\src\shift_register.v" type="verilog"/>
+        <File path="D:\document\GitHub\PE_module\IRCAM\src\sirv_gnrl_dffs.v" type="verilog"/>
+        <File path="D:\document\GitHub\PE_module\IRCAM\src\CustomActivation.v" type="verilog"/>
         <File path="D:\document\GitHub\PE_module\IRCAM\src\middle_new_PE.v" type="verilog"/>
         <File path="D:\document\GitHub\PE_module\IRCAM\src\middle_new_PEx24.v" type="verilog"/>
         <File path="D:\document\GitHub\PE_module\IRCAM\src\mult_ip.v" type="verilog"/>
         <File path="D:\document\GitHub\PE_module\IRCAM\src\new_PE.v" type="verilog"/>
-        <File path="D:\document\GitHub\PE_module\IRCAM\src\shift_register.v" type="verilog"/>
-        <File path="D:\document\GitHub\PE_module\IRCAM\src\sirv_gnrl_dffs.v" type="verilog"/>
     </FileList>
     <OptionList>
         <Option type="disable_insert_pad" value="0"/>
@@ -26,7 +27,7 @@
         <Option type="output_file" value="D:\document\GitHub\PE_module\IRCAM\impl\gwsynthesis\TEST.vg"/>
         <Option type="print_all_synthesis_warning" value="0"/>
         <Option type="ram_rw_check" value="0"/>
-        <Option type="top_module" value="top"/>
+        <Option type="top_module" value="middle_new_PEx24"/>
         <Option type="verilog_language" value="sysv-2017"/>
         <Option type="vhdl_language" value="vhdl-1993"/>
     </OptionList>

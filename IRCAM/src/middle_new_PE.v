@@ -27,14 +27,19 @@ wire [13:0] Psum_1;  // 内部传递运算结果
 wire [13:0] Psum_0;  // 内部传递运算结果
 
 // 定义输出寄存器
-reg [7:0] Psum_out;
+//reg [7:0] Psum_out;
 
 // 输入信号，范围为0到2^13-1
 wire [13:0] Psum_out_tmp;
 
 wire [7:0] unused_signal;  // 创建一个无连接的临时信号
 
+CustomActivation CustomActivation_inst(
+    .din(Psum_out_tmp),
+    .dout(Psum_out)
+);
 // 组合逻辑块，根据输入范围设置输出
+/*
 always @(*) begin
     if (Psum_out_tmp < 64) begin
         // 如果输入小于64，直接将输出设置为输入的低8位
@@ -53,7 +58,7 @@ always @(*) begin
         Psum_out = 8'b0;
     end
 end
-
+*/
 new_PE_Unit new_PE_Unit_2 (
     .clk(clk),  // PE时钟
     .rst_n(rst_n),  // 复位信号，低有效

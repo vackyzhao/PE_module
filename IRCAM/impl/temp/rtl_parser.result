@@ -88,6 +88,46 @@
   ]
  },
  {
+  "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/sirv_gnrl_dffs.v",
+  "InstLine" : 41,
+  "InstName" : "sirv_gnrl_dfflrs",
+  "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/sirv_gnrl_dffs.v",
+  "ModuleLine" : 41,
+  "ModuleName" : "sirv_gnrl_dfflrs"
+ },
+ {
+  "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/sirv_gnrl_dffs.v",
+  "InstLine" : 128,
+  "InstName" : "sirv_gnrl_dffl",
+  "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/sirv_gnrl_dffs.v",
+  "ModuleLine" : 128,
+  "ModuleName" : "sirv_gnrl_dffl"
+ },
+ {
+  "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/sirv_gnrl_dffs.v",
+  "InstLine" : 170,
+  "InstName" : "sirv_gnrl_dffrs",
+  "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/sirv_gnrl_dffs.v",
+  "ModuleLine" : 170,
+  "ModuleName" : "sirv_gnrl_dffrs"
+ },
+ {
+  "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/sirv_gnrl_dffs.v",
+  "InstLine" : 199,
+  "InstName" : "sirv_gnrl_dffr",
+  "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/sirv_gnrl_dffs.v",
+  "ModuleLine" : 199,
+  "ModuleName" : "sirv_gnrl_dffr"
+ },
+ {
+  "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/sirv_gnrl_dffs.v",
+  "InstLine" : 227,
+  "InstName" : "sirv_gnrl_ltch",
+  "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/sirv_gnrl_dffs.v",
+  "ModuleLine" : 227,
+  "ModuleName" : "sirv_gnrl_ltch"
+ },
+ {
   "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PEx24.v",
   "InstLine" : 2,
   "InstName" : "middle_new_PEx24",
@@ -129,7 +169,15 @@
     "SubInsts" : [
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 57,
+      "InstLine" : 37,
+      "InstName" : "CustomActivation_inst",
+      "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/CustomActivation.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "CustomActivation"
+     },
+     {
+      "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
+      "InstLine" : 62,
       "InstName" : "new_PE_Unit_2",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -205,7 +253,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 71,
+      "InstLine" : 76,
       "InstName" : "new_PE_Unit_1",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -281,7 +329,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 85,
+      "InstLine" : 90,
       "InstName" : "new_PE_Unit_0",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -367,7 +415,15 @@
     "SubInsts" : [
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 57,
+      "InstLine" : 37,
+      "InstName" : "CustomActivation_inst",
+      "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/CustomActivation.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "CustomActivation"
+     },
+     {
+      "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
+      "InstLine" : 62,
       "InstName" : "new_PE_Unit_2",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -443,7 +499,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 71,
+      "InstLine" : 76,
       "InstName" : "new_PE_Unit_1",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -519,7 +575,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 85,
+      "InstLine" : 90,
       "InstName" : "new_PE_Unit_0",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -605,7 +661,15 @@
     "SubInsts" : [
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 57,
+      "InstLine" : 37,
+      "InstName" : "CustomActivation_inst",
+      "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/CustomActivation.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "CustomActivation"
+     },
+     {
+      "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
+      "InstLine" : 62,
       "InstName" : "new_PE_Unit_2",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -681,7 +745,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 71,
+      "InstLine" : 76,
       "InstName" : "new_PE_Unit_1",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -757,7 +821,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 85,
+      "InstLine" : 90,
       "InstName" : "new_PE_Unit_0",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -843,7 +907,15 @@
     "SubInsts" : [
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 57,
+      "InstLine" : 37,
+      "InstName" : "CustomActivation_inst",
+      "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/CustomActivation.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "CustomActivation"
+     },
+     {
+      "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
+      "InstLine" : 62,
       "InstName" : "new_PE_Unit_2",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -919,7 +991,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 71,
+      "InstLine" : 76,
       "InstName" : "new_PE_Unit_1",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -995,7 +1067,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 85,
+      "InstLine" : 90,
       "InstName" : "new_PE_Unit_0",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -1081,7 +1153,15 @@
     "SubInsts" : [
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 57,
+      "InstLine" : 37,
+      "InstName" : "CustomActivation_inst",
+      "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/CustomActivation.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "CustomActivation"
+     },
+     {
+      "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
+      "InstLine" : 62,
       "InstName" : "new_PE_Unit_2",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -1157,7 +1237,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 71,
+      "InstLine" : 76,
       "InstName" : "new_PE_Unit_1",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -1233,7 +1313,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 85,
+      "InstLine" : 90,
       "InstName" : "new_PE_Unit_0",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -1319,7 +1399,15 @@
     "SubInsts" : [
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 57,
+      "InstLine" : 37,
+      "InstName" : "CustomActivation_inst",
+      "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/CustomActivation.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "CustomActivation"
+     },
+     {
+      "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
+      "InstLine" : 62,
       "InstName" : "new_PE_Unit_2",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -1395,7 +1483,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 71,
+      "InstLine" : 76,
       "InstName" : "new_PE_Unit_1",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -1471,7 +1559,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 85,
+      "InstLine" : 90,
       "InstName" : "new_PE_Unit_0",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -1557,7 +1645,15 @@
     "SubInsts" : [
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 57,
+      "InstLine" : 37,
+      "InstName" : "CustomActivation_inst",
+      "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/CustomActivation.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "CustomActivation"
+     },
+     {
+      "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
+      "InstLine" : 62,
       "InstName" : "new_PE_Unit_2",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -1633,7 +1729,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 71,
+      "InstLine" : 76,
       "InstName" : "new_PE_Unit_1",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -1709,7 +1805,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 85,
+      "InstLine" : 90,
       "InstName" : "new_PE_Unit_0",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -1795,7 +1891,15 @@
     "SubInsts" : [
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 57,
+      "InstLine" : 37,
+      "InstName" : "CustomActivation_inst",
+      "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/CustomActivation.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "CustomActivation"
+     },
+     {
+      "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
+      "InstLine" : 62,
       "InstName" : "new_PE_Unit_2",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -1871,7 +1975,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 71,
+      "InstLine" : 76,
       "InstName" : "new_PE_Unit_1",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -1947,7 +2051,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 85,
+      "InstLine" : 90,
       "InstName" : "new_PE_Unit_0",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -2033,7 +2137,15 @@
     "SubInsts" : [
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 57,
+      "InstLine" : 37,
+      "InstName" : "CustomActivation_inst",
+      "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/CustomActivation.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "CustomActivation"
+     },
+     {
+      "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
+      "InstLine" : 62,
       "InstName" : "new_PE_Unit_2",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -2109,7 +2221,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 71,
+      "InstLine" : 76,
       "InstName" : "new_PE_Unit_1",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -2185,7 +2297,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 85,
+      "InstLine" : 90,
       "InstName" : "new_PE_Unit_0",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -2271,7 +2383,15 @@
     "SubInsts" : [
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 57,
+      "InstLine" : 37,
+      "InstName" : "CustomActivation_inst",
+      "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/CustomActivation.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "CustomActivation"
+     },
+     {
+      "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
+      "InstLine" : 62,
       "InstName" : "new_PE_Unit_2",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -2347,7 +2467,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 71,
+      "InstLine" : 76,
       "InstName" : "new_PE_Unit_1",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -2423,7 +2543,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 85,
+      "InstLine" : 90,
       "InstName" : "new_PE_Unit_0",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -2509,7 +2629,15 @@
     "SubInsts" : [
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 57,
+      "InstLine" : 37,
+      "InstName" : "CustomActivation_inst",
+      "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/CustomActivation.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "CustomActivation"
+     },
+     {
+      "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
+      "InstLine" : 62,
       "InstName" : "new_PE_Unit_2",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -2585,7 +2713,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 71,
+      "InstLine" : 76,
       "InstName" : "new_PE_Unit_1",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -2661,7 +2789,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 85,
+      "InstLine" : 90,
       "InstName" : "new_PE_Unit_0",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -2747,7 +2875,15 @@
     "SubInsts" : [
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 57,
+      "InstLine" : 37,
+      "InstName" : "CustomActivation_inst",
+      "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/CustomActivation.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "CustomActivation"
+     },
+     {
+      "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
+      "InstLine" : 62,
       "InstName" : "new_PE_Unit_2",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -2823,7 +2959,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 71,
+      "InstLine" : 76,
       "InstName" : "new_PE_Unit_1",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -2899,7 +3035,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 85,
+      "InstLine" : 90,
       "InstName" : "new_PE_Unit_0",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -2985,7 +3121,15 @@
     "SubInsts" : [
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 57,
+      "InstLine" : 37,
+      "InstName" : "CustomActivation_inst",
+      "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/CustomActivation.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "CustomActivation"
+     },
+     {
+      "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
+      "InstLine" : 62,
       "InstName" : "new_PE_Unit_2",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -3061,7 +3205,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 71,
+      "InstLine" : 76,
       "InstName" : "new_PE_Unit_1",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -3137,7 +3281,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 85,
+      "InstLine" : 90,
       "InstName" : "new_PE_Unit_0",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -3223,7 +3367,15 @@
     "SubInsts" : [
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 57,
+      "InstLine" : 37,
+      "InstName" : "CustomActivation_inst",
+      "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/CustomActivation.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "CustomActivation"
+     },
+     {
+      "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
+      "InstLine" : 62,
       "InstName" : "new_PE_Unit_2",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -3299,7 +3451,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 71,
+      "InstLine" : 76,
       "InstName" : "new_PE_Unit_1",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -3375,7 +3527,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 85,
+      "InstLine" : 90,
       "InstName" : "new_PE_Unit_0",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -3461,7 +3613,15 @@
     "SubInsts" : [
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 57,
+      "InstLine" : 37,
+      "InstName" : "CustomActivation_inst",
+      "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/CustomActivation.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "CustomActivation"
+     },
+     {
+      "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
+      "InstLine" : 62,
       "InstName" : "new_PE_Unit_2",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -3537,7 +3697,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 71,
+      "InstLine" : 76,
       "InstName" : "new_PE_Unit_1",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -3613,7 +3773,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 85,
+      "InstLine" : 90,
       "InstName" : "new_PE_Unit_0",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -3699,7 +3859,15 @@
     "SubInsts" : [
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 57,
+      "InstLine" : 37,
+      "InstName" : "CustomActivation_inst",
+      "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/CustomActivation.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "CustomActivation"
+     },
+     {
+      "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
+      "InstLine" : 62,
       "InstName" : "new_PE_Unit_2",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -3775,7 +3943,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 71,
+      "InstLine" : 76,
       "InstName" : "new_PE_Unit_1",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -3851,7 +4019,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 85,
+      "InstLine" : 90,
       "InstName" : "new_PE_Unit_0",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -3937,7 +4105,15 @@
     "SubInsts" : [
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 57,
+      "InstLine" : 37,
+      "InstName" : "CustomActivation_inst",
+      "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/CustomActivation.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "CustomActivation"
+     },
+     {
+      "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
+      "InstLine" : 62,
       "InstName" : "new_PE_Unit_2",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -4013,7 +4189,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 71,
+      "InstLine" : 76,
       "InstName" : "new_PE_Unit_1",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -4089,7 +4265,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 85,
+      "InstLine" : 90,
       "InstName" : "new_PE_Unit_0",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -4175,7 +4351,15 @@
     "SubInsts" : [
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 57,
+      "InstLine" : 37,
+      "InstName" : "CustomActivation_inst",
+      "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/CustomActivation.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "CustomActivation"
+     },
+     {
+      "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
+      "InstLine" : 62,
       "InstName" : "new_PE_Unit_2",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -4251,7 +4435,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 71,
+      "InstLine" : 76,
       "InstName" : "new_PE_Unit_1",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -4327,7 +4511,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 85,
+      "InstLine" : 90,
       "InstName" : "new_PE_Unit_0",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -4413,7 +4597,15 @@
     "SubInsts" : [
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 57,
+      "InstLine" : 37,
+      "InstName" : "CustomActivation_inst",
+      "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/CustomActivation.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "CustomActivation"
+     },
+     {
+      "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
+      "InstLine" : 62,
       "InstName" : "new_PE_Unit_2",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -4489,7 +4681,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 71,
+      "InstLine" : 76,
       "InstName" : "new_PE_Unit_1",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -4565,7 +4757,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 85,
+      "InstLine" : 90,
       "InstName" : "new_PE_Unit_0",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -4651,7 +4843,15 @@
     "SubInsts" : [
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 57,
+      "InstLine" : 37,
+      "InstName" : "CustomActivation_inst",
+      "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/CustomActivation.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "CustomActivation"
+     },
+     {
+      "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
+      "InstLine" : 62,
       "InstName" : "new_PE_Unit_2",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -4727,7 +4927,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 71,
+      "InstLine" : 76,
       "InstName" : "new_PE_Unit_1",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -4803,7 +5003,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 85,
+      "InstLine" : 90,
       "InstName" : "new_PE_Unit_0",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -4889,7 +5089,15 @@
     "SubInsts" : [
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 57,
+      "InstLine" : 37,
+      "InstName" : "CustomActivation_inst",
+      "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/CustomActivation.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "CustomActivation"
+     },
+     {
+      "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
+      "InstLine" : 62,
       "InstName" : "new_PE_Unit_2",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -4965,7 +5173,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 71,
+      "InstLine" : 76,
       "InstName" : "new_PE_Unit_1",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -5041,7 +5249,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 85,
+      "InstLine" : 90,
       "InstName" : "new_PE_Unit_0",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -5127,7 +5335,15 @@
     "SubInsts" : [
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 57,
+      "InstLine" : 37,
+      "InstName" : "CustomActivation_inst",
+      "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/CustomActivation.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "CustomActivation"
+     },
+     {
+      "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
+      "InstLine" : 62,
       "InstName" : "new_PE_Unit_2",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -5203,7 +5419,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 71,
+      "InstLine" : 76,
       "InstName" : "new_PE_Unit_1",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -5279,7 +5495,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 85,
+      "InstLine" : 90,
       "InstName" : "new_PE_Unit_0",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -5365,7 +5581,15 @@
     "SubInsts" : [
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 57,
+      "InstLine" : 37,
+      "InstName" : "CustomActivation_inst",
+      "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/CustomActivation.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "CustomActivation"
+     },
+     {
+      "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
+      "InstLine" : 62,
       "InstName" : "new_PE_Unit_2",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -5441,7 +5665,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 71,
+      "InstLine" : 76,
       "InstName" : "new_PE_Unit_1",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -5517,7 +5741,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 85,
+      "InstLine" : 90,
       "InstName" : "new_PE_Unit_0",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -5603,7 +5827,15 @@
     "SubInsts" : [
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 57,
+      "InstLine" : 37,
+      "InstName" : "CustomActivation_inst",
+      "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/CustomActivation.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "CustomActivation"
+     },
+     {
+      "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
+      "InstLine" : 62,
       "InstName" : "new_PE_Unit_2",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -5679,7 +5911,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 71,
+      "InstLine" : 76,
       "InstName" : "new_PE_Unit_1",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -5755,7 +5987,7 @@
      },
      {
       "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
-      "InstLine" : 85,
+      "InstLine" : 90,
       "InstName" : "new_PE_Unit_0",
       "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
       "ModuleLine" : 3,
@@ -5832,45 +6064,5 @@
     ]
    }
   ]
- },
- {
-  "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/sirv_gnrl_dffs.v",
-  "InstLine" : 41,
-  "InstName" : "sirv_gnrl_dfflrs",
-  "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/sirv_gnrl_dffs.v",
-  "ModuleLine" : 41,
-  "ModuleName" : "sirv_gnrl_dfflrs"
- },
- {
-  "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/sirv_gnrl_dffs.v",
-  "InstLine" : 128,
-  "InstName" : "sirv_gnrl_dffl",
-  "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/sirv_gnrl_dffs.v",
-  "ModuleLine" : 128,
-  "ModuleName" : "sirv_gnrl_dffl"
- },
- {
-  "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/sirv_gnrl_dffs.v",
-  "InstLine" : 170,
-  "InstName" : "sirv_gnrl_dffrs",
-  "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/sirv_gnrl_dffs.v",
-  "ModuleLine" : 170,
-  "ModuleName" : "sirv_gnrl_dffrs"
- },
- {
-  "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/sirv_gnrl_dffs.v",
-  "InstLine" : 199,
-  "InstName" : "sirv_gnrl_dffr",
-  "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/sirv_gnrl_dffs.v",
-  "ModuleLine" : 199,
-  "ModuleName" : "sirv_gnrl_dffr"
- },
- {
-  "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/sirv_gnrl_dffs.v",
-  "InstLine" : 227,
-  "InstName" : "sirv_gnrl_ltch",
-  "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/sirv_gnrl_dffs.v",
-  "ModuleLine" : 227,
-  "ModuleName" : "sirv_gnrl_ltch"
  }
 ]
