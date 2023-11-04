@@ -2,6 +2,10 @@
  "Device" : "GW5AST-138B",
  "Files" : [
   {
+   "Path" : "D:/document/GitHub/PE_module/IRCAM/src/CustomActivation.v",
+   "Type" : "verilog"
+  },
+  {
    "Path" : "D:/document/GitHub/PE_module/IRCAM/src/IRCAM.v",
    "Type" : "verilog"
   },
@@ -38,18 +42,6 @@
    "Type" : "verilog"
   },
   {
-   "Path" : "D:/document/GitHub/PE_module/IRCAM/src/shift_register.v",
-   "Type" : "verilog"
-  },
-  {
-   "Path" : "D:/document/GitHub/PE_module/IRCAM/src/sirv_gnrl_dffs.v",
-   "Type" : "verilog"
-  },
-  {
-   "Path" : "D:/document/GitHub/PE_module/IRCAM/src/CustomActivation.v",
-   "Type" : "verilog"
-  },
-  {
    "Path" : "D:/document/GitHub/PE_module/IRCAM/src/middle_new_PE.v",
    "Type" : "verilog"
   },
@@ -64,6 +56,18 @@
   {
    "Path" : "D:/document/GitHub/PE_module/IRCAM/src/new_PE.v",
    "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/document/GitHub/PE_module/IRCAM/src/shift_register.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/document/GitHub/PE_module/IRCAM/src/sirv_gnrl_dffs.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/document/GitHub/PE_module/IRCAM/src/new_pool.v",
+   "Type" : "verilog"
   }
  ],
  "IncludePath" : [
@@ -71,7 +75,7 @@
  ],
  "LoopLimit" : 2000,
  "ResultFile" : "D:/document/GitHub/PE_module/IRCAM/impl/temp/rtl_parser.result",
- "Top" : "",
+ "Top" : "middle_new_PEx24",
  "VerilogStd" : "sysv",
  "VhdlStd" : "vhdl_93"
 }

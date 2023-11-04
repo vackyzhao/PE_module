@@ -7,9 +7,9 @@ module ConvLayer2 (
     input [111:0] Ifmap_shift_in_2,  // 列输入特征图 8位*14通道=112位（数据） 
     input [111:0] Ifmap_shift_in_3,  // 列输入特征图 8位*14通道=112位（数据） 
 
-    input [47:0] Filtr_in_2,  // 输入权重 4位*3通道=12位（卷积核）
-    input [47:0] Filtr_in_1,  // 输入权重 4位*3通道=12位（卷积核）
-    input [47:0] Filtr_in_0,  // 输入权重 4位*3通道=12位（卷积核）
+    input [47:0] Filtr_in_2,  // 4x输入权重 4位*3通道=48位（卷积核）
+    input [47:0] Filtr_in_1,  // 4x输入权重 4位*3通道=48位（卷积核）
+    input [47:0] Filtr_in_0,  // 4x输入权重 4位*3通道=48位（卷积核）
 
     output reg [191:0] Psum_out_sum  // 列输出计算结果 16位*12=192位 (结果)
 );

@@ -1,9 +1,11 @@
 module Conv2Activation (
-    input [13:0]din,
-    output reg [7:0]dout
+    input [13:0] din,
+    output reg [7:0] dout
 );
 
-    always @(*) begin
+  always @(*) begin
+    dout[7:0] = din[7:0];
+    /*
     if (din < 64) begin
         // 如果输入小于64，直接将输出设置为输入的低8位
         dout = din[7:0];
@@ -20,5 +22,6 @@ module Conv2Activation (
         // 处理任何其他情况，将输出设置为0
         dout = 8'b0;
     end
-end
+    */
+  end
 endmodule
