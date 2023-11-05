@@ -67,16 +67,16 @@ module conv2_sram #(
   genvar i;
   generate
     for (i = 0; i < MW; i = i + 1) begin : mem
-      if ((8 * i + 8) > DW) begin : last
+      if ((96 * i + 96) > DW) begin : last
         always @(posedge clk) begin
           if (wen[i]) begin
-            mem_r[addr][DW-1:8*i] <= din[DW-1:8*i];  // 写入数据到存储器
+            mem_r[addr][95:0] <= din[95:0];  // 写入数据到存储器
           end
         end
       end else begin : non_last
         always @(posedge clk) begin
           if (wen[i]) begin
-            mem_r[addr][8*i+7:8*i] <= din[8*i+7:8*i];  // 写入数据到存储器
+            mem_r[addr][95:0] <= din[95:0];  // 写入数据到存储器
           end
         end
       end
