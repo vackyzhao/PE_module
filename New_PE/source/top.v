@@ -5,7 +5,6 @@ module top (
 
     input wire cam_data,
 
-    output  [95:0] pool2_out,
     output [4:0] o_result_data,
     output o_result_data_valid
 
@@ -133,7 +132,7 @@ module top (
       .valid_out(pool2_dout_vald),  // 输出数据有效信号
       .pool_end (pool2_end)
   );
-  
+
 fc_top fc_top_inst(
      .i_clk(PE_clk),
      .i_rst_n(rst_n),

@@ -45,7 +45,7 @@ module fc_sram
 
    reg [DW-1:0] mem_r [0:DP-1];
    
-   initial begin $readmemh("D:/project/ChipDesign/fc_module/fc_m_s/fc_parameter.txt", mem_r); 
+   initial begin $readmemh("D:/Downloads/fc_parameter.txt", mem_r); 
    end
    
    reg [AW-1:0] addr_r;
