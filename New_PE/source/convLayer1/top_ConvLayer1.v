@@ -18,17 +18,17 @@ module top_convlayer1 (
     output [191:0] Psum_d_out_3   //24x8=192 位卷积核0数据输出
 );
   wire [335:0] Psum_out_tmp_0, Psum_out_tmp_1, Psum_out_tmp_2, Psum_out_tmp_3;
-  reg [5:0] data_counter = 0;
-  ;
+  reg [5:0] data_counter;
 
   initial begin
     dout_vald = 1'b0;
+    data_counter=0;
   end
 
   always @(posedge clk or negedge rst_n) begin
     if (!rst_n) begin
-      dout_vald = 1'b0;
-      data_counter = 6'b0;
+      dout_vald <= 1'b0;
+      data_counter <= 6'b0;
     end else begin
       if (din_vald) begin
         data_counter <= 1;

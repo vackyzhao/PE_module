@@ -3,7 +3,10 @@ module top_pool1(
     input rst_n,            // 复位输入（低电平有效）
     input en,          // 使能    
     input valid_in,         // 输入数据有效信号
-    input  [191:0]data_in, // 输入数据
+    input  [191:0]data_in_0, // 输入数据
+    input  [191:0]data_in_1, // 输入数据
+    input  [191:0]data_in_2, // 输入数据
+    input  [191:0]data_in_3, // 输入数据
 
     output [95:0]data_out_0, // 输出数据
     output [95:0]data_out_1, // 输出数据
@@ -24,7 +27,7 @@ pool_module pool_module_0_inst(
     .pool_en(en),          // 池化使能
     .layer1(1'd1),           // Layer 1 标志
     .valid_in(valid_in),         // 输入数据有效信号
-    .data_in(data_in), // 输入数据
+    .data_in(data_in_0), // 输入数据
     .col(16'd32),       // 列数
 
     .data_out(data_out_0), // 输出数据
@@ -38,7 +41,7 @@ pool_module pool_module_1_inst(
     .pool_en(en),          // 池化使能
     .layer1(1'd1),           // Layer 1 标志
     .valid_in(valid_in),         // 输入数据有效信号
-    .data_in(data_in), // 输入数据
+    .data_in(data_in_1), // 输入数据
     .col(16'd32),       // 列数
 
     .data_out(data_out_1), // 输出数据
@@ -51,7 +54,7 @@ pool_module pool_module_2_inst(
     .pool_en(en),          // 池化使能
     .layer1(1'd1),           // Layer 1 标志
     .valid_in(valid_in),         // 输入数据有效信号
-    .data_in(data_in), // 输入数据
+    .data_in(data_in_2), // 输入数据
     .col(16'd32),       // 列数
 
     .data_out(data_out_2), // 输出数据
@@ -64,7 +67,7 @@ pool_module pool_module_3_inst(
     .pool_en(en),          // 池化使能
     .layer1(1'd1),           // Layer 1 标志
     .valid_in(valid_in),         // 输入数据有效信号
-    .data_in(data_in), // 输入数据
+    .data_in(data_in_3), // 输入数据
     .col(16'd32),       // 列数
 
     .data_out(data_out_3), // 输出数据

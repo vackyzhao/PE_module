@@ -5,19 +5,19 @@ module pool_module(
     input pool_en,          // 池化使能
     input layer1,           // Layer 1 标志
     input valid_in,         // 输入数据有效信号
-    input unsigned [8*24-1:0] data_in, // 输入数据
+    input  [8*24-1:0] data_in, // 输入数据
     input [15:0] col,       // 列数
 
-    output unsigned [8*12-1:0] data_out, // 输出数据
+    output  [8*12-1:0] data_out, // 输出数据
     output valid_out,       // 输出数据有效信号
     output pool_end         // 池化结束信号
 );
 
 // Flip-flop 块 1：处理输入数据的寄存器
 reg valid_in_ff1;            
-reg unsigned [8*24-1:0] data_in_ff1;
+reg   [8*24-1:0] data_in_ff1;
 reg valid_in_ff2;            
-reg unsigned [8*24-1:0] data_in_ff2;
+reg   [8*24-1:0] data_in_ff2;
 reg start;                   
 reg nopool_end;              
 
@@ -85,7 +85,7 @@ end
 // Flip-flop 块 3：处理列数和池化结果的寄存器
 reg [15:0] col_num;          
 reg pool_valid;              
-reg unsigned [7:0] pool_temp[0:23]; 
+reg   [7:0] pool_temp[0:23]; 
 integer i;
 integer j;
 integer k;
@@ -166,9 +166,9 @@ begin
 end
 
 // Flip-flop 块 4：处理池化结果和相关信号的寄存器
-reg unsigned [7:0] pool1[0:11]; 
-reg unsigned [7:0] pool2[0:11]; 
-reg unsigned [8*12-1:0] pool_result;
+reg   [7:0] pool1[0:11]; 
+reg   [7:0] pool2[0:11]; 
+reg  [8*12-1:0] pool_result;
 reg pool_result_valid;       
 reg pool_ff1;                
 reg start_regff1;            

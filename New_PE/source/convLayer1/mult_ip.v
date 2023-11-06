@@ -6,5 +6,6 @@ module mult_ip(
     input  [3:0] B,
     output   [11:0] P
 );
-assign  P=$unsigned(A) * $unsigned(B);
+//assign  P=$unsigned(A) * $unsigned(B);
+assign  P=$signed(A) * $signed(B);
 endmodule

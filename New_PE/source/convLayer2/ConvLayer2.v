@@ -74,9 +74,11 @@ module ConvLayer2 (
   );
   integer i;
   always @(*) begin
-    Psum_out_sum = 192'b0;  // 初始化 Psum_out_sum 为全零
+    Psum_out_sum <= 192'd0;  // 初始化 Psum_out_sum 为全零
     for (i = 0; i < 12; i = i + 1) begin
-      Psum_out_sum[191-16*i-:16]<={2'b00,Psum_out[0] [167-14*i-:14]} + {2'b00, Psum_out[1][167-14*i-:14]} + {2'b00, Psum_out[2][167-14*i-:14]};
+      //Psum_out_sum[191-16*i-:16]<={2'b00,Psum_out[0] [167-14*i-:14]} + {2'b00, Psum_out[1][167-14*i-:14]} + {2'b00, Psum_out[2][167-14*i-:14]}+ {2'b00, Psum_out[3][167-14*i-:14]};
+      Psum_out_sum[191-16*i-:16] <= Psum_out[0][167-14*i-:14] + Psum_out[1][167-14*i-:14] + Psum_out[2][167-14*i-:14] + Psum_out[3][167-14*i-:14];
+
     end
   end
 endmodule
