@@ -3,6 +3,10 @@ module top (
     input wire rst_n,
     input wire en,
     input wire cam_data,
+
+    output [15:0] o_fc_weight_addr,
+    input [31:0] i_fc_weight,
+
     output [4:0] o_result_data,
     output o_result_data_valid
 
@@ -35,6 +39,7 @@ module top (
       .clk470k_out(cam_clk),  // 输出分频后的信号
       .clk5M_out(dout_clk)  // 输出分频后的信号
   );
+
 
  weightloader_conv weightloader_conv_inst(
     .Filtr_2_count(Filtr_2_count),
@@ -140,7 +145,9 @@ fc_top fc_top_inst(
      .i_pool_end(pool2_end),
     
      .o_result_data(o_result_data),
-     .o_result_data_valid(o_result_data_valid)
+     .o_result_data_valid(o_result_data_valid),
+     .o_fc_weight_addr(o_fc_weight_addr),//16   
+     .i_fc_weight(i_fc_weight)//32
     );
 
 endmodule

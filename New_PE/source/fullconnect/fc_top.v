@@ -28,14 +28,14 @@ module fc_top(
     input [8*12-1:0] i_pool_data_in,
     input i_pool_valid_out,
     input i_pool_end,
+    input [31:0] i_fc_weight,
     
+    output [15:0] o_fc_weight_addr,
     output [4:0] o_result_data,
     output o_result_data_valid
     );
 //for interact with fc module
 
-wire [15:0]  fc_weight_addr;
-wire [31:0]   fc_weight;
 wire fc_start;
 wire [15:0] fc_fm_addr;
 wire signed [8*8-1:0] fc_fm_data;
@@ -61,25 +61,12 @@ wire signed [8*8-1:0] fc_fm_data;
         .i_fc_fm_base_addr(0),
         .o_fc_fm_addr(fc_fm_addr),
         //weights
-        .i_fc_weight(fc_weight),
+        .i_fc_weight(i_fc_weight),
         .i_fc_weight_base_addr(0),
-        .o_fc_weight_addr(fc_weight_addr),
+        .o_fc_weight_addr(o_fc_weight_addr),
         
         .o_fc_result_out_valid(o_result_data_valid),
         .o_fc_result_out(o_result_data)
         );
         
-fc_sram #(
-    .DW(4)
-    )fc_sram_ins
-
-    (
-     .clk(i_clk), 
-     .din(0), 
-     .addr(fc_weight_addr),
-     .cs(1), //make sure you enable it for both read and write
-     .we(0), //enable it when write, disable it when read
-     .wem(0),//only uesd when write
-     .dout(fc_weight)
-    );
 endmodule
