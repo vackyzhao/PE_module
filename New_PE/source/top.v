@@ -1,10 +1,8 @@
 module top (
-    input wire clk,//输入200M主时钟
+    input wire clk,//输入150M主时钟
     input wire rst_n,
     input wire en,
-
     input wire cam_data,
-
     output [4:0] o_result_data,
     output o_result_data_valid
 
