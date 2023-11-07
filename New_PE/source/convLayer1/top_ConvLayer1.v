@@ -1,5 +1,7 @@
 `timescale 1ns / 1ps
-module top_convlayer1 (
+module top_convlayer1 #(
+  parameter mult_ip_delay = 0
+)(
     input clk,
     input rst_n,
     input en,
@@ -34,12 +36,12 @@ module top_convlayer1 (
         data_counter <= 1;
       end
       if (data_counter != 0) begin
-        if (data_counter >= 6 &&data_counter!=37) begin
+        if (data_counter >= (6 + mult_ip_delay) && data_counter!=(37 + mult_ip_delay)) begin
           dout_vald <= 1'b1;
-        end if (data_counter == 37) begin
+        end if (data_counter == (37 + mult_ip_delay)) begin
           dout_vald <= 1'b0;
         end
-        if (data_counter <= 36) begin
+        if (data_counter <= (36+mult_ip_delay)) begin
           data_counter <= data_counter + 1;
         end else begin
           data_counter <= 6'b0;

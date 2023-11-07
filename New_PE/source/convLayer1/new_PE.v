@@ -33,22 +33,22 @@ shift_register shift_register_0(
 
 // 实例化乘法器模块，用于计算卷积结果
 mult_ip mult_8x4_0 (
-  .CLK(),     // 输入时钟信号
-  .CE(),       // 输入使能信号
+  .CLK(clk),     // 输入时钟信号
+  .CE(en),       // 输入使能信号
   .A(Ifmap_in_0), // 输入A，8位特征图数据
   .B(Filtr_in[3:0]), // 输入B，4位权重数据
   .P(result_0)   // 输出P，卷积结果
 );
 mult_ip mult_8x4_1 (
-  .CLK(),
-  .CE(),
+  .CLK(clk),
+  .CE(en),
   .A(Ifmap_in_1),
   .B(Filtr_in[7:4]),
   .P(result_1)
 );
 mult_ip mult_8x4_2 (
-  .CLK(),
-  .CE(),
+  .CLK(clk),
+  .CE(en),
   .A(Ifmap_in_2),
   .B(Filtr_in[11:8]),
   .P(result_2)

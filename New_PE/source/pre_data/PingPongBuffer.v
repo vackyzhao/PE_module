@@ -76,9 +76,9 @@ module PingPongBuffer #(
   always @(posedge i_clk_input) begin
     if (!i_rst_n) begin
       // 如果复位信号 i_rst_n 为低电平，则复位状态机到初始状态
-      o_pl_buffer_ready = 1'b0;
+      o_pl_buffer_ready <= 1'b0;
       input_counter = 10'b0;
-      current_state <= STATE_A;
+      current_state = STATE_A;
     end else begin
       if (current_state == STATE_A && i_switch_pingpong == STATE_B) begin
         // 在状态 A 下，如果接收到切换信号 i_switch_pingpong 到状态 B

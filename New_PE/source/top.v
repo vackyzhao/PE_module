@@ -119,7 +119,7 @@ module top (
 
       .Psum_d_out(conv2_out),  //12x8=96 
       .conv_counter(Filtr_2_count),
-      .conv_en(conv2_dout_vald)  //卷积数据输出有效信号
+      .dout_vald(conv2_dout_vald)  //卷积数据输出有效信号
   );
   top_pool2 top_pool2_inst (
       .clk      (PE_clk),           // 时钟输入

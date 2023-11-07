@@ -66,6 +66,8 @@ reg [2:0] addr_state;
 reg [15:0] col_cnt;
 reg [15:0] fm_cnt;
 reg read_finish ;
+wire comp;
+wire signed [20:0] out_val;
 ///////////////////////
     reg start;reg rstn1;
     wire rstn2;
@@ -197,9 +199,9 @@ reg read_finish ;
     );
     assign o_fc_result_out_valid= counter2>28? 1:0;
     
-    wire signed [20:0] out_val;
+    
     assign out_val=data_out;
-    wire comp;
+    
     assign comp = out_val>fc_out;
 
     assign o_fc_result_out=result;

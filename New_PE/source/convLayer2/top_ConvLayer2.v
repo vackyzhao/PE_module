@@ -1,5 +1,7 @@
 `timescale 1ns / 1ps
-module top_convlayer2 (
+module top_convlayer2  #(
+  parameter mult_ip_delay = 0
+)(
     input clk,
     input rst_n,
     input en,
@@ -19,13 +21,11 @@ module top_convlayer2 (
     output wire [95:0] Psum_d_out,  //12x8=96 位卷积核
     output  reg [2:0] conv_counter,
 
-    output reg conv_en  //卷积数据输出有效信号
+    output reg dout_vald  //卷积数据输出有效信号
 );
 initial begin
-  conv_en=0;
+  dout_vald=0;
   end
-
-
 
   wire [95:0] sram_dout_0, sram_dout_1, sram_dout_2, sram_dout_3;
   reg [111:0] conv_din_0, conv_din_1, conv_din_2, conv_din_3;  
@@ -33,11 +33,7 @@ initial begin
   reg [9:0] input_addr;
   reg [9:0] output_addr;
   reg we;
-  reg [9:0] sram_addr=0;
-
- 
-
- 
+  reg [9:0] sram_addr=0; 
 
   always @(posedge clk or negedge rst_n) begin
     if (!rst_n) begin
@@ -58,10 +54,10 @@ initial begin
           input_addr <= input_addr + 1'b1;
           sram_addr <= input_addr+1;
         end else begin
-          if (output_addr <= 26 && output_addr > 0) begin
+          if (output_addr <= (26+mult_ip_delay) && output_addr > 0) begin
             output_addr <= output_addr + 1'b1;
             sram_addr   <= output_addr - 1'b1;
-          end else if (output_addr == 27 && conv_counter < 7) begin
+          end else if (output_addr == (27+mult_ip_delay) && conv_counter < 7) begin
             conv_counter <= conv_counter + 1'b1;
             output_addr  <= 1'b1;
           end
@@ -79,11 +75,11 @@ initial begin
         conv_din_3<=112'b0;        
       end
 
-      if (sram_addr == 7 && !we) begin
-        conv_en=1;
+      if (sram_addr == (7+mult_ip_delay) && !we) begin
+        dout_vald=1;
              
-      end else if(sram_addr == 22&& !we)begin
-          conv_en=0;  
+      end else if(sram_addr == (22+mult_ip_delay)&& !we)begin
+          dout_vald=0;  
       end
 
     end

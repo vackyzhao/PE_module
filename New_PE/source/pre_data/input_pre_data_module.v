@@ -22,15 +22,24 @@ module Input_pre_data_module #(
 
   // 寄存器和信号定义
   reg val_PEclk, pre_val_PEclk;
-  reg  [  9:0] i_conv_addr = 10'd0;  // 输出结果地址
-  reg  [207:0] padding_data = 208'd0;  // 26*8 208位并行数据
-  reg  [191:0] sram_o_data = 192'd0;
+  reg  [  9:0] i_conv_addr;  // 输出结果地址
+  reg  [207:0] padding_data;  // 26*8 208位并行数据
+  reg  [191:0] sram_o_data;
   wire [  7:0] o_conv_dout;  // 输出结果
-  reg  [  5:0] col_counter = 6'b0;  // 列计数器 0-25 共26列
-  reg  [  5:0] row_counter = 6'b0;  // 行计数器 0-33 共34列
+  reg  [  5:0] col_counter;  // 列计数器 0-25 共26列
+  reg  [  5:0] row_counter;  // 行计数器 0-33 共34列
   wire         o_pl_buffer_ready;  // 缓冲区就绪信号
-  reg          i_switch_pingpong = 1'b0;  // 缓存切换信号
+  reg          i_switch_pingpong;  // 缓存切换信号
 
+  initial begin
+    i_conv_addr = 10'd0;
+    padding_data = 208'd0;
+    sram_o_data = 192'd0;
+    col_counter = 6'b0;
+    row_counter = 6'b0;
+    i_switch_pingpong = 1'b0;
+
+  end
 
 
   // 实例化时钟分频器模块，将 dout_clk 分频为 PEclk
@@ -58,7 +67,7 @@ module Input_pre_data_module #(
   integer i;
   always @(*) begin
     if (!rst_n) begin
-      padding_data = 208'b0;
+      padding_data <= 208'b0;
     end else begin
       for (i = 0; i < 26; i = i + 1) begin
         padding_data[207-i*8-:8] <= input_padding[7:0];
@@ -69,8 +78,8 @@ module Input_pre_data_module #(
 
   always @(posedge din_clk) begin  //摄像头输入时钟
     if (!rst_n) begin
-      i_switch_pingpong = 1'b0;
-      out_data_vld = 1'b0;
+      i_switch_pingpong <= 1'b0;
+      out_data_vld <= 1'b0;
     end else begin
       // 如果读取完并且写入完成成切换pingpong，因为写入比较慢，所以这个切换放在写入部分
       if (col_counter == 6'd34) begin
@@ -106,6 +115,7 @@ module Input_pre_data_module #(
       end
     end
   end
+
   always @(posedge PEclk or negedge rst_n) begin  //PE时钟
     if (!rst_n) begin
       col_counter = 6'd0;
@@ -120,7 +130,7 @@ module Input_pre_data_module #(
           col_counter = 6'd0;
         end
         if (col_counter == 1 || col_counter == 34) begin
-          parallel_data = padding_data;
+          parallel_data <= padding_data;
         end else begin
           parallel_data[207:200] <= input_padding[7:0];
           parallel_data[7:0] <= input_padding[7:0];

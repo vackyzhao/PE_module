@@ -109,6 +109,7 @@ module pool_fc_buffer(
     
     
     //After the buffer is filled, send the start signal to the fc module.
+    wire next_fc_start ;
     wire counter_full;
     assign counter_full = (counter==7);
     wire base_full;
@@ -130,7 +131,7 @@ module pool_fc_buffer(
         if(!rst_n) fc_start <=0;
         else fc_start<=next_fc_start;  
     end
-wire next_fc_start ;
+
 assign next_fc_start = i_pool_end && buffer_full ;  
     //read from the buffer
     always@(posedge clk or negedge rst_n)
