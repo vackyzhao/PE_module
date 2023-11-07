@@ -4,7 +4,8 @@ module Conv2Activation (
 );
 
   always @(*) begin
-    dout[7:0] = din[7:0];
+    dout[7] = din[15];
+    dout[6:0]=din[9:3];
     /*
     if (din < 64) begin
         // 如果输入小于64，直接将输出设置为输入的低8位

@@ -66,14 +66,13 @@ reg [2:0] addr_state;
 reg [15:0] col_cnt;
 reg [15:0] fm_cnt;
 reg read_finish ;
-wire comp;
-wire signed [20:0] out_val;
 ///////////////////////
     reg start;reg rstn1;
     wire rstn2;
     reg [4:0] result;
     reg signed [20:0] fc_out; 
-    
+    wire comp;
+    wire signed [20:0] out_val;
     always @(posedge clk or negedge rst_n) begin
         if(!rst_n)begin
             start<=0;
@@ -97,7 +96,7 @@ wire signed [20:0] out_val;
             if(start) rstn1<=1;
             else rstn1<=0;
             
-            if(counter2>28) start<=0;
+            if(counter2>26) start<=0;
             
         end
     end
@@ -149,7 +148,7 @@ wire signed [20:0] out_val;
                         end
                         else counter1 <= 48*fm_cnt + 8 * col_cnt;
                         if(weight_counter == 47)begin
-                            if(weight_base==28)
+                            if(weight_base==26)
                             begin
                                 weight_base <=0;   
                             end
@@ -197,7 +196,7 @@ wire signed [20:0] out_val;
     .final_out(data_out),
     .cyc_done(cyc_done)
     );
-    assign o_fc_result_out_valid= counter2>28? 1:0;
+    assign o_fc_result_out_valid= counter2>26? 1:0;
     
     
     assign out_val=data_out;

@@ -30,12 +30,12 @@ module top (
   wire [2:0] Filtr_2_count;
 
 
-//时钟分频器，输入200M时钟，输出470KHz和10M时钟
+//时钟分频器，输入150M时钟，输出470KHz和10M时钟
  clockDivider clockDivider_inst (
-      .clk200M_in(clk),  // 输入时钟信号
+      .clk150M_in(clk),  // 输入时钟信号
       .rst_n(rst_n),
       .clk470k_out(cam_clk),  // 输出分频后的信号
-      .clk10M_out(dout_clk)  // 输出分频后的信号
+      .clk5M_out(dout_clk)  // 输出分频后的信号
   );
 
  weightloader_conv weightloader_conv_inst(
