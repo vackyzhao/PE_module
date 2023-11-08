@@ -6026,6 +6026,14 @@
   ]
  },
  {
+  "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_pool.v",
+  "InstLine" : 2,
+  "InstName" : "pool_module",
+  "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_pool.v",
+  "ModuleLine" : 2,
+  "ModuleName" : "pool_module"
+ },
+ {
   "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/sirv_gnrl_dffs.v",
   "InstLine" : 41,
   "InstName" : "sirv_gnrl_dfflrs",
@@ -6064,13 +6072,5 @@
   "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/sirv_gnrl_dffs.v",
   "ModuleLine" : 227,
   "ModuleName" : "sirv_gnrl_ltch"
- },
- {
-  "InstFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_pool.v",
-  "InstLine" : 2,
-  "InstName" : "pool_module",
-  "ModuleFile" : "D:/document/GitHub/PE_module/IRCAM/src/new_pool.v",
-  "ModuleLine" : 2,
-  "ModuleName" : "pool_module"
  }
 ]

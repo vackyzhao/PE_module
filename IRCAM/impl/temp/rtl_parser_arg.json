@@ -58,15 +58,15 @@
    "Type" : "verilog"
   },
   {
+   "Path" : "D:/document/GitHub/PE_module/IRCAM/src/new_pool.v",
+   "Type" : "verilog"
+  },
+  {
    "Path" : "D:/document/GitHub/PE_module/IRCAM/src/shift_register.v",
    "Type" : "verilog"
   },
   {
    "Path" : "D:/document/GitHub/PE_module/IRCAM/src/sirv_gnrl_dffs.v",
-   "Type" : "verilog"
-  },
-  {
-   "Path" : "D:/document/GitHub/PE_module/IRCAM/src/new_pool.v",
    "Type" : "verilog"
   }
  ],
@@ -75,7 +75,7 @@
  ],
  "LoopLimit" : 2000,
  "ResultFile" : "D:/document/GitHub/PE_module/IRCAM/impl/temp/rtl_parser.result",
- "Top" : "middle_new_PEx24",
+ "Top" : "pool_module",
  "VerilogStd" : "sysv",
  "VhdlStd" : "vhdl_93"
 }
