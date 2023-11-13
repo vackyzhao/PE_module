@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module middle_new_PE_conv1 (
+module middle_new_PE_conv2 (
     input clk,          // PE时钟 (3倍频clk时钟)
     input rst_n,        // 复位信号，低有效
     input en,           // 使能信号，高有效    
@@ -30,7 +30,7 @@ wire [7:0] unused_signal;  // 创建一个无连接的临时信号
 
 
 
-new_PE_Unit_conv1 new_PE_Unit_2 (
+new_PE_Unit_conv2 new_PE_Unit_2 (
     .clk(clk),  // PE时钟
     .rst_n(rst_n),  // 复位信号，低有效
     .en(en),  // 使能信号，高有效   
@@ -44,7 +44,7 @@ new_PE_Unit_conv1 new_PE_Unit_2 (
     .Psum_out(Psum_out)  // 输出计算结果   
 );
 
-new_PE_Unit_conv1 new_PE_Unit_1 (
+new_PE_Unit_conv2 new_PE_Unit_1 (
     .clk(clk),  // PE时钟
     .rst_n(rst_n),  // 复位信号，低有效
     .en(en),  // 使能信号，高有效   
@@ -58,7 +58,7 @@ new_PE_Unit_conv1 new_PE_Unit_1 (
     .Psum_out(Psum_1)  // 输出计算结果   
 );
 
-new_PE_Unit_conv1 new_PE_Unit_0 (
+new_PE_Unit_conv2 new_PE_Unit_0 (
     .clk(clk),  // PE时钟
     .rst_n(rst_n),  // 复位信号，低有效
     .en(en),  // 使能信号，高有效   

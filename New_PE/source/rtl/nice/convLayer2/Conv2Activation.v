@@ -1,27 +1,17 @@
 module Conv2Activation (
-    input [15:0] din,
-    output reg [7:0] dout
+    input signed  [15:0] din,
+    output signed   [7:0] dout
 );
-
+reg [7:0] dout;
+reg signed [15:0] step1_result;
+reg signed [15:0] step2_result;
   always @(*) begin
-    dout[7:0] = din[7:0];
-    /*
-    if (din < 64) begin
-        // 如果输入小于64，直接将输出设置为输入的低8位
-        dout = din[7:0];
-    end else if (din < 4096) begin
-        // 如果输入在64到4095之间，右移5位（除以32），并加上64-2
-        dout = (din >> 5) + 64 - 2;
-    end else if (din < 8192) begin
-        // 如果输入在4096到8191之间，右移7位（除以128），并加上128+32-2
-        dout = (din >> 7) + 128 + 32 - 2;
-    end else if (din < 16384) begin
-        // 如果输入在8192到16383之间，右移8位（除以256），并加上128+32-2
-        dout = (din >> 8) + 128 + 32 - 2;
-    end else begin
-        // 处理任何其他情况，将输出设置为0
-        dout = 8'b0;
-    end
-    */
+     // 第一步：除以 8（右移 3 位），减去 128
+    step1_result = (din >> 3) - 128;
+    // 第二步：除以 32（右移 5 位）
+   step2_result = step1_result >> 5;
+    // 第三步：限制在 -128 到 127 之间
+    dout = (step2_result > 127) ? 127 : ((step2_result < -128) ? -128 : step2_result);
+    
   end
 endmodule

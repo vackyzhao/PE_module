@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module new_PE_Unit_conv1 (
+module new_PE_Unit_conv2 (
     input clk,               // PE的时钟信号 (Clock signal for the PE)
     input rst_n,             // 复位信号，低电平有效 (Reset signal, active low)
     input en,                // 使能信号 (Enable signal)
@@ -32,21 +32,21 @@ shift_register shift_register_0(
 );
 
 // 实例化乘法器模块，用于计算卷积结果
-mult_ip_conv1 mult_8x4_0 (
+mult_ip_conv2 mult_8x4_0 (
   .CLK(),     // 输入时钟信号
   .CE(),       // 输入使能信号
   .A(Ifmap_in_0), // 输入A，8位特征图数据
   .B(Filtr_in[3:0]), // 输入B，4位权重数据
   .P(result_0)   // 输出P，卷积结果
 );
-mult_ip_conv1 mult_8x4_1 (
+mult_ip_conv2 mult_8x4_1 (
   .CLK(),
   .CE(),
   .A(Ifmap_in_1),
   .B(Filtr_in[7:4]),
   .P(result_1)
 );
-mult_ip_conv1 mult_8x4_2 (
+mult_ip_conv2 mult_8x4_2 (
   .CLK(),
   .CE(),
   .A(Ifmap_in_2),

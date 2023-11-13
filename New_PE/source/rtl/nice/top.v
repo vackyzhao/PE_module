@@ -1,22 +1,23 @@
 module nice_core_top #(
-    parameter DW = 16,  // Data Width
-    parameter AW = 16   // Address Width
+    parameter DW = 16,  // æ•°æ®å®½åº¦
+    parameter AW = 16   // åœ°å€å®½åº¦
 )(
-    input wire i_clk,//ÊäÈë200MÖ÷Ê±??
-    input wire i_rst_n,
-    input wire i_start,
-    output reg o_data_ready,
-    output wire o_dma_finish,
+    input wire i_clk, // è¾“å…¥ï¼šæ—¶é’Ÿä¿¡å·ï¼Œ200Mæ—¶é’Ÿ
+    input wire cam_data, // è¾“å…¥ï¼šæ‘„åƒå¤´æ•°æ®
+    input wire i_rst_n, // è¾“å…¥ï¼šå¤ä½ä¿¡å·
+    input wire i_start, // è¾“å…¥ï¼šå¼€å§‹ä¿¡å·
+    output reg o_data_ready, // è¾“å‡ºï¼šæ•°æ®å‡†å¤‡å°±ç»ªä¿¡å·
+    output wire o_dma_finish, // è¾“å‡ºï¼šDMAå®Œæˆä¿¡å·
     
-    input [207:0] i_parallel_data,
-    input wire i_fm_data_valid,
+    input [207:0] i_parallel_data, // è¾“å…¥ï¼šå¹¶è¡Œæ•°æ®
+    input wire i_fm_data_valid, // è¾“å…¥ï¼šç‰¹å¾å›¾æ•°æ®æœ‰æ•ˆä¿¡å·
     
-    output [15:0] o_sram_weight_addr,
-    input [15:0] i_sram_weight, 
-    //input wire cam_data,
+    output [15:0] o_sram_weight_addr, // è¾“å‡ºï¼šSRAMæƒé‡åœ°å€
+    input [15:0] i_sram_weight, // è¾“å…¥ï¼šSRAMæƒé‡
+    
 
-    output [4:0] o_result_data,
-    output o_result_data_valid
+    output [4:0] o_result_data, // è¾“å‡ºï¼šç»“æœæ•°æ®
+    output o_result_data_valid // è¾“å‡ºï¼šç»“æœæ•°æ®æœ‰æ•ˆä¿¡å·
 
 );
   wire clk ;
@@ -131,6 +132,7 @@ dma_module dma_module_ins(
     wire cs_fc0,cs_fc1,cs_fc2,cs_fc3;
     assign cs_conv = ((write_en&&dma_control[0])|dma_finish);
     assign conv_sram_addr = dma_start? dma_conv_weight_addr:conv_weight_addr;
+    
     conv_sram conv_sram_ins
             (
              .clk(i_clk), 
@@ -146,12 +148,12 @@ dma_module dma_module_ins(
 
 
 
-//Ê±ÖÓ·ÖÆµÆ÷£¬ÊäÈë200MÊ±ÖÓ£¬Êä??470KHz??10MÊ±ÖÓ
+//æ—¶é’Ÿåˆ†é¢‘å™¨ï¼Œå°†200Mæ—¶é’Ÿåˆ†é¢‘ä¸º470KHzå’Œ10Mæ—¶é’Ÿ
  clockDivider clockDivider_inst (
-      .clk200M_in(clk),  // ÊäÈëÊ±ÖÓĞÅºÅ
+      .clk200M_in(clk),  // æ—¶é’Ÿä¿¡å·
       .rst_n(rst_n),
-      .clk470k_out(cam_clk),  // Êä³ö·ÖÆµºóµÄĞÅºÅ
-      .clk10M_out(dout_clk)  // Êä³ö·ÖÆµºóµÄĞÅºÅ
+      .clk470k_out(cam_clk),  // åˆ†é¢‘åçš„æ—¶é’Ÿä¿¡å·
+      .clk10M_out(dout_clk)  // åˆ†é¢‘åçš„æ—¶é’Ÿä¿¡å·
   );
 
  weightloader_conv weightloader_conv_inst(
@@ -186,38 +188,38 @@ assign dma_finish = o_dma_finish;
       .clk(clk),
       .rst_n(rst_n),
       .en(i_start),
-      .Ifmap_shift_in(parallel_data),  //26x8=208Î»Êı¾İÊä??
+      .Ifmap_shift_in(parallel_data),  //26x8=208ä½æ•°æ®
 
-      .Filtr_in_2(Filtr_1_2),  //È¨ÖØ3x4x4=48??
-      .Filtr_in_1(Filtr_1_1),  //È¨ÖØ3x4x4=48??
-      .Filtr_in_0(Filtr_1_0),  //È¨ÖØ3x4x4=48??
+      .Filtr_in_2(Filtr_1_2),  //æƒé‡3x4x4=48ä½æ•°æ®
+      .Filtr_in_1(Filtr_1_1),  //æƒé‡3x4x4=48ä½æ•°æ®
+      .Filtr_in_0(Filtr_1_0),  //æƒé‡3x4x4=48ä½æ•°æ®
 
-      .din_vald (fm_data_valid),  //¾í»ıÊı¾İÊäÈëÓĞĞ§ĞÅºÅ
-      .dout_vald(conv1_dout_vald),  //¾í»ıÊı¾İÊä³öÓĞĞ§ĞÅºÅ
+      .din_vald (fm_data_valid),  //è¾“å…¥æ•°æ®æœ‰æ•ˆä¿¡å·
+      .dout_vald(conv1_dout_vald),  //è¾“å‡ºæ•°æ®æœ‰æ•ˆä¿¡å·
 
-      .Psum_d_out_0(conv1_out_0),  //24x8=192 Î»¾í»ıºË0Êı¾İÊä³ö
-      .Psum_d_out_1(conv1_out_1),  //24x8=192 Î»¾í»ıºË1Êı¾İÊä³ö
-      .Psum_d_out_2(conv1_out_2),  //24x8=192 Î»¾í»ıºË2Êı¾İÊä³ö
-      .Psum_d_out_3(conv1_out_3)   //24x8=192 Î»¾í»ıºË3Êı¾İÊä³ö
+      .Psum_d_out_0(conv1_out_0),  //24x8=192 ä½æ•°æ®ï¼Œè¾“å‡º0
+      .Psum_d_out_1(conv1_out_1),  //24x8=192 ä½æ•°æ®ï¼Œè¾“å‡º1
+      .Psum_d_out_2(conv1_out_2),  //24x8=192 ä½æ•°æ®ï¼Œè¾“å‡º2
+      .Psum_d_out_3(conv1_out_3)   //24x8=192 ä½æ•°æ®ï¼Œè¾“å‡º3
   );
 
   top_pool1 top_pool1_inst (
-      .clk     (clk),          // Ê±ÖÓÊäÈë
-      .rst_n   (rst_n),           // ¸´Î»ÊäÈë£¨µÍµçÆ½ÓĞĞ§??
-      .en      (i_start),              // Ê¹ÄÜ    
-      .valid_in(conv1_dout_vald), // ÊäÈëÊı¾İÓĞĞ§ĞÅºÅ
+      .clk     (clk),          // æ—¶é’Ÿä¿¡å·
+      .rst_n   (rst_n),           // å¤ä½ä¿¡å·
+      .en      (i_start),              // ä½¿èƒ½ä¿¡å·
+      .valid_in(conv1_dout_vald), // è¾“å…¥æ•°æ®æœ‰æ•ˆä¿¡å·
 
-      .data_in_0(conv1_out_0),  // ÊäÈëÊı¾İ
-      .data_in_1(conv1_out_1),  // ÊäÈëÊı¾İ
-      .data_in_2(conv1_out_2),  // ÊäÈëÊı¾İ
-      .data_in_3(conv1_out_3),  // ÊäÈëÊı¾İ
+      .data_in_0(conv1_out_0),  // è¾“å…¥æ•°æ®
+      .data_in_1(conv1_out_1),  // è¾“å…¥æ•°æ®
+      .data_in_2(conv1_out_2),  // è¾“å…¥æ•°æ®
+      .data_in_3(conv1_out_3),  // è¾“å…¥æ•°æ®
 
-      .data_out_0(pool1_out_0),  // Êä³öÊı¾İ
-      .data_out_1(pool1_out_1),  // Êä³öÊı¾İ
-      .data_out_2(pool1_out_2),  // Êä³öÊı¾İ
-      .data_out_3(pool1_out_3),  // Êä³öÊı¾İ
+      .data_out_0(pool1_out_0),  // è¾“å‡ºæ•°æ®
+      .data_out_1(pool1_out_1),  // è¾“å‡ºæ•°æ®
+      .data_out_2(pool1_out_2),  // è¾“å‡ºæ•°æ®
+      .data_out_3(pool1_out_3),  // è¾“å‡ºæ•°æ®
 
-      .valid_out(pool1_dout_vald),  // Êä³öÊı¾İÓĞĞ§ĞÅºÅ
+      .valid_out(pool1_dout_vald),  // è¾“å‡ºæ•°æ®æœ‰æ•ˆä¿¡å·
       .pool_end (pool1_end)
   );
 
@@ -226,31 +228,31 @@ assign dma_finish = o_dma_finish;
       .rst_n(rst_n),
       .en(i_start),
 
-      .din_valid(pool1_dout_vald),  // ÊäÈëÊı¾İÓĞĞ§ĞÅºÅ
+      .din_valid(pool1_dout_vald),  // è¾“å…¥æ•°æ®æœ‰æ•ˆä¿¡å·
       .pool_end (pool1_end),
 
-      .data_in_0(pool1_out_0),  // ÊäÈëÊı¾İ 12x8=96
-      .data_in_1(pool1_out_1),  // ÊäÈëÊı¾İ
-      .data_in_2(pool1_out_2),  // ÊäÈëÊı¾İ
-      .data_in_3(pool1_out_3),  // ÊäÈëÊı¾İ
+      .data_in_0(pool1_out_0),  // è¾“å…¥æ•°æ® 12x8=96
+      .data_in_1(pool1_out_1),  // è¾“å…¥æ•°æ®
+      .data_in_2(pool1_out_2),  // è¾“å…¥æ•°æ®
+      .data_in_3(pool1_out_3),  // è¾“å…¥æ•°æ®
 
-      .Filtr_in_2(Filtr_2_2),  //È¨ÖØ3x4x4=48??
-      .Filtr_in_1(Filtr_2_1),  //È¨ÖØ
-      .Filtr_in_0(Filtr_2_0),  //È¨ÖØ
+      .Filtr_in_2(Filtr_2_2),  //æƒé‡3x4x4=48ä½æ•°æ®
+      .Filtr_in_1(Filtr_2_1),  //æƒé‡
+      .Filtr_in_0(Filtr_2_0),  //æƒé‡
 
-      .Psum_d_out(conv2_out),  //12x8=96 
+      .Psum_d_out(conv2_out),  //12x8=96 ä½æ•°æ®
       .conv_counter(Filtr_2_count),
-      .conv_en(conv2_dout_vald)  //¾í»ıÊı¾İÊä³öÓĞĞ§ĞÅºÅ
+      .conv_en(conv2_dout_vald)  //è¾“å‡ºæ•°æ®æœ‰æ•ˆä¿¡å·
   );
   top_pool2 top_pool2_inst (
-      .clk      (clk),           // Ê±ÖÓÊäÈë
-      .rst_n    (rst_n),            // ¸´Î»ÊäÈë£¨µÍµçÆ½ÓĞĞ§??
-      .en       (i_start),               // Ê¹ÄÜ    
-      .valid_in (conv2_dout_vald),  // ÊäÈëÊı¾İÓĞĞ§ĞÅºÅ
-      .data_in  (conv2_out),        // ÊäÈëÊı¾İ
+      .clk      (clk),           // æ—¶é’Ÿä¿¡å·
+      .rst_n    (rst_n),            // å¤ä½ä¿¡å·
+      .en       (i_start),               // ä½¿èƒ½ä¿¡å·
+      .valid_in (conv2_dout_vald),  // è¾“å…¥æ•°æ®æœ‰æ•ˆä¿¡å·
+      .data_in  (conv2_out),        // è¾“å…¥æ•°æ®
 
-      .data_out (pool2_out),        // Êä³öÊı¾İ
-      .valid_out(pool2_dout_vald),  // Êä³öÊı¾İÓĞĞ§ĞÅºÅ
+      .data_out (pool2_out),        // è¾“å‡ºæ•°æ®
+      .valid_out(pool2_dout_vald),  // è¾“å‡ºæ•°æ®æœ‰æ•ˆä¿¡å·
       .pool_end (pool2_end)
   );
   

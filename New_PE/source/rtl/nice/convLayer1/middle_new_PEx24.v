@@ -48,7 +48,7 @@ module middle_new_PEx24 (
       .rst_n(rst_n)
   );
 
-  middle_new_PE PE_0 (
+  middle_new_PE_conv1 PE_0 (
       .clk(clk),  // PE时钟(3倍频clk时钟)
       .rst_n(rst_n),  // 复位信号，低有效
       .en(en),  // 使能信号，高有效 
@@ -75,7 +75,7 @@ module middle_new_PEx24 (
   genvar i;
   generate
     for (i = 1; i < 23; i = i + 1) begin : BLOCK1
-      middle_new_PE PE_n (
+      middle_new_PE_conv1 PE_n (
           .clk(clk),  // PE时钟(3倍频clk时钟)
           .rst_n(rst_n),  // 复位信号，低有效
           .en(en),  // 使能信号，高有效 
@@ -100,7 +100,7 @@ module middle_new_PEx24 (
     end
   endgenerate
 
-  middle_new_PE PE_23 (
+  middle_new_PE_conv1 PE_23 (
       .clk(clk),  // PE时钟(3倍频clk时钟)
       .rst_n(rst_n),  // 复位信号，低有效
       .en(en),  // 使能信号，高有效 

@@ -1,11 +1,11 @@
 `timescale 1ns / 1ps
-module mult_ip_conv1(
+module mult_ip_conv2(
     input  CLK,
     input  CE,
-    input  unsigned [7:0] A,
+    input  signed   [7:0] A,
     input  signed  [3:0] B,
     output   [11:0] P
 );
 //assign  P=$unsigned(A) * $unsigned(B);
-assign  P=$unsigned(A) * $signed(B);
+assign  P=$signed(A) * $signed(B);
 endmodule

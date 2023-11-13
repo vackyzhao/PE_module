@@ -1,88 +1,179 @@
+/**
+ * 模块名称：weightloader_conv
+ * 文件路径：/D:/document/GitHub/PE_module/New_PE/source/rtl/nice/weightLoader.v
+ * 作者：Unknown
+ * 日期：Unknown
+ * 版本：Unknown
+ * 说明：该模块用于从SRAM中加载卷积核权重
+ *
+ * 输入：
+ *   clk：时钟信号
+ *   rst_n：异步复位信号
+ *   weights_load_start：权重加载开始信号
+ *   i_sram_weight：SRAM中的权重数据
+ *   Filtr_2_count：卷积核2的计数器
+ *
+ * 输出：
+ *   o_sram_weight_addr：SRAM中的权重地址
+ *   Filtr_1_2：卷积核1的第2个滤波器
+ *   Filtr_1_1：卷积核1的第1个滤波器
+ *   Filtr_1_0：卷积核1的第0个滤波器
+ *   Filtr_2_2：卷积核2的第2个滤波器
+ *   Filtr_2_1：卷积核2的第1个滤波器
+ *   Filtr_2_0：卷积核2的第0个滤波器
+ *   weights_load_finish：权重加载完成信号
+ */
 module weightloader_conv (
+    input clk,
+    input rst_n,
+    input wire weights_load_start,
+
+    input [15:0] i_sram_weight,
+
     input [2:0] Filtr_2_count,
 
-    output reg [47:0] Filtr_1_2,
-    output reg [47:0] Filtr_1_1,
-    output reg [47:0] Filtr_1_0,
+    output reg [15:0] o_sram_weight_addr,
 
-    output reg [47:0] Filtr_2_2,
-    output reg [47:0] Filtr_2_1,
-    output reg [47:0] Filtr_2_0
+    output reg [95:0] Filtr_1_2,
+    output reg [95:0] Filtr_1_1,
+    output reg [95:0] Filtr_1_0,
+
+    output reg [95:0] Filtr_2_2,
+    output reg [95:0] Filtr_2_1,
+    output reg [95:0] Filtr_2_0,
+
+    output reg weights_load_finish
+
+
 );
-  reg [35:0] weights_conv1[ 3:0];
-  reg [35:0] weights_conv2[31:0];
+  reg [8:0] weights_load_counter;
+  reg [7:0] weights_conv1[35:0];
+  reg [7:0] weights_conv2[287:0];
   initial begin
-    weights_conv1[0]  = 36'b111011010001110100000100111000100010;
-    weights_conv1[1]  = 36'b010001110101010101110011010001100001;
-    weights_conv1[2]  = 36'b001000110011001101100101001001010011;
-    weights_conv1[3]  = 36'b010000100000001111111111111011111101;
-
-    weights_conv2[0]  = 36'b101100110101111101100111000000110001;
-    weights_conv2[1]  = 36'b111011110010111111110010000111110000;
-    weights_conv2[2]  = 36'b111000000010111111110010000000000000;
-    weights_conv2[3]  = 36'b000011010010111011100010111111110000;
-    weights_conv2[4]  = 36'b010001110101010101110011010001100001;
-    weights_conv2[5]  = 36'b001111111110000011110000111000000001;
-    weights_conv2[6]  = 36'b000111111111000011110001111100010010;
-    weights_conv2[7]  = 36'b010000111111011000011111000111100100;
-    weights_conv2[8]  = 36'b011101100100001100000100000001000110;
-    weights_conv2[9]  = 36'b000100011111001011111111000011100000;
-    weights_conv2[10] = 36'b000000011111001011111111000111110001;
-    weights_conv2[11] = 36'b001101100101011001100011010000101111;
-    weights_conv2[12] = 36'b101100010001111000010000111111101110;
-    weights_conv2[13] = 36'b000011111111000000000001000000010010;
-    weights_conv2[14] = 36'b111100000000111100000001000000010001;
-    weights_conv2[15] = 36'b010000100011000000000011000000100101;
-    weights_conv2[16] = 36'b110011101101000000100000111100001100;
-    weights_conv2[17] = 36'b111100001110000000100010111100011111;
-    weights_conv2[18] = 36'b000000001111000000100010111100000000;
-    weights_conv2[19] = 36'b000100000000111100110100110111110001;
-    weights_conv2[20] = 36'b001000110001110111110000101100000011;
-    weights_conv2[21] = 36'b000100100010000000001111111011111110;
-    weights_conv2[22] = 36'b000100100010000011111111111011101111;
-    weights_conv2[23] = 36'b010001000100001000100001000000011110;
-    weights_conv2[24] = 36'b010001010000000100110001111000010001;
-    weights_conv2[25] = 36'b111100010000111100100001111011110000;
-    weights_conv2[26] = 36'b000000100000111100010010111111111111;
-    weights_conv2[27] = 36'b111100000001000000100011111011111111;
-    weights_conv2[28] = 36'b111111111110111111111110111011101110;
-    weights_conv2[29] = 36'b000000001111000000010001111100001111;
-    weights_conv2[30] = 36'b000000010000000100010001111100010000;
-    weights_conv2[31] = 36'b111000001111110111101111110010111100;
-
+    weights_load_finish  = 0;
+    weights_load_counter = 9'b0;
   end
 
-  integer i,j;
   always @(*) begin
-    Filtr_1_2 = 48'b0;
-    Filtr_1_0 = 48'b0;
-    Filtr_1_1 = 48'b0;
-
-    Filtr_2_2 = 48'b0;
-    Filtr_2_0 = 48'b0;
-    Filtr_2_1 = 48'b0;
- case (Filtr_2_count) 
-      3'b000: j=0;
-      3'b001: j=1;
-      3'b010: j=2;
-      3'b011: j=3;
-      3'b100: j=4;
-      3'b101: j=5;
-      3'b110: j=6;
-      3'b111: j=7;
-      default:  j=0;
-    endcase    
-
-    for (i = 0; i < 4; i = i + 1) begin
-      Filtr_1_2[47-12*i-:12] = weights_conv1[i][35:24];
-      Filtr_1_1[47-12*i-:12] = weights_conv1[i][23:12];
-      Filtr_1_0[47-12*i-:12] = weights_conv1[i][11:0];
-
-      Filtr_2_2[47-12*i-:12] = weights_conv2[j+i*4][35:24];
-      Filtr_2_1[47-12*i-:12] = weights_conv2[j+i*4][23:12];
-      Filtr_2_0[47-12*i-:12] = weights_conv2[j+i*4][11:0];
+    if (weights_load_finish) begin
+      Filtr_1_2 <= {
+        weights_conv1[0],
+        weights_conv1[1],
+        weights_conv1[2],
+        weights_conv1[9],
+        weights_conv1[10],
+        weights_conv1[11],
+        weights_conv1[18],
+        weights_conv1[19],
+        weights_conv1[20],
+        weights_conv1[27],
+        weights_conv1[28],
+        weights_conv1[29]
+      };
+      Filtr_1_1 <= {
+        weights_conv1[3],
+        weights_conv1[4],
+        weights_conv1[5],
+        weights_conv1[12],
+        weights_conv1[13],
+        weights_conv1[14],
+        weights_conv1[21],
+        weights_conv1[22],
+        weights_conv1[23],
+        weights_conv1[30],
+        weights_conv1[31],
+        weights_conv1[32]
+      };
+      Filtr_1_0 <= {
+        weights_conv1[6],
+        weights_conv1[7],
+        weights_conv1[8],
+        weights_conv1[15],
+        weights_conv1[16],
+        weights_conv1[17],
+        weights_conv1[24],
+        weights_conv1[25],
+        weights_conv1[26],
+        weights_conv1[33],
+        weights_conv1[34],
+        weights_conv1[35]
+      };
+      Filtr_2_2 <= {
+        weights_conv2[Filtr_2_count*36+0],
+        weights_conv2[Filtr_2_count*36+1],
+        weights_conv2[Filtr_2_count*36+2],
+        weights_conv2[Filtr_2_count*36+9],
+        weights_conv2[Filtr_2_count*36+10],
+        weights_conv2[Filtr_2_count*36+11],
+        weights_conv2[Filtr_2_count*36+18],
+        weights_conv2[Filtr_2_count*36+19],
+        weights_conv2[Filtr_2_count*36+20],
+        weights_conv2[Filtr_2_count*36+27],
+        weights_conv2[Filtr_2_count*36+28],
+        weights_conv2[Filtr_2_count*36+29]
+      };
+      Filtr_2_1 <= {
+        weights_conv2[Filtr_2_count*36+3],
+        weights_conv2[Filtr_2_count*36+4],
+        weights_conv2[Filtr_2_count*36+5],
+        weights_conv2[Filtr_2_count*36+12],
+        weights_conv2[Filtr_2_count*36+13],
+        weights_conv2[Filtr_2_count*36+14],
+        weights_conv2[Filtr_2_count*36+21],
+        weights_conv2[Filtr_2_count*36+22],
+        weights_conv2[Filtr_2_count*36+23],
+        weights_conv2[Filtr_2_count*36+30],
+        weights_conv2[Filtr_2_count*36+31],
+        weights_conv2[Filtr_2_count*36+32]
+      };
+      Filtr_2_0 <= {
+        weights_conv2[Filtr_2_count*36+6],
+        weights_conv2[Filtr_2_count*36+7],
+        weights_conv2[Filtr_2_count*36+8],
+        weights_conv2[Filtr_2_count*36+15],
+        weights_conv2[Filtr_2_count*36+16],
+        weights_conv2[Filtr_2_count*36+17],
+        weights_conv2[Filtr_2_count*36+24],
+        weights_conv2[Filtr_2_count*36+25],
+        weights_conv2[Filtr_2_count*36+26],
+        weights_conv2[Filtr_2_count*36+33],
+        weights_conv2[Filtr_2_count*36+34],
+        weights_conv2[Filtr_2_count*36+35]
+      };
     end
+  end
 
+  integer m, n;
+  always @(posedge clk or negedge rst_n) begin
+    if (!rst_n) begin
+      weights_load_finish  <= 0;
+      weights_load_counter <= 9'b0;
+
+      for (m = 0; m < 4; m = m + 1) begin
+        weights_conv1[m] <= 72'b0;
+      end
+      for (n = 0; n < 32; n = n + 1) begin
+        weights_conv2[n] <= 72'b0;
+      end
+    end else begin
+      if (weights_load_start==1 && weights_load_finish==0) begin
+        o_sram_weight_addr <= {7'b0, weights_load_counter};
+        if (weights_load_counter >= 0) begin
+          if (weights_load_counter < 19&&weights_load_counter>0) begin
+            weights_conv1[(weights_load_counter-1)*2]   <= i_sram_weight[15:8];
+            weights_conv1[(weights_load_counter-1)*2+1] <= i_sram_weight[7:0];
+          end else if (weights_load_counter < 163) begin
+            weights_conv2[(weights_load_counter-19)*2]   <= i_sram_weight[15:8];
+            weights_conv2[(weights_load_counter-19)*2+1] <= i_sram_weight[7:0];
+          end else begin
+            weights_load_finish <= 1;
+          end
+        end
+        weights_load_counter <= weights_load_counter + 1;
+      end else begin
+        o_sram_weight_addr <= 16'b0;
+      end
+    end
   end
 
 endmodule
