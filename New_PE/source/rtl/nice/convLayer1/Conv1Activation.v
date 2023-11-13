@@ -10,8 +10,8 @@ reg signed [13:0] step2_result;
     step1_result = (din >> 2) - 128;
     // 第二步：除以 32（右移 5 位）
    step2_result = step1_result >> 5;
-    // 第三步：限制在 -128 到 127 之间
-    dout = (step2_result > 127) ? 127 : ((step2_result < -128) ? -128 : step2_result);
+    // 第三步：限制在 -128 到 127 之间 RELU
+    dout = (step2_result > 127) ? 127 : ((step2_result < 0) ? 0 : step2_result);
     
   end
 endmodule
