@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Module name="top" Register="48" Alu="23" Lut="32">
-    <SubModule name="ClockDivider460k_inst" Register="36" Alu="32" Lut="15"/>
-    <SubModule name="UART_RX_inst" Register="29" Lut="17"/>
-    <SubModule name="gw_gao_inst_0" Register="498" Alu="10" Lut="482" Bsram="29"/>
-</Module>
