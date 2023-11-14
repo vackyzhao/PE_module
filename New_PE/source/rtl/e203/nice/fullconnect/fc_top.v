@@ -25,7 +25,7 @@ module fc_top(
     input i_clk,
     input i_rst_n,
     
-    input unsigned [8*12-1:0] i_pool_data_in,
+    input [95:0] i_pool_data_in,
     input i_pool_valid_out,
     input i_pool_end,
     

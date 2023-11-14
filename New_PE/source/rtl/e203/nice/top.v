@@ -59,7 +59,7 @@ module nice_core_top #(
     wire [AW-1:0] dma_fc_weight_addr3;
     wire [DW-1:0] dma_weights3;
     wire [4:0] dma_control;
-    
+    wire dma_finish;
   wire weights_load_finish;
   assign clk = i_clk;
 always @(posedge clk or negedge rst_n) begin
@@ -212,7 +212,7 @@ weightloader_conv weightloader_conv_instance (
   );
 
 
-wire dma_finish;
+
 //assign fm_data_valid = i_fm_data_valid;
 // assign parallel_data = i_parallel_data;
 assign dma_finish = o_dma_finish;

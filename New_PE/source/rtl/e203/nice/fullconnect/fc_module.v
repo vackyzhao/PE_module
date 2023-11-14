@@ -52,7 +52,8 @@ module fc_module#(
     reg weight_nonhold;
     
     wire signed [20:0]  data_out;
-
+    wire comp;
+    wire signed [20:0] out_val;
     wire cyc_done;
     
     assign o_fc_weight_addr=counter0+i_fc_weight_base_addr;//--------
@@ -189,11 +190,11 @@ reg read_finish ;
     );
     assign o_fc_result_out_valid= counter2>26? 1:0;
     
-    wire signed [20:0] out_val;
+    
     wire signed [20:0] out_val_middle;
     assign out_val_middle = (data_out>>4);
     assign out_val = (out_val_middle < -128) ? -128 : (out_val_middle ? 127 : out_val_middle);
-    wire comp;
+    
     
     assign comp = out_val>fc_out;
 
