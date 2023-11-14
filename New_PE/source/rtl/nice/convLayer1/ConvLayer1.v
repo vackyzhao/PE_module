@@ -4,14 +4,14 @@ module ConvLayer1 (
     input en,
     input [207:0] Ifmap_shift_in,  //26x8=208位数据输入
 
-    input [47:0] Filtr_in_2,  //权重3x4x4=48位
-    input [47:0] Filtr_in_1,  //权重3x4x4=48位
-    input [47:0] Filtr_in_0,  //权重3x4x4=48位
+    input [95:0] Filtr_in_2,  //权重3x4x4=48位
+    input [95:0] Filtr_in_1,  //权重3x4x4=48位
+    input [95:0] Filtr_in_0,  //权重3x4x4=48位
 
-    output [335:0] Psum_out_0,  //14*24=336位卷积核0数据输出
-    output [335:0] Psum_out_1,  //14*24=336位卷积核1数据输出
-    output [335:0] Psum_out_2,  //14*24=336位卷积核2数据输出
-    output [335:0] Psum_out_3   //14*24=336位卷积核3数据输出
+    output [479:0] Psum_out_0,  //14*24=336位卷积核0数据输出
+    output [479:0] Psum_out_1,  //14*24=336位卷积核1数据输出
+    output [479:0] Psum_out_2,  //14*24=336位卷积核2数据输出
+    output [479:0] Psum_out_3   //14*24=336位卷积核3数据输出
 );
 
   middle_new_PEx24 PE_array_0 (
@@ -21,9 +21,9 @@ module ConvLayer1 (
 
       .Ifmap_shift_in(Ifmap_shift_in),  // 列输入特征图 8位*26通道=208位（数据） 
 
-      .Filtr_in_2(Filtr_in_2[47:36]),  // 输入权重 4位*3通道=12位（卷积核）   
-      .Filtr_in_1(Filtr_in_1[47:36]),  // 输入权重 4位*3通道=12位（卷积核）
-      .Filtr_in_0(Filtr_in_0[47:36]),  // 输入权重 4位*3通道=12位（卷积核） 
+      .Filtr_in_2(Filtr_in_2[95:72]),  // 输入权重 8位*3通道=24位（卷积核）   
+      .Filtr_in_1(Filtr_in_1[95:72]),  // 输入权重 4位*3通道=12位（卷积核）
+      .Filtr_in_0(Filtr_in_0[95:72]),  // 输入权重 4位*3通道=12位（卷积核） 
 
       .Psum_out(Psum_out_0)  // 列输出计算结果 8位*24=192位 (结果)
   );
@@ -34,9 +34,9 @@ module ConvLayer1 (
 
       .Ifmap_shift_in(Ifmap_shift_in),  // 列输入特征图 8位*26通道=208位（数据） 
 
-      .Filtr_in_2(Filtr_in_2[35:24]),  // 输入权重 4位*3通道=12位（卷积核）   
-      .Filtr_in_1(Filtr_in_1[35:24]),  // 输入权重 4位*3通道=12位（卷积核）
-      .Filtr_in_0(Filtr_in_0[35:24]),  // 输入权重 4位*3通道=12位（卷积核） 
+      .Filtr_in_2(Filtr_in_2[71:48]),  // 输入权重 8位*3通道=24位（卷积核）   
+      .Filtr_in_1(Filtr_in_1[71:48]),  // 输入权重 4位*3通道=12位（卷积核）
+      .Filtr_in_0(Filtr_in_0[71:48]),  // 输入权重 4位*3通道=12位（卷积核） 
 
       .Psum_out(Psum_out_1)  // 列输出计算结果 8位*24=192位 (结果)
   );
@@ -47,9 +47,9 @@ module ConvLayer1 (
 
       .Ifmap_shift_in(Ifmap_shift_in),  // 列输入特征图 8位*26通道=208位（数据） 
 
-      .Filtr_in_2(Filtr_in_2[23:12]),  // 输入权重 4位*3通道=12位（卷积核）   
-      .Filtr_in_1(Filtr_in_1[23:12]),  // 输入权重 4位*3通道=12位（卷积核）
-      .Filtr_in_0(Filtr_in_0[23:12]),  // 输入权重 4位*3通道=12位（卷积核） 
+      .Filtr_in_2(Filtr_in_2[47:24]),  // 输入权重 8位*3通道=24位（卷积核）   
+      .Filtr_in_1(Filtr_in_1[47:24]),  // 输入权重 4位*3通道=12位（卷积核）
+      .Filtr_in_0(Filtr_in_0[47:24]),  // 输入权重 4位*3通道=12位（卷积核） 
 
       .Psum_out(Psum_out_2)  // 列输出计算结果 8位*24=192位 (结果)
   );
@@ -60,9 +60,9 @@ module ConvLayer1 (
 
       .Ifmap_shift_in(Ifmap_shift_in),  // 列输入特征图 8位*26通道=208位（数据） 
 
-      .Filtr_in_2(Filtr_in_2[11:0]),  // 输入权重 4位*3通道=12位（卷积核）   
-      .Filtr_in_1(Filtr_in_1[11:0]),  // 输入权重 4位*3通道=12位（卷积核）
-      .Filtr_in_0(Filtr_in_0[11:0]),  // 输入权重 4位*3通道=12位（卷积核） 
+      .Filtr_in_2(Filtr_in_2[23:0]),  // 输入权重 8位*3通道=24位（卷积核）   
+      .Filtr_in_1(Filtr_in_1[23:0]),  // 输入权重 4位*3通道=12位（卷积核）
+      .Filtr_in_0(Filtr_in_0[23:0]),  // 输入权重 4位*3通道=12位（卷积核） 
 
       .Psum_out(Psum_out_3)  // 列输出计算结果 8位*24=192位 (结果)
   );

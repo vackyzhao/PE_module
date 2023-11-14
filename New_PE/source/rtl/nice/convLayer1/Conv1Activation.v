@@ -1,10 +1,10 @@
 module Conv1Activation (
-    input signed  [13:0] din,
+    input signed  [19:0] din,
     output signed  [7:0] dout
 );
 reg [7:0] dout;
-reg signed [13:0] step1_result;
-reg signed [13:0] step2_result;
+reg signed [19:0] step1_result;
+reg signed [19:0] step2_result;
   always @(*) begin
     // 第一步：除以 4（右移 2 位），减去 128
     step1_result = (din >> 2) - 128;

@@ -12,9 +12,9 @@ module top_convlayer2 (
     input [95:0] data_in_2,  // 输入数据
     input [95:0] data_in_3,  // 输入数据
 
-    input [47:0] Filtr_in_2,  //权重3x4x4=48位
-    input [47:0] Filtr_in_1,  //权重
-    input [47:0] Filtr_in_0,  //权重
+    input [95:0] Filtr_in_2,  //权重3x4x4=48位
+    input [95:0] Filtr_in_1,  //权重
+    input [95:0] Filtr_in_0,  //权重
 
     output wire [95:0] Psum_d_out,  //12x8=96 位卷积核
     output  reg [2:0] conv_counter,
@@ -29,7 +29,7 @@ initial begin
 
   wire [95:0] sram_dout_0, sram_dout_1, sram_dout_2, sram_dout_3;
   reg [111:0] conv_din_0, conv_din_1, conv_din_2, conv_din_3;  
-  wire [191:0] Psum_out_sum;  //卷积输出结果
+  wire [239:0] Psum_out_sum;  //卷积输出结果
   reg [9:0] input_addr;
   reg [9:0] output_addr;
   reg we;
@@ -147,7 +147,7 @@ initial begin
   generate
     for (i = 0; i < 12; i = i + 1) begin : BLOCK4
       Conv2Activation Conv2Activation_inst0 (
-          .din (Psum_out_sum[191-16*i-:16]),
+          .din (Psum_out_sum[239-20*i-:20]),
           .dout(Psum_d_out[95-8*i-:8])
       );
 

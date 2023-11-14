@@ -6,19 +6,19 @@ module middle_new_PEx24 (
 
     input [207:0] Ifmap_shift_in,  // 列输入特征图 8位*26通道=208位（数据） 
 
-    input [11:0] Filtr_in_2,  // 输入权重 4位*3通道=12位（卷积核）   
-    input [11:0] Filtr_in_1,  // 输入权重 4位*3通道=12位（卷积核）
-    input [11:0] Filtr_in_0,  // 输入权重 4位*3通道=12位（卷积核） 
+    input [23:0] Filtr_in_2,  // 输入权重 4位*3通道=12位（卷积核）   
+    input [23:0] Filtr_in_1,  // 输入权重 4位*3通道=12位（卷积核）
+    input [23:0] Filtr_in_0,  // 输入权重 4位*3通道=12位（卷积核） 
 
-    output [335:0] Psum_out  // 列输出计算结果 14位*24=336位 (结果)
+    output [479:0] Psum_out  // 列输出计算结果 20位*24=480位 (结果)
 );
 
   wire [7:0] Ifmap_shift_out_2[0:22];  // 每个middle_PE之间脉动传递特征图
   wire [7:0] Ifmap_shift_out_1[0:22];  // 每个middle_PE之间脉动传递特征图
 
-  wire [11:0] Filtr_out_2[0:22];  // 每个middle_PE之间传递权重
-  wire [11:0] Filtr_out_1[0:22];  // 每个middle_PE之间传递权重
-  wire [11:0] Filtr_out_0[0:22];  // 每个middle_PE之间传递权重
+  wire [23:0] Filtr_out_2[0:22];  // 每个middle_PE之间传递权重
+  wire [23:0] Filtr_out_1[0:22];  // 每个middle_PE之间传递权重
+  wire [23:0] Filtr_out_0[0:22];  // 每个middle_PE之间传递权重
 
   wire [7:0] reg0_out;  // 用于同步数据输入的移位寄存器中间暂存值
   wire [7:0] Ifmap_shift_in_0_2, Ifmap_shift_in_0_1;
@@ -64,7 +64,7 @@ module middle_new_PEx24 (
       .Ifmap_shift_out_2(Ifmap_shift_out_2[0]),// 输出特征图 8位*3通道（数据） (Output feature map 8-bit * 3 channels, data)
       .Ifmap_shift_out_1(Ifmap_shift_out_1[0]),// 输出特征图 8位*3通道（数据） (Output feature map 8-bit * 3 channels, data)
 
-      .Psum_out(Psum_out[335:322]),  // 输出8位计算结果
+      .Psum_out(Psum_out[479:460]),  // 输出8位计算结果
 
       .Filtr_out_2(Filtr_out_2[0]),  // 输出权重 4位*3通道（卷积核） 
       .Filtr_out_1(Filtr_out_1[0]),  // 输出权重 4位*3通道（卷积核） 
@@ -91,7 +91,7 @@ module middle_new_PEx24 (
           .Ifmap_shift_out_2(Ifmap_shift_out_2[i]),// 输出特征图 8位*3通道（数据） (Output feature map 8-bit * 3 channels, data)
           .Ifmap_shift_out_1(Ifmap_shift_out_1[i]),// 输出特征图 8位*3通道（数据） (Output feature map 8-bit * 3 channels, data)
 
-          .Psum_out(Psum_out[(13+14*(23-i))-:14]),  // 输出计算结果
+          .Psum_out(Psum_out[(19+20*(23-i))-:20]),  // 输出计算结果
 
           .Filtr_out_2(Filtr_out_2[i]),  // 输出权重 4位*3通道（卷积核） 
           .Filtr_out_1(Filtr_out_1[i]),  // 输出权重 4位*3通道（卷积核） 
@@ -116,7 +116,7 @@ module middle_new_PEx24 (
       .Ifmap_shift_out_2(),// 输出特征图 8位*3通道（数据） (Output feature map 8-bit * 3 channels, data)
       .Ifmap_shift_out_1(),// 输出特征图 8位*3通道（数据） (Output feature map 8-bit * 3 channels, data)
 
-      .Psum_out(Psum_out[13:0]),  // 输出计算结果
+      .Psum_out(Psum_out[19:0]),  // 输出计算结果
 
       .Filtr_out_2(),  // 输出权重 4位*3通道（卷积核） 
       .Filtr_out_1(),  // 输出权重 4位*3通道（卷积核） 

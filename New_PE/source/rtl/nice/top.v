@@ -9,8 +9,8 @@ module nice_core_top #(
     output reg o_data_ready,  // 输出：数据准备就绪信号
     output wire o_dma_finish,  // 输出：DMA完成信号
 
-    input [207:0] i_parallel_data,  // 输入：并行数据
-    input wire i_fm_data_valid,  // 输入：特征图数据有效信号
+    //input [207:0] i_parallel_data,  // 输入：并行数据
+    //input wire i_fm_data_valid,  // 输入：特征图数据有效信号
 
     output [15:0] o_sram_weight_addr,  // 输出：SRAM权重地址
     input [15:0] i_sram_weight,  // 输入：SRAM权重
@@ -59,6 +59,8 @@ module nice_core_top #(
   wire [AW-1:0] dma_fc_weight_addr3;
   wire [DW-1:0] dma_weights3;
   wire [4:0] dma_control;
+
+  wire weights_load_finish;
   assign clk = i_clk;
   always @(posedge clk or negedge rst_n) begin
     if (!rst_n) begin
@@ -129,7 +131,7 @@ module nice_core_top #(
   wire cs_fc0, cs_fc1, cs_fc2, cs_fc3;
   assign cs_conv = ((write_en && dma_control[0]) | dma_finish);
   assign conv_sram_addr = dma_start ? dma_conv_weight_addr : conv_weight_addr;
-
+/*
   RAMSP1024X16_rtl_top conv_sram_ins (
       .Q    (conv_weight),           // 输出：16位数据输出
       .CLK  (clk),                   // 输入：时钟信号
@@ -142,7 +144,7 @@ module nice_core_top #(
       .GWEN (1'b0),                  // 输入：全局写使能输入
       .RET1N(1'b0)                   // 输入：1位读使能输入
   );
-  /*
+  */
     conv_sram conv_sram_ins
             (
              .clk(i_clk), 
@@ -153,7 +155,7 @@ module nice_core_top #(
              .wem(dma_control[0]),//only uesd when write
              .dout(conv_weight)
             );
-*/
+
 
 
 
@@ -165,7 +167,27 @@ module nice_core_top #(
       .clk470k_out(cam_clk),  // 分频后的时钟信号
       .clk10M_out(dout_clk)  // 分频后的时钟信号
   );
+weightloader_conv weightloader_conv_instance (
+    .clk(PE_clk),  // 连接到你的时钟信号
+    .rst_n(rst_n),  // 连接到你的复位信号
+    .weights_load_start(~dma_control[0]),  // 连接到启动权重加载的信号
+    .i_sram_weight(conv_weight),  // 连接到SRAM权重的输入
 
+    .Filtr_2_count(Filtr_2_count),  // 连接到Filtr_2计数器的输入
+
+    .o_sram_weight_addr(conv_sram_addr),  // 连接到SRAM权重地址的输出
+
+    .Filtr_1_2(Filtr_1_2),  // 连接到Filtr_1_2的输出
+    .Filtr_1_1(Filtr_1_1),  // 连接到Filtr_1_1的输出
+    .Filtr_1_0(Filtr_1_0),  // 连接到Filtr_1_0的输出
+
+    .Filtr_2_2(Filtr_2_2),  // 连接到Filtr_2_2的输出
+    .Filtr_2_1(Filtr_2_1),  // 连接到Filtr_2_1的输出
+    .Filtr_2_0(Filtr_2_0),  // 连接到Filtr_2_0的输出
+
+    .weights_load_finish(weights_load_finish)  // 连接到权重加载完成的输出
+);
+/*
   weightloader_conv weightloader_conv_inst (
       .Filtr_2_count(Filtr_2_count),
 
@@ -176,26 +198,26 @@ module nice_core_top #(
       .Filtr_2_2(Filtr_2_2),
       .Filtr_2_1(Filtr_2_1),
       .Filtr_2_0(Filtr_2_0)
-  );
+  );*/
   top_input top_input_inst (
       .cam_clk(cam_clk),
       .dout_clk(dout_clk),
       .rst_n(rst_n),
       .en(en),
-      .cam_data(),
+      .cam_data(cam_data),
       .input_padding(8'd0),
-      .parallel_data(),
-      .dout_vald(),
-      .PE_clk()
+      .parallel_data(parallel_data),
+      .dout_vald(fm_data_valid),
+      .PE_clk(PE_clk)
   );
 
 
   wire dma_finish;
-  assign fm_data_valid = i_fm_data_valid;
-  assign parallel_data = i_parallel_data;
+  //assign fm_data_valid = i_fm_data_valid;
+ // assign parallel_data = i_parallel_data;
   assign dma_finish = o_dma_finish;
   top_convlayer1 top_convlayer1_inst (
-      .clk(clk),
+      .clk(PE_clk),
       .rst_n(rst_n),
       .en(i_start),
       .Ifmap_shift_in(parallel_data),  //26x8=208位数据
@@ -204,7 +226,7 @@ module nice_core_top #(
       .Filtr_in_1(Filtr_1_1),  //权重3x4x4=48位数据
       .Filtr_in_0(Filtr_1_0),  //权重3x4x4=48位数据
 
-      .din_vald (fm_data_valid),   //输入数据有效信号
+      .din_vald (fm_data_valid&weights_load_finish),   //输入数据有效信号
       .dout_vald(conv1_dout_vald), //输出数据有效信号
 
       .Psum_d_out_0(conv1_out_0),  //24x8=192 位数据，输出0
@@ -214,7 +236,7 @@ module nice_core_top #(
   );
 
   top_pool1 top_pool1_inst (
-      .clk     (clk),             // 时钟信号
+      .clk     (PE_clk),             // 时钟信号
       .rst_n   (rst_n),           // 复位信号
       .en      (i_start),         // 使能信号
       .valid_in(conv1_dout_vald), // 输入数据有效信号
@@ -234,11 +256,11 @@ module nice_core_top #(
   );
 
   top_convlayer2 top_convlayer2_inst (
-      .clk(clk),
+      .clk(PE_clk),
       .rst_n(rst_n),
       .en(i_start),
 
-      .din_valid(pool1_dout_vald),  // 输入数据有效信号
+      .din_valid(pool1_dout_vald&weights_load_finish),  // 输入数据有效信号
       .pool_end (pool1_end),
 
       .data_in_0(pool1_out_0),  // 输入数据 12x8=96
@@ -255,7 +277,7 @@ module nice_core_top #(
       .conv_en(conv2_dout_vald)  //输出数据有效信号
   );
   top_pool2 top_pool2_inst (
-      .clk     (clk),              // 时钟信号
+      .clk     (PE_clk),              // 时钟信号
       .rst_n   (rst_n),            // 复位信号
       .en      (i_start),          // 使能信号
       .valid_in(conv2_dout_vald),  // 输入数据有效信号
@@ -267,7 +289,7 @@ module nice_core_top #(
   );
 
   wire [15:0] fc_weights0, fc_weights1, fc_weights2, fc_weights3;
-
+/*
   RAMSP2048X16_rtl_top fc_sram_ins0 (
       .Q(fc_weights0),  // 输出：16位数据输出
       .CLK(clk),  // 输入：时钟信号
@@ -315,10 +337,10 @@ module nice_core_top #(
       .EMAW(2'b00),  // 输入：2位扩展模式地址写使能输入
       .GWEN(1'b0),  // 输入：全局写使能输入
       .RET1N(1'b0)  // 输入：1位读使能输入
-  );
-  /*
+  );*/
+  
   fc_sram fc_sram_ins0 (
-      .clk(clk),
+      .clk(PE_clk),
       .din(dma_weights0),
       .addr(fc_sram_addr0),
       .cs((write_en&dma_control[1])|dma_finish), //make sure you enable it for both read and write
@@ -327,7 +349,7 @@ module nice_core_top #(
       .dout(fc_weights0)
   );
   fc_sram fc_sram_ins1 (
-      .clk(clk),
+      .clk(PE_clk),
       .din(dma_weights1),
       .addr(fc_sram_addr1),
       .cs((write_en&dma_control[2])|dma_finish), //make sure you enable it for both read and write
@@ -336,7 +358,7 @@ module nice_core_top #(
       .dout(fc_weights1)
   );
   fc_sram fc_sram_ins2 (
-      .clk(clk),
+      .clk(PE_clk),
       .din(dma_weights2),
       .addr(fc_sram_addr2),
       .cs((write_en&dma_control[3])|dma_finish), //make sure you enable it for both read and write
@@ -345,7 +367,7 @@ module nice_core_top #(
       .dout(fc_weights2)
   );
   fc_sram fc_sram_ins3 (
-      .clk(clk),
+      .clk(PE_clk),
       .din(dma_weights3),
       .addr(fc_sram_addr3),
       .cs((write_en&dma_control[4])|dma_finish), //make sure you enable it for both read and write
@@ -353,12 +375,12 @@ module nice_core_top #(
       .wem(dma_control[4]),  //only uesd when write
       .dout(fc_weights3)
   );
-  */
+  
   wire [63:0] fc_weight;
   assign fc_weight = {fc_weights0, fc_weights1, fc_weights2, fc_weights3};
 
   fc_top fc_top_inst (
-      .i_clk  (clk),
+      .i_clk  (PE_clk),
       .i_rst_n(rst_n),
 
       .i_pool_data_in(pool2_out),

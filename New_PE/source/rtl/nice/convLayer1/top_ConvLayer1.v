@@ -5,9 +5,9 @@ module top_convlayer1 (
     input en,
     input [207:0] Ifmap_shift_in,  //26x8=208位数据输入
 
-    input [47:0] Filtr_in_2,  //权重3x4x4=48位
-    input [47:0] Filtr_in_1,  //权重3x4x4=48位
-    input [47:0] Filtr_in_0,  //权重3x4x4=48位
+    input [95:0] Filtr_in_2,  //权重3x4x4=48位
+    input [95:0] Filtr_in_1,  //权重3x4x4=48位
+    input [95:0] Filtr_in_0,  //权重3x4x4=48位
 
     input      din_vald,  //卷积数据输入有效信号
     output reg dout_vald, //卷积数据输出有效信号
@@ -17,7 +17,7 @@ module top_convlayer1 (
     output [191:0] Psum_d_out_2,  //24x8=192 位卷积核0数据输出
     output [191:0] Psum_d_out_3   //24x8=192 位卷积核0数据输出
 );
-  wire [335:0] Psum_out_tmp_0, Psum_out_tmp_1, Psum_out_tmp_2, Psum_out_tmp_3;
+  wire [479:0] Psum_out_tmp_0, Psum_out_tmp_1, Psum_out_tmp_2, Psum_out_tmp_3;
   reg [5:0] data_counter;
 
   initial begin
@@ -69,22 +69,22 @@ module top_convlayer1 (
   generate
     for (i = 0; i < 24; i = i + 1) begin : BLOCK4
       Conv1Activation Conv1Activation_inst0 (
-          .din (Psum_out_tmp_0[335-14*i-:14]),
+          .din (Psum_out_tmp_0[479-20*i-:20]),
           .dout(Psum_d_out_0[191-8*i-:8])
       );
 
       Conv1Activation Conv1Activation_inst1 (
-          .din (Psum_out_tmp_1[335-14*i-:14]),
+          .din (Psum_out_tmp_1[479-20*i-:20]),
           .dout(Psum_d_out_1[191-8*i-:8])
       );
 
       Conv1Activation Conv1Activation_inst2 (
-          .din (Psum_out_tmp_2[335-14*i-:14]),
+          .din (Psum_out_tmp_2[479-20*i-:20]),
           .dout(Psum_d_out_2[191-8*i-:8])
       );
 
       Conv1Activation Conv1Activation_inst3 (
-          .din (Psum_out_tmp_3[335-14*i-:14]),
+          .din (Psum_out_tmp_3[479-20*i-:20]),
           .dout(Psum_d_out_3[191-8*i-:8])
       );
     end
