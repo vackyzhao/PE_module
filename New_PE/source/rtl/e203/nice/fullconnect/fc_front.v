@@ -25,7 +25,7 @@ module fc_front#(
     parameter d_8=64,//8*4
     parameter qua_width=8,
     parameter gen_width=25)(
-input unsigned [col_data_length-1:0] d_64bit,
+input signed [col_data_length-1:0] d_64bit,
 input signed [d_8-1:0] w_64bit,
 input signed [gen_width-1:0] bias,
 input clk,rstn,

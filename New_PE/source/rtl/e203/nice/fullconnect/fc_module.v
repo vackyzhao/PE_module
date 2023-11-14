@@ -26,11 +26,10 @@ module fc_module#(
     input           i_fc_start,
 
 //fm data
-    input           [63:0] i_fc_fm_data,//-----
+    input signed    [63:0] i_fc_fm_data,//-----
     input           [8:0] i_fc_fm_base_addr,//--------
     output          [15:0] o_fc_fm_addr,//---------
-//weighs
-    input           [63:0] i_fc_weight,
+    input  signed   [63:0] i_fc_weight,
 
     input           [12:0] i_fc_weight_base_addr,//-----------
     output          [15:0] o_fc_weight_addr,
@@ -41,7 +40,7 @@ module fc_module#(
     );
 
     // corresponding to w,d,b
-    wire [7:0] weight;
+    wire signed [7:0] weight;
 
     reg [63:0] fc_weight_all;
     //reg [63:0] fc_fm_data;
@@ -52,7 +51,7 @@ module fc_module#(
     reg [5:0] counter2;
     reg weight_nonhold;
     
-    wire [20:0] data_out;
+    wire signed [20:0]  data_out;
 
     wire cyc_done;
     
@@ -95,22 +94,13 @@ reg read_finish ;
             if(start) rstn1<=1;
             else rstn1<=0;
             
-            if(counter2>28) start<=0;
+            if(counter2>26) start<=0;
             
         end
     end
     assign rstn2=rstn1&rst_n;
     
-    always @(*) begin
-        fc_weight_all[7:0] = i_fc_weight[7:0];
-        fc_weight_all[15:8] = i_fc_weight[15:8];
-        fc_weight_all[23:16] = i_fc_weight[23:16];
-        fc_weight_all[31:24] = i_fc_weight[31:24];
-        fc_weight_all[39:32] = i_fc_weight[39:32];
-        fc_weight_all[47:40] = i_fc_weight[47:40];
-        fc_weight_all[55:48] = i_fc_weight[55:48];
-        fc_weight_all[63:56] = i_fc_weight[63:56];
-    end
+
 
     always@(posedge clk or negedge rst_n)
     begin
@@ -172,9 +162,11 @@ reg read_finish ;
 
                 if(cyc_done) counter2<=counter2+1;//shift bias
                 //relaunch the whole process
-                if(counter0==1391) 
+                if(counter0==1295) 
                 begin
                     counter0<=0;
+                    weight_counter<=0;
+                    weight_base<=0;
                 end
             end
         else 
@@ -189,17 +181,20 @@ reg read_finish ;
     fc_front ins0(
     .clk(clk),
     .rstn(rstn2),
-    .w_64bit(fc_weight_all),//------------
+    .w_64bit(i_fc_weight),//------------
     .d_64bit(i_fc_fm_data),//----------
     .bias(0),//---------
     .final_out(data_out),
     .cyc_done(cyc_done)
     );
-    assign o_fc_result_out_valid= counter2>28? 1:0;
+    assign o_fc_result_out_valid= counter2>26? 1:0;
     
     wire signed [20:0] out_val;
-    assign out_val=data_out;
+    wire signed [20:0] out_val_middle;
+    assign out_val_middle = (data_out>>4);
+    assign out_val = (out_val_middle < -128) ? -128 : (out_val_middle ? 127 : out_val_middle);
     wire comp;
+    
     assign comp = out_val>fc_out;
 
     assign o_fc_result_out=result;

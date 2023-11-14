@@ -67,7 +67,7 @@ module pool_fc_buffer(
             if (i_pool_valid_out) begin
                 // Write data to buffer in column-wise order
                 for (i = 0; i < COLUMN_SIZE; i = i + 1) begin
-                    buffer[base_addr*48+counter + i*ROW_SIZE] <= valid_data[i*8 +: 8];
+                    buffer[base_addr+counter*8 + i*BUFFER_SIZE] <= valid_data[i*8 +: 8];
                 end
                 // Increment column counter, reset on reaching a row end
                 counter<=counter+1;

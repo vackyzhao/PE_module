@@ -26,7 +26,7 @@ parameter gen_width=25
 )(
 input clk,rstn,acc_en,
 input signed [gen_width-1:0] d,
-output [gen_width-1:0] result,
+output signed [gen_width-1:0] result,
 output acc_done
     );
     reg [5:0] counter=0;

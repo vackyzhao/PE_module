@@ -387,7 +387,7 @@ assign mnist_start = mnist_start_ff1 & (~mnist_start_ff2);
    wire u_mrt_ena;
    wire                          u_mrt_wen           ;
    wire    [32-1: 0]             u_mrt_cfg_data      ;
-   wire                          u_mrt_cfg_i         ;
+   //wire                          u_mrt_cfg_i         ;
    wire    [32-1: 0]             u_mrt_cfg_addr      ;
 
 
@@ -467,12 +467,12 @@ end
 wire [207:0] parallel_data;
 assign parallel_data = {
     fm_data[in_i*26+25], fm_data[in_i*26+24], fm_data[in_i*26+23], fm_data[in_i*26+22],
-    fm_data[in_i*26+21], fm_data[in_i*26+20*26], fm_data[in_i*26+19], fm_data[in_i*26+18],
-    fm_data[in_i*26+17], fm_data[in_i+16*26], fm_data[in_i*26+15], fm_data[in_i*26+14],
-    fm_data[in_i*26+13], fm_data[in_i+12*26], fm_data[in_i*26+11], fm_data[in_i*26+10],
-    fm_data[in_i*26+9], fm_data[in_i+8*26], fm_data[in_i*26+7], fm_data[in_i*26+6],
-    fm_data[in_i*26+5], fm_data[in_i+4*26], fm_data[in_i*26+3], fm_data[in_i*26+2],
-    fm_data[in_i*26+1], fm_data[in_i*26]
+    fm_data[in_i*26+21], fm_data[in_i*26+20], fm_data[in_i*26+19], fm_data[in_i*26+18],
+    fm_data[in_i*26+17], fm_data[in_i*26+16], fm_data[in_i*26+15], fm_data[in_i*26+14],
+    fm_data[in_i*26+13], fm_data[in_i*26+12], fm_data[in_i*26+11], fm_data[in_i*26+10],
+    fm_data[in_i*26+09], fm_data[in_i*26+08], fm_data[in_i*26+07], fm_data[in_i*26+06],
+    fm_data[in_i*26+05], fm_data[in_i*26+04], fm_data[in_i*26+03], fm_data[in_i*26+02],
+    fm_data[in_i*26+01], fm_data[in_i*26+00]
 };
 
 
@@ -544,24 +544,24 @@ assign parallel_data = {
     wire ldbuf_state_is_load      = (ldbuf_state_r == LDBUF_LOAD); 
     wire ldbuf_state_is_ans       = (ldbuf_state_r == LDBUF_ANS); 
 
-    reg ldbuf_ram_is_i;
+    //reg ldbuf_ram_is_i;
     reg [24-1:0] ldbuf_start_addr;
     reg [14-1:0] ldbuf_batch;
     
     always@(posedge nice_clk) begin
         if(~nice_rst_n) begin
-            ldbuf_ram_is_i <= 0;
+            //ldbuf_ram_is_i <= 0;
             ldbuf_start_addr <= 0;
             ldbuf_batch <= 0;
         end
         else if(ldbuf_state_is_ans) begin
-            ldbuf_ram_is_i   <= rs2_r[0];
+            //ldbuf_ram_is_i   <= rs2_r[0];
             ldbuf_start_addr <= rs2_r[32-1:32-1-24+1];
 //                   ldbuf_batch <= (rs2_r[32-1-24:1]==0)? 14'b1
 //                                : (rs2_r[32-1-24:1]==1)? 14'b10
 //                                : (rs2_r[32-1-24:1]==2)? 14'b100
 //                                : 14'd8192;
-            ldbuf_batch <= 14'd5640;
+            ldbuf_batch <= 14'd5400;
         end
     end
 
@@ -645,7 +645,7 @@ assign parallel_data = {
     assign u_mrt_ena = 1'b1;
     assign u_mrt_wen = rcv_data_buf_valid & ldbuf_state_is_load;
     assign u_mrt_cfg_data = rcv_data_buf;
-    assign u_mrt_cfg_i = ldbuf_ram_is_i;
+    //assign u_mrt_cfg_i = ldbuf_ram_is_i;
     assign ldbuf_load_done = rcv_data_buf_valid & (rcv_data_buf_idx==ldbuf_batch-1);
     
     assign busy_status_ena = state_is_start | ldbuf_state_is_load;
@@ -726,7 +726,7 @@ wire nice_icb_cmd_hsked;
    assign nice_icb_rsp_ready = 1'b1; 
    
    assign nice_icb_cmd_valid =  nice_icb_cmd_valid_ldbuf;
-   assign nice_icb_cmd_addr  = maddr_acc_r;
+   assign nice_icb_cmd_addr  = maddr_acc_r+32'h90000000+32'd16384;
    assign nice_icb_cmd_read  = 1'b1;
    assign nice_icb_cmd_wdata = `E203_XLEN'b0; 
 

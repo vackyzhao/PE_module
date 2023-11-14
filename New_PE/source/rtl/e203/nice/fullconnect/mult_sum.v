@@ -24,9 +24,9 @@ module mult_sum#(
 parameter gen_width=25
 )(
 input clk,rst_n,en,
-input [63:0] weight,
-input [63:0] data,
-output [gen_width-1:0] d_out,
+input signed [63:0] weight,
+input signed [63:0] data,
+output signed [gen_width-1:0] d_out,
 output ms_valid
     );
     wire signed [7:0] w0=weight[7:0];
