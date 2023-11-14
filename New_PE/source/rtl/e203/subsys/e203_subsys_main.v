@@ -61,7 +61,7 @@ module e203_subsys_main(
   output  wr_dpc_ena     ,
   output  wr_dscratch_ena,
 
-
+  input i_cam_data,
 
   output  [32-1:0] wr_csr_nxt    ,
 
@@ -478,7 +478,7 @@ module e203_subsys_main(
 
   .core_csr_clk          (core_csr_clk      ),
 
-
+   .i_cam_data (i_cam_data ),
         
         
 

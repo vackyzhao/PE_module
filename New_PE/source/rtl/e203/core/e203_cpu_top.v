@@ -38,7 +38,7 @@ module e203_cpu_top(
 
   output core_csr_clk         ,
 
-    
+  input i_cam_data,  
 
     // If this signal is high, then indicate the Core have executed WFI instruction
     //   and entered into the sleep state
@@ -353,7 +353,7 @@ module e203_cpu_top(
 
 
     .core_csr_clk          (core_csr_clk      ),
-
+    .i_cam_data (i_cam_data ),
 
     .tm_stop (tm_stop),
     .pc_rtvec(pc_rtvec),

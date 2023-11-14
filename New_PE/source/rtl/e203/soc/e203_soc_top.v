@@ -25,7 +25,8 @@ module e203_soc_top(
   // This clock should comes from the crystal pad generated low speed clock (32.768KHz)
   input  lfextclk,
   output lfxoscen,// The signal to enable the crystal pad generated clock
-
+  
+  input i_cam_data,
 
   // The JTAG TCK is input, need to be pull-up
   input   io_pads_jtag_TCK_i_ival,
@@ -101,7 +102,7 @@ module e203_soc_top(
  e203_subsys_top u_e203_subsys_top(
     .core_mhartid      (1'b0),
   
-
+    .i_cam_data (i_cam_data ),
 
 
   `ifdef E203_HAS_ITCM_EXTITF //{

@@ -44,7 +44,7 @@ module e203_cpu #(
   `ifdef E203_HAS_DTCM
   output rst_dtcm,
   `endif
-
+  input i_cam_data,
 
   output  core_wfi,
   output  tm_stop,
@@ -512,8 +512,8 @@ module e203_cpu #(
     .nice_icb_rsp_valid   (nice_icb_rsp_valid),
     .nice_icb_rsp_ready   (nice_icb_rsp_ready),
     .nice_icb_rsp_rdata   (nice_icb_rsp_rdata),
-    .nice_icb_rsp_err     (nice_icb_rsp_err)	
-
+    .nice_icb_rsp_err     (nice_icb_rsp_err),
+    .i_cam_data(i_cam_data)
    );
   `endif//}
 

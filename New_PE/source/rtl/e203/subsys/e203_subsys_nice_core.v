@@ -55,8 +55,8 @@ module e203_subsys_nice_core (
     input                         nice_icb_rsp_valid   ,
     output                        nice_icb_rsp_ready   ,
     input  [`E203_XLEN-1:0]       nice_icb_rsp_rdata   ,
-    input                         nice_icb_rsp_err	
-
+    input                         nice_icb_rsp_err	,
+    input                           i_cam_data
 );
 
    //   localparam PIPE_NUM = 3;
@@ -496,19 +496,12 @@ assign parallel_data = {
         .o_dma_finish(mnist_dma_finish),
 
     //fm data   
-        .i_parallel_data(parallel_data),
-        .i_fm_data_valid(fm_data_valid),
+        .i_cam_data(i_cam_data),
+       
 
     //weight
         .o_sram_weight_addr(sram_addr),
         .i_sram_weight(sram_data[15:0]),
-
-    //cmd from cpu, maxmam 3 layer
-//        .i_fm_row(fm_row),
-//        .i_fm_col(fm_col),
-//        .i_layer1_kernel_num(layer1_kernel_num),
-//        .i_layer2_kernel_num(layer2_kernel_num),
-//        .i_layer3_kernel_num(layer3_kernel_num),
 
     //return data back to cpu
         .o_result_data(result_data),

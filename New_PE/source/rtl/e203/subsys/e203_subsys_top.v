@@ -77,7 +77,7 @@ module e203_subsys_top(
   output io_pads_aon_pmu_padrst_o_pue,
   output io_pads_aon_pmu_padrst_o_ds,
 
-
+  input i_cam_data,
   input  [`E203_HART_ID_W-1:0] core_mhartid,  
     
   `ifdef E203_HAS_ITCM_EXTITF //{
@@ -324,7 +324,7 @@ module e203_subsys_top(
 
     .hfextclk        (hfextclk),
     .hfxoscen        (hfxoscen),
-
+    .i_cam_data (i_cam_data ),
 
     .dbg_irq_r       (dbg_irq_r      ),
 
