@@ -4,9 +4,7 @@ module top_input(
     input dout_clk,
     input rst_n,
     input en,
-    input cam_data,    
-    input [7:0]input_padding,
-
+    input cam_data,
     output [207:0] parallel_data,
     output dout_vald,
     output PE_clk
@@ -27,7 +25,7 @@ Input_pre_data_module Input_pre_data_module_inst (
     .din_clk(din_clk),
     .i_data_din(i_data_din),
     .i_data_din_vld(i_data_din_vld),
-    .input_padding(input_padding),
+    .input_padding(8'b0),
     .dout_clk(dout_clk),
     .en(en),
     .rst_n(rst_n),
