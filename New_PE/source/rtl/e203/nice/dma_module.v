@@ -21,7 +21,7 @@ module dma_module#(
     input [15:0] i_conv_weight_length,
 
     
-    output [8:0] o_dma_control,
+    output [4:0] o_dma_control,
 
 //for acc module
     output o_write_en,
