@@ -5,6 +5,40 @@
     <Version>5</Version>
     <Device name="GW5AST-138B" pn="GW5AST-LV138FPG676AES">gw5ast138b-002</Device>
     <FileList>
+        <File path="D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/convlayer1/conv_activation_1.v" type="file.verilog" enable="1"/>
+        <File path="D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/convlayer1/conv_layer_1.v" type="file.verilog" enable="1"/>
+        <File path="D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/convlayer1/middle_new_pe1.v" type="file.verilog" enable="1"/>
+        <File path="D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/convlayer1/middle_new_pex24_1.v" type="file.verilog" enable="1"/>
+        <File path="D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/convlayer1/mult_ip_1.v" type="file.verilog" enable="1"/>
+        <File path="D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/convlayer1/new_pe_1.v" type="file.verilog" enable="1"/>
+        <File path="D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/convlayer1/shift_register.v" type="file.verilog" enable="1"/>
+        <File path="D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/convlayer1/sirv_gnrl_dffs.v" type="file.verilog" enable="1"/>
+        <File path="D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/convlayer1/top_conv_layer_1.v" type="file.verilog" enable="1"/>
+        <File path="D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/convlayer2/conv_activation_2.v" type="file.verilog" enable="1"/>
+        <File path="D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/convlayer2/conv_layer_2.v" type="file.verilog" enable="1"/>
+        <File path="D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/convlayer2/conv_sram_2.v" type="file.verilog" enable="1"/>
+        <File path="D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/convlayer2/middle_new_pe_2.v" type="file.verilog" enable="1"/>
+        <File path="D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/convlayer2/middle_new_pex12_2.v" type="file.verilog" enable="1"/>
+        <File path="D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/convlayer2/mult_ip_2.v" type="file.verilog" enable="1"/>
+        <File path="D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/convlayer2/new_pe_2.v" type="file.verilog" enable="1"/>
+        <File path="D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/convlayer2/sirv_gnrl_dffs2.v" type="file.verilog" enable="1"/>
+        <File path="D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/convlayer2/top_conv_layer_2.v" type="file.verilog" enable="1"/>
+        <File path="D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/core/clkdiv.v" type="file.verilog" enable="1"/>
+        <File path="D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/core/conv_sram.v" type="file.verilog" enable="1"/>
+        <File path="D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/core/dma_module.v" type="file.verilog" enable="1"/>
+        <File path="D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/core/sirv_sim_ram_all_parameter.v" type="file.verilog" enable="1"/>
+        <File path="D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/core/top.v" type="file.verilog" enable="1"/>
+        <File path="D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/core/weightloader.v" type="file.verilog" enable="1"/>
+        <File path="D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/fullconnect/acc_sum.v" type="file.verilog" enable="1"/>
+        <File path="D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/fullconnect/fc_front.v" type="file.verilog" enable="1"/>
+        <File path="D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/fullconnect/fc_module.v" type="file.verilog" enable="1"/>
+        <File path="D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/fullconnect/fc_sram.v" type="file.verilog" enable="1"/>
+        <File path="D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/fullconnect/fc_top.v" type="file.verilog" enable="1"/>
+        <File path="D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/fullconnect/mult_sum.v" type="file.verilog" enable="1"/>
+        <File path="D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/fullconnect/pool_fc_buffer.v" type="file.verilog" enable="1"/>
+        <File path="D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/pool1/new_pool.v" type="file.verilog" enable="1"/>
+        <File path="D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/pool1/top_pool1.v" type="file.verilog" enable="1"/>
+        <File path="D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/pool2/top_pool2.v" type="file.verilog" enable="1"/>
         <File path="D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/pre_data/IRCAM.v" type="file.verilog" enable="1"/>
         <File path="D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/pre_data/PingPongBuffer.v" type="file.verilog" enable="1"/>
         <File path="D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/pre_data/UART_RX.v" type="file.verilog" enable="1"/>

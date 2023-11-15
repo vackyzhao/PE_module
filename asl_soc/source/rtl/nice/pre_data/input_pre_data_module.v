@@ -3,7 +3,8 @@
 
 module Input_pre_data_module #(
     parameter buffer_DP = 768,  // 输入缓存大小 24x32
-    parameter data_DP   = 884   // 经过 padding 后的大小 26x34
+    parameter data_DP   = 884 ,  // 经过 padding 后的大小 26x34
+    parameter offset   = 1 //256 
 ) (
     input        en,              // 使能
     input        rst_n,           // 复位#
@@ -16,7 +17,7 @@ module Input_pre_data_module #(
     input  [7:0] input_padding,   // 输入填充参数       
     output       PEclk,           // PE 时钟
 
-    output reg         out_data_vld,  // 缓冲就绪标志
+    output   reg out_data_vld,// 缓冲就绪标志
     output reg [207:0] parallel_data  // 26*8 208位并行数据输出
 );
 
@@ -26,11 +27,11 @@ module Input_pre_data_module #(
   reg  [207:0] padding_data = 208'd0;  // 26*8 208位并行数据
   reg  [191:0] sram_o_data = 192'd0;
   wire [  7:0] o_conv_dout;  // 输出结果
-  reg  [  5:0] col_counter = 6'b0;  // 列计数器 0-25 共26列
-  reg  [  5:0] row_counter = 6'b0;  // 行计数器 0-33 共34列
+  reg  [  9:0] col_counter = 10'b0;  // 列计数器 0-25 共26列
+  reg  [  9:0] row_counter = 10'b0;  // 行计数器 0-33 共34列
   wire         o_pl_buffer_ready;  // 缓冲区就绪信号
   reg          i_switch_pingpong = 1'b0;  // 缓存切换信号
-
+  reg         tmp_out_data_vld;
 
 
   // 实例化时钟分频器模块，将 dout_clk 分频为 PEclk
@@ -59,7 +60,14 @@ module Input_pre_data_module #(
   always @(*) begin
     if (!rst_n) begin
       padding_data = 208'b0;
+      out_data_vld=0;
     end else begin
+      if(col_counter==(1+offset)&&tmp_out_data_vld)
+      begin
+        out_data_vld=1;
+      end else if(col_counter==(34+offset))begin
+        out_data_vld=0;
+      end
       for (i = 0; i < 26; i = i + 1) begin
         padding_data[207-i*8-:8] <= input_padding[7:0];
       end
@@ -70,14 +78,14 @@ module Input_pre_data_module #(
   always @(posedge din_clk) begin  //摄像头输入时钟
     if (!rst_n) begin
       i_switch_pingpong = 1'b0;
-      out_data_vld = 1'b0;
+      tmp_out_data_vld = 1'b0;
     end else begin
       // 如果读取完并且写入完成成切换pingpong，因为写入比较慢，所以这个切换放在写入部分
-      if (col_counter == 6'd34) begin
-        out_data_vld <= 1'b0;
-      end else if (o_pl_buffer_ready && (!out_data_vld)) begin
+      if (col_counter >= (10'd34+offset)) begin
+        tmp_out_data_vld <= 1'b0;
+      end else if (o_pl_buffer_ready && (!tmp_out_data_vld)) begin
         i_switch_pingpong <= ~i_switch_pingpong;  //切换pingpong状态
-        out_data_vld <= 1'b1;  //现在可以读取/输出了
+        tmp_out_data_vld <= 1'b1;  //现在可以读取/输出了
       end
     end
   end
@@ -86,18 +94,19 @@ module Input_pre_data_module #(
     if (!rst_n) begin
       i_conv_addr <= 10'b0;
     end else begin
+      
       pre_val_PEclk = val_PEclk;
       val_PEclk = PEclk;
 
-      if (out_data_vld && (!pre_val_PEclk) && val_PEclk) begin
-        row_counter <= 6'd1;
-      end else if (row_counter < 6'd28 && row_counter > 6'd0) begin
-        row_counter <= row_counter + 6'd1;
+      if (tmp_out_data_vld && (!pre_val_PEclk) && val_PEclk) begin
+        row_counter <= 10'd1;
+      end else if (row_counter < 10'd28 && row_counter > 10'd0) begin
+        row_counter <= row_counter + 10'd1;
       end else begin
-        row_counter <= 6'd0;
+        row_counter <= 10'd0;
       end
-      if (col_counter >= 1 && col_counter < 33 && row_counter < 24) begin
-        i_conv_addr <= row_counter * 32 + col_counter - 1;  //计算输出地址 
+      if (col_counter >= (1+offset) && col_counter < (33+offset) && row_counter < 24) begin
+        i_conv_addr <= row_counter * 32 + col_counter - (1+offset);  //计算输出地址 
       end else begin
         i_conv_addr <= 0;
       end
@@ -108,18 +117,22 @@ module Input_pre_data_module #(
   end
   always @(posedge PEclk or negedge rst_n) begin  //PE时钟
     if (!rst_n) begin
-      col_counter = 6'd0;
+      col_counter = 10'd0;
     end else begin
-      if (!out_data_vld && col_counter == 34) begin
+      if (!tmp_out_data_vld && col_counter == (34+offset)) begin
         col_counter = 0;
       end
-      if (out_data_vld) begin
-        if (col_counter < 6'd34) begin
+      if((col_counter==36+offset)&&!out_data_vld)begin
+        col_counter=0;
+      end
+      if (tmp_out_data_vld) begin
+       /* if (col_counter < (6'd34+offset)) begin
           col_counter = col_counter + 6'd1;
         end else begin
-          col_counter = 6'd0;
-        end
-        if (col_counter == 1 || col_counter == 34) begin
+          col_counter = 10'd0;
+        end*/
+        col_counter = col_counter + 6'd1;
+        if (col_counter == (1+offset) || col_counter == (34+offset)) begin
           parallel_data = padding_data;
         end else begin
           parallel_data[207:200] <= input_padding[7:0];

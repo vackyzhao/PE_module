@@ -4,7 +4,9 @@ module tb_top_input (
     input cam_data,
     output wire dout_vald,
     output wire [207:0] parallel_data,
-    output wire PE_clk,i_data_din_vld
+    output wire PE_clk,i_data_din_vld,
+    output [15:0]data_counter,
+    output din_clk
 );
   wire cam_clk, dout_clk, din_clk;
   wire i_data_din_vld;
@@ -20,17 +22,18 @@ module tb_top_input (
       .clk470k_out(cam_clk),
       .clk5M_out(dout_clk)
   );
-/*
+
   IRCAM IRCAM_inst (
       .clk460k(cam_clk),
       .UART_RX(cam_data),
       .clkout(din_clk),
       .dout_vald(i_data_din_vld),
-      .data_out_8bit(i_data_din)
+      .data_out_8bit(i_data_din),
+      .data_counter(data_counter)
   );
-*/
 
-  
+
+ /* 
  top_input top_input_dut(    
      .cam_clk(cam_clk),//470KHz
      .dout_clk(dout_clk),
@@ -41,5 +44,5 @@ module tb_top_input (
      .dout_vald(dout_vald),
      .PE_clk(PE_clk),
      .i_data_din_vld(i_data_din_vld)
-    );
+    );*/
 endmodule

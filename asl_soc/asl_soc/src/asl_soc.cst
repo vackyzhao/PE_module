@@ -5,13 +5,41 @@
 //Part Number: GW5AST-LV138FPG676AES
 //Device: GW5AST-138
 //Device Version: B
-//Created Time: Wed 11 15 15:41:19 2023
+//Created Time: Wed 11 15 16:01:39 2023
 
-IO_LOC "i_data_din_vld" W20;
+IO_LOC "din_clk" AA24;
+IO_PORT "din_clk" PULL_MODE=NONE DRIVE=8 BANK_VCCIO=3.3;
+IO_LOC "data_counter[12]" W25;
+IO_PORT "data_counter[12]" PULL_MODE=NONE DRIVE=8 BANK_VCCIO=3.3;
+IO_LOC "data_counter[11]" V26;
+IO_PORT "data_counter[11]" PULL_MODE=NONE DRIVE=8 BANK_VCCIO=3.3;
+IO_LOC "data_counter[10]" Y20;
+IO_PORT "data_counter[10]" PULL_MODE=NONE DRIVE=8 BANK_VCCIO=3.3;
+IO_LOC "data_counter[9]" W19;
+IO_PORT "data_counter[9]" PULL_MODE=NONE DRIVE=8 BANK_VCCIO=3.3;
+IO_LOC "data_counter[8]" V22;
+IO_PORT "data_counter[8]" PULL_MODE=NONE DRIVE=8 BANK_VCCIO=3.3;
+IO_LOC "data_counter[7]" AA25;
+IO_PORT "data_counter[7]" PULL_MODE=NONE DRIVE=8 BANK_VCCIO=3.3;
+IO_LOC "data_counter[6]" Y22;
+IO_PORT "data_counter[6]" PULL_MODE=NONE DRIVE=8 BANK_VCCIO=3.3;
+IO_LOC "data_counter[5]" L22;
+IO_PORT "data_counter[5]" PULL_MODE=NONE DRIVE=8 BANK_VCCIO=3.3;
+IO_LOC "data_counter[4]" W26;
+IO_PORT "data_counter[4]" PULL_MODE=NONE DRIVE=8 BANK_VCCIO=3.3;
+IO_LOC "data_counter[3]" U26;
+IO_PORT "data_counter[3]" PULL_MODE=NONE DRIVE=8 BANK_VCCIO=3.3;
+IO_LOC "data_counter[2]" W20;
+IO_PORT "data_counter[2]" PULL_MODE=NONE DRIVE=8 BANK_VCCIO=3.3;
+IO_LOC "data_counter[1]" V19;
+IO_PORT "data_counter[1]" PULL_MODE=NONE DRIVE=8 BANK_VCCIO=3.3;
+IO_LOC "data_counter[0]" U22;
+IO_PORT "data_counter[0]" PULL_MODE=NONE DRIVE=8 BANK_VCCIO=3.3;
+IO_LOC "i_data_din_vld" M24;
 IO_PORT "i_data_din_vld" PULL_MODE=NONE DRIVE=8 BANK_VCCIO=3.3;
-IO_LOC "PE_clk" U22;
+IO_LOC "PE_clk" U25;
 IO_PORT "PE_clk" PULL_MODE=NONE DRIVE=8 BANK_VCCIO=3.3;
-IO_LOC "dout_vald" V19;
+IO_LOC "dout_vald" Y25;
 IO_PORT "dout_vald" PULL_MODE=NONE DRIVE=8 BANK_VCCIO=3.3;
 IO_LOC "cam_data" A18;
 IO_PORT "cam_data" PULL_MODE=NONE DRIVE=OFF BANK_VCCIO=3.3;

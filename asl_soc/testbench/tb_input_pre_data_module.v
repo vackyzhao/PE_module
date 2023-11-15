@@ -13,7 +13,7 @@ module tb_Input_pre_data_module;
   wire PEclk;
   wire [207:0]parallel_data;
 
-  // 实例化被测试的模块
+  // 实例化被测试的模�?
   Input_pre_data_module dut (
     .din_clk(din_clk),
     .i_data_din(i_data_din),
@@ -26,7 +26,7 @@ module tb_Input_pre_data_module;
     .out_data_vld(out_data_vld),
     .parallel_data(parallel_data)
   );
- parameter Tclk = 64;
+ parameter Tclk = 512;
  
  initial begin
  // define clk
@@ -37,9 +37,9 @@ module tb_Input_pre_data_module;
   initial begin
  // define clk
   din_clk = 0;
-  forever #(Tclk / 2) din_clk = ~din_clk;
+  forever #(Tclk / 1) din_clk = ~din_clk;
  end
-  // 初始化信号
+  // 初始化信�?
   initial begin
     din_clk = 1;
     i_data_din = 8'd0;
@@ -50,7 +50,7 @@ module tb_Input_pre_data_module;
     padding=8'b10000001;
     #(Tclk * 100)
     rst_n = 1;
-    // 设置使能信号和其他输入
+    // 设置使能信号和其他输�?
     en = 1;
     
     i_data_din =8'b1111_1111;
@@ -64,6 +64,6 @@ module tb_Input_pre_data_module;
 
   
 
-  // 添加任何必要的时序检查或输出结果的代码
+  // 添加任何必要的时序检查或输出结果的代�?
 
 endmodule

@@ -1,0 +1,12 @@
+[General]
+ipc_version=4
+file=gowin_rom16_1K
+module=Gowin_ROM16_1K
+target_device=gw5ast138b-002
+type=ssram_rom16
+version=1.0
+
+[Config]
+DEPTH=1024
+LANG=0
+WIDTH=16

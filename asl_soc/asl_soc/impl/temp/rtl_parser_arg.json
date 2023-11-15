@@ -2,6 +2,18 @@
  "Device" : "GW5AST-138B",
  "Files" : [
   {
+   "Path" : "D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/pre_data/IRCAM.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/pre_data/PingPongBuffer.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/pre_data/UART_RX.v",
+   "Type" : "verilog"
+  },
+  {
    "Path" : "D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/pre_data/clockDivider24.v",
    "Type" : "verilog"
   },
@@ -14,19 +26,11 @@
    "Type" : "verilog"
   },
   {
-   "Path" : "D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/pre_data/IRCAM.v",
-   "Type" : "verilog"
-  },
-  {
-   "Path" : "D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/pre_data/PingPongBuffer.v",
-   "Type" : "verilog"
-  },
-  {
    "Path" : "D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/pre_data/top_input_pre_data_module.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/pre_data/UART_RX.v",
+   "Path" : "D:/document/GitHub/PE_module/asl_soc/testbench/clkdiv.v",
    "Type" : "verilog"
   },
   {
@@ -34,7 +38,139 @@
    "Type" : "verilog"
   },
   {
-   "Path" : "D:/document/GitHub/PE_module/asl_soc/testbench/clkdiv.v",
+   "Path" : "D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/convlayer1/conv_activation_1.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/convlayer1/conv_layer_1.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/convlayer1/middle_new_pe1.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/convlayer1/middle_new_pex24_1.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/convlayer1/mult_ip_1.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/convlayer1/new_pe_1.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/convlayer1/shift_register.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/convlayer1/sirv_gnrl_dffs.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/convlayer1/top_conv_layer_1.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/convlayer2/conv_activation_2.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/convlayer2/conv_layer_2.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/convlayer2/conv_sram_2.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/convlayer2/middle_new_pe_2.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/convlayer2/middle_new_pex12_2.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/convlayer2/mult_ip_2.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/convlayer2/new_pe_2.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/convlayer2/sirv_gnrl_dffs2.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/convlayer2/top_conv_layer_2.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/core/clkdiv.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/core/conv_sram.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/core/dma_module.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/core/sirv_sim_ram_all_parameter.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/core/top.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/core/weightloader.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/fullconnect/acc_sum.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/fullconnect/fc_front.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/fullconnect/fc_module.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/fullconnect/fc_sram.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/fullconnect/fc_top.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/fullconnect/mult_sum.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/fullconnect/pool_fc_buffer.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/pool1/new_pool.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/pool1/top_pool1.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/document/GitHub/PE_module/asl_soc/source/rtl/nice/pool2/top_pool2.v",
    "Type" : "verilog"
   }
  ],
@@ -43,7 +179,7 @@
  ],
  "LoopLimit" : 2000,
  "ResultFile" : "D:/document/GitHub/PE_module/asl_soc/asl_soc/impl/temp/rtl_parser.result",
- "Top" : "tb_top_input",
+ "Top" : "nice_core_top",
  "VerilogStd" : "verilog_2001",
  "VhdlStd" : "vhdl_93"
 }

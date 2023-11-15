@@ -4,7 +4,8 @@ module IRCAM (
     input UART_RX,
     output reg clkout,
     output reg dout_vald,
-    output reg [7:0] data_out_8bit
+    output reg [7:0] data_out_8bit,
+    output  [15:0] data_counter
 );
   wire data_valid;
   reg [15:0] data_out,temp_max, pre_temp_max,max_temperature;

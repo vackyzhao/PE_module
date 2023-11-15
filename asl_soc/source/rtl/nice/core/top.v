@@ -86,7 +86,7 @@ module nice_core_top #(
       .rst_n(rst_n),
       .en(en),
       .cam_data(cam_data),
-      .input_padding(8'd0),
+      //.input_padding(8'd0),
       .parallel_data(parallel_data),
       .dout_vald(fm_data_valid),
       .PE_clk(PE_clk)
