@@ -99,6 +99,23 @@ module e203_soc_top(
  wire sysmem_icb_cmd_valid;
  wire sysmem_icb_cmd_ready;
 
+// clk_wiz_0 clk_wiz_0_ins
+
+// (// Clock in ports
+//  // Clock out ports
+//  .clk_out1(hfextclk),
+//  // Status and control signals
+//  .reset(1'b1),
+//  .locked(),
+//  .clk_in1(clk)
+// );
+// clk_div clk_div_ins
+//    (
+//    .clk(clk),
+//    .rst_n(1'b1),
+//    .clk_div(lfextclk)
+//    );
+
  e203_subsys_top u_e203_subsys_top(
     .core_mhartid      (1'b0),
   

@@ -46,8 +46,8 @@ module nice_core_top #(
   wire  [95:0] Filtr_2_0;
   wire [2:0] Filtr_2_count;
     //dma transfer
-    wire [AW:0] dma_conv_weight_addr;
-    wire [DW:0] dma_conv_weight;
+    wire [AW-1:0] dma_conv_weight_addr;
+    wire [DW-1:0] dma_conv_weight;
     
     reg dma_start;
     wire [AW-1:0] dma_fc_weight_addr0;
@@ -145,6 +145,7 @@ dma_module dma_module_ins (
       .RET1N(1'b0)                   // 输入�?1位读使能输入
   );
   */
+  wire [15:0] conv_weight;
     conv_sram conv_sram_ins
             (
              .clk(i_clk), 
@@ -156,7 +157,12 @@ dma_module dma_module_ins (
              .dout(conv_weight)
             );
     
-     
+     clock_divider clock_divider_ins
+(
+    .clk_in(clk), // ����ʱ��
+    .rst_n(rst_n ),
+    .clk_out(cam_clk) // ���ʱ��
+);
 
 
 
@@ -164,18 +170,18 @@ dma_module dma_module_ins (
  clockDivider clockDivider_inst (
       .clk200M_in(clk),  // 时钟信号
       .rst_n(rst_n),
-      .clk470k_out(cam_clk),  // 分频后的时钟信号
+      .clk470k_out(),  // 分频后的时钟信号
       .clk10M_out(dout_clk)  // 分频后的时钟信号
   );
 weightloader_conv weightloader_conv_instance (
-    .clk(PE_clk),  // 连接到你的时钟信�?
+    .clk(clk),  // 连接到你的时钟信�?
     .rst_n(rst_n),  // 连接到你的复位信�?
-    .weights_load_start(~dma_control[0]),  // 连接到启动权重加载的信号
+    .weights_load_start(dma_finish),  // 连接到启动权重加载的信号
     .i_sram_weight(conv_weight),  // 连接到SRAM权重的输�?
 
     .Filtr_2_count(Filtr_2_count),  // 连接到Filtr_2计数器的输入
 
-    .o_sram_weight_addr(conv_sram_addr),  // 连接到SRAM权重地址的输�?
+    .o_sram_weight_addr(conv_weight_addr),  // 连接到SRAM权重地址的输�?
 
     .Filtr_1_2(Filtr_1_2),  // 连接到Filtr_1_2的输�?
     .Filtr_1_1(Filtr_1_1),  // 连接到Filtr_1_1的输�?
@@ -199,11 +205,12 @@ weightloader_conv weightloader_conv_instance (
     .Filtr_2_1(Filtr_2_1),
     .Filtr_2_0(Filtr_2_0)
 );*/
+
   top_input top_input_inst (
       .cam_clk(cam_clk),
-      .dout_clk(dout_clk),
+      .dout_clk(clk),
       .rst_n(rst_n),
-      .en(en),
+      .en(dma_finish),
       .cam_data(i_cam_data),
       .input_padding(8'd0),
       .parallel_data(parallel_data),
@@ -340,7 +347,7 @@ assign dma_finish = o_dma_finish;
   );*/
   
   fc_sram fc_sram_ins0 (
-      .clk(PE_clk), 
+      .clk(i_clk), 
      .din(dma_weights0), 
      .addr(fc_sram_addr0),
      .cs((write_en&dma_control[1])|dma_finish), //make sure you enable it for both read and write
@@ -349,7 +356,7 @@ assign dma_finish = o_dma_finish;
      .dout(fc_weights0)
     );
 fc_sram fc_sram_ins1 (
-     .clk(PE_clk), 
+     .clk(i_clk), 
      .din(dma_weights1), 
      .addr(fc_sram_addr1),
      .cs((write_en&dma_control[2])|dma_finish), //make sure you enable it for both read and write
@@ -358,7 +365,7 @@ fc_sram fc_sram_ins1 (
      .dout(fc_weights1)
     );
 fc_sram fc_sram_ins2 (
-     .clk(PE_clk), 
+     .clk(i_clk), 
      .din(dma_weights2), 
      .addr(fc_sram_addr2),
      .cs((write_en&dma_control[3])|dma_finish), //make sure you enable it for both read and write
@@ -367,7 +374,7 @@ fc_sram fc_sram_ins2 (
      .dout(fc_weights2)
     );
 fc_sram fc_sram_ins3 (
-     .clk(PE_clk), 
+     .clk(i_clk), 
      .din(dma_weights3), 
      .addr(fc_sram_addr3),
      .cs((write_en&dma_control[4])|dma_finish), //make sure you enable it for both read and write

@@ -15,14 +15,14 @@ module clockDivider (
       clk10M_out  = 1'd0;
     end else begin
 
-      if (counter_1 == 8'd212) begin  //计数器到13切换状态
+      if (counter_1 == 8'd212) begin  //计数器到13切换状�??
         counter_1 <= 8'd0;
         clk470k_out = ~clk470k_out;
       end else begin
         counter_1 <= counter_1 + 1'd1;  // 计数器加1
       end
 
-      if (counter_2 == 8'd9) begin  //计数器到13切换状态
+      if (counter_2 == 8'd9) begin  //计数器到13切换状�??
         counter_2 <=8'd0;
         clk10M_out = ~clk10M_out;
       end else begin

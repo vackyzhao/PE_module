@@ -14,19 +14,19 @@ module top_input(
 wire din_clk,i_data_din_vld;
 wire [7:0] i_data_din;
 
-//IRCAM IRCAM_inst(
-//    .clk460k(cam_clk),
-//    .UART_RX(cam_data),
-//    .clkout(din_clk),
-//    .dout_vald(i_data_din_vld),
-//    .data_out_8bit(i_data_din)
-//);
+IRCAM IRCAM_inst(
+    .clk460k(cam_clk),
+    .UART_RX(cam_data),
+    .clkout(din_clk),
+    .dout_vald(i_data_din_vld),
+    .data_out_8bit(i_data_din)
+);
 
 
 Input_pre_data_module Input_pre_data_module_inst (
     .din_clk(din_clk),
-    .i_data_din(),
-    .i_data_din_vld(fm_data_valid),
+    .i_data_din(i_data_din),
+    .i_data_din_vld(i_data_din_vld),
     .input_padding(input_padding),
     .dout_clk(dout_clk),
     .en(en),

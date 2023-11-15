@@ -11,8 +11,12 @@ module IRCAM (
   wire [ 7:0] pre_UART_DATA;
   reg  [15:0] data_counter;
   reg  [15:0] data_out_tmp = 16'b0;
+  
+  initial begin
+    clkout=0;
+  end
   /*
-  //生成串口时钟和串口采样时钟
+  //生成串口时钟和串口采样时�?
   ClockDivider460k ClockDivider460k_inst (
       .clk_in   (clk50M),   // 输入时钟
       .clk_out_0(clk460k),  // 输出时钟

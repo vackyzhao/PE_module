@@ -1,5 +1,5 @@
 module Conv1Activation (
-    input reg  [19:0] din,
+    input   [19:0] din,
     output reg  [7:0] dout
 );
 
