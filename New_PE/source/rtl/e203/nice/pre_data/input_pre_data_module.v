@@ -71,27 +71,37 @@ initial out_data_vld=0;
   always @(posedge din_clk) begin  //摄像头输入时�?
     if (!rst_n) begin
       i_switch_pingpong <= 1'b0;
-      out_data_vld <= 1'b0;
+      //out_data_vld <= 1'b0;
     end else begin
       // 如果读取完并且写入完成成切换pingpong，因为写入比较慢，所以这个切换放在写入部�?
       if (col_counter == 6'd34) begin
-        out_data_vld <= 1'b0;
+        //out_data_vld <= 1'b0;
       end else if (o_pl_buffer_ready && (!out_data_vld)) begin
         i_switch_pingpong <= ~i_switch_pingpong;  //切换pingpong状�??
-        out_data_vld <= 1'b1;  //现在可以读取/输出�?
+        //out_data_vld <= 1'b1;  //现在可以读取/输出�?
       end
     end
   end
 reg conv_start;
 always@(posedge dout_clk or negedge rst_n )
-if(!rst_n ) conv_start<=0;
-else begin
-    if(state_change) conv_start<=1;
-    
+if(!rst_n ) begin
+ conv_start<=0;
+ out_data_vld <=0;
 end
+else begin
+    if(col_counter==6'd34)begin
+        out_data_vld <=0;
+    end
+    else if(state_change) begin
+        conv_start<=1;
+        if(!out_data_vld) out_data_vld <=1;
+    end
+end
+reg end_flag;
   always @(posedge dout_clk or negedge rst_n) begin  //sram输出时钟
     if (!rst_n) begin
       i_conv_addr <= 10'b0;
+      end_flag <=0;
     end else 
      begin
      if(conv_start)begin
@@ -108,6 +118,7 @@ end
           if (col_counter >= 1 && col_counter < 33 && row_counter < 24) begin
             i_conv_addr <= row_counter * 32 + col_counter - 1;  //计算输出地址 
           end else begin
+            end_flag <=1;
             i_conv_addr <= 0;
           end
           if (row_counter >= 3) begin
@@ -116,6 +127,7 @@ end
         end
         else begin
             row_counter <=0;
+            
         end
       end
   end

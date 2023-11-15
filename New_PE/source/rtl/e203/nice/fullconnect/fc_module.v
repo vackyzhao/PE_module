@@ -192,8 +192,8 @@ reg read_finish ;
     
     
     wire signed [20:0] out_val_middle;
-    assign out_val_middle = (data_out>>4);
-    assign out_val = (out_val_middle < -128) ? -128 : (out_val_middle ? 127 : out_val_middle);
+    assign out_val_middle = (data_out>>>4);
+    assign out_val = (out_val_middle < -128) ? -128 : ((out_val_middle>127) ? 127 : out_val_middle);
     
     
     assign comp = out_val>fc_out;
