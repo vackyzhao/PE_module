@@ -1,0 +1,32 @@
+Reading netlist file: "D:\OneDrive\UoG_challenge_course\fpga_project_ASL\impl\gwsynthesis\fpga_project_ASL.vg"
+Parsing netlist file "D:\OneDrive\UoG_challenge_course\fpga_project_ASL\impl\gwsynthesis\fpga_project_ASL.vg" completed
+Processing netlist completed
+Reading constraint file: "D:\OneDrive\UoG_challenge_course\fpga_project_ASL\src\fpga_project_ASL.cst"
+Physical Constraint parsed completed
+Running placement......
+[10%] Placement Phase 0 completed
+[20%] Placement Phase 1 completed
+[30%] Placement Phase 2 completed
+WARN  (TA1117) : Can't calculate clocks' relationship between: "clk470k" and "clk16M"
+WARN  (TA1117) : Can't calculate clocks' relationship between: "e203_soc_top_inst/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/top_input_inst/IRCAM_inst/data_valid" and "clk470k"
+WARN  (TA1117) : Can't calculate clocks' relationship between: "clk470k" and "e203_soc_top_inst/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/top_input_inst/din_clk"
+WARN  (TA1117) : Can't calculate clocks' relationship between: "clk32k" and "io_pads_jtag_TCK_i_ival"
+[50%] Placement Phase 3 completed
+Running routing......
+[60%] Routing Phase 0 completed
+[70%] Routing Phase 1 completed
+[80%] Routing Phase 2 completed
+WARN  (PR1014) : Generic routing resource will be used to clock signal 'io_pads_jtag_TCK_i_ival_d' by the specified constraint. And then it may lead to the excessive delay or skew
+WARN  (PR1014) : Generic routing resource will be used to clock signal 'clk_d' by the specified constraint. And then it may lead to the excessive delay or skew
+[90%] Routing Phase 3 completed
+Running timing analysis......
+[95%] Timing analysis completed
+Placement and routing completed
+Bitstream generation in progress......
+Bitstream generation completed
+Generate file "D:\OneDrive\UoG_challenge_course\fpga_project_ASL\impl\pnr\fpga_project_ASL.pin.html" completed
+Generate file "D:\OneDrive\UoG_challenge_course\fpga_project_ASL\impl\pnr\fpga_project_ASL.rpt.html" completed
+Generate file "D:\OneDrive\UoG_challenge_course\fpga_project_ASL\impl\pnr\fpga_project_ASL.rpt.txt" completed
+Generate file "D:\OneDrive\UoG_challenge_course\fpga_project_ASL\impl\pnr\fpga_project_ASL.tr.html" completed
+Thu Nov 16 09:35:08 2023
+

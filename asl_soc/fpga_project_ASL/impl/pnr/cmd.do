@@ -1,0 +1,16 @@
+-d D:\OneDrive\UoG_challenge_course\fpga_project_ASL\impl\gwsynthesis\fpga_project_ASL.vg
+-p GW5AST-138B-FCPBGA676A-1
+-pn GW5AST-LV138FPG676AES
+-cst D:\OneDrive\UoG_challenge_course\fpga_project_ASL\src\fpga_project_ASL.cst
+-cfg D:\OneDrive\UoG_challenge_course\fpga_project_ASL\impl\pnr\device.cfg
+-sdc D:\OneDrive\UoG_challenge_course\fpga_project_ASL\src\fpga_project_ASL.sdc
+-bit
+-tr
+-ph
+-timing
+-ireg_not_in_iob
+-oreg_not_in_iob
+-ioreg_not_in_iob
+-cst_error
+-correct_hold 1
+-route_maxfan 23
