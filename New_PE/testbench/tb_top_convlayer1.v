@@ -41,7 +41,7 @@ module tb_top_convlayer1 ();
   end
 
   initial begin
-    clk = 0;
+    clk = 1;
     rst_n = 0;
     en = 0;
     din_vald=0;
@@ -55,11 +55,19 @@ module tb_top_convlayer1 ();
     // 使能信号置高
     #(Tclk * 10) en = 1;
     din_vald=1;
-    Filtr_in_2={{8'd1},{8'd1},{8'd1},{36'd0}};
-    Filtr_in_1={{8'd1},{8'd1},{8'd1},{36'd0}};
-    Filtr_in_0={{8'd1},{8'd1},{8'd1},{36'd0}};
-    Ifmap_shift_in={{8'd1},{8'd1},{8'd1},{8'd1},{176'd0}};
-     #(Tclk * 32)
+    Filtr_in_2=96'h0403ff_0403ff_0403ff_0403ff;  //权重3x4x8=96�?
+    Filtr_in_1=96'hfd0200_fd0200_fd0200_fd0200; //权重3x4x8=96�?
+    Filtr_in_0=96'h000401_000401_000401_000401;  //权重3x4x8=96�?
+    Ifmap_shift_in={{8'h02},{8'h03},{8'h00},{8'h04},{176'h0}};
+    #(Tclk) 
+    Ifmap_shift_in={{8'h04},{8'h02},{8'h03},{8'h00},{176'h0}};
+    #(Tclk) 
+    Ifmap_shift_in={{8'h01},{8'h04},{8'h02},{8'h01},{176'h0}};
+    #(Tclk) 
+    Ifmap_shift_in={{8'h00},{8'h01},{8'h01},{8'h02},{176'h0}};
+    #(Tclk) 
+    Ifmap_shift_in={208'b0};
+    #(Tclk * 32)
      din_vald=0;
 
 
