@@ -3,9 +3,9 @@ module tb_top_convlayer1 ();
   reg rst_n;
   reg en;
   reg [207:0] Ifmap_shift_in;
-  reg [47:0] Filtr_in_2;
-  reg [47:0] Filtr_in_1;
-  reg [47:0] Filtr_in_0;
+  reg [96:0] Filtr_in_2;
+  reg [96:0] Filtr_in_1;
+  reg [96:0] Filtr_in_0;
   reg din_vald;
   wire dout_vald;
   wire [191:0] Psum_d_out_0;
@@ -46,18 +46,18 @@ module tb_top_convlayer1 ();
     en = 0;
     din_vald=0;
     Ifmap_shift_in = 208'b0;
-    Filtr_in_2 = 48'd0;
-    Filtr_in_1 = 48'd0;
-    Filtr_in_0 = 48'd0;
+    Filtr_in_2 = 96'd0;
+    Filtr_in_1 = 96'd0;
+    Filtr_in_0 = 96'd0;
 
     // 在时钟上升沿释放复位信号
     #(Tclk * 10) rst_n = 1;
     // 使能信号置高
     #(Tclk * 10) en = 1;
     din_vald=1;
-    Filtr_in_2={{4'd1},{4'd1},{4'd1},{36'd0}};
-    Filtr_in_1={{4'd1},{4'd1},{4'd1},{36'd0}};
-    Filtr_in_0={{4'd1},{4'd1},{4'd1},{36'd0}};
+    Filtr_in_2={{8'd1},{8'd1},{8'd1},{36'd0}};
+    Filtr_in_1={{8'd1},{8'd1},{8'd1},{36'd0}};
+    Filtr_in_0={{8'd1},{8'd1},{8'd1},{36'd0}};
     Ifmap_shift_in={{8'd1},{8'd1},{8'd1},{8'd1},{176'd0}};
      #(Tclk * 32)
      din_vald=0;
