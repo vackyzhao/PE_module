@@ -131,7 +131,8 @@ dma_module dma_module_ins (
     wire cs_fc0, cs_fc1, cs_fc2, cs_fc3;
     assign cs_conv = ((write_en && dma_control[0]) | dma_finish);
     assign conv_sram_addr = dma_start ? dma_conv_weight_addr : conv_weight_addr;
-/*
+    wire [15:0] conv_weight;
+    
   RAMSP1024X16_rtl_top conv_sram_ins (
       .Q    (conv_weight),           // 输出�?16位数据输�?
       .CLK  (clk),                   // 输入：时钟信�?
@@ -144,8 +145,9 @@ dma_module dma_module_ins (
       .GWEN (1'b0),                  // 输入：全�?写使能输�?
       .RET1N(1'b0)                   // 输入�?1位读使能输入
   );
-  */
-  wire [15:0] conv_weight;
+  
+  
+  /*
     conv_sram conv_sram_ins
             (
              .clk(i_clk), 
@@ -156,23 +158,14 @@ dma_module dma_module_ins (
              .wem(dma_control[0]),//only uesd when write
              .dout(conv_weight)
             );
-    
-     clock_divider clock_divider_ins
-(
-    .clk_in(clk), // ����ʱ��
-    .rst_n(rst_n ),
-    .clk_out(cam_clk) // ���ʱ��
+    */
+clockDivider clockDivider_inst(
+    .clk16M_in(i_clk),   // 输入时钟信号
+    .rst_n(rst_n),
+    .clk470k_out(cam_clk),  // 输出分频后的信号
+    .clk1M_out()    // 输出分频后的信号
 );
 
-
-
-//时钟分频器，�?200M时钟分频�?470KHz�?10M时钟
- clockDivider clockDivider_inst (
-      .clk200M_in(clk),  // 时钟信号
-      .rst_n(rst_n),
-      .clk470k_out(),  // 分频后的时钟信号
-      .clk10M_out(dout_clk)  // 分频后的时钟信号
-  );
 weightloader_conv weightloader_conv_instance (
     .clk(clk),  // 连接到你的时钟信�?
     .rst_n(rst_n),  // 连接到你的复位信�?
@@ -296,7 +289,7 @@ assign dma_finish = o_dma_finish;
   );
   
   wire [15:0] fc_weights0, fc_weights1, fc_weights2, fc_weights3;
-/*
+
   RAMSP2048X16_rtl_top fc_sram_ins0 (
       .Q(fc_weights0),  // 输出�?16位数据输�?
       .CLK(clk),  // 输入：时钟信�?
@@ -344,8 +337,8 @@ assign dma_finish = o_dma_finish;
       .EMAW(2'b00),  // 输入�?2位扩展模式地�?写使能输�?
       .GWEN(1'b0),  // 输入：全�?写使能输�?
       .RET1N(1'b0)  // 输入�?1位读使能输入
-  );*/
-  
+  );
+  /*
   fc_sram fc_sram_ins0 (
       .clk(i_clk), 
      .din(dma_weights0), 
@@ -382,7 +375,7 @@ fc_sram fc_sram_ins3 (
      .wem(dma_control[4]),  //only uesd when write
      .dout(fc_weights3)
     );                
-
+*/
 wire [63:0] fc_weight;
 assign fc_weight = {fc_weights0, fc_weights1, fc_weights2, fc_weights3};
 
