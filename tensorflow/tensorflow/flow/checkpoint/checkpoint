@@ -1,2 +1,0 @@
-model_checkpoint_path: "asl_cnn.ckpt"
-all_model_checkpoint_paths: "asl_cnn.ckpt"
