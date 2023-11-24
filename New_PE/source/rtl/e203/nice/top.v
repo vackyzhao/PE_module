@@ -1,23 +1,28 @@
+
 module nice_core_top #(
-    parameter DW = 16,  // æ•°æ®å®½åº¦
-    parameter AW = 16   // åœ°å€å®½åº¦
+    parameter DW = 16,  // Êı¾İ¿í¶È
+    parameter AW = 16   // µØÖ·¿í¶È
 ) (
-    input wire i_clk,  // è¾“å…¥ï¼šæ—¶é’Ÿä¿¡å·ï¼Œ200Mæ—¶é’Ÿ
-    input wire i_cam_data,  // è¾“å…¥ï¼šæ‘„åƒå¤´æ•°æ®
-    input wire i_rst_n,  // è¾“å…¥ï¼šå¤ä½ä¿¡ï¿½?
-    input wire i_start,  // è¾“å…¥ï¼šå¼€å§‹ä¿¡ï¿½?
-    output reg o_data_ready,  // è¾“å‡ºï¼šæ•°æ®å‡†å¤‡å°±ç»ªä¿¡ï¿½?
-    output wire o_dma_finish,  // è¾“å‡ºï¼šDMAå®Œæˆä¿¡å·
+    input wire i_clk,  // ÊäÈë£ºÊ±ÖÓĞÅºÅ£¬200MÊ±ÖÓ
+    `ifdef USE_CAMERA
+        input wire i_cam_data,  // ÊäÈë£ºÉãÏñÍ·Êı¾İ
+    `else
+        input [207:0] i_parallel_data,  // ÊäÈë£º²¢ĞĞÊı??
+        input wire i_fm_data_valid,  // ÊäÈë£ºÌØÕ÷Í¼Êı¾İÓĞĞ§ĞÅºÅ
+    `endif
+    input wire i_rst_n,  // ÊäÈë£º¸´Î»ĞÅ??
+    input wire i_start,  // ÊäÈë£º¿ªÊ¼ĞÅ??
+    output reg o_data_ready,  // Êä³ö£ºÊı¾İ×¼±¸¾ÍĞ÷ĞÅ??
+    output wire o_dma_finish,  // Êä³ö£ºDMAÍê³ÉĞÅºÅ
 
-    //input [207:0] i_parallel_data,  // è¾“å…¥ï¼šå¹¶è¡Œæ•°ï¿½?
-    //input wire i_fm_data_valid,  // è¾“å…¥ï¼šç‰¹å¾å›¾æ•°æ®æœ‰æ•ˆä¿¡å·
-    
-    output [15:0] o_sram_weight_addr,  // è¾“å‡ºï¼šSRAMæƒé‡åœ°å€
-    input [15:0] i_sram_weight,  // è¾“å…¥ï¼šSRAMæƒé‡
 
     
-    output [4:0] o_result_data,  // è¾“å‡ºï¼šç»“æœæ•°ï¿½?
-    output o_result_data_valid  // è¾“å‡ºï¼šç»“æœæ•°æ®æœ‰æ•ˆä¿¡ï¿½?
+    output [15:0] o_sram_weight_addr,  // Êä³ö£ºSRAMÈ¨ÖØµØÖ·
+    input [15:0] i_sram_weight,  // ÊäÈë£ºSRAMÈ¨ÖØ
+
+    
+    output [4:0] o_result_data,  // Êä³ö£º½á¹ûÊı??
+    output o_result_data_valid  // Êä³ö£º½á¹ûÊı¾İÓĞĞ§ĞÅ??
 
 );
   wire clk;
@@ -78,11 +83,11 @@ always @(posedge clk or negedge rst_n) begin
     end
   end
 end
-
+wire dma_conv_load_finish;
 dma_module dma_module_ins (
     
     // for nice cmd and data
-        .i_clk  (i_clk),
+        .i_clk  (clk),
         .i_rst_n(i_rst_n),
         
     //for read ITCM 
@@ -99,14 +104,14 @@ dma_module dma_module_ins (
 
     
         .o_dma_control(dma_control),
-    
+        .o_dma_conv_load_finish(dma_conv_load_finish),
         .o_write_en(write_en),
     
         .o_dma_conv_weight_addr(dma_conv_weight_addr),
         .o_dma_conv_weight(dma_conv_weight),
     
         .o_dma_fc_weight_addr0(dma_fc_weight_addr0),
-        .o_dma_weights0(dma_fc_weight_addr0),
+        .o_dma_weights0(dma_weights0),
         .o_dma_fc_weight_addr1(dma_fc_weight_addr1),
         .o_dma_weights1(dma_weights1),
         .o_dma_fc_weight_addr2(dma_fc_weight_addr2),
@@ -129,129 +134,138 @@ dma_module dma_module_ins (
     wire [15:0] conv_weight_addr;
     wire cs_conv;
     wire cs_fc0, cs_fc1, cs_fc2, cs_fc3;
-    assign cs_conv = ((write_en && dma_control[0]) | dma_finish);
-    assign conv_sram_addr = dma_start ? dma_conv_weight_addr : conv_weight_addr;
+    assign cs_conv = (dma_conv_load_finish && ~dma_finish) ? 1:(((write_en && dma_control[0]) | dma_finish));
+    assign conv_sram_addr = (dma_start && ~dma_conv_load_finish) ? dma_conv_weight_addr : conv_weight_addr;
     wire [15:0] conv_weight;
-    
+    `ifdef USE_IPSRAM
+
   RAMSP1024X16_rtl_top conv_sram_ins (
-      .Q    (conv_weight),           // è¾“å‡ºï¿½?16ä½æ•°æ®è¾“ï¿½?
-      .CLK  (clk),                   // è¾“å…¥ï¼šæ—¶é’Ÿä¿¡ï¿½?
-      .CEN  (~cs_conv),               // è¾“å…¥ï¼šèŠ¯ç‰‡ä½¿èƒ½ä¿¡ï¿½?
-      .WEN  ({16{~dma_control[0]}}),  // è¾“å…¥ï¿½?16ä½å†™ä½¿èƒ½ä¿¡å·
-      .A    (conv_sram_addr[9:0]),   // è¾“å…¥ï¿½?10ä½åœ°ï¿½?è¾“å…¥
-      .D    (dma_conv_weight),       // è¾“å…¥ï¿½?16ä½æ•°æ®è¾“ï¿½?
-      .EMA  (3'b000),                // è¾“å…¥ï¿½?3ä½æ‰©å±•æ¨¡å¼åœ°ï¿½?è¾“å…¥
-      .EMAW (2'b00),                 // è¾“å…¥ï¿½?2ä½æ‰©å±•æ¨¡å¼åœ°ï¿½?å†™ä½¿èƒ½è¾“ï¿½?
-      .GWEN (1'b0),                  // è¾“å…¥ï¼šå…¨ï¿½?å†™ä½¿èƒ½è¾“ï¿½?
-      .RET1N(1'b0)                   // è¾“å…¥ï¿½?1ä½è¯»ä½¿èƒ½è¾“å…¥
+      .Q    (conv_weight),           // Êä³ö??16Î»Êı¾İÊä??
+      .CLK  (clk),                   // ÊäÈë£ºÊ±ÖÓĞÅ??
+      .CEN  (~cs_conv),               // ÊäÈë£ºĞ¾Æ¬Ê¹ÄÜĞÅ??
+      .WEN  ({16{~dma_control[0]}}),  // ÊäÈë??16Î»Ğ´Ê¹ÄÜĞÅºÅ
+      .A    (conv_sram_addr[9:0]),   // ÊäÈë??10Î»µØ??ÊäÈë
+      .D    (dma_conv_weight),       // ÊäÈë??16Î»Êı¾İÊä??
+      .EMA  (3'b000),                // ÊäÈë??3Î»À©Õ¹Ä£Ê½µØ??ÊäÈë
+      .EMAW (2'b00),                 // ÊäÈë??2Î»À©Õ¹Ä£Ê½µØ??Ğ´Ê¹ÄÜÊä??
+      .GWEN (1'b0),                  // ÊäÈë£ºÈ«??Ğ´Ê¹ÄÜÊä??
+      .RET1N(1'b0)                   // ÊäÈë??1Î»¶ÁÊ¹ÄÜÊäÈë
   );
   
-  
-  /*
+    `else
     conv_sram conv_sram_ins
             (
-             .clk(i_clk), 
+             .clk(clk), 
              .din(dma_conv_weight), 
              .addr(conv_sram_addr),
-             .cs(cs_conv ), //make sure you enable it for both read and write
+             .cs(cs_conv), //make sure you enable it for both read and write
              .we(dma_control[0]), //enable it when write, disable it when read
              .wem(dma_control[0]),//only uesd when write
              .dout(conv_weight)
             );
-    */
-clockDivider clockDivider_inst(
-    .clk16M_in(i_clk),   // è¾“å…¥æ—¶é’Ÿä¿¡å·
-    .rst_n(rst_n),
-    .clk470k_out(cam_clk),  // è¾“å‡ºåˆ†é¢‘åçš„ä¿¡å·
-    .clk1M_out()    // è¾“å‡ºåˆ†é¢‘åçš„ä¿¡å·
+    `endif
+     clock_divider clock_divider_ins
+(
+    .clk_in(clk), // ???????
+    .rst_n(rst_n ),
+    .clk_out(cam_clk) // ??????
 );
 
-weightloader_conv weightloader_conv_instance (
-    .clk(clk),  // è¿æ¥åˆ°ä½ çš„æ—¶é’Ÿä¿¡ï¿½?
-    .rst_n(rst_n),  // è¿æ¥åˆ°ä½ çš„å¤ä½ä¿¡ï¿½?
-    .weights_load_start(dma_finish),  // è¿æ¥åˆ°å¯åŠ¨æƒé‡åŠ è½½çš„ä¿¡å·
-    .i_sram_weight(conv_weight),  // è¿æ¥åˆ°SRAMæƒé‡çš„è¾“ï¿½?
 
-    .Filtr_2_count(Filtr_2_count),  // è¿æ¥åˆ°Filtr_2è®¡æ•°å™¨çš„è¾“å…¥
 
-    .o_sram_weight_addr(conv_weight_addr),  // è¿æ¥åˆ°SRAMæƒé‡åœ°å€çš„è¾“ï¿½?
-
-    .Filtr_1_2(Filtr_1_2),  // è¿æ¥åˆ°Filtr_1_2çš„è¾“ï¿½?
-    .Filtr_1_1(Filtr_1_1),  // è¿æ¥åˆ°Filtr_1_1çš„è¾“ï¿½?
-    .Filtr_1_0(Filtr_1_0),  // è¿æ¥åˆ°Filtr_1_0çš„è¾“ï¿½?
-
-    .Filtr_2_2(Filtr_2_2),  // è¿æ¥åˆ°Filtr_2_2çš„è¾“ï¿½?
-    .Filtr_2_1(Filtr_2_1),  // è¿æ¥åˆ°Filtr_2_1çš„è¾“ï¿½?
-    .Filtr_2_0(Filtr_2_0),  // è¿æ¥åˆ°Filtr_2_0çš„è¾“ï¿½?
-
-    .weights_load_finish(weights_load_finish)  // è¿æ¥åˆ°æƒé‡åŠ è½½å®Œæˆçš„è¾“å‡º
-);
-/*
-  weightloader_conv weightloader_conv_inst (
-    .Filtr_2_count(Filtr_2_count),
-
-    .Filtr_1_2(Filtr_1_2),
-    .Filtr_1_1(Filtr_1_1),
-    .Filtr_1_0(Filtr_1_0),
-
-    .Filtr_2_2(Filtr_2_2),
-    .Filtr_2_1(Filtr_2_1),
-    .Filtr_2_0(Filtr_2_0)
-);*/
-
-  top_input top_input_inst (
-      .cam_clk(cam_clk),
-      .dout_clk(clk),
+//Ê±ÖÓ·ÖÆµÆ÷£¬??200MÊ±ÖÓ·ÖÆµ??470KHz??10MÊ±ÖÓ
+ clockDivider clockDivider_inst (
+      .clk200M_in(clk),  // Ê±ÖÓĞÅºÅ
       .rst_n(rst_n),
-      .en(dma_finish),
-      .cam_data(i_cam_data),
-      .input_padding(8'd0),
-      .parallel_data(parallel_data),
-      .dout_vald(fm_data_valid),
-      .PE_clk(PE_clk)
+      .clk470k_out(),  // ·ÖÆµºóµÄÊ±ÖÓĞÅºÅ
+      .clk10M_out(dout_clk)  // ·ÖÆµºóµÄÊ±ÖÓĞÅºÅ
   );
+weightloader_conv weightloader_conv_instance (
+    .clk(clk),  // Á¬½Óµ½ÄãµÄÊ±ÖÓĞÅ??
+    .rst_n(rst_n),  // Á¬½Óµ½ÄãµÄ¸´Î»ĞÅ??
+    .weights_load_start(dma_conv_load_finish),  // Á¬½Óµ½Æô¶¯È¨ÖØ¼ÓÔØµÄĞÅºÅ
+    .i_sram_weight(conv_weight),  // Á¬½Óµ½SRAMÈ¨ÖØµÄÊä??
+
+    .Filtr_2_count(Filtr_2_count),  // Á¬½Óµ½Filtr_2¼ÆÊıÆ÷µÄÊäÈë
+
+    .o_sram_weight_addr(conv_weight_addr),  // Á¬½Óµ½SRAMÈ¨ÖØµØÖ·µÄÊä??
+
+    .Filtr_1_2(Filtr_1_2),  // Á¬½Óµ½Filtr_1_2µÄÊä??
+    .Filtr_1_1(Filtr_1_1),  // Á¬½Óµ½Filtr_1_1µÄÊä??
+    .Filtr_1_0(Filtr_1_0),  // Á¬½Óµ½Filtr_1_0µÄÊä??
+
+    .Filtr_2_2(Filtr_2_2),  // Á¬½Óµ½Filtr_2_2µÄÊä??
+    .Filtr_2_1(Filtr_2_1),  // Á¬½Óµ½Filtr_2_1µÄÊä??
+    .Filtr_2_0(Filtr_2_0),  // Á¬½Óµ½Filtr_2_0µÄÊä??
+
+    .weights_load_finish(weights_load_finish)  // Á¬½Óµ½È¨ÖØ¼ÓÔØÍê³ÉµÄÊä³ö
+);
+
+
+top_input top_input_inst (
+    .cam_clk(clk),
+    .dout_clk(clk),
+    .rst_n(rst_n),
+    .en(dma_finish),
+    .cam_data(i_cam_data),
+    .input_padding(8'd0),
+    `ifdef USE_CAMERA
+        .parallel_data(parallel_data),
+        .dout_vald(fm_data_valid),
+        .PE_clk(PE_clk)
+    `else
+        .parallel_data(),
+        .dout_vald(),
+        .PE_clk()
+    `endif
+);
+
+ `ifndef USE_CAMERA
+    assign fm_data_valid = i_fm_data_valid;
+    assign parallel_data = i_parallel_data;
+    assign dma_finish = o_dma_finish;
+    assign PE_clk=clk;
+`else 
+`endif
 
 
 
-//assign fm_data_valid = i_fm_data_valid;
-// assign parallel_data = i_parallel_data;
-assign dma_finish = o_dma_finish;
   top_convlayer1 top_convlayer1_inst (
       .clk(PE_clk),
       .rst_n(rst_n),
       .en(dma_finish),
-      .Ifmap_shift_in(parallel_data),  //26x8=208ä½æ•°ï¿½?
+      .Ifmap_shift_in(parallel_data),  //26x8=208Î»Êı??
 
-      .Filtr_in_2(Filtr_1_2),  //æƒé‡3x4x4=48ä½æ•°ï¿½?
-      .Filtr_in_1(Filtr_1_1),  //æƒé‡3x4x4=48ä½æ•°ï¿½?
-      .Filtr_in_0(Filtr_1_0),  //æƒé‡3x4x4=48ä½æ•°ï¿½?
+      .Filtr_in_2(Filtr_1_2),  //È¨ÖØ3x4x4=48Î»Êı??
+      .Filtr_in_1(Filtr_1_1),  //È¨ÖØ3x4x4=48Î»Êı??
+      .Filtr_in_0(Filtr_1_0),  //È¨ÖØ3x4x4=48Î»Êı??
 
-      .din_vald (fm_data_valid&weights_load_finish),   //è¾“å…¥æ•°æ®æœ‰æ•ˆä¿¡å·
-      .dout_vald(conv1_dout_vald), //è¾“å‡ºæ•°æ®æœ‰æ•ˆä¿¡å·
+      .din_vald (fm_data_valid&weights_load_finish),   //ÊäÈëÊı¾İÓĞĞ§ĞÅºÅ
+      .dout_vald(conv1_dout_vald), //Êä³öÊı¾İÓĞĞ§ĞÅºÅ
 
-      .Psum_d_out_0(conv1_out_0),  //24x8=192 ä½æ•°æ®ï¼Œè¾“å‡º0
-      .Psum_d_out_1(conv1_out_1),  //24x8=192 ä½æ•°æ®ï¼Œè¾“å‡º1
-      .Psum_d_out_2(conv1_out_2),  //24x8=192 ä½æ•°æ®ï¼Œè¾“å‡º2
-      .Psum_d_out_3(conv1_out_3)   //24x8=192 ä½æ•°æ®ï¼Œè¾“å‡º3
+      .Psum_d_out_0(conv1_out_0),  //24x8=192 Î»Êı¾İ£¬Êä³ö0
+      .Psum_d_out_1(conv1_out_1),  //24x8=192 Î»Êı¾İ£¬Êä³ö1
+      .Psum_d_out_2(conv1_out_2),  //24x8=192 Î»Êı¾İ£¬Êä³ö2
+      .Psum_d_out_3(conv1_out_3)   //24x8=192 Î»Êı¾İ£¬Êä³ö3
   );
 
   top_pool1 top_pool1_inst (
-      .clk     (PE_clk),             // æ—¶é’Ÿä¿¡å·
-      .rst_n   (rst_n),           // å¤ä½ä¿¡å·
-      .en      (dma_finish),         // ä½¿èƒ½ä¿¡å·    
-      .valid_in(conv1_dout_vald), // è¾“å…¥æ•°æ®æœ‰æ•ˆä¿¡å·
+      .clk     (PE_clk),             // Ê±ÖÓĞÅºÅ
+      .rst_n   (rst_n),           // ¸´Î»ĞÅºÅ
+      .en      (dma_finish),         // Ê¹ÄÜĞÅºÅ    
+      .valid_in(conv1_dout_vald), // ÊäÈëÊı¾İÓĞĞ§ĞÅºÅ
 
-      .data_in_0(conv1_out_0),  // è¾“å…¥æ•°æ®
-      .data_in_1(conv1_out_1),  // è¾“å…¥æ•°æ®
-      .data_in_2(conv1_out_2),  // è¾“å…¥æ•°æ®
-      .data_in_3(conv1_out_3),  // è¾“å…¥æ•°æ®
+      .data_in_0(conv1_out_0),  // ÊäÈëÊı¾İ
+      .data_in_1(conv1_out_1),  // ÊäÈëÊı¾İ
+      .data_in_2(conv1_out_2),  // ÊäÈëÊı¾İ
+      .data_in_3(conv1_out_3),  // ÊäÈëÊı¾İ
 
-      .data_out_0(pool1_out_0),  // è¾“å‡ºæ•°æ®
-      .data_out_1(pool1_out_1),  // è¾“å‡ºæ•°æ®
-      .data_out_2(pool1_out_2),  // è¾“å‡ºæ•°æ®
-      .data_out_3(pool1_out_3),  // è¾“å‡ºæ•°æ®
+      .data_out_0(pool1_out_0),  // Êä³öÊı¾İ
+      .data_out_1(pool1_out_1),  // Êä³öÊı¾İ
+      .data_out_2(pool1_out_2),  // Êä³öÊı¾İ
+      .data_out_3(pool1_out_3),  // Êä³öÊı¾İ
 
-      .valid_out(pool1_dout_vald),  // è¾“å‡ºæ•°æ®æœ‰æ•ˆä¿¡å·
+      .valid_out(pool1_dout_vald),  // Êä³öÊı¾İÓĞĞ§ĞÅºÅ
       .pool_end (pool1_end)
   );
 
@@ -260,87 +274,87 @@ assign dma_finish = o_dma_finish;
       .rst_n(rst_n),
       .en(dma_finish),
 
-      .din_valid(pool1_dout_vald&weights_load_finish),  // è¾“å…¥æ•°æ®æœ‰æ•ˆä¿¡å·
+      .din_valid(pool1_dout_vald&weights_load_finish),  // ÊäÈëÊı¾İÓĞĞ§ĞÅºÅ
       .pool_end (pool1_end),
 
-      .data_in_0(pool1_out_0),  // è¾“å…¥æ•°æ® 12x8=96
-      .data_in_1(pool1_out_1),  // è¾“å…¥æ•°æ®
-      .data_in_2(pool1_out_2),  // è¾“å…¥æ•°æ®
-      .data_in_3(pool1_out_3),  // è¾“å…¥æ•°æ®
+      .data_in_0(pool1_out_0),  // ÊäÈëÊı¾İ 12x8=96
+      .data_in_1(pool1_out_1),  // ÊäÈëÊı¾İ
+      .data_in_2(pool1_out_2),  // ÊäÈëÊı¾İ
+      .data_in_3(pool1_out_3),  // ÊäÈëÊı¾İ
 
-      .Filtr_in_2(Filtr_2_2),  //æƒé‡3x4x4=48ä½æ•°ï¿½?
-      .Filtr_in_1(Filtr_2_1),  //æƒé‡
-      .Filtr_in_0(Filtr_2_0),  //æƒé‡
+      .Filtr_in_2(Filtr_2_2),  //È¨ÖØ3x4x4=48Î»Êı??
+      .Filtr_in_1(Filtr_2_1),  //È¨ÖØ
+      .Filtr_in_0(Filtr_2_0),  //È¨ÖØ
 
-      .Psum_d_out(conv2_out),  //12x8=96 ä½æ•°ï¿½? 
+      .Psum_d_out(conv2_out),  //12x8=96 Î»Êı?? 
       .conv_counter(Filtr_2_count),
-      .conv_en(conv2_dout_vald)  //è¾“å‡ºæ•°æ®æœ‰æ•ˆä¿¡å·
+      .conv_en(conv2_dout_vald)  //Êä³öÊı¾İÓĞĞ§ĞÅºÅ
   );
   top_pool2 top_pool2_inst (
-      .clk     (PE_clk),              // æ—¶é’Ÿä¿¡å·
-      .rst_n   (rst_n),            // å¤ä½ä¿¡å·
-      .en      (dma_finish),          // ä½¿èƒ½ä¿¡å·    
-      .valid_in(conv2_dout_vald),  // è¾“å…¥æ•°æ®æœ‰æ•ˆä¿¡å·
-      .data_in (conv2_out),        // è¾“å…¥æ•°æ®
+      .clk     (PE_clk),              // Ê±ÖÓĞÅºÅ
+      .rst_n   (rst_n),            // ¸´Î»ĞÅºÅ
+      .en      (dma_finish),          // Ê¹ÄÜĞÅºÅ    
+      .valid_in(conv2_dout_vald),  // ÊäÈëÊı¾İÓĞĞ§ĞÅºÅ
+      .data_in (conv2_out),        // ÊäÈëÊı¾İ
 
-      .data_out (pool2_out),        // è¾“å‡ºæ•°æ®
-      .valid_out(pool2_dout_vald),  // è¾“å‡ºæ•°æ®æœ‰æ•ˆä¿¡å·
+      .data_out (pool2_out),        // Êä³öÊı¾İ
+      .valid_out(pool2_dout_vald),  // Êä³öÊı¾İÓĞĞ§ĞÅºÅ
       .pool_end (pool2_end)
   );
   
   wire [15:0] fc_weights0, fc_weights1, fc_weights2, fc_weights3;
-
+`ifdef USE_IPSRAM
   RAMSP2048X16_rtl_top fc_sram_ins0 (
-      .Q(fc_weights0),  // è¾“å‡ºï¿½?16ä½æ•°æ®è¾“ï¿½?
-      .CLK(clk),  // è¾“å…¥ï¼šæ—¶é’Ÿä¿¡ï¿½?
-      .CEN(~((write_en & dma_control[1]) | dma_finish)),  // è¾“å…¥ï¼šèŠ¯ç‰‡ä½¿èƒ½ä¿¡ï¿½?
-      .WEN({16{~dma_control[1]}}),  // è¾“å…¥ï¿½?16ä½å†™ä½¿èƒ½ä¿¡å·
-      .A(fc_sram_addr0[10:0]),  // è¾“å…¥ï¿½?10ä½åœ°ï¿½?è¾“å…¥
-      .D(dma_weights0),  // è¾“å…¥ï¿½?16ä½æ•°æ®è¾“ï¿½?
-      .EMA(3'b000),  // è¾“å…¥ï¿½?3ä½æ‰©å±•æ¨¡å¼åœ°ï¿½?è¾“å…¥
-      .EMAW(2'b00),  // è¾“å…¥ï¿½?2ä½æ‰©å±•æ¨¡å¼åœ°ï¿½?å†™ä½¿èƒ½è¾“ï¿½?
-      .GWEN(1'b0),  // è¾“å…¥ï¼šå…¨ï¿½?å†™ä½¿èƒ½è¾“ï¿½?
-      .RET1N(1'b0)  // è¾“å…¥ï¿½?1ä½è¯»ä½¿èƒ½è¾“å…¥
+      .Q(fc_weights0),  // Êä³ö??16Î»Êı¾İÊä??
+      .CLK(clk),  // ÊäÈë£ºÊ±ÖÓĞÅ??
+      .CEN(~((write_en & dma_control[1]) | dma_finish)),  // ÊäÈë£ºĞ¾Æ¬Ê¹ÄÜĞÅ??
+      .WEN({16{~dma_control[1]}}),  // ÊäÈë??16Î»Ğ´Ê¹ÄÜĞÅºÅ
+      .A(fc_sram_addr0[10:0]),  // ÊäÈë??10Î»µØ??ÊäÈë
+      .D(dma_weights0),  // ÊäÈë??16Î»Êı¾İÊä??
+      .EMA(3'b000),  // ÊäÈë??3Î»À©Õ¹Ä£Ê½µØ??ÊäÈë
+      .EMAW(2'b00),  // ÊäÈë??2Î»À©Õ¹Ä£Ê½µØ??Ğ´Ê¹ÄÜÊä??
+      .GWEN(1'b0),  // ÊäÈë£ºÈ«??Ğ´Ê¹ÄÜÊä??
+      .RET1N(1'b0)  // ÊäÈë??1Î»¶ÁÊ¹ÄÜÊäÈë
   );
   RAMSP2048X16_rtl_top fc_sram_ins1 (
-      .Q(fc_weights1),  // è¾“å‡ºï¿½?16ä½æ•°æ®è¾“ï¿½?
-      .CLK(clk),  // è¾“å…¥ï¼šæ—¶é’Ÿä¿¡ï¿½?
-      .CEN(~((write_en & dma_control[2]) | dma_finish)),  // è¾“å…¥ï¼šèŠ¯ç‰‡ä½¿èƒ½ä¿¡ï¿½?
-      .WEN({16{~dma_control[2]}}),  // è¾“å…¥ï¿½?16ä½å†™ä½¿èƒ½ä¿¡å·
-      .A(fc_sram_addr1[10:0]),  // è¾“å…¥ï¿½?10ä½åœ°ï¿½?è¾“å…¥
-      .D(dma_weights1),  // è¾“å…¥ï¿½?16ä½æ•°æ®è¾“ï¿½?
-      .EMA(3'b000),  // è¾“å…¥ï¿½?3ä½æ‰©å±•æ¨¡å¼åœ°ï¿½?è¾“å…¥
-      .EMAW(2'b00),  // è¾“å…¥ï¿½?2ä½æ‰©å±•æ¨¡å¼åœ°ï¿½?å†™ä½¿èƒ½è¾“ï¿½?
-      .GWEN(1'b0),  // è¾“å…¥ï¼šå…¨ï¿½?å†™ä½¿èƒ½è¾“ï¿½?
-      .RET1N(1'b0)  // è¾“å…¥ï¿½?1ä½è¯»ä½¿èƒ½è¾“å…¥
+      .Q(fc_weights1),  // Êä³ö??16Î»Êı¾İÊä??
+      .CLK(clk),  // ÊäÈë£ºÊ±ÖÓĞÅ??
+      .CEN(~((write_en & dma_control[2]) | dma_finish)),  // ÊäÈë£ºĞ¾Æ¬Ê¹ÄÜĞÅ??
+      .WEN({16{~dma_control[2]}}),  // ÊäÈë??16Î»Ğ´Ê¹ÄÜĞÅºÅ
+      .A(fc_sram_addr1[10:0]),  // ÊäÈë??10Î»µØ??ÊäÈë
+      .D(dma_weights1),  // ÊäÈë??16Î»Êı¾İÊä??
+      .EMA(3'b000),  // ÊäÈë??3Î»À©Õ¹Ä£Ê½µØ??ÊäÈë
+      .EMAW(2'b00),  // ÊäÈë??2Î»À©Õ¹Ä£Ê½µØ??Ğ´Ê¹ÄÜÊä??
+      .GWEN(1'b0),  // ÊäÈë£ºÈ«??Ğ´Ê¹ÄÜÊä??
+      .RET1N(1'b0)  // ÊäÈë??1Î»¶ÁÊ¹ÄÜÊäÈë
   );
   RAMSP2048X16_rtl_top fc_sram_ins2 (
-      .Q(fc_weights2),  // è¾“å‡ºï¿½?16ä½æ•°æ®è¾“ï¿½?
-      .CLK(clk),  // è¾“å…¥ï¼šæ—¶é’Ÿä¿¡ï¿½?
-      .CEN(~((write_en & dma_control[3]) | dma_finish)),  // è¾“å…¥ï¼šèŠ¯ç‰‡ä½¿èƒ½ä¿¡ï¿½?
-      .WEN({16{~dma_control[3]}}),  // è¾“å…¥ï¿½?16ä½å†™ä½¿èƒ½ä¿¡å·
-      .A(fc_sram_addr2[10:0]),  // è¾“å…¥ï¿½?10ä½åœ°ï¿½?è¾“å…¥
-      .D(dma_weights2),  // è¾“å…¥ï¿½?16ä½æ•°æ®è¾“ï¿½?
-      .EMA(3'b000),  // è¾“å…¥ï¿½?3ä½æ‰©å±•æ¨¡å¼åœ°ï¿½?è¾“å…¥
-      .EMAW(2'b00),  // è¾“å…¥ï¿½?2ä½æ‰©å±•æ¨¡å¼åœ°ï¿½?å†™ä½¿èƒ½è¾“ï¿½?
-      .GWEN(1'b0),  // è¾“å…¥ï¼šå…¨ï¿½?å†™ä½¿èƒ½è¾“ï¿½?
-      .RET1N(1'b0)  // è¾“å…¥ï¿½?1ä½è¯»ä½¿èƒ½è¾“å…¥
+      .Q(fc_weights2),  // Êä³ö??16Î»Êı¾İÊä??
+      .CLK(clk),  // ÊäÈë£ºÊ±ÖÓĞÅ??
+      .CEN(~((write_en & dma_control[3]) | dma_finish)),  // ÊäÈë£ºĞ¾Æ¬Ê¹ÄÜĞÅ??
+      .WEN({16{~dma_control[3]}}),  // ÊäÈë??16Î»Ğ´Ê¹ÄÜĞÅºÅ
+      .A(fc_sram_addr2[10:0]),  // ÊäÈë??10Î»µØ??ÊäÈë
+      .D(dma_weights2),  // ÊäÈë??16Î»Êı¾İÊä??
+      .EMA(3'b000),  // ÊäÈë??3Î»À©Õ¹Ä£Ê½µØ??ÊäÈë
+      .EMAW(2'b00),  // ÊäÈë??2Î»À©Õ¹Ä£Ê½µØ??Ğ´Ê¹ÄÜÊä??
+      .GWEN(1'b0),  // ÊäÈë£ºÈ«??Ğ´Ê¹ÄÜÊä??
+      .RET1N(1'b0)  // ÊäÈë??1Î»¶ÁÊ¹ÄÜÊäÈë
   );
   RAMSP2048X16_rtl_top fc_sram_ins3 (
-      .Q(fc_weights3),  // è¾“å‡ºï¿½?16ä½æ•°æ®è¾“ï¿½?
-      .CLK(clk),  // è¾“å…¥ï¼šæ—¶é’Ÿä¿¡ï¿½?
-      .CEN(~((write_en & dma_control[4]) | dma_finish)),  // è¾“å…¥ï¼šèŠ¯ç‰‡ä½¿èƒ½ä¿¡ï¿½?
-      .WEN({16{~dma_control[4]}}),  // è¾“å…¥ï¿½?16ä½å†™ä½¿èƒ½ä¿¡å·
-      .A(fc_sram_addr3[10:0]),  // è¾“å…¥ï¿½?10ä½åœ°ï¿½?è¾“å…¥
-      .D(dma_weights3),  // è¾“å…¥ï¿½?16ä½æ•°æ®è¾“ï¿½?
-      .EMA(3'b000),  // è¾“å…¥ï¿½?3ä½æ‰©å±•æ¨¡å¼åœ°ï¿½?è¾“å…¥
-      .EMAW(2'b00),  // è¾“å…¥ï¿½?2ä½æ‰©å±•æ¨¡å¼åœ°ï¿½?å†™ä½¿èƒ½è¾“ï¿½?
-      .GWEN(1'b0),  // è¾“å…¥ï¼šå…¨ï¿½?å†™ä½¿èƒ½è¾“ï¿½?
-      .RET1N(1'b0)  // è¾“å…¥ï¿½?1ä½è¯»ä½¿èƒ½è¾“å…¥
+      .Q(fc_weights3),  // Êä³ö??16Î»Êı¾İÊä??
+      .CLK(clk),  // ÊäÈë£ºÊ±ÖÓĞÅ??
+      .CEN(~((write_en & dma_control[4]) | dma_finish)),  // ÊäÈë£ºĞ¾Æ¬Ê¹ÄÜĞÅ??
+      .WEN({16{~dma_control[4]}}),  // ÊäÈë??16Î»Ğ´Ê¹ÄÜĞÅºÅ
+      .A(fc_sram_addr3[10:0]),  // ÊäÈë??10Î»µØ??ÊäÈë
+      .D(dma_weights3),  // ÊäÈë??16Î»Êı¾İÊä??
+      .EMA(3'b000),  // ÊäÈë??3Î»À©Õ¹Ä£Ê½µØ??ÊäÈë
+      .EMAW(2'b00),  // ÊäÈë??2Î»À©Õ¹Ä£Ê½µØ??Ğ´Ê¹ÄÜÊä??
+      .GWEN(1'b0),  // ÊäÈë£ºÈ«??Ğ´Ê¹ÄÜÊä??
+      .RET1N(1'b0)  // ÊäÈë??1Î»¶ÁÊ¹ÄÜÊäÈë
   );
-  /*
+`else
   fc_sram fc_sram_ins0 (
-      .clk(i_clk), 
+      .clk(clk), 
      .din(dma_weights0), 
      .addr(fc_sram_addr0),
      .cs((write_en&dma_control[1])|dma_finish), //make sure you enable it for both read and write
@@ -349,7 +363,7 @@ assign dma_finish = o_dma_finish;
      .dout(fc_weights0)
     );
 fc_sram fc_sram_ins1 (
-     .clk(i_clk), 
+     .clk(clk), 
      .din(dma_weights1), 
      .addr(fc_sram_addr1),
      .cs((write_en&dma_control[2])|dma_finish), //make sure you enable it for both read and write
@@ -358,7 +372,7 @@ fc_sram fc_sram_ins1 (
      .dout(fc_weights1)
     );
 fc_sram fc_sram_ins2 (
-     .clk(i_clk), 
+     .clk(clk), 
      .din(dma_weights2), 
      .addr(fc_sram_addr2),
      .cs((write_en&dma_control[3])|dma_finish), //make sure you enable it for both read and write
@@ -367,7 +381,7 @@ fc_sram fc_sram_ins2 (
      .dout(fc_weights2)
     );
 fc_sram fc_sram_ins3 (
-     .clk(i_clk), 
+     .clk(clk), 
      .din(dma_weights3), 
      .addr(fc_sram_addr3),
      .cs((write_en&dma_control[4])|dma_finish), //make sure you enable it for both read and write
@@ -375,7 +389,7 @@ fc_sram fc_sram_ins3 (
      .wem(dma_control[4]),  //only uesd when write
      .dout(fc_weights3)
     );                
-*/
+`endif
 wire [63:0] fc_weight;
 assign fc_weight = {fc_weights0, fc_weights1, fc_weights2, fc_weights3};
 

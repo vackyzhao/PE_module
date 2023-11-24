@@ -34,13 +34,13 @@ module weightloader_conv (
 
     output reg [15:0] o_sram_weight_addr,
 
-    output wire [95:0] Filtr_1_2,
-    output wire [95:0] Filtr_1_1,
-    output wire [95:0] Filtr_1_0,
+    output reg [95:0] Filtr_1_2,
+    output reg [95:0] Filtr_1_1,
+    output reg [95:0] Filtr_1_0,
 
-    output wire [95:0] Filtr_2_2,
-    output wire [95:0] Filtr_2_1,
-    output wire [95:0] Filtr_2_0,
+    output reg [95:0] Filtr_2_2,
+    output reg [95:0] Filtr_2_1,
+    output reg [95:0] Filtr_2_0,
 
     output reg weights_load_finish
 
@@ -51,10 +51,12 @@ module weightloader_conv (
   reg [7:0] weights_conv2[287:0];
   initial begin
     weights_load_finish  = 0;
-    weights_load_counter = 9'b0;    
+    weights_load_counter = 9'b0;
   end
 
-assign Filtr_1_2 = {
+  always @(*) begin
+    if (weights_load_finish) begin
+      Filtr_1_2 <= {
         weights_conv1[0],
         weights_conv1[1],
         weights_conv1[2],
@@ -68,23 +70,7 @@ assign Filtr_1_2 = {
         weights_conv1[28],
         weights_conv1[29]
       };
-
-  assign    Filtr_1_2 = {
-        weights_conv1[0],
-        weights_conv1[1],
-        weights_conv1[2],
-        weights_conv1[9],
-        weights_conv1[10],
-        weights_conv1[11],
-        weights_conv1[18],
-        weights_conv1[19],
-        weights_conv1[20],
-        weights_conv1[27],
-        weights_conv1[28],
-        weights_conv1[29]
-      };
-
-    assign  Filtr_1_1 = {
+      Filtr_1_1 <= {
         weights_conv1[3],
         weights_conv1[4],
         weights_conv1[5],
@@ -98,7 +84,7 @@ assign Filtr_1_2 = {
         weights_conv1[31],
         weights_conv1[32]
       };
-    assign  Filtr_1_0 = {
+      Filtr_1_0 <= {
         weights_conv1[6],
         weights_conv1[7],
         weights_conv1[8],
@@ -112,7 +98,7 @@ assign Filtr_1_2 = {
         weights_conv1[34],
         weights_conv1[35]
       };
-   assign   Filtr_2_2 = {
+      Filtr_2_2 <= {
         weights_conv2[Filtr_2_count*36+0],
         weights_conv2[Filtr_2_count*36+1],
         weights_conv2[Filtr_2_count*36+2],
@@ -126,7 +112,7 @@ assign Filtr_1_2 = {
         weights_conv2[Filtr_2_count*36+28],
         weights_conv2[Filtr_2_count*36+29]
       };
-    assign  Filtr_2_1 = {
+      Filtr_2_1 <= {
         weights_conv2[Filtr_2_count*36+3],
         weights_conv2[Filtr_2_count*36+4],
         weights_conv2[Filtr_2_count*36+5],
@@ -140,7 +126,7 @@ assign Filtr_1_2 = {
         weights_conv2[Filtr_2_count*36+31],
         weights_conv2[Filtr_2_count*36+32]
       };
-    assign  Filtr_2_0 = {
+      Filtr_2_0 <= {
         weights_conv2[Filtr_2_count*36+6],
         weights_conv2[Filtr_2_count*36+7],
         weights_conv2[Filtr_2_count*36+8],
@@ -154,7 +140,8 @@ assign Filtr_1_2 = {
         weights_conv2[Filtr_2_count*36+34],
         weights_conv2[Filtr_2_count*36+35]
       };
-
+    end
+  end
 
   integer m, n;
   always @(posedge clk or negedge rst_n) begin
