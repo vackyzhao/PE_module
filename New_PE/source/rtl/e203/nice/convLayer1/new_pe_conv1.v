@@ -59,7 +59,7 @@ initial begin
     Psum_tmp = 20'b0;  // 输出计算结果初始化为�?
 end
 // 组合逻辑块：用于计算卷积结果
-always @(*) begin
+always @(clk) begin
     if (!rst_n) begin
         // 复位状�?�下的操�?
         // 在复位状态下，可以设置默认的输出�?
@@ -70,12 +70,12 @@ always @(*) begin
         // 非复位状态下的操�?
         if (en) begin
             // 当使能信号高电平有效时执行计�?
-            Psum_tmp <=$signed($signed(Psum_in) + $signed(result_0) +  $signed(result_1) +  $signed(result_2)); // 计算卷积结果
+            Psum_out <=$signed($signed(Psum_in) + $signed(result_0) +  $signed(result_1) +  $signed(result_2)); // 计算卷积结果
             Filtr_out <= Filtr_in; // 输出权重数据不变
         end
     end
 end
-
+/*
 sirv_gnrl_dfflr #(20) Psum_reg (
   .lden(en),
   .dnxt(Psum_tmp),
@@ -83,5 +83,5 @@ sirv_gnrl_dfflr #(20) Psum_reg (
   .clk(clk),
   .rst_n(rst_n)
 );
-
+*/
 endmodule
