@@ -2,15 +2,19 @@ module nice_core_top #(
     parameter DW = 16,  // 数据宽度
     parameter AW = 16   // 地址宽度
 ) (
-    input wire i_clk,  // 输入：时钟信号，200M时钟
-    input wire i_cam_data,  // 输入：摄像头数据
-    input wire i_rst_n,  // 输入：复位信�?
-    input wire i_start,  // 输入：开始信�?
-    output reg o_data_ready,  // 输出：数据准备就绪信�?
-    output wire o_dma_finish,  // 输出：DMA完成信号
+    input wire i_clk,  // ���룺ʱ���źţ�200Mʱ��
+    `ifdef USE_CAMERA
+    input wire i_cam_data,  // ���룺����ͷ����
+    `else
+        input [207:0] i_parallel_data,  // ���룺������??
+        input wire i_fm_data_valid,  // ���룺����ͼ������Ч�ź�
+    `endif
+    input wire i_rst_n,  // ���룺��λ��??
+    input wire i_start,  // ���룺��ʼ��??
+    output reg o_data_ready,  // ���������׼��������??
+    output wire o_dma_finish,  // �����DMA����ź�
 
-    //input [207:0] i_parallel_data,  // 输入：并行数�?
-    //input wire i_fm_data_valid,  // 输入：特征图数据有效信号
+
     
     output [15:0] o_sram_weight_addr,  // 输出：SRAM权重地址
     input [15:0] i_sram_weight,  // 输入：SRAM权重
@@ -78,7 +82,7 @@ always @(posedge clk or negedge rst_n) begin
     end
   end
 end
-
+wire dma_conv_load_finish;
 dma_module dma_module_ins (
     
     // for nice cmd and data
@@ -99,14 +103,14 @@ dma_module dma_module_ins (
 
     
         .o_dma_control(dma_control),
-    
+        .o_dma_conv_load_finish(dma_conv_load_finish),
         .o_write_en(write_en),
     
         .o_dma_conv_weight_addr(dma_conv_weight_addr),
         .o_dma_conv_weight(dma_conv_weight),
     
         .o_dma_fc_weight_addr0(dma_fc_weight_addr0),
-        .o_dma_weights0(dma_fc_weight_addr0),
+        .o_dma_weights0(dma_weights0),
         .o_dma_fc_weight_addr1(dma_fc_weight_addr1),
         .o_dma_weights1(dma_weights1),
         .o_dma_fc_weight_addr2(dma_fc_weight_addr2),
@@ -129,25 +133,25 @@ dma_module dma_module_ins (
     wire [15:0] conv_weight_addr;
     wire cs_conv;
     wire cs_fc0, cs_fc1, cs_fc2, cs_fc3;
-    assign cs_conv = ((write_en && dma_control[0]) | dma_finish);
-    assign conv_sram_addr = dma_start ? dma_conv_weight_addr : conv_weight_addr;
+    assign cs_conv = (dma_conv_load_finish && ~dma_finish) ? 1:(((write_en && dma_control[0]) | dma_finish));
+    assign conv_sram_addr = (dma_start && ~dma_conv_load_finish) ? dma_conv_weight_addr : conv_weight_addr;
     wire [15:0] conv_weight;
+`ifdef USE_IPSRAM
     
   RAMSP1024X16_rtl_top conv_sram_ins (
-      .Q    (conv_weight),           // 输出�?16位数据输�?
-      .CLK  (clk),                   // 输入：时钟信�?
-      .CEN  (~cs_conv),               // 输入：芯片使能信�?
-      .WEN  ({16{~dma_control[0]}}),  // 输入�?16位写使能信号
-      .A    (conv_sram_addr[9:0]),   // 输入�?10位地�?输入
-      .D    (dma_conv_weight),       // 输入�?16位数据输�?
-      .EMA  (3'b000),                // 输入�?3位扩展模式地�?输入
-      .EMAW (2'b00),                 // 输入�?2位扩展模式地�?写使能输�?
-      .GWEN (1'b0),                  // 输入：全�?写使能输�?
-      .RET1N(1'b0)                   // 输入�?1位读使能输入
+      .Q    (conv_weight),           // ���??16λ������??
+      .CLK  (clk),                   // ���룺ʱ����??
+      .CEN  (~cs_conv),               // ���룺оƬʹ����??
+      .WEN  ({16{~dma_control[0]}}),  // ����??16λдʹ���ź�
+      .A    (conv_sram_addr[9:0]),   // ����??10λ��??����
+      .D    (dma_conv_weight),       // ����??16λ������??
+      .EMA  (3'b000),                // ����??3λ��չģʽ��??����
+      .EMAW (2'b00),                 // ����??2λ��չģʽ��??дʹ����??
+      .GWEN (1'b0),                  // ���룺ȫ??дʹ����??
+      .RET1N(1'b0)                   // ����??1λ��ʹ������
   );
   
-  
-  /*
+  `else
     conv_sram conv_sram_ins
             (
              .clk(i_clk), 
@@ -158,19 +162,22 @@ dma_module dma_module_ins (
              .wem(dma_control[0]),//only uesd when write
              .dout(conv_weight)
             );
-    */
-clockDivider clockDivider_inst(
-    .clk16M_in(i_clk),   // 输入时钟信号
+    `endif
+
+
+
+//ʱ�ӷ�Ƶ����??200Mʱ�ӷ�Ƶ??470KHz??10Mʱ��
+ clockDivider clockDivider_inst (
+    .clk200M_in(clk),  // ʱ���ź�
     .rst_n(rst_n),
     .clk470k_out(cam_clk),  // 输出分频后的信号
     .clk1M_out()    // 输出分频后的信号
 );
-
 weightloader_conv weightloader_conv_instance (
-    .clk(clk),  // 连接到你的时钟信�?
-    .rst_n(rst_n),  // 连接到你的复位信�?
-    .weights_load_start(dma_finish),  // 连接到启动权重加载的信号
-    .i_sram_weight(conv_weight),  // 连接到SRAM权重的输�?
+    .clk(clk),  // ���ӵ����ʱ����??
+    .rst_n(rst_n),  // ���ӵ���ĸ�λ��??
+    .weights_load_start(dma_conv_load_finish),  // ���ӵ�����Ȩ�ؼ��ص��ź�
+    .i_sram_weight(conv_weight),  // ���ӵ�SRAMȨ�ص���??
 
     .Filtr_2_count(Filtr_2_count),  // 连接到Filtr_2计数器的输入
 
@@ -184,38 +191,38 @@ weightloader_conv weightloader_conv_instance (
     .Filtr_2_1(Filtr_2_1),  // 连接到Filtr_2_1的输�?
     .Filtr_2_0(Filtr_2_0),  // 连接到Filtr_2_0的输�?
 
-    .weights_load_finish(weights_load_finish)  // 连接到权重加载完成的输出
+    .weights_load_finish(weights_load_finish)  // ���ӵ�Ȩ�ؼ�����ɵ����
 );
-/*
-  weightloader_conv weightloader_conv_inst (
-    .Filtr_2_count(Filtr_2_count),
 
-    .Filtr_1_2(Filtr_1_2),
-    .Filtr_1_1(Filtr_1_1),
-    .Filtr_1_0(Filtr_1_0),
-
-    .Filtr_2_2(Filtr_2_2),
-    .Filtr_2_1(Filtr_2_1),
-    .Filtr_2_0(Filtr_2_0)
-);*/
 
   top_input top_input_inst (
-      .cam_clk(cam_clk),
+      .cam_clk(clk),
       .dout_clk(clk),
       .rst_n(rst_n),
       .en(dma_finish),
       .cam_data(i_cam_data),
       .input_padding(8'd0),
+`ifdef USE_CAMERA
       .parallel_data(parallel_data),
       .dout_vald(fm_data_valid),
       .PE_clk(PE_clk)
-  );
+  `else
+        .parallel_data(),
+        .dout_vald(),
+        .PE_clk()
+    `endif
+);
 
-
-
-//assign fm_data_valid = i_fm_data_valid;
-// assign parallel_data = i_parallel_data;
+ `ifndef USE_CAMERA
+    assign fm_data_valid = i_fm_data_valid;
+assign parallel_data = i_parallel_data;
 assign dma_finish = o_dma_finish;
+assign PE_clk=clk;
+`else 
+`endif
+
+
+
   top_convlayer1 top_convlayer1_inst (
       .clk(PE_clk),
       .rst_n(rst_n),
@@ -289,7 +296,7 @@ assign dma_finish = o_dma_finish;
   );
   
   wire [15:0] fc_weights0, fc_weights1, fc_weights2, fc_weights3;
-
+`ifdef USE_IPSRAM
   RAMSP2048X16_rtl_top fc_sram_ins0 (
       .Q(fc_weights0),  // 输出�?16位数据输�?
       .CLK(clk),  // 输入：时钟信�?
@@ -338,9 +345,9 @@ assign dma_finish = o_dma_finish;
       .GWEN(1'b0),  // 输入：全�?写使能输�?
       .RET1N(1'b0)  // 输入�?1位读使能输入
   );
-  /*
+  `else
   fc_sram fc_sram_ins0 (
-      .clk(i_clk), 
+      .clk(clk), 
      .din(dma_weights0), 
      .addr(fc_sram_addr0),
      .cs((write_en&dma_control[1])|dma_finish), //make sure you enable it for both read and write
@@ -349,7 +356,7 @@ assign dma_finish = o_dma_finish;
      .dout(fc_weights0)
     );
 fc_sram fc_sram_ins1 (
-     .clk(i_clk), 
+     .clk(clk), 
      .din(dma_weights1), 
      .addr(fc_sram_addr1),
      .cs((write_en&dma_control[2])|dma_finish), //make sure you enable it for both read and write
@@ -358,7 +365,7 @@ fc_sram fc_sram_ins1 (
      .dout(fc_weights1)
     );
 fc_sram fc_sram_ins2 (
-     .clk(i_clk), 
+     .clk(clk), 
      .din(dma_weights2), 
      .addr(fc_sram_addr2),
      .cs((write_en&dma_control[3])|dma_finish), //make sure you enable it for both read and write
@@ -367,7 +374,7 @@ fc_sram fc_sram_ins2 (
      .dout(fc_weights2)
     );
 fc_sram fc_sram_ins3 (
-     .clk(i_clk), 
+     .clk(clk), 
      .din(dma_weights3), 
      .addr(fc_sram_addr3),
      .cs((write_en&dma_control[4])|dma_finish), //make sure you enable it for both read and write
@@ -375,7 +382,7 @@ fc_sram fc_sram_ins3 (
      .wem(dma_control[4]),  //only uesd when write
      .dout(fc_weights3)
     );                
-*/
+`endif
 wire [63:0] fc_weight;
 assign fc_weight = {fc_weights0, fc_weights1, fc_weights2, fc_weights3};
 

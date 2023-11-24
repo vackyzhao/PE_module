@@ -13,7 +13,7 @@ module tb_top();
   `define EXU `CPU_TOP.u_e203_cpu.u_e203_core.u_e203_exu
   `define ITCM `CPU_TOP.u_e203_srams.u_e203_itcm_ram.u_e203_itcm_gnrl_ram.u_sirv_sim_ram
   `define DTCM `CPU_TOP.u_e203_srams.u_e203_dtcm_ram.u_e203_dtcm_gnrl_ram.u_sirv_sim_ram
-
+  `define ASL  `CPU_TOP.u_e203_cpu.u_e203_nice_core.nice_core_top_ins
 
   `define PC_WRITE_TOHOST       `E203_PC_SIZE'h80000086
   `define PC_EXT_IRQ_BEFOR_MRET `E203_PC_SIZE'h800000a6
@@ -222,7 +222,11 @@ module tb_top();
     #10
      $finish;
   end
+initial begin 
+    #1650000;
+        $finish;
 
+end
   initial begin
     #40000000
         $display("Time Out !!!");
@@ -240,10 +244,10 @@ module tb_top();
   end
 
 
-wire mnist_ready = e203_subsys_nice_core.mnist_ready;
+wire asl_ready = e203_subsys_nice_core.asl_ready;
 reg uart_clk;
 
-// µ± mnist_ready Îª¸ßÊ±£¬Ñ­»·ÊäÈë i_cam_data
+// ï¿½ï¿½ mnist_ready Îªï¿½ï¿½Ê±ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ i_cam_data
 
   reg [13:0]in_cam_i;
   initial in_cam_i =0;
@@ -251,22 +255,22 @@ reg uart_clk;
   initial cam_clk =0;
     always
   begin 
-     #40 cam_clk <= ~cam_clk;
+     #2.5 cam_clk <= ~cam_clk;
   end
 always @(posedge cam_clk) begin
-  if (mnist_ready) begin
-     // µÈ´ý 1704 ·ÂÕæÊ±¼äµ¥Î»
+  if (asl_ready) begin
+     // ï¿½È´ï¿½ 1704 ï¿½ï¿½ï¿½ï¿½Ê±ï¿½äµ¥Î»
         if(in_cam_i<15439) in_cam_i<=in_cam_i+1;
         else in_cam_i <=0;
     end
     else in_cam_i <= 15440;
 end
 
-  reg [7:0] cam_data_array [0:15440]; // Êý×é´óÐ¡ÓëÊý¾ÝÌõÄ¿µÄÊýÁ¿Æ¥Åä
+  reg [7:0] cam_data_array [0:15440]; // ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½
 
 
   initial begin
-    // ÓÃÎÄ¼þÖÐµÄÖµ³õÊ¼»¯ cam_data_array
+    // ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ðµï¿½Öµï¿½ï¿½Ê¼ï¿½ï¿½ cam_data_array
     $readmemb("D:/project/ChipDesign/code_else/temperature/fixed/formatted_cam_data_bits_0.txt", cam_data_array);
   end
     

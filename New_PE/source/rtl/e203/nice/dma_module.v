@@ -17,17 +17,16 @@ module dma_module#(
     input  i_dma_start,
     output o_dma_finish,
  
-    input [15:0] i_fc_weight_length,
-    input [15:0] i_conv_weight_length,
+    input [AW-1:0] i_fc_weight_length,
+    input [AW-1:0] i_conv_weight_length,
 
     
     output [4:0] o_dma_control,
-
+output reg o_dma_conv_load_finish,
 //for acc module
     output o_write_en,
     output [AW-1:0] o_dma_conv_weight_addr,
     output [DW-1:0] o_dma_conv_weight,
-
     output [AW-1:0] o_dma_fc_weight_addr0,
     output [DW-1:0] o_dma_weights0,
     output [AW-1:0] o_dma_fc_weight_addr1,
@@ -46,15 +45,15 @@ reg dma_finish;
 reg write_en;
 reg write_en_ff;
 
-reg [15:0] read_in_addr_cnt;
-reg [15:0]  read_in_data;
+reg [AW-1:0] read_in_addr_cnt;
+reg [DW-1:0]  read_in_data;
 
 
-reg [AW:0] write_out_addr_cnt;
-reg [AW:0] write_out_addr_cnt_ff1;
-reg [AW:0] write_out_addr_cnt_ff2;
+reg [AW-1:0] write_out_addr_cnt;
+reg [AW-1:0] write_out_addr_cnt_ff1;
+reg [AW-1:0] write_out_addr_cnt_ff2;
 
-reg [DW:0]  write_out_data;
+reg [DW-1:0]  write_out_data;
 
 
 
@@ -99,6 +98,7 @@ always @(posedge i_clk ) begin
         write_out_addr_cnt_ff1 <=0;
         write_out_addr_cnt_ff2 <=0;
         write_out_data <=0;
+o_dma_conv_load_finish <=0;
     end else begin
         case (dma_state)
             0: begin
@@ -128,6 +128,7 @@ always @(posedge i_clk ) begin
                     write_out_data <= 0;
                     dma_control <= dma_control<<1;
                     dma_state <= dma_state+1;
+                    o_dma_conv_load_finish<=1;
                 end
                 
             end
