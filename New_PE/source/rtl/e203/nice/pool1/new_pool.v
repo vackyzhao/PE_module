@@ -157,7 +157,7 @@ begin
             pool_valid <= 0;
             for (k = 0; k < 24; k = k + 1)
             begin
-                pool_temp[k] = 0;
+                pool_temp[k] <= 0;
             end
             pool_over <= 0;
             pool_over_ff1 <= 0;

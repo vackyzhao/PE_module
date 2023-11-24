@@ -16,7 +16,7 @@
 
 //=====================================================================
 //
-// Designer   : GYQ
+// Designer   : LZB
 //
 // Description:
 //  The Module to realize a simple NICE core
@@ -89,10 +89,15 @@ module e203_subsys_nice_core (
    wire [6:0] opcode      = {7{nice_req_valid}} & nice_req_inst[6:0];
    wire [2:0] rv32_func3  = {3{nice_req_valid}} & nice_req_inst[14:12];
    wire [6:0] rv32_func7  = {7{nice_req_valid}} & nice_req_inst[31:25];
-   wire [4:0] rs2 = {5{nice_req_valid}} & nice_req_inst[24:20];
+wire [4:0] rs2 = {5{nice_req_valid}} & nice_req_inst[24:20];
    wire [4:0] rs1 = {5{nice_req_valid}} & nice_req_inst[19:15];
    wire [4:0] rd = {5{nice_req_valid}} & nice_req_inst[11:7];
 
+   
+
+//   wire opcode_custom0 = (opcode == 7'b0001011); 
+//   wire opcode_custom1 = (opcode == 7'b0101011); 
+//   wire opcode_custom2 = (opcode == 7'b1011011); 
    wire opcode_custom3 = (opcode == 7'b1111011); 
 
    wire rv32_func3_000 = (rv32_func3 == 3'b000); 
@@ -113,6 +118,20 @@ module e203_subsys_nice_core (
    wire rv32_func7_0000110 = (rv32_func7 == 7'b0000110); 
    wire rv32_func7_0000111 = (rv32_func7 == 7'b0000111); 
 
+   ////////////////////////////////////////////////////////////
+   // custom3:
+   // Supported format: only R type here
+   // Supported instr:
+   //  1. custom3 lbuf: load data(in memory) to row_buf
+   //     lbuf (a1)
+   //     .insn r opcode, func3, func7, rd, rs1, rs2    
+   //  2. custom3 sbuf: store data(in row_buf) to memory
+   //     sbuf (a1)
+   //     .insn r opcode, func3, func7, rd, rs1, rs2    
+   //  3. custom3 acc rowsum: load data from memory(@a1), accumulate row datas and write back 
+   //     rowsum rd, a1, x0
+   //     .insn r opcode, func3, func7, rd, rs1, rs2    
+   ////////////////////////////////////////////////////////////
    wire custom3_rdstat     = opcode_custom3 & rv32_func3_110 & rv32_func7_0000001; 
    wire custom3_start     = opcode_custom3 & rv32_func3_111 & rv32_func7_0000010; 
    wire custom3_ldbuf   = opcode_custom3 & rv32_func3_110 & rv32_func7_0000100; 
@@ -224,11 +243,15 @@ module e203_subsys_nice_core (
    //  wire u42a_data_valid;
    wire sigma_dp_data_valid;
      
-
+    // wire [`E203_XLEN-1:0] u42a_r, u42a_nxt;
+    // wire u42a_ena, u42a_rst_n;
+//    sirv_gnrl_dfflr #(`E203_XLEN)   u42a_dfflr (u42a_ena, u42a_nxt, u42a_r, nice_clk, u42a_rst_n);
    wire [`E203_XLEN-1:0] sigma_r, sigma_nxt;
    wire sigma_ena, sigma_rst_n;
    sirv_gnrl_dfflr #(`E203_XLEN)   sigma_dfflr (sigma_ena, sigma_nxt, sigma_r, nice_clk, sigma_rst_n);
-
+//    wire u42a_status_r;
+//    wire u42a_status_ena, u42a_status_rst_n;
+//    sirv_gnrl_dfflr #(1)   u42a_status_dfflr (u42a_status_ena, 1'b1, u42a_status_r, nice_clk, u42a_status_rst_n);
    wire sigma_status_r;
    wire sigma_status_ena, sigma_status_rst_n;
    sirv_gnrl_dfflr #(1)   sigma_status_dfflr (sigma_status_ena, 1'b1, sigma_status_r, nice_clk, sigma_status_rst_n);
@@ -275,10 +298,30 @@ module e203_subsys_nice_core (
    assign nice_rsp_valid_start = state_is_start ? mrt_rstn : 0;
    assign start_done = state_is_start & nice_rsp_hsked;
 
+
+
+
+   //////// Core
+//       MRT_wrapper u_mrt(
+//       .i_clk                  (nice_clk),
+//       .i_rstn                 (mrt_rstn),
+//       .i_ena                  (u_mrt_ena),
+//       .i_wen                  (u_mrt_wen),
+//       .i_cfg_data             (u_mrt_cfg_data),
+//       .i_cfg_i                (u_mrt_cfg_i),
+//       .i_cfg_addr             (u_mrt_cfg_addr),
+//       .u42a_data              (u42a_data),
+//       .u42a_data_valid        (u42a_data_valid),
+//       .sigma_dp_data          (sigma_dp_data),
+//       .sigma_dp_data_valid    (sigma_dp_data_valid)
+//        );
     
-///////////////////////////////////////////////////////////////////////////////below is the asl module
+
+
+    
+///////////////////////////////////////////////////////////////////////////////below is my mnist module
 wire ldbuf_load_done; 
-    wire asl_ready;
+    wire mnist_ready;
     //img signal
 //    wire [7:0] fm_data;
 //    wire fm_data_valid;
@@ -295,49 +338,49 @@ assign sigma_dp_data_valid = result_data_valid;
     wire [31:0] sram_data;
 
 
-reg asl_start_ff1;
-reg asl_start_ff2;
-reg asl_rst_n;
-   wire asl_start;
+reg mnist_start_ff1;
+reg mnist_start_ff2;
+reg mnist_rst_n;
+   wire mnist_start;
 
-wire asl_dma_finish;
-   wire asl_dma_finish_posedge;
+wire mnist_dma_finish;
+   wire mnist_dma_finish_posedge;
 
-reg asl_dma_finish_ff1;
-reg asl_dma_finish_ff2;
-assign asl_dma_finish_posedge = asl_dma_finish_ff1&(~asl_dma_finish_ff2);
+reg mnist_dma_finish_ff1;
+reg mnist_dma_finish_ff2;
+assign mnist_dma_finish_posedge = mnist_dma_finish_ff1&(~mnist_dma_finish_ff2);
 //generate state singal
 always @(posedge nice_clk) begin
     if (!nice_rst_n) begin
-        asl_start_ff1 <= 0;
-        asl_start_ff2 <= 0;
-        asl_dma_finish_ff1 <= 0;
-        asl_dma_finish_ff2 <= 0;
-        asl_rst_n <= 0;
+        mnist_start_ff1 <= 0;
+        mnist_start_ff2 <= 0;
+        mnist_dma_finish_ff1 <= 0;
+        mnist_dma_finish_ff2 <= 0;
+        mnist_rst_n <= 0;
     end else begin
         if(ldbuf_load_done == 1) begin
-            asl_rst_n <=1;
+            mnist_rst_n <=1;
         end else begin
-            asl_rst_n <= asl_rst_n;
+            mnist_rst_n <= mnist_rst_n;
         end
-        if(asl_dma_finish) begin
-            asl_dma_finish_ff1 <=1;
-            asl_dma_finish_ff2 <= asl_dma_finish_ff1;
+        if(mnist_dma_finish) begin
+            mnist_dma_finish_ff1 <=1;
+            mnist_dma_finish_ff2 <= mnist_dma_finish_ff1;
         end else begin
-            asl_dma_finish_ff1 <= asl_dma_finish_ff1;
-            asl_dma_finish_ff2 <= asl_dma_finish_ff2;
+            mnist_dma_finish_ff1 <= mnist_dma_finish_ff1;
+            mnist_dma_finish_ff2 <= mnist_dma_finish_ff2;
         end
         
         if (start_res[0]) begin
-            asl_start_ff1 <= 1;
-            asl_start_ff2 <= asl_start_ff1;
+            mnist_start_ff1 <= 1;
+            mnist_start_ff2 <= mnist_start_ff1;
         end else begin
-            asl_start_ff1 <= asl_start_ff1;
-            asl_start_ff2 <= asl_start_ff2;
+            mnist_start_ff1 <= mnist_start_ff1;
+            mnist_start_ff2 <= mnist_start_ff2;
         end
     end
 end
-assign asl_start = asl_start_ff1 & (~asl_start_ff2);
+assign mnist_start = mnist_start_ff1 & (~mnist_start_ff2);
 
 
    //below are used as the input for sram
@@ -350,7 +393,7 @@ assign asl_start = asl_start_ff1 & (~asl_start_ff2);
 
 wire [31:0] all_parameter_sram_addr;
 
-assign all_parameter_sram_addr = asl_rst_n? {16'b0,sram_addr}:u_mrt_cfg_addr;
+assign all_parameter_sram_addr = mnist_rst_n? {16'b0,sram_addr}:u_mrt_cfg_addr;
 
 
 
@@ -373,7 +416,7 @@ wire o_result_data_valid;
 
 initial
 begin
-fm_txt=$fopen("D:/project/ChipDesign/e203_hbirdv2-master/e203_hbirdv2-master/tb/img_test.txt","r");
+fm_txt=$fopen("D:/project/ChipDesign/nice_core/img_test.txt","r");
     for(i=0;i<34*26;i=i+1)
        begin
            count= $fscanf(fm_txt,"%d",fm_data[i]);
@@ -396,7 +439,7 @@ always@(posedge nice_clk) begin
             tb_state <=1;
         end
         1: begin
-            if(asl_ready == 1)begin
+            if(mnist_ready == 1)begin
                 start <=0;
                 in_i <= 0;
                 fm_data_valid <=1;
@@ -447,15 +490,14 @@ assign parallel_data = {
     nice_core_top nice_core_top_ins(
     //generanl config
         .i_clk(nice_clk),
-        .i_rst_n(asl_rst_n),
-        .i_start(asl_start),  
-        .o_data_ready(asl_ready),        
-        .o_dma_finish(asl_dma_finish),
+        .i_rst_n(mnist_rst_n),
+        .i_start(mnist_start),  
+        .o_data_ready(mnist_ready),        
+        .o_dma_finish(mnist_dma_finish),
 
     //fm data   
-        //.i_cam_data(i_cam_data),
-        .i_parallel_data(parallel_data),
-        .i_fm_data_valid(fm_data_valid),
+        .i_cam_data(i_cam_data),
+       
 
     //weight
         .o_sram_weight_addr(sram_addr),
@@ -466,7 +508,7 @@ assign parallel_data = {
         .o_result_data_valid(result_data_valid)
 
     );
-/////////////////////////////////////////////////////////////////////////////////////////////upper asl module
+/////////////////////////////////////////////////////////////////////////////////////////////upper is my mnist module
 
 
 //////////// 3. custom3_ldbuf/////////////////////////////////////////////////////////
@@ -586,7 +628,7 @@ assign parallel_data = {
    wire nice_icb_cmd_valid_ldbuf ;
 
    assign ldbuf_res = {31'b0,ldbuf_state_idle_exit_ena};
-    assign nice_rsp_valid_ldbuf = asl_dma_finish_posedge ;  
+    assign nice_rsp_valid_ldbuf = mnist_dma_finish_posedge ;  
     assign ldbuf_done = state_is_ldbuf & ldbuf_load_done;     
     
     assign ldbuf_acc_flag = rcv_data_buf_valid ;
@@ -664,7 +706,16 @@ wire nice_icb_cmd_hsked;
    //                          ; 
    assign nice_rsp_err   =   (nice_icb_rsp_hsked & nice_icb_rsp_err);
 
-
+   ////////////////////////////////////////////////////////////
+   // Memory lsu
+   ////////////////////////////////////////////////////////////
+   // memory access list:
+   //  1. In IDLE, custom_mem_op will access memory(lbuf/sbuf/rowsum)
+   //  2. In LBUF, it will read from memory as long as lbuf_cnt_r is not full
+   //  3. In SBUF, it will write to memory as long as sbuf_cnt_r is not full
+   //  3. In ROWSUM, it will read from memory as long as rowsum_cnt_r is not full
+   //assign nice_icb_rsp_ready = state_is_ldst_rsp & nice_rsp_ready; 
+   // rsp always ready
    assign nice_icb_rsp_ready = 1'b1; 
    
    assign nice_icb_cmd_valid =  nice_icb_cmd_valid_ldbuf;
@@ -682,4 +733,6 @@ wire nice_icb_cmd_hsked;
    assign nice_active = state_is_idle ? nice_req_valid : 1'b1;
 
 endmodule
+
+
 
