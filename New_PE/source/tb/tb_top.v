@@ -266,7 +266,7 @@ always @(posedge cam_clk) begin
     else in_cam_i <= 15440;
 end
 
-  reg [7:0] cam_data_array [0:15440]; // �����С��������Ŀ������ƥ��
+  reg [7:0] cam_data_array [0:15440]; // �����С��������Ŀ������ƥ��?
 
 
   initial begin
@@ -332,7 +332,7 @@ end
 
     reg [7:0] dtcm_mem [0:(`E203_DTCM_RAM_DP*4)-1];
     initial begin
-      $readmemh("D:/project/ChipDesign/e203_hbirdv2-master/e203_hbirdv2-master/tb/hex_data.verilog", dtcm_mem);
+      $readmemh("D:/project/ChipDesign/e203_hbirdv2-master/e203_hbirdv2-master/tb/formatted_output.verilog", dtcm_mem);
 
       for (i=4096;i<(`E203_DTCM_RAM_DP);i=i+1) begin
           `DTCM.mem_r[i][24+7:24] = dtcm_mem[(i-4096)*4+0];

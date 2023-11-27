@@ -11,8 +11,8 @@ module nice_core_top #(
     `endif
     input wire i_rst_n,  // ���룺��λ��??
     input wire i_start,  // ���룺��ʼ��??
-    output reg o_data_ready,  // ���������׼��������??
-    output wire o_dma_finish,  // �����DMA����ź�
+    output reg o_data_ready,  // ���������׼��������???
+    output wire o_dma_finish,  // �����DMA����ź�?
 
 
     
@@ -20,8 +20,8 @@ module nice_core_top #(
     input [15:0] i_sram_weight,  // 输入：SRAM权重
 
     
-    output [4:0] o_result_data,  // 输出：结果数�?
-    output o_result_data_valid  // 输出：结果数据有效信�?
+    output [4:0] o_result_data,  // 输出：结果数�??
+    output o_result_data_valid  // 输出：结果数据有效信�??
 
 );
   wire clk;
@@ -86,7 +86,7 @@ wire dma_conv_load_finish;
 dma_module dma_module_ins (
     
     // for nice cmd and data
-        .i_clk  (i_clk),
+        .i_clk  (clk),
         .i_rst_n(i_rst_n),
         
     //for read ITCM 
@@ -139,7 +139,7 @@ dma_module dma_module_ins (
 `ifdef USE_IPSRAM
     
   RAMSP1024X16_rtl_top conv_sram_ins (
-      .Q    (conv_weight),           // ���??16λ������??
+      .Q    (conv_weight),           // ���???16λ������??
       .CLK  (clk),                   // ���룺ʱ����??
       .CEN  (~cs_conv),               // ���룺оƬʹ����??
       .WEN  ({16{~dma_control[0]}}),  // ����??16λдʹ���ź�
@@ -154,7 +154,7 @@ dma_module dma_module_ins (
   `else
     conv_sram conv_sram_ins
             (
-             .clk(i_clk), 
+             .clk(clk), 
              .din(dma_conv_weight), 
              .addr(conv_sram_addr),
              .cs(cs_conv ), //make sure you enable it for both read and write
@@ -168,28 +168,28 @@ dma_module dma_module_ins (
 
 //ʱ�ӷ�Ƶ����??200Mʱ�ӷ�Ƶ??470KHz??10Mʱ��
  clockDivider clockDivider_inst (
-    .clk200M_in(clk),  // ʱ���ź�
+    .clk16M_in(clk),  // ʱ���ź�
     .rst_n(rst_n),
     .clk470k_out(cam_clk),  // 输出分频后的信号
     .clk1M_out()    // 输出分频后的信号
 );
 weightloader_conv weightloader_conv_instance (
-    .clk(clk),  // ���ӵ����ʱ����??
-    .rst_n(rst_n),  // ���ӵ���ĸ�λ��??
+    .clk(clk),  // ���ӵ����ʱ����???
+    .rst_n(rst_n),  // ���ӵ���ĸ�λ��???
     .weights_load_start(dma_conv_load_finish),  // ���ӵ�����Ȩ�ؼ��ص��ź�
     .i_sram_weight(conv_weight),  // ���ӵ�SRAMȨ�ص���??
 
     .Filtr_2_count(Filtr_2_count),  // 连接到Filtr_2计数器的输入
 
-    .o_sram_weight_addr(conv_weight_addr),  // 连接到SRAM权重地址的输�?
+    .o_sram_weight_addr(conv_weight_addr),  // 连接到SRAM权重地址的输�??
 
-    .Filtr_1_2(Filtr_1_2),  // 连接到Filtr_1_2的输�?
-    .Filtr_1_1(Filtr_1_1),  // 连接到Filtr_1_1的输�?
-    .Filtr_1_0(Filtr_1_0),  // 连接到Filtr_1_0的输�?
+    .Filtr_1_2(Filtr_1_2),  // 连接到Filtr_1_2的输�??
+    .Filtr_1_1(Filtr_1_1),  // 连接到Filtr_1_1的输�??
+    .Filtr_1_0(Filtr_1_0),  // 连接到Filtr_1_0的输�??
 
-    .Filtr_2_2(Filtr_2_2),  // 连接到Filtr_2_2的输�?
-    .Filtr_2_1(Filtr_2_1),  // 连接到Filtr_2_1的输�?
-    .Filtr_2_0(Filtr_2_0),  // 连接到Filtr_2_0的输�?
+    .Filtr_2_2(Filtr_2_2),  // 连接到Filtr_2_2的输�??
+    .Filtr_2_1(Filtr_2_1),  // 连接到Filtr_2_1的输�??
+    .Filtr_2_0(Filtr_2_0),  // 连接到Filtr_2_0的输�??
 
     .weights_load_finish(weights_load_finish)  // ���ӵ�Ȩ�ؼ�����ɵ����
 );
@@ -224,14 +224,14 @@ assign PE_clk=clk;
 
 
   top_convlayer1 top_convlayer1_inst (
-      .clk(PE_clk),
+      .clk(clk),
       .rst_n(rst_n),
       .en(dma_finish),
-      .Ifmap_shift_in(parallel_data),  //26x8=208位数�?
+      .Ifmap_shift_in(parallel_data),  //26x8=208位数�??
 
-      .Filtr_in_2(Filtr_1_2),  //权重3x4x4=48位数�?
-      .Filtr_in_1(Filtr_1_1),  //权重3x4x4=48位数�?
-      .Filtr_in_0(Filtr_1_0),  //权重3x4x4=48位数�?
+      .Filtr_in_2(Filtr_1_2),  //权重3x4x4=48位数�??
+      .Filtr_in_1(Filtr_1_1),  //权重3x4x4=48位数�??
+      .Filtr_in_0(Filtr_1_0),  //权重3x4x4=48位数�??
 
       .din_vald (fm_data_valid&weights_load_finish),   //输入数据有效信号
       .dout_vald(conv1_dout_vald), //输出数据有效信号
@@ -243,7 +243,7 @@ assign PE_clk=clk;
   );
 
   top_pool1 top_pool1_inst (
-      .clk     (PE_clk),             // 时钟信号
+      .clk     (clk),             // 时钟信号
       .rst_n   (rst_n),           // 复位信号
       .en      (dma_finish),         // 使能信号    
       .valid_in(conv1_dout_vald), // 输入数据有效信号
@@ -263,7 +263,7 @@ assign PE_clk=clk;
   );
 
   top_convlayer2 top_convlayer2_inst (
-      .clk(PE_clk),
+      .clk(clk),
       .rst_n(rst_n),
       .en(dma_finish),
 
@@ -275,16 +275,16 @@ assign PE_clk=clk;
       .data_in_2(pool1_out_2),  // 输入数据
       .data_in_3(pool1_out_3),  // 输入数据
 
-      .Filtr_in_2(Filtr_2_2),  //权重3x4x4=48位数�?
+      .Filtr_in_2(Filtr_2_2),  //权重3x4x4=48位数�??
       .Filtr_in_1(Filtr_2_1),  //权重
       .Filtr_in_0(Filtr_2_0),  //权重
 
-      .Psum_d_out(conv2_out),  //12x8=96 位数�? 
+      .Psum_d_out(conv2_out),  //12x8=96 位数�?? 
       .conv_counter(Filtr_2_count),
       .conv_en(conv2_dout_vald)  //输出数据有效信号
   );
   top_pool2 top_pool2_inst (
-      .clk     (PE_clk),              // 时钟信号
+      .clk     (clk),              // 时钟信号
       .rst_n   (rst_n),            // 复位信号
       .en      (dma_finish),          // 使能信号    
       .valid_in(conv2_dout_vald),  // 输入数据有效信号
@@ -298,52 +298,52 @@ assign PE_clk=clk;
   wire [15:0] fc_weights0, fc_weights1, fc_weights2, fc_weights3;
 `ifdef USE_IPSRAM
   RAMSP2048X16_rtl_top fc_sram_ins0 (
-      .Q(fc_weights0),  // 输出�?16位数据输�?
-      .CLK(clk),  // 输入：时钟信�?
-      .CEN(~((write_en & dma_control[1]) | dma_finish)),  // 输入：芯片使能信�?
-      .WEN({16{~dma_control[1]}}),  // 输入�?16位写使能信号
-      .A(fc_sram_addr0[10:0]),  // 输入�?10位地�?输入
-      .D(dma_weights0),  // 输入�?16位数据输�?
-      .EMA(3'b000),  // 输入�?3位扩展模式地�?输入
-      .EMAW(2'b00),  // 输入�?2位扩展模式地�?写使能输�?
-      .GWEN(1'b0),  // 输入：全�?写使能输�?
-      .RET1N(1'b0)  // 输入�?1位读使能输入
+      .Q(fc_weights0),  // 输出�??16位数据输�??
+      .CLK(clk),  // 输入：时钟信�??
+      .CEN(~((write_en & dma_control[1]) | dma_finish)),  // 输入：芯片使能信�??
+      .WEN({16{~dma_control[1]}}),  // 输入�??16位写使能信号
+      .A(fc_sram_addr0[10:0]),  // 输入�??10位地�??输入
+      .D(dma_weights0),  // 输入�??16位数据输�??
+      .EMA(3'b000),  // 输入�??3位扩展模式地�??输入
+      .EMAW(2'b00),  // 输入�??2位扩展模式地�??写使能输�??
+      .GWEN(1'b0),  // 输入：全�??写使能输�??
+      .RET1N(1'b0)  // 输入�??1位读使能输入
   );
   RAMSP2048X16_rtl_top fc_sram_ins1 (
-      .Q(fc_weights1),  // 输出�?16位数据输�?
-      .CLK(clk),  // 输入：时钟信�?
-      .CEN(~((write_en & dma_control[2]) | dma_finish)),  // 输入：芯片使能信�?
-      .WEN({16{~dma_control[2]}}),  // 输入�?16位写使能信号
-      .A(fc_sram_addr1[10:0]),  // 输入�?10位地�?输入
-      .D(dma_weights1),  // 输入�?16位数据输�?
-      .EMA(3'b000),  // 输入�?3位扩展模式地�?输入
-      .EMAW(2'b00),  // 输入�?2位扩展模式地�?写使能输�?
-      .GWEN(1'b0),  // 输入：全�?写使能输�?
-      .RET1N(1'b0)  // 输入�?1位读使能输入
+      .Q(fc_weights1),  // 输出�??16位数据输�??
+      .CLK(clk),  // 输入：时钟信�??
+      .CEN(~((write_en & dma_control[2]) | dma_finish)),  // 输入：芯片使能信�??
+      .WEN({16{~dma_control[2]}}),  // 输入�??16位写使能信号
+      .A(fc_sram_addr1[10:0]),  // 输入�??10位地�??输入
+      .D(dma_weights1),  // 输入�??16位数据输�??
+      .EMA(3'b000),  // 输入�??3位扩展模式地�??输入
+      .EMAW(2'b00),  // 输入�??2位扩展模式地�??写使能输�??
+      .GWEN(1'b0),  // 输入：全�??写使能输�??
+      .RET1N(1'b0)  // 输入�??1位读使能输入
   );
   RAMSP2048X16_rtl_top fc_sram_ins2 (
-      .Q(fc_weights2),  // 输出�?16位数据输�?
-      .CLK(clk),  // 输入：时钟信�?
-      .CEN(~((write_en & dma_control[3]) | dma_finish)),  // 输入：芯片使能信�?
-      .WEN({16{~dma_control[3]}}),  // 输入�?16位写使能信号
-      .A(fc_sram_addr2[10:0]),  // 输入�?10位地�?输入
-      .D(dma_weights2),  // 输入�?16位数据输�?
-      .EMA(3'b000),  // 输入�?3位扩展模式地�?输入
-      .EMAW(2'b00),  // 输入�?2位扩展模式地�?写使能输�?
-      .GWEN(1'b0),  // 输入：全�?写使能输�?
-      .RET1N(1'b0)  // 输入�?1位读使能输入
+      .Q(fc_weights2),  // 输出�??16位数据输�??
+      .CLK(clk),  // 输入：时钟信�??
+      .CEN(~((write_en & dma_control[3]) | dma_finish)),  // 输入：芯片使能信�??
+      .WEN({16{~dma_control[3]}}),  // 输入�??16位写使能信号
+      .A(fc_sram_addr2[10:0]),  // 输入�??10位地�??输入
+      .D(dma_weights2),  // 输入�??16位数据输�??
+      .EMA(3'b000),  // 输入�??3位扩展模式地�??输入
+      .EMAW(2'b00),  // 输入�??2位扩展模式地�??写使能输�??
+      .GWEN(1'b0),  // 输入：全�??写使能输�??
+      .RET1N(1'b0)  // 输入�??1位读使能输入
   );
   RAMSP2048X16_rtl_top fc_sram_ins3 (
-      .Q(fc_weights3),  // 输出�?16位数据输�?
-      .CLK(clk),  // 输入：时钟信�?
-      .CEN(~((write_en & dma_control[4]) | dma_finish)),  // 输入：芯片使能信�?
-      .WEN({16{~dma_control[4]}}),  // 输入�?16位写使能信号
-      .A(fc_sram_addr3[10:0]),  // 输入�?10位地�?输入
-      .D(dma_weights3),  // 输入�?16位数据输�?
-      .EMA(3'b000),  // 输入�?3位扩展模式地�?输入
-      .EMAW(2'b00),  // 输入�?2位扩展模式地�?写使能输�?
-      .GWEN(1'b0),  // 输入：全�?写使能输�?
-      .RET1N(1'b0)  // 输入�?1位读使能输入
+      .Q(fc_weights3),  // 输出�??16位数据输�??
+      .CLK(clk),  // 输入：时钟信�??
+      .CEN(~((write_en & dma_control[4]) | dma_finish)),  // 输入：芯片使能信�??
+      .WEN({16{~dma_control[4]}}),  // 输入�??16位写使能信号
+      .A(fc_sram_addr3[10:0]),  // 输入�??10位地�??输入
+      .D(dma_weights3),  // 输入�??16位数据输�??
+      .EMA(3'b000),  // 输入�??3位扩展模式地�??输入
+      .EMAW(2'b00),  // 输入�??2位扩展模式地�??写使能输�??
+      .GWEN(1'b0),  // 输入：全�??写使能输�??
+      .RET1N(1'b0)  // 输入�??1位读使能输入
   );
   `else
   fc_sram fc_sram_ins0 (
@@ -387,7 +387,7 @@ wire [63:0] fc_weight;
 assign fc_weight = {fc_weights0, fc_weights1, fc_weights2, fc_weights3};
 
 fc_top fc_top_inst (
-     .i_clk  (PE_clk),
+     .i_clk  (clk),
      .i_rst_n(rst_n),
     
      .i_pool_data_in(pool2_out),

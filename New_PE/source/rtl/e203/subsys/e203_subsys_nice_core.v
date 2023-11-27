@@ -285,9 +285,9 @@ wire ldbuf_load_done;
 //assign fm_data = 0;
 //assign fm_data_valid = 0;
 
-    wire [3:0] result_data;
+    wire [4:0] result_data;
     wire result_data_valid;
-assign sigma_dp_data = {28'b0,result_data};
+assign sigma_dp_data = {27'b0,result_data};
 assign sigma_dp_data_valid = result_data_valid;
 
 
@@ -368,15 +368,15 @@ reg count;
     
 
 wire pre_ready;
-wire [3:0] o_result_data;
+//wire [4:0] o_result_data;
 wire o_result_data_valid;
 
 initial
 begin
-fm_txt=$fopen("D:/project/ChipDesign/e203_hbirdv2-master/e203_hbirdv2-master/tb/img_test.txt","r");
+fm_txt=$fopen("D:/project/ChipDesign/e203_hbirdv2-master/e203_hbirdv2-master/tb/vcs/vcs_bin/package_bin_99/converted_hex_data.txt","r");
     for(i=0;i<34*26;i=i+1)
        begin
-           count= $fscanf(fm_txt,"%d",fm_data[i]);
+           count= $fscanf(fm_txt,"%h",fm_data[i]);
        end
     $fclose(fm_txt);
 
@@ -423,14 +423,15 @@ always@(posedge nice_clk) begin
 end  
 wire [207:0] parallel_data;
 assign parallel_data = {
-    fm_data[in_i*26+25], fm_data[in_i*26+24], fm_data[in_i*26+23], fm_data[in_i*26+22],
-    fm_data[in_i*26+21], fm_data[in_i*26+20], fm_data[in_i*26+19], fm_data[in_i*26+18],
-    fm_data[in_i*26+17], fm_data[in_i*26+16], fm_data[in_i*26+15], fm_data[in_i*26+14],
-    fm_data[in_i*26+13], fm_data[in_i*26+12], fm_data[in_i*26+11], fm_data[in_i*26+10],
-    fm_data[in_i*26+09], fm_data[in_i*26+08], fm_data[in_i*26+07], fm_data[in_i*26+06],
-    fm_data[in_i*26+05], fm_data[in_i*26+04], fm_data[in_i*26+03], fm_data[in_i*26+02],
-    fm_data[in_i*26+01], fm_data[in_i*26+00]
+    fm_data[in_i*26+00], fm_data[in_i*26+01], fm_data[in_i*26+02], fm_data[in_i*26+03],
+    fm_data[in_i*26+04], fm_data[in_i*26+05], fm_data[in_i*26+06], fm_data[in_i*26+07],
+    fm_data[in_i*26+08], fm_data[in_i*26+09], fm_data[in_i*26+10], fm_data[in_i*26+11],
+    fm_data[in_i*26+12], fm_data[in_i*26+13], fm_data[in_i*26+14], fm_data[in_i*26+15],
+    fm_data[in_i*26+16], fm_data[in_i*26+17], fm_data[in_i*26+18], fm_data[in_i*26+19],
+    fm_data[in_i*26+20], fm_data[in_i*26+21], fm_data[in_i*26+22], fm_data[in_i*26+23],
+    fm_data[in_i*26+24], fm_data[in_i*26+25]
 };
+
 
 
     sirv_sim_ram_all_parameter sirv_sim_ram_all_parameter_ins

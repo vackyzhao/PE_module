@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_top_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_top" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="177,453.382 ns"></ZoomStartTime>
+      <ZoomEndTime time="180,279.055 ns"></ZoomEndTime>
+      <Cursor1Time time="178,911.556 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="354"></NameColumnWidth>
+      <ValueColumnWidth column_width="89"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="99" />
+   <wvobject fp_name="/tb_top/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/rst_n" type="logic">
+      <obj_property name="ElementShortName">rst_n</obj_property>
+      <obj_property name="ObjectShortName">rst_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/inspect_pc" type="array">
+      <obj_property name="ElementShortName">inspect_pc[31:0]</obj_property>
+      <obj_property name="ObjectShortName">inspect_pc[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_ifu/u_e203_ifu_ifetch/pc_ena" type="logic">
+      <obj_property name="ElementShortName">pc_ena</obj_property>
+      <obj_property name="ObjectShortName">pc_ena</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_ifu/u_e203_ifu_ifetch/ifu_req_hsked" type="logic">
+      <obj_property name="ElementShortName">ifu_req_hsked</obj_property>
+      <obj_property name="ObjectShortName">ifu_req_hsked</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/io_pads_gpioA_o_oval" type="array">
+      <obj_property name="ElementShortName">io_pads_gpioA_o_oval[31:0]</obj_property>
+      <obj_property name="ObjectShortName">io_pads_gpioA_o_oval[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_clk" type="logic">
+      <obj_property name="ElementShortName">nice_clk</obj_property>
+      <obj_property name="ObjectShortName">nice_clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_req_valid" type="logic">
+      <obj_property name="ElementShortName">nice_req_valid</obj_property>
+      <obj_property name="ObjectShortName">nice_req_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_req_inst" type="array">
+      <obj_property name="ElementShortName">nice_req_inst[31:0]</obj_property>
+      <obj_property name="ObjectShortName">nice_req_inst[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_req_rs1" type="array">
+      <obj_property name="ElementShortName">nice_req_rs1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">nice_req_rs1[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_req_rs2" type="array">
+      <obj_property name="ElementShortName">nice_req_rs2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">nice_req_rs2[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/custom3_start" type="logic">
+      <obj_property name="ElementShortName">custom3_start</obj_property>
+      <obj_property name="ObjectShortName">custom3_start</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/custom3_ldbuf" type="logic">
+      <obj_property name="ElementShortName">custom3_ldbuf</obj_property>
+      <obj_property name="ObjectShortName">custom3_ldbuf</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/custom3_rdstat" type="logic">
+      <obj_property name="ElementShortName">custom3_rdstat</obj_property>
+      <obj_property name="ObjectShortName">custom3_rdstat</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/ldbuf_state_r" type="array">
+      <obj_property name="ElementShortName">ldbuf_state_r[2:0]</obj_property>
+      <obj_property name="ObjectShortName">ldbuf_state_r[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/u_mrt_cfg_addr" type="array">
+      <obj_property name="ElementShortName">u_mrt_cfg_addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">u_mrt_cfg_addr[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_lsu/u_e203_lsu_ctrl/dtcm_icb_cmd_addr" type="array">
+      <obj_property name="ElementShortName">dtcm_icb_cmd_addr[15:0]</obj_property>
+      <obj_property name="ObjectShortName">dtcm_icb_cmd_addr[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/conv_sram_ins/din" type="array">
+      <obj_property name="ElementShortName">din[15:0]</obj_property>
+      <obj_property name="ObjectShortName">din[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/conv_sram_ins/cs" type="logic">
+      <obj_property name="ElementShortName">cs</obj_property>
+      <obj_property name="ObjectShortName">cs</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/conv_sram_ins/we" type="logic">
+      <obj_property name="ElementShortName">we</obj_property>
+      <obj_property name="ObjectShortName">we</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/weightloader_conv_instance/i_sram_weight" type="array">
+      <obj_property name="ElementShortName">i_sram_weight[15:0]</obj_property>
+      <obj_property name="ObjectShortName">i_sram_weight[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/weights_load_finish" type="logic">
+      <obj_property name="ElementShortName">weights_load_finish</obj_property>
+      <obj_property name="ObjectShortName">weights_load_finish</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/dma_start" type="logic">
+      <obj_property name="ElementShortName">dma_start</obj_property>
+      <obj_property name="ObjectShortName">dma_start</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/conv_weight_addr" type="array">
+      <obj_property name="ElementShortName">conv_weight_addr[15:0]</obj_property>
+      <obj_property name="ObjectShortName">conv_weight_addr[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/conv_sram_addr" type="array">
+      <obj_property name="ElementShortName">conv_sram_addr[15:0]</obj_property>
+      <obj_property name="ObjectShortName">conv_sram_addr[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/conv_sram_ins/ren" type="logic">
+      <obj_property name="ElementShortName">ren</obj_property>
+      <obj_property name="ObjectShortName">ren</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/conv_weight" type="array">
+      <obj_property name="ElementShortName">conv_weight[15:0]</obj_property>
+      <obj_property name="ObjectShortName">conv_weight[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/dma_conv_load_finish" type="logic">
+      <obj_property name="ElementShortName">dma_conv_load_finish</obj_property>
+      <obj_property name="ObjectShortName">dma_conv_load_finish</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/weights_load_finish" type="logic">
+      <obj_property name="ElementShortName">weights_load_finish</obj_property>
+      <obj_property name="ObjectShortName">weights_load_finish</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/conv_sram_ins/wem" type="array">
+      <obj_property name="ElementShortName">wem[0:0]</obj_property>
+      <obj_property name="ObjectShortName">wem[0:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/fc_sram_ins0/din" type="array">
+      <obj_property name="ElementShortName">din[15:0]</obj_property>
+      <obj_property name="ObjectShortName">din[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/fc_sram_ins1/din" type="array">
+      <obj_property name="ElementShortName">din[15:0]</obj_property>
+      <obj_property name="ObjectShortName">din[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/fc_sram_ins2/din" type="array">
+      <obj_property name="ElementShortName">din[15:0]</obj_property>
+      <obj_property name="ObjectShortName">din[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/fc_sram_ins3/din" type="array">
+      <obj_property name="ElementShortName">din[15:0]</obj_property>
+      <obj_property name="ObjectShortName">din[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/dma_module_ins/dma_finish" type="logic">
+      <obj_property name="ElementShortName">dma_finish</obj_property>
+      <obj_property name="ObjectShortName">dma_finish</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/i_fm_data_valid" type="logic">
+      <obj_property name="ElementShortName">i_fm_data_valid</obj_property>
+      <obj_property name="ObjectShortName">i_fm_data_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/top_convlayer1_inst/Ifmap_shift_in" type="array">
+      <obj_property name="ElementShortName">Ifmap_shift_in[207:0]</obj_property>
+      <obj_property name="ObjectShortName">Ifmap_shift_in[207:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/Filtr_1_2" type="array">
+      <obj_property name="ElementShortName">Filtr_1_2[95:0]</obj_property>
+      <obj_property name="ObjectShortName">Filtr_1_2[95:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/Filtr_1_1" type="array">
+      <obj_property name="ElementShortName">Filtr_1_1[95:0]</obj_property>
+      <obj_property name="ObjectShortName">Filtr_1_1[95:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/Filtr_1_0" type="array">
+      <obj_property name="ElementShortName">Filtr_1_0[95:0]</obj_property>
+      <obj_property name="ObjectShortName">Filtr_1_0[95:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/top_convlayer1_inst/ConvLayer1_inst/PE_array_0/Filtr_in_0" type="array">
+      <obj_property name="ElementShortName">Filtr_in_0[23:0]</obj_property>
+      <obj_property name="ObjectShortName">Filtr_in_0[23:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/top_convlayer1_inst/ConvLayer1_inst/PE_array_0/Filtr_out_0" type="array">
+      <obj_property name="ElementShortName">Filtr_out_0[0:22][23:0]</obj_property>
+      <obj_property name="ObjectShortName">Filtr_out_0[0:22][23:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/top_convlayer1_inst/ConvLayer1_inst/PE_array_0/Ifmap_shift_in" type="array">
+      <obj_property name="ElementShortName">Ifmap_shift_in[207:0]</obj_property>
+      <obj_property name="ObjectShortName">Ifmap_shift_in[207:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/top_convlayer1_inst/ConvLayer1_inst/PE_array_0/PE_0/Ifmap_shift_in_0" type="array">
+      <obj_property name="ElementShortName">Ifmap_shift_in_0[7:0]</obj_property>
+      <obj_property name="ObjectShortName">Ifmap_shift_in_0[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/top_convlayer1_inst/ConvLayer1_inst/PE_array_0/PE_0/new_PE_Unit_2/Filtr_in" type="array">
+      <obj_property name="ElementShortName">Filtr_in[23:0]</obj_property>
+      <obj_property name="ObjectShortName">Filtr_in[23:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/top_convlayer1_inst/ConvLayer1_inst/PE_array_0/Ifmap_shift_out_1" type="array">
+      <obj_property name="ElementShortName">Ifmap_shift_out_1[0:22][7:0]</obj_property>
+      <obj_property name="ObjectShortName">Ifmap_shift_out_1[0:22][7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/top_convlayer1_inst/ConvLayer1_inst/Psum_out_0" type="array">
+      <obj_property name="ElementShortName">Psum_out_0[479:0]</obj_property>
+      <obj_property name="ObjectShortName">Psum_out_0[479:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/top_convlayer1_inst/\BLOCK4[4].Conv1Activation_inst0 /din" type="array">
+      <obj_property name="ElementShortName">din[19:0]</obj_property>
+      <obj_property name="ObjectShortName">din[19:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/top_convlayer1_inst/\BLOCK4[4].Conv1Activation_inst0 /dout" type="array">
+      <obj_property name="ElementShortName">dout[7:0]</obj_property>
+      <obj_property name="ObjectShortName">dout[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/top_convlayer1_inst/\BLOCK4[4].Conv1Activation_inst0 /step0_result" type="array">
+      <obj_property name="ElementShortName">step0_result[19:0]</obj_property>
+      <obj_property name="ObjectShortName">step0_result[19:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/top_convlayer1_inst/\BLOCK4[4].Conv1Activation_inst0 /step1_result" type="array">
+      <obj_property name="ElementShortName">step1_result[19:0]</obj_property>
+      <obj_property name="ObjectShortName">step1_result[19:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/top_convlayer1_inst/\BLOCK4[4].Conv1Activation_inst0 /step2_result" type="array">
+      <obj_property name="ElementShortName">step2_result[19:0]</obj_property>
+      <obj_property name="ObjectShortName">step2_result[19:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/top_convlayer1_inst/\BLOCK4[4].Conv1Activation_inst0 /step3_result" type="array">
+      <obj_property name="ElementShortName">step3_result[7:0]</obj_property>
+      <obj_property name="ObjectShortName">step3_result[7:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/top_convlayer1_inst/ConvLayer1_inst/Psum_out_1" type="array">
+      <obj_property name="ElementShortName">Psum_out_1[479:0]</obj_property>
+      <obj_property name="ObjectShortName">Psum_out_1[479:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/top_convlayer1_inst/ConvLayer1_inst/Psum_out_2" type="array">
+      <obj_property name="ElementShortName">Psum_out_2[479:0]</obj_property>
+      <obj_property name="ObjectShortName">Psum_out_2[479:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/top_convlayer1_inst/ConvLayer1_inst/Psum_out_3" type="array">
+      <obj_property name="ElementShortName">Psum_out_3[479:0]</obj_property>
+      <obj_property name="ObjectShortName">Psum_out_3[479:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/conv1_out_1" type="array">
+      <obj_property name="ElementShortName">conv1_out_1[191:0]</obj_property>
+      <obj_property name="ObjectShortName">conv1_out_1[191:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/conv1_out_2" type="array">
+      <obj_property name="ElementShortName">conv1_out_2[191:0]</obj_property>
+      <obj_property name="ObjectShortName">conv1_out_2[191:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/conv1_out_3" type="array">
+      <obj_property name="ElementShortName">conv1_out_3[191:0]</obj_property>
+      <obj_property name="ObjectShortName">conv1_out_3[191:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/conv1_out_0" type="array">
+      <obj_property name="ElementShortName">conv1_out_0[191:0]</obj_property>
+      <obj_property name="ObjectShortName">conv1_out_0[191:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/conv1_dout_vald" type="logic">
+      <obj_property name="ElementShortName">conv1_dout_vald</obj_property>
+      <obj_property name="ObjectShortName">conv1_dout_vald</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/pool1_out_0" type="array">
+      <obj_property name="ElementShortName">pool1_out_0[95:0]</obj_property>
+      <obj_property name="ObjectShortName">pool1_out_0[95:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/pool1_out_1" type="array">
+      <obj_property name="ElementShortName">pool1_out_1[95:0]</obj_property>
+      <obj_property name="ObjectShortName">pool1_out_1[95:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/pool1_out_2" type="array">
+      <obj_property name="ElementShortName">pool1_out_2[95:0]</obj_property>
+      <obj_property name="ObjectShortName">pool1_out_2[95:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/pool1_out_3" type="array">
+      <obj_property name="ElementShortName">pool1_out_3[95:0]</obj_property>
+      <obj_property name="ObjectShortName">pool1_out_3[95:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/pool1_dout_vald" type="logic">
+      <obj_property name="ElementShortName">pool1_dout_vald</obj_property>
+      <obj_property name="ObjectShortName">pool1_dout_vald</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/pool1_end" type="logic">
+      <obj_property name="ElementShortName">pool1_end</obj_property>
+      <obj_property name="ObjectShortName">pool1_end</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/top_convlayer2_inst/conv2_sram_inst0/addr" type="array">
+      <obj_property name="ElementShortName">addr[9:0]</obj_property>
+      <obj_property name="ObjectShortName">addr[9:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/top_convlayer2_inst/conv2_sram_inst0/dout" type="array">
+      <obj_property name="ElementShortName">dout[95:0]</obj_property>
+      <obj_property name="ObjectShortName">dout[95:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/conv2_out" type="array">
+      <obj_property name="ElementShortName">conv2_out[95:0]</obj_property>
+      <obj_property name="ObjectShortName">conv2_out[95:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/conv2_dout_vald" type="logic">
+      <obj_property name="ElementShortName">conv2_dout_vald</obj_property>
+      <obj_property name="ObjectShortName">conv2_dout_vald</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/pool2_out" type="array">
+      <obj_property name="ElementShortName">pool2_out[95:0]</obj_property>
+      <obj_property name="ObjectShortName">pool2_out[95:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/pool2_dout_vald" type="logic">
+      <obj_property name="ElementShortName">pool2_dout_vald</obj_property>
+      <obj_property name="ObjectShortName">pool2_dout_vald</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/pool2_end" type="logic">
+      <obj_property name="ElementShortName">pool2_end</obj_property>
+      <obj_property name="ObjectShortName">pool2_end</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/select_fc_weight_addr" type="array">
+      <obj_property name="ElementShortName">select_fc_weight_addr[15:0]</obj_property>
+      <obj_property name="ObjectShortName">select_fc_weight_addr[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/fc_weight" type="array">
+      <obj_property name="ElementShortName">fc_weight[63:0]</obj_property>
+      <obj_property name="ObjectShortName">fc_weight[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/fc_top_inst/fc_module_ins/i_fc_fm_data" type="array">
+      <obj_property name="ElementShortName">i_fc_fm_data[63:0]</obj_property>
+      <obj_property name="ObjectShortName">i_fc_fm_data[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/fc_top_inst/fc_module_ins/fc_out" type="array">
+      <obj_property name="ElementShortName">fc_out[20:0]</obj_property>
+      <obj_property name="ObjectShortName">fc_out[20:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/fc_top_inst/fc_module_ins/out_val" type="array">
+      <obj_property name="ElementShortName">out_val[20:0]</obj_property>
+      <obj_property name="ObjectShortName">out_val[20:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/o_result_data" type="array">
+      <obj_property name="ElementShortName">o_result_data[4:0]</obj_property>
+      <obj_property name="ObjectShortName">o_result_data[4:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/o_result_data_valid" type="logic">
+      <obj_property name="ElementShortName">o_result_data_valid</obj_property>
+      <obj_property name="ObjectShortName">o_result_data_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/sigma_dp_data" type="array">
+      <obj_property name="ElementShortName">sigma_dp_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">sigma_dp_data[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/sigma_dp_data_valid" type="logic">
+      <obj_property name="ElementShortName">sigma_dp_data_valid</obj_property>
+      <obj_property name="ObjectShortName">sigma_dp_data_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/sigma_status_ena" type="logic">
+      <obj_property name="ElementShortName">sigma_status_ena</obj_property>
+      <obj_property name="ObjectShortName">sigma_status_ena</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/sigma_status_r" type="logic">
+      <obj_property name="ElementShortName">sigma_status_r</obj_property>
+      <obj_property name="ObjectShortName">sigma_status_r</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/state_r" type="array">
+      <obj_property name="ElementShortName">state_r[2:0]</obj_property>
+      <obj_property name="ObjectShortName">state_r[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/rs1_r" type="array">
+      <obj_property name="ElementShortName">rs1_r[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rs1_r[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/state_is_rdstat" type="logic">
+      <obj_property name="ElementShortName">state_is_rdstat</obj_property>
+      <obj_property name="ObjectShortName">state_is_rdstat</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/rdstat_res" type="array">
+      <obj_property name="ElementShortName">rdstat_res[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rdstat_res[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_rsp_rdat" type="array">
+      <obj_property name="ElementShortName">nice_rsp_rdat[31:0]</obj_property>
+      <obj_property name="ObjectShortName">nice_rsp_rdat[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_rsp_valid" type="logic">
+      <obj_property name="ElementShortName">nice_rsp_valid</obj_property>
+      <obj_property name="ObjectShortName">nice_rsp_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/fc_top_inst/pool_fc_buffer_ins/i_pool_data_in" type="array">
+      <obj_property name="ElementShortName">i_pool_data_in[95:0]</obj_property>
+      <obj_property name="ObjectShortName">i_pool_data_in[95:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/fc_top_inst/pool_fc_buffer_ins/i_pool_valid_out" type="logic">
+      <obj_property name="ElementShortName">i_pool_valid_out</obj_property>
+      <obj_property name="ObjectShortName">i_pool_valid_out</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/fc_top_inst/pool_fc_buffer_ins/i_pool_end" type="logic">
+      <obj_property name="ElementShortName">i_pool_end</obj_property>
+      <obj_property name="ObjectShortName">i_pool_end</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/fc_top_inst/pool_fc_buffer_ins/valid_data" type="array">
+      <obj_property name="ElementShortName">valid_data[47:0]</obj_property>
+      <obj_property name="ObjectShortName">valid_data[47:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/fc_top_inst/pool_fc_buffer_ins/counter" type="array">
+      <obj_property name="ElementShortName">counter[3:0]</obj_property>
+      <obj_property name="ObjectShortName">counter[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/fc_top_inst/pool_fc_buffer_ins/base_addr" type="array">
+      <obj_property name="ElementShortName">base_addr[3:0]</obj_property>
+      <obj_property name="ObjectShortName">base_addr[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/fc_top_inst/pool_fc_buffer_ins/i" type="array">
+      <obj_property name="ElementShortName">i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">i[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_e203_soc_top/u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_nice_core/nice_core_top_ins/fc_top_inst/pool_fc_buffer_ins/state_entrence" type="logic">
+      <obj_property name="ElementShortName">state_entrence</obj_property>
+      <obj_property name="ObjectShortName">state_entrence</obj_property>
+   </wvobject>
+</wave_config>
