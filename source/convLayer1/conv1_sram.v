@@ -29,10 +29,10 @@
 // ====================================================================
 
 // 模块定义：输入预处理 SRAM
-module input_pre_sram #(
-    parameter DP           = 768,  // 数据端口数
-    parameter FORCE_X2ZERO = 0,    // 是否将未知值（X）强制置零
-    parameter DW           = 8,    // 数据位宽
+module conv1_sram #(
+    parameter DP           = 32,  // 数据端口数
+    parameter FORCE_X2ZERO = 1,    // 是否将未知值（X）强制置零
+    parameter DW           = 192,    // 数据位宽
     parameter MW           = 1,    // 写使能位宽
     parameter AW           = 10    // 地址位宽
 ) (
@@ -67,16 +67,16 @@ module input_pre_sram #(
   genvar i;
   generate
     for (i = 0; i < MW; i = i + 1) begin : mem
-      if ((8 * i + 8) > DW) begin : last
+      if ((192 * i + 192) > DW) begin : last
         always @(posedge clk) begin
           if (wen[i]) begin
-            mem_r[addr][DW-1:8*i] <= din[DW-1:8*i];  // 写入数据到存储器
+            mem_r[addr][191:0] <= din[191:0];  // 写入数据到存储器
           end
         end
       end else begin : non_last
         always @(posedge clk) begin
           if (wen[i]) begin
-            mem_r[addr][8*i+7:8*i] <= din[8*i+7:8*i];  // 写入数据到存储器
+            mem_r[addr][191:0] <= din[191:0];  // 写入数据到存储器
           end
         end
       end

@@ -26,7 +26,7 @@ limitations under the License.
 //
 // ====================================================================
 
-module fc_sram 
+module fc_sram1 
 #(parameter DP = 1296,//3*3*36/2
  parameter FORCE_X2ZERO = 1,
  parameter DW = 16,
@@ -47,6 +47,7 @@ module fc_sram
    
    integer ii;
    initial begin
+    $readmemb("C:/Users/vackyzhao/Documents/GitHub/PE_module/source/sram/fc_weight_1.txt", mem_r);
    end
    
    reg [AW-1:0] addr_r;

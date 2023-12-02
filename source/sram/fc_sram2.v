@@ -21,14 +21,13 @@ limitations under the License.
 //
 // Designer   : Bob Hu
 //
-//
 // Description:
 //  The simulation model of SRAM
 //
 // ====================================================================
 
-module conv_sram 
-#(parameter DP = 162,//3*3*36/2
+module fc_sram2 
+#(parameter DP = 1296,//3*3*36/2
  parameter FORCE_X2ZERO = 1,
  parameter DW = 16,
  parameter MW = 1,
@@ -48,6 +47,7 @@ module conv_sram
    
    integer ii;
    initial begin
+    $readmemb("C:/Users/vackyzhao/Documents/GitHub/PE_module/source/sram/fc_weight_2.txt", mem_r);
    end
    
    reg [AW-1:0] addr_r;

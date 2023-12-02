@@ -34,6 +34,7 @@ module pool_fc_buffer(
     localparam BUFFER_SIZE = 8*6*8; // Size of the buffer
     localparam ROW_SIZE = 8;        // Size of a row (8 elements per row)
     localparam COLUMN_SIZE = 6;     // Size of a column (6 elements per column)
+    localparam FEATURE_SIZE = 8*8;
     
     reg signed [7:0] buffer[BUFFER_SIZE-1:0];
     reg fc_start;
@@ -66,10 +67,15 @@ module pool_fc_buffer(
 
         
             if (i_pool_valid_out) begin
+                
                 // Write data to buffer in column-wise order
-                for (i = 0; i < COLUMN_SIZE; i = i + 1) begin
-                    buffer[base_addr+counter*8 + i*BUFFER_SIZE] <= valid_data[i*8 +: 8];
-                end
+                buffer[base_addr + counter*8 + 0*FEATURE_SIZE] <= valid_data[5*8 +: 8];
+                buffer[base_addr + counter*8 + 1*FEATURE_SIZE] <= valid_data[4*8 +: 8];
+                buffer[base_addr + counter*8 + 2*FEATURE_SIZE] <= valid_data[3*8 +: 8];
+                buffer[base_addr + counter*8 + 3*FEATURE_SIZE] <= valid_data[2*8 +: 8];
+                buffer[base_addr + counter*8 + 4*FEATURE_SIZE] <= valid_data[1*8 +: 8];
+                buffer[base_addr + counter*8 + 5*FEATURE_SIZE] <= valid_data[0*8 +: 8];
+
                 // Increment column counter, reset on reaching a row end
                 counter<=counter+1;
                 

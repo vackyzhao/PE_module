@@ -41,6 +41,7 @@ module fc_top(
 
 wire fc_start;
 wire [15:0] fc_fm_addr;
+wire signed [8*8-1:0] fc_fm_data_revised;
 wire signed [8*8-1:0] fc_fm_data;
          pool_fc_buffer pool_fc_buffer_ins(
             .clk(i_clk),
@@ -53,6 +54,7 @@ wire signed [8*8-1:0] fc_fm_data;
             .o_fc_start(fc_start),
             .o_fc_fm_data(fc_fm_data)
         );
+        assign fc_fm_data_revised = {fc_fm_data[7:0],fc_fm_data[15:8],fc_fm_data[23:16],fc_fm_data[31:24],fc_fm_data[39:32],fc_fm_data[47:40],fc_fm_data[55:48],fc_fm_data[63:56]};
         fc_module fc_module_ins (
         
         .clk(i_clk),
@@ -60,7 +62,7 @@ wire signed [8*8-1:0] fc_fm_data;
         .i_fc_start(fc_start),
     
         //fm data
-        .i_fc_fm_data(fc_fm_data),
+        .i_fc_fm_data(fc_fm_data_revised),
         .i_fc_fm_base_addr(0),
         .o_fc_fm_addr(fc_fm_addr),
         //weights
