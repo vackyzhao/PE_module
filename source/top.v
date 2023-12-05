@@ -176,8 +176,8 @@ cam_in cam_in_inst(
       .din_vald (fm_data_valid),   //输入数据有效信号
       .dout_vald(conv1_dout_vald), //输出数据有效信号
 
-      .Psum_d_out_0(),  // 输出数据
-      .Psum_d_out_1(conv1_out_1),  // 输出数据
+      .Psum_d_out_0(conv1_out_0),  // 输出数据
+      .Psum_d_out_1(),  // 输出数据
       .Psum_d_out_2(),  // 输出数据
       .Psum_d_out_3()   // 输出数据
   );
@@ -188,13 +188,13 @@ cam_in cam_in_inst(
       .en      (1),         // 使能信号    
       .valid_in(conv1_dout_vald), // 输入数据有效信号
 
-      .data_in_0(),  // 输入数据
-      .data_in_1(conv1_out_1),  // 输入数据
+      .data_in_0(conv1_out_0),  // 输入数据
+      .data_in_1(),  // 输入数据
       .data_in_2(0),  // 输入数据
       .data_in_3(0),  // 输入数据
 
-      .data_out_0(),  // 输出数据
-      .data_out_1(pool1_out_1),  // 输出数据
+      .data_out_0(pool1_out_0),  // 输出数据
+      .data_out_1(),  // 输出数据
       .data_out_2(),  // 输出数据
       .data_out_3(),  // 输出数据
 
@@ -210,8 +210,8 @@ cam_in cam_in_inst(
       .din_valid(pool1_dout_vald&weights_load_finish),  // 输入数据有效信号
       .pool_end (pool1_end),
 
-      .data_in_0(),  // 输入数据
-      .data_in_1(pool1_out_1),  // 输入数据
+      .data_in_0(pool1_out_0),  // 输入数据
+      .data_in_1(0),  // 输入数据
       .data_in_2(0),  // 输入数据
       .data_in_3(0),  // 输入数据
 
